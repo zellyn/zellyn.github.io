@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[zellyn.com]]></title>
+  <link href="http://zellyn.github.com/atom.xml" rel="self"/>
+  <link href="http://zellyn.github.com/"/>
+  <updated>2012-11-02T17:34:31-07:00</updated>
+  <id>http://zellyn.github.com/</id>
+  <author>
+    <name><![CDATA[Zellyn Hunter]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[New site]]></title>
+    <link href="http://zellyn.github.com/blog/2012/11/02/new-site/"/>
+    <updated>2012-11-02T17:28:00-07:00</updated>
+    <id>http://zellyn.github.com/blog/2012/11/02/new-site</id>
+    <content type="html"><![CDATA[<p>Welcome to my new site. I&#8217;m just trying to get everything working:
+expect both style and substance later.</p>
+
+<p>For now, my <a href="http://zellyn.blogspot.com">old site</a> is probably more
+interesting.</p>
+]]></content>
+  </entry>
+  
+</feed>
