@@ -1,0 +1,13 @@
+---
+layout: post
+title: "New site"
+date: 2012-11-02 17:28
+comments: true
+categories: 
+---
+
+Welcome to my new site. I'm just trying to get everything working:
+expect both style and substance later.
+
+For now, my [old site](http://zellyn.blogspot.com) is probably more
+interesting.
