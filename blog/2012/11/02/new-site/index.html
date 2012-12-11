@@ -9,7 +9,7 @@
   <meta name="author" content="Zellyn Hunter">
 
   
-  <meta name="description" content="Welcome to my new site. I&#8217;m just trying to get everything working:
+  <meta name="description" content="Welcome to my new site. I’m just trying to get everything working:
 expect both style and substance later. For now, my old site is probably more &hellip;">
   
 
@@ -29,6 +29,21 @@ expect both style and substance later. For now, my old site is probably more &he
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
   
 
@@ -89,7 +104,7 @@ expect both style and substance later. For now, my old site is probably more &he
   </header>
 
 
-<div class="entry-content"><p>Welcome to my new site. I&#8217;m just trying to get everything working:
+<div class="entry-content"><p>Welcome to my new site. I’m just trying to get everything working:
 expect both style and substance later.</p>
 
 <p>For now, my <a href="http://zellyn.blogspot.com">old site</a> is probably more
@@ -134,6 +149,8 @@ interesting.</p>
     <p class="meta">
       
       
+        <a class="basic-alignment right" href="/blog/2012/12/11/continued-fractions/" title="Next Post: Continued Fractions">Continued Fractions &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -145,6 +162,10 @@ interesting.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/11/continued-fractions/">Continued Fractions</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/11/02/new-site/">New site</a>

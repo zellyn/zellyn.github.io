@@ -4,7 +4,7 @@
   <title><![CDATA[zellyn.com]]></title>
   <link href="http://zellyn.github.com/atom.xml" rel="self"/>
   <link href="http://zellyn.github.com/"/>
-  <updated>2012-11-02T17:40:53-07:00</updated>
+  <updated>2012-12-11T08:23:26-08:00</updated>
   <id>http://zellyn.github.com/</id>
   <author>
     <name><![CDATA[Zellyn Hunter]]></name>
@@ -14,11 +14,37 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Continued Fractions]]></title>
+    <link href="http://zellyn.github.com/blog/2012/12/11/continued-fractions/"/>
+    <updated>2012-12-11T00:00:00-08:00</updated>
+    <id>http://zellyn.github.com/blog/2012/12/11/continued-fractions</id>
+    <content type="html"><![CDATA[<script type="math/tex; mode=display">
+26 + \frac{1}{5 + \frac{1}{12 + \frac{1}{12 + \frac{1}{25 + \frac{1}{14 + \cdots}}}}}
+</script>
+
+<p>Last night I lay thinking of
+<a href="http://en.wikipedia.org/wiki/Continued_fraction">Continued Fractions</a>,
+trying to understand not just the notation, but what they mean.</p>
+
+<p>Trying to pull apart and unwind smaller and smaller parts of these
+recurrent shapes gave way, as I fell asleep, to the same kind of
+recursive unwinding, but of my own past.</p>
+
+<p>I dreamed all night of scattered childhood memories. At one point,
+remembering a song – or perhaps just the act of singing – I was
+pierced with a flash of a long-forgotten feeling: that all is right
+with the world, that Mum and Dad are in charge, that I am safe.</p>
+
+<p>It’s amazing how profoundly we lose that feeling.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[New site]]></title>
     <link href="http://zellyn.github.com/blog/2012/11/02/new-site/"/>
     <updated>2012-11-02T17:28:00-07:00</updated>
     <id>http://zellyn.github.com/blog/2012/11/02/new-site</id>
-    <content type="html"><![CDATA[<p>Welcome to my new site. I&#8217;m just trying to get everything working:
+    <content type="html"><![CDATA[<p>Welcome to my new site. I’m just trying to get everything working:
 expect both style and substance later.</p>
 
 <p>For now, my <a href="http://zellyn.blogspot.com">old site</a> is probably more
