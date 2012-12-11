@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Continued Fractions"
+date: 2012-12-11 08:20
+comments: true
+categories: [math, dream, overlap]
+---
 $$
 26 + \frac{1}{5 + \frac{1}{12 + \frac{1}{12 + \frac{1}{25 + \frac{1}{14 + \cdots}}}}}
 $$
