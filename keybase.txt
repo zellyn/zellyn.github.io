@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/zellyn
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://zellyn.com
+  * I am zellyn (https://keybase.io/zellyn) on keybase.
+  * I have a public key with fingerprint ED49 AABD 0E8C CCC1 18C1  CBBA B33D 7892 02A6 7C01
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01010319fe5cd15ba7521a5a75805ad3be0166c5aa425b6f39ecfdcee32549666d800a",
+            "fingerprint": "ed49aabd0e8cccc118c1cbbab33d789202a67c01",
+            "host": "keybase.io",
+            "key_id": "b33d789202a67c01",
+            "kid": "01010319fe5cd15ba7521a5a75805ad3be0166c5aa425b6f39ecfdcee32549666d800a",
+            "uid": "922a180ee669557f4782d38551221700",
+            "username": "zellyn"
+        },
+        "service": {
+            "hostname": "zellyn.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1454680645,
+    "expire_in": 157680000,
+    "prev": "0e6f38ae61dc24e4884958c5534a1ff793b2460f6e89fd7319deebaef3683cb3",
+    "seqno": 23,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.49
+Comment: https://keybase.io/crypto
+
+yMIlAnicrVJdSBRRFN61VNraUDMzioKxMkNs7szcmTsrZT0EZRGVqUTZdmfmzjq4
+O7PtzlomRqBpD5VEQZmFkWWh/ZKUgoGWZFL071MkBNqiPUgPpRBFd6Qegh479+Fw
+z/2+757zcfq9M1wed11fTv3wz8sl7md9p2Ouks72DdWMYmlVjK+aqSDTiQQ1ErX9
+FYbG+BgW0MMDWSdQ1QBUsAQ5gCFNiIVY4xXCAlFUIcYCBxVR52Wi6ppKCM9BQRZF
+UUMsi5lcRjfMAImEI4ZpU1miCTLGisYSpNIAAKlAVRSs8LwmIZljOSxKKgsosdyK
+OgzanIKjJM+waI1e/NPt/QP/n/uOTcvJHIcBYgkRRRlCSRckxGk8ghBwHJBY1gFG
+ScTEIULRh0gwWGUyNbkMrVUaKnFsdeb46z1PtUKUF45YtqVaQVovt+2wz6HZVWEH
+d4Ao/t8KfsUwNWohJVSSSNSwTMYHKFK1DUcSCFAQESsKMJchB8NGhPgNBwElWqXh
+fEMqHV8InRVhIgJN5QQiICTIEKkQ8gIGui7JvMIJIquLBMm6JlEHNUIUTHReRLyq
+8Iwz037TYnwcT/vEAaoZNQImtmMRwtQ86t0z0+X2uJISE5zdcnlmpfzZuOfZyT9S
+N97o5s55lj/tHx9PauyF3opPaxZ6XMNr46/dten3Ftxo3rsra3PnuvqiBgN13Ixd
+mXOpZ5xfVpCRWNt+Iv/z+bHSop0Tx0LJqdEvn7PLmoKJWSlHLsRquc6DD45M3P6+
+KMN7vKumLrjvW4LwLpgp3Rldvf3Um5OHj26aOrO1sHA2f/XurbR489slVuPSl8Up
+1xdNZb73Hit48qKpa8ugMnI23TzZ8nhnVWugNeaun782Xnd/1YeP42B4QF5/7eLk
+1FjbnJZ5o2UN7e122eJgd07xRJY/Ler9XjYyNFSS3xNauTuxcT3/dcdkysNXC7W0
+UjRw57U4uG1yZlvR3KR4IHNFxy/pYjry
+=4w8/
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/zellyn
+
+==================================================================
