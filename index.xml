@@ -8,8 +8,20 @@
     <language>en-us</language>
     <managingEditor>zellyn@zellyn.com (Zellyn Hunter)</managingEditor>
     <webMaster>zellyn@zellyn.com (Zellyn Hunter)</webMaster>
-    <lastBuildDate>Sun, 03 Apr 2016 15:30:06 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 03 Apr 2016 16:57:38 -0400</lastBuildDate>
     <atom:link href="https://zellyn.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>New new site</title>
+      <link>https://zellyn.com/post/new-new-site/</link>
+      <pubDate>Sun, 03 Apr 2016 16:57:38 -0400</pubDate>
+      <author>zellyn@zellyn.com (Zellyn Hunter)</author>
+      <guid>https://zellyn.com/post/new-new-site/</guid>
+      <description>&lt;p&gt;I just migrated this site from &lt;a href=&#34;http://octopress.org/&#34;&gt;Octopress&lt;/a&gt; to
+&lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. Expect problems (and hopefully more
+frequent updates).&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Continued fractions</title>
