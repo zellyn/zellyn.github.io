@@ -2,28 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://zellyn.com/</loc>
+    <loc>http://zellyn.com/</loc>
     <lastmod>2016-04-03T16:57:38-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://zellyn.com/post/new-new-site/</loc>
+    <loc>http://zellyn.com/post/new-new-site/</loc>
     <lastmod>2016-04-03T16:57:38-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zellyn.com/post/continued-fractions/</loc>
+    <loc>http://zellyn.com/post/continued-fractions/</loc>
     <lastmod>2016-04-03T15:30:06-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zellyn.com/post/new-site/</loc>
+    <loc>http://zellyn.com/post/new-site/</loc>
     <lastmod>2016-04-03T15:30:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zellyn.com/page/about/</loc>
+    <loc>http://zellyn.com/page/about/</loc>
   </url>
   
 </urlset>
