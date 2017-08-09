@@ -2,84 +2,56 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>zellyn.com</title>
-    <link>http://zellyn.com/</link>
+    <link>https://zellyn.com/</link>
     <description>Recent content on zellyn.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>zellyn@zellyn.com (Zellyn Hunter)</managingEditor>
     <webMaster>zellyn@zellyn.com (Zellyn Hunter)</webMaster>
     <lastBuildDate>Sun, 03 Apr 2016 16:57:38 -0400</lastBuildDate>
-    <atom:link href="http://zellyn.com/index.xml" rel="self" type="application/rss+xml" />
+
+	<atom:link href="https://zellyn.com/index.xml" rel="self" type="application/rss+xml" />
+
 
     <item>
       <title>New new site</title>
-      <link>http://zellyn.com/post/new-new-site/</link>
+      <link>https://zellyn.com/post/new-new-site/</link>
       <pubDate>Sun, 03 Apr 2016 16:57:38 -0400</pubDate>
       <author>zellyn@zellyn.com (Zellyn Hunter)</author>
-      <guid>http://zellyn.com/post/new-new-site/</guid>
-      <description>&lt;p&gt;I just migrated this site from &lt;a href=&#34;http://octopress.org/&#34;&gt;Octopress&lt;/a&gt; to
-&lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. Expect problems (and hopefully more
-frequent updates).&lt;/p&gt;
-</description>
+      <guid>https://zellyn.com/post/new-new-site/</guid>
+      <description>I just migrated this site from Octopress to Hugo. Expect problems (and hopefully more frequent updates).</description>
     </item>
 
     <item>
       <title>Continued fractions</title>
-      <link>http://zellyn.com/post/continued-fractions/</link>
+      <link>https://zellyn.com/post/continued-fractions/</link>
       <pubDate>Sun, 03 Apr 2016 15:30:06 -0400</pubDate>
       <author>zellyn@zellyn.com (Zellyn Hunter)</author>
-      <guid>http://zellyn.com/post/continued-fractions/</guid>
-      <description>&lt;p&gt;$$
-26 + \frac{1}{5 + \frac{1}{12 + \frac{1}{12 + \frac{1}{25 + \frac{1}{14 + \cdots}}}}}
-$$&lt;/p&gt;
-
-&lt;p&gt;Last night I lay thinking of
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Continued_fraction&#34;&gt;Continued Fractions&lt;/a&gt;,
-trying to understand not just the notation, but what they mean.&lt;/p&gt;
-
-&lt;p&gt;Trying to pull apart and unwind smaller and smaller parts of these
-recurrent shapes gave way, as I fell asleep, to the same kind of
-recursive unwinding, but of my own past.&lt;/p&gt;
-
-&lt;p&gt;I dreamed all night of scattered childhood memories. At one point,
-remembering a song – or perhaps just the act of singing – I was
-pierced with a flash of a long-forgotten feeling: that all is right
-with the world, that Mum and Dad are in charge, that I am safe.&lt;/p&gt;
-
-&lt;p&gt;It’s amazing how profoundly we lose that feeling.&lt;/p&gt;
-</description>
+      <guid>https://zellyn.com/post/continued-fractions/</guid>
+      <description>$$ 26 + \frac{1}{5 + \frac{1}{12 + \frac{1}{12 + \frac{1}{25 + \frac{1}{14 + \cdots}}}}} $$
+Last night I lay thinking of Continued Fractions, trying to understand not just the notation, but what they mean.
+Trying to pull apart and unwind smaller and smaller parts of these recurrent shapes gave way, as I fell asleep, to the same kind of recursive unwinding, but of my own past.
+I dreamed all night of scattered childhood memories.</description>
     </item>
 
     <item>
       <title>New Site</title>
-      <link>http://zellyn.com/post/new-site/</link>
+      <link>https://zellyn.com/post/new-site/</link>
       <pubDate>Sun, 03 Apr 2016 15:30:00 -0400</pubDate>
       <author>zellyn@zellyn.com (Zellyn Hunter)</author>
-      <guid>http://zellyn.com/post/new-site/</guid>
-      <description>&lt;p&gt;Welcome to my new site. I’m just trying to get everything working:
-expect both style and substance later.&lt;/p&gt;
-
-&lt;p&gt;For now, my &lt;a href=&#34;http://zellyn.blogspot.com/&#34;&gt;old site&lt;/a&gt; is probably more
-interesting.&lt;/p&gt;
-</description>
+      <guid>https://zellyn.com/post/new-site/</guid>
+      <description>Welcome to my new site. I’m just trying to get everything working: expect both style and substance later.
+For now, my old site is probably more interesting.</description>
     </item>
 
     <item>
       <title>About me</title>
-      <link>http://zellyn.com/page/about/</link>
+      <link>https://zellyn.com/page/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>zellyn@zellyn.com (Zellyn Hunter)</author>
-      <guid>http://zellyn.com/page/about/</guid>
-      <description>&lt;p&gt;My name is Zellyn Hunter.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;My wife is Bevin&lt;/li&gt;
-&lt;li&gt;My son is Rowen&lt;/li&gt;
-&lt;li&gt;I grew up in &lt;a href=&#34;https://en.wikipedia.org/wiki/Durban&#34;&gt;Durban&lt;/a&gt;, South Africa&lt;/li&gt;
-&lt;li&gt;I worked at &lt;a href=&#34;https://youtube.com&#34;&gt;YouTube&lt;/a&gt; in San Francisco for five years, from 2010-2015&lt;/li&gt;
-&lt;li&gt;I moved back to Atlanta, and now work at &lt;a href=&#34;https://squareup.com&#34;&gt;Square&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>https://zellyn.com/page/about/</guid>
+      <description>My name is Zellyn Hunter.
+ My wife is Bevin My son is Rowen I grew up in Durban, South Africa I worked at YouTube in San Francisco for five years, from 2010-2015 I moved back to Atlanta, and now work at Square  </description>
     </item>
 
   </channel>
