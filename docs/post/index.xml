@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>zellyn@zellyn.com (Zellyn Hunter)</managingEditor>
     <webMaster>zellyn@zellyn.com (Zellyn Hunter)</webMaster>
-    <lastBuildDate>Sun, 03 Apr 2016 16:57:38 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 31 Mar 2018 22:50:18 -0400</lastBuildDate>
 
 	<atom:link href="https://zellyn.com/post/index.xml" rel="self" type="application/rss+xml" />
 
+
+    <item>
+      <title>Project Todos</title>
+      <link>https://zellyn.com/post/project-todos/</link>
+      <pubDate>Sat, 31 Mar 2018 22:50:18 -0400</pubDate>
+      <author>zellyn@zellyn.com (Zellyn Hunter)</author>
+      <guid>https://zellyn.com/post/project-todos/</guid>
+      <description>In an effort to organize the many side-projects I would like to do &amp;mdash; at least in my mind &amp;amp;mdash but probably never will, I created a Projects: TODO page.
+I&amp;rsquo;ve never collaborated much on side projects. If something strikes your fancy, I would love to work together.</description>
+    </item>
 
     <item>
       <title>New new site</title>

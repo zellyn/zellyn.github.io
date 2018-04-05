@@ -22,5 +22,17 @@
  My wife is Bevin My son is Rowen I grew up in Durban, South Africa I worked at YouTube in San Francisco for five years, from 2010-2015 I moved back to Atlanta, and now work at Square  </description>
     </item>
 
+    <item>
+      <title>Projects: TODO</title>
+      <link>https://zellyn.com/page/projects/todo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zellyn@zellyn.com (Zellyn Hunter)</author>
+      <guid>https://zellyn.com/page/projects/todo/</guid>
+      <description>This is a list of side projects I would like to do.
+I&amp;rsquo;m trying to create a structured list of next steps: hopefully that&amp;rsquo;ll make it easier to pick off tasks to work on, and (less likely) attract interest from others.
+6502 Golf site comp.sys.apple2 folks sometimes like to collaborate/compete on golfing 6502 code. I thought it would be fun to create a site for 6502 golfing.
+Leaderboards would be fun, and being able to track the tree of ideas (by giving credit or explicitly starting with code and modifying it) would be instructive.</description>
+    </item>
+
   </channel>
 </rss>

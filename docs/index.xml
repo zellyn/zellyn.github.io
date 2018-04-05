@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>zellyn@zellyn.com (Zellyn Hunter)</managingEditor>
     <webMaster>zellyn@zellyn.com (Zellyn Hunter)</webMaster>
-    <lastBuildDate>Sun, 03 Apr 2016 16:57:38 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 31 Mar 2018 22:50:18 -0400</lastBuildDate>
 
 	<atom:link href="https://zellyn.com/index.xml" rel="self" type="application/rss+xml" />
 
+
+    <item>
+      <title>Project Todos</title>
+      <link>https://zellyn.com/post/project-todos/</link>
+      <pubDate>Sat, 31 Mar 2018 22:50:18 -0400</pubDate>
+      <author>zellyn@zellyn.com (Zellyn Hunter)</author>
+      <guid>https://zellyn.com/post/project-todos/</guid>
+      <description>In an effort to organize the many side-projects I would like to do &amp;mdash; at least in my mind &amp;amp;mdash but probably never will, I created a Projects: TODO page.
+I&amp;rsquo;ve never collaborated much on side projects. If something strikes your fancy, I would love to work together.</description>
+    </item>
 
     <item>
       <title>New new site</title>
@@ -52,6 +62,18 @@ For now, my old site is probably more interesting.</description>
       <guid>https://zellyn.com/page/about/</guid>
       <description>My name is Zellyn Hunter.
  My wife is Bevin My son is Rowen I grew up in Durban, South Africa I worked at YouTube in San Francisco for five years, from 2010-2015 I moved back to Atlanta, and now work at Square  </description>
+    </item>
+
+    <item>
+      <title>Projects: TODO</title>
+      <link>https://zellyn.com/page/projects/todo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zellyn@zellyn.com (Zellyn Hunter)</author>
+      <guid>https://zellyn.com/page/projects/todo/</guid>
+      <description>This is a list of side projects I would like to do.
+I&amp;rsquo;m trying to create a structured list of next steps: hopefully that&amp;rsquo;ll make it easier to pick off tasks to work on, and (less likely) attract interest from others.
+6502 Golf site comp.sys.apple2 folks sometimes like to collaborate/compete on golfing 6502 code. I thought it would be fun to create a site for 6502 golfing.
+Leaderboards would be fun, and being able to track the tree of ideas (by giving credit or explicitly starting with code and modifying it) would be instructive.</description>
     </item>
 
   </channel>
