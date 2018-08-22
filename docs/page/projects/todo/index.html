@@ -28,7 +28,7 @@ I&rsquo;m trying to create a structured list of next steps: hopefully that&rsquo
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="zellyn.com" />
 
-  <meta name="generator" content="Hugo 0.38" />
+  <meta name="generator" content="Hugo 0.47.1" />
   <link rel="canonical" href="https://zellyn.com/page/projects/todo/" />
   <link rel="alternate" href="https://zellyn.com/index.xml" type="application/rss+xml" title="zellyn.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
@@ -221,17 +221,41 @@ mess.</label></li>
 leaderboards, etc.</label></li>
 </ul>
 
-<h1 id="openemulator-make-iie-aux-card-pluggable">OpenEmulator: make IIe aux card pluggable</h1>
+<h1 id="openemulator-tasks">OpenEmulator Tasks</h1>
+
+<h2 id="make-iie-aux-card-pluggable">Make IIe aux card pluggable</h2>
 
 <ul class="task-list">
 <li><label><input type="checkbox" disabled class="task-list-item"> Route an3/frctxt through card</label></li>
 <li><label><input type="checkbox" disabled class="task-list-item"> Figure out how to make AppleIIeVideo not need direct access to VRAM</label></li>
 </ul>
 
-<h1 id="openemulator-veronica-emulation">OpenEmulator: Veronica emulation</h1>
+<h2 id="veronica-emulation">Veronica emulation</h2>
 
 <ul class="task-list">
 <li><label><input type="checkbox" disabled class="task-list-item"> First, go read all the blog posts :-)</label></li>
+</ul>
+
+<h2 id="implement-woz-disk-format">Implement Woz disk format</h2>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> Make it work at 1 cycle (or is it 4?) per bit</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Convert .woz to angular positions and back again for real spinny-ness</label></li>
+</ul>
+
+<h2 id="implement-mockingboard-support">Implement Mockingboard support</h2>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> Copy Mame code, I guess</label></li>
+</ul>
+
+<h2 id="linux-ui-windows-ui">Linux UI, Windows UI</h2>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> Figure out which would get more users</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Port the basics</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Port audio</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Port shaders/OpenGL stuff</label></li>
 </ul>
 
 <h1 id="retrocomputing-technical-docs-conversion-pipeline">Retrocomputing technical docs conversion pipeline</h1>
@@ -268,6 +292,31 @@ downsides from simply supporting utf8</label></li>
 <li><label><input type="checkbox" disabled class="task-list-item"> Port the 64-bit ints</label></li>
 <li><label><input type="checkbox" disabled class="task-list-item"> Figure out how to add more concurrency using goroutines</label></li>
 <li><label><input type="checkbox" disabled class="task-list-item"> Use something like sqlite?</label></li>
+</ul>
+
+<h1 id="apple-ii-emulator-improvements-tasks">Apple II emulator improvements/tasks</h1>
+
+<h2 id="update-visual-6502">Update visual 6502</h2>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> Incorporate performance improvements from the <a href="https://github.com/mist64/perfect6502/commits/master">C
+  version</a>
+  into <a href="https://github.com/zellyn/go6502/tree/master/visual">my Go
+  port</a>.</label></li>
+</ul>
+
+<h2 id="get-it-running-pitch-dark-in-a-web-page">Get it running Pitch Dark in a web page</h2>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> Figure out how to compile to webassembly</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Build a shim to hook it up to my <a href="https://zellyn.github.io/apple2shader/">apple2shader
+  port</a>.</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Keyboard input</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Implement 65c02 support</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Implement IIe RAM model</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Implement IIe Double-res graphics modes</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Implement fake hard-disk card for .2mg disk images</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> IndexedDB state storage of some kind</label></li>
 </ul>
 
       </article>
