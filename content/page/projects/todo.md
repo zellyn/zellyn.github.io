@@ -37,14 +37,32 @@ would be instructive.
 - [ ] Add challenges/problems with descriptions, solutions,
   leaderboards, etc.
 
-# OpenEmulator: make IIe aux card pluggable
+# OpenEmulator Tasks
+
+## Make IIe aux card pluggable
 
 - [ ] Route an3/frctxt through card
 - [ ] Figure out how to make AppleIIeVideo not need direct access to VRAM
 
-# OpenEmulator: Veronica emulation
+## Veronica emulation
 
 - [ ] First, go read all the blog posts :-)
+
+## Implement Woz disk format
+
+- [ ] Make it work at 1 cycle (or is it 4?) per bit
+- [ ] Convert .woz to angular positions and back again for real spinny-ness
+
+## Implement Mockingboard support
+
+- [ ] Copy Mame code, I guess
+
+## Linux UI, Windows UI
+
+- [ ] Figure out which would get more users
+- [ ] Port the basics
+- [ ] Port audio
+- [ ] Port shaders/OpenGL stuff
 
 # Retrocomputing technical docs conversion pipeline
 
@@ -65,6 +83,7 @@ would be instructive.
 - [ ] Organize a community effort to port all the Chrome code to Go on all the OSes :-)
 
 # LambdaMoo Go port
+
 - [ ] Write some actual tests
 - [ ] Figure out what to do for regexes: they have backrefs :-(
 - [ ] Port the code
@@ -74,3 +93,24 @@ would be instructive.
 - [ ] Port the 64-bit ints
 - [ ] Figure out how to add more concurrency using goroutines
 - [ ] Use something like sqlite?
+
+# Apple II emulator improvements/tasks
+
+## Update visual 6502
+
+- [ ] Incorporate performance improvements from the [C
+      version](https://github.com/mist64/perfect6502/commits/master)
+      into [my Go
+      port](https://github.com/zellyn/go6502/tree/master/visual).
+
+## Get it running Pitch Dark in a web page
+
+- [ ] Figure out how to compile to webassembly
+- [ ] Build a shim to hook it up to my [apple2shader
+      port](https://zellyn.github.io/apple2shader/).
+- [ ] Keyboard input
+- [ ] Implement 65c02 support
+- [ ] Implement IIe RAM model
+- [ ] Implement IIe Double-res graphics modes
+- [ ] Implement fake hard-disk card for .2mg disk images
+- [ ] IndexedDB state storage of some kind
