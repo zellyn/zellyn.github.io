@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pages on Zellyn Hunter</title>
-    <link>https://zellyn.com/page/</link>
-    <description>Recent content in Pages on Zellyn Hunter</description>
+    <title>Posts on Zellyn Hunter</title>
+    <link>https://zellyn.com/posts/</link>
+    <description>Recent content in Posts on Zellyn Hunter</description>
     <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 31 Mar 2018 22:50:18 -0400</lastBuildDate>
 
-	<atom:link href="https://zellyn.com/page/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zellyn.com/posts/index.xml" rel="self" type="application/rss+xml" />
 
 
 

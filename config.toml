@@ -1,33 +1,57 @@
-baseurl = "https://zellyn.com/"
-languageCode = "en-us"
-title = "zellyn.com"
+baseURL = "https://zellyn.com/"
+title = "Zellyn Hunter"
 author = "Zellyn Hunter"
 disqusShortname = "zellyn"
 publishDir = "docs"
+theme = 'etch'
 
-[Params]
-  logo = "img/zellyn.jpg"
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      pikchr = true
+      mathjax = true
 
-[Author]
-  name = "Zellyn Hunter"
-  email = "zellyn@zellyn.com"
-  facebook = "zellyn"
-  github = "zellyn"
-  twitter = "zellyn"
-  linkedin = "in/zellyn"
-  stackoverflow = "23582/zellyn"
+languageCode = "en-US"
+enableInlineShortcodes = true
 
-[[menu.main]]
-    name = "Blog"
-    url = "/"
-    weight = 1
+[params]
+  description = "Zellyn's Website"
+  # copyright = "Copyright © 2021 Zellyn Hunter"
+  dark = "auto"
+  highlight = true
 
-[[menu.main]]
-    name = "About"
-    url = "/page/about/"
-    weight = 2
+[menu]
+  # [[menu.main]]
+  #   identifier = "posts"
+  #   name = "posts"
+  #   title = "posts"
+  #   url = "/"
+  #   weight = 10
 
-[[menu.main]]
-    name = "Project TODOs"
-    url = "/page/projects/todo/"
-    weight = 2
+  [[menu.main]]
+    identifier = "projects"
+    name = "projects"
+    title = "projects"
+    url = "/page/projects/todo"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "about"
+    name = "about"
+    title = "about"
+    url = "/about/"
+    weight = 20
+    page = "about"
+
+[permalinks]
+  posts = "/:title/"
+
+[markup.goldmark.renderer]
+  # Allow HTML in Markdown
+  unsafe = true
+
+[markup.tableOfContents]
+  ordered = true
+
+[markup.highlight]
+  style = 'friendly'
