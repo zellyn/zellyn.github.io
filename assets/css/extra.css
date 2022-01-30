@@ -4,3 +4,8 @@
    pointer-events: none !important;
    display: none !important;
 }
+
+div.pikchr {
+    display: flex;
+    justify-content: center;
+}

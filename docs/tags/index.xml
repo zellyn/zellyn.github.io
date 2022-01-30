@@ -5,8 +5,170 @@
     <link>https://zellyn.com/tags/</link>
     <description>Recent content in Tags on Zellyn Hunter</description>
     <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 30 Jan 2022 13:11:00 -0500</lastBuildDate>
 
 	<atom:link href="https://zellyn.com/tags/index.xml" rel="self" type="application/rss+xml" />
+
+
+
+    <item>
+      <title>gopikchr: a yakshave</title>
+      <link>https://zellyn.com/gopikchr-a-yakshave/</link>
+      <pubDate>Sun, 30 Jan 2022 13:11:00 -0500</pubDate>
+
+      <guid>https://zellyn.com/gopikchr-a-yakshave/</guid>
+      <description>&lt;p&gt;I just completed part of a long
+&lt;a href=&#34;https://en.wiktionary.org/wiki/yak_shaving&#34;&gt;yak-shave&lt;/a&gt; to add
+&lt;a href=&#34;https://pikchr.org&#34;&gt;Pikchr&lt;/a&gt; support to my blog, generated with
+&lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt;. I hope it helps to spread of Pikchr, and
+spurs implementations in other publishing pipelines.&lt;/p&gt;
+&lt;p&gt;Actually, it&amp;rsquo;s just the bottom part of an even longer yak-shave!&lt;/p&gt;
+&lt;div id=&#39;pikchr-0&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-0&#39;)&#34;&gt;
+&lt;div style=&#39;max-width:651px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 651.024 264.384&#34;&gt;
+&lt;path d=&#34;M2,30L506,30L506,2L2,2Z&#34;  style=&#34;fill:rgb(197,216,239);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;254&#34; y=&#34;16&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;open my garage with a raspberry pi&lt;/text&gt;
+&lt;path d=&#34;M20,59L524,59L524,30L20,30Z&#34;  style=&#34;fill:rgb(217,230,242);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;272&#34; y=&#34;45&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;achieve accurate timing on a raspberry pi&lt;/text&gt;
+&lt;path d=&#34;M38,88L542,88L542,59L38,59Z&#34;  style=&#34;fill:rgb(197,216,239);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;290&#34; y=&#34;74&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;understand how to use DMA for gpio sequences&lt;/text&gt;
+&lt;path d=&#34;M56,117L560,117L560,88L56,88Z&#34;  style=&#34;fill:rgb(217,230,242);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;308&#34; y=&#34;102&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;“I should document this in a blog post”&lt;/text&gt;
+&lt;path d=&#34;M74,146L578,146L578,117L74,117Z&#34;  style=&#34;fill:rgb(197,216,239);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;326&#34; y=&#34;131&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;“I need Pikchr for diagrams”: make Pikchr work in hugo&lt;/text&gt;
+&lt;path d=&#34;M92,174L596,174L596,146L92,146Z&#34;  style=&#34;fill:rgb(217,230,242);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;344&#34; y=&#34;160&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;make Pikchr work in hugo&lt;/text&gt;
+&lt;path d=&#34;M110,203L614,203L614,174L110,174Z&#34;  style=&#34;fill:rgb(197,216,239);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;362&#34; y=&#34;189&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;port Pikchr to go&lt;/text&gt;
+&lt;path d=&#34;M128,232L632,232L632,203L128,203Z&#34;  style=&#34;fill:rgb(217,230,242);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;380&#34; y=&#34;218&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;port the lemon parser to go&lt;/text&gt;
+&lt;text x=&#34;578&#34; y=&#34;131&#34; text-anchor=&#34;start&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt; ✓&lt;/text&gt;
+&lt;text x=&#34;596&#34; y=&#34;160&#34; text-anchor=&#34;start&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt; ✓&lt;/text&gt;
+&lt;text x=&#34;614&#34; y=&#34;189&#34; text-anchor=&#34;start&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt; ✓&lt;/text&gt;
+&lt;text x=&#34;632&#34; y=&#34;218&#34; text-anchor=&#34;start&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt; ✓&lt;/text&gt;
+&lt;text x=&#34;380&#34; y=&#34;254&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;(Click to see source)&lt;/text&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+down
+box width 3.5in height 0.2in fill 0xc5d8ef \
+                       &#34;open my garage with a raspberry pi&#34;
+box same fill 0xd9e6f2 with .nw at linewid/4 east of 1st box.sw &#34;achieve accurate timing on a raspberry pi&#34;
+box same as 1st box with .nw at linewid/4 east of 2nd box.sw    &#34;understand how to use DMA for gpio sequences&#34;
+box same as 2nd box with .nw at linewid/4 east of 3rd box.sw   &#34;“I should document this in a blog post”&#34;
+box same as 1st box with .nw at linewid/4 east of 4th box.sw   &#34;“I need Pikchr for diagrams”: make Pikchr work in hugo&#34;
+box same as 2nd box with .nw at linewid/4 east of 5th box.sw   &#34;make Pikchr work in hugo&#34;
+box same as 1st box with .nw at linewid/4 east of 6th box.sw   &#34;port Pikchr to go&#34;
+box same as 2nd box with .nw at linewid/4 east of 7th box.sw   &#34;port the lemon parser to go&#34;
+text at 5th box.e  &#34; ✓&#34; ljust
+text at 6th box.e  &#34; ✓&#34; ljust
+text at 7th box.e  &#34; ✓&#34; ljust
+text at 8th box.e  &#34; ✓&#34; ljust
+text at last box.s - (0,0.15) &#34;(Click to see source)&#34; italic small
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a href=&#34;https://pikchr.org&#34;&gt;Pikchr&lt;/a&gt; is a modern version of Brian Kernighan&amp;rsquo;s
+&lt;a href=&#34;https://en.wikipedia.org/wiki/PIC_(markup_language)&#34;&gt;PIC markup language&lt;/a&gt;,
+created by the folks who make SQLite and Fossil. Like so many things from
+Bell Labs, it is extremely powerful, once you invest just a little time
+to understand how it works.&lt;/p&gt;
+&lt;p&gt;Pikchr is implemented in a single file,
+&lt;a href=&#34;https://pikchr.org/home/doc/trunk/doc/build.md&#34;&gt;&lt;code&gt;pikchr.y&lt;/code&gt;&lt;/a&gt;,
+processed using the &lt;a href=&#34;https://sqlite.org/src/doc/trunk/doc/lemon.html&#34;&gt;Lemon
+Parser&lt;/a&gt; to generate
+&lt;code&gt;lemon.c&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I decided to port both the Lemon Parser and Pikchr from C to Go, by
+hand.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;why&#34;&gt;Why?&lt;/h2&gt;
+&lt;p&gt;Go and Pikchr are great! A pure-Go port of Pikchr might be useful to
+others.&lt;/p&gt;
+&lt;p&gt;Hugo might more readily accept pure-Go additions.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Sheer bloody-mindedness.&lt;/em&gt; At work we always have to make pragmatic
+decisions. The repressed urge to fully shave the yak comes out in my
+own time.&lt;/p&gt;
+&lt;p&gt;I respect the SQLite folks: their software is an amazing gift to our
+community. Think of this as a &lt;a href=&#34;https://apenwarr.ca/log/20211229&#34;&gt;gift&lt;/a&gt;
+too.&lt;/p&gt;
+&lt;h2 id=&#34;how&#34;&gt;How?&lt;/h2&gt;
+&lt;p&gt;By hand. I looked at &lt;a href=&#34;https://pkg.go.dev/modernc.org/ccgo/v3&#34;&gt;ccgo&lt;/a&gt;,
+the amazing C-to-Go compiler used to generate &lt;a href=&#34;https://pkg.go.dev/modernc.org/sqlite&#34;&gt;modernc
+sqlite&lt;/a&gt;, a pure-Go translation
+of sqlite. However, the code it generats to perform its magic is
+(necessarily) complicated and ugly, which seems contrary to the spirit
+of Pikchr. Nothing for it, but to dive in by hand. It can be almost
+meditative:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Translate &lt;code&gt;lemon.c&lt;/code&gt; to Go, but still generate C code&lt;/li&gt;
+&lt;li&gt;Find all the bugs until it compiles and generates the exact same C
+code&lt;/li&gt;
+&lt;li&gt;Translate the parser template, &lt;code&gt;lempar.tpl&lt;/code&gt; to Go, and generate Go
+code&lt;/li&gt;
+&lt;li&gt;Laboriously find all the bugs&lt;/li&gt;
+&lt;li&gt;Translate &lt;code&gt;pikchr.y&lt;/code&gt; from C to Go&lt;/li&gt;
+&lt;li&gt;Once again, fix all the bugs until the Go version generates exactly
+the same Pikchr output&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In all, it was almost 12,000 lines of code. I started out trying to be
+clever, but learned to keep things as similar as possible.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I tried to replace &lt;code&gt;char *&lt;/code&gt; with &lt;code&gt;[]rune&lt;/code&gt; at first, to handle
+unicode rather than ascii. But I ended up using &lt;code&gt;[]byte&lt;/code&gt;, and even
+zero-terminating the string! To move forward through the input, &lt;code&gt;z += 3&lt;/code&gt; becomes &lt;code&gt;z = z[3:]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;I tried replacing dynamically-sized arrays represented by &lt;code&gt;struct *&lt;/code&gt;,
+&lt;code&gt;current_size&lt;/code&gt;, and &lt;code&gt;n&lt;/code&gt; (current index) with just slices. However, it turns
+out to be cleaner to keep &lt;code&gt;n&lt;/code&gt; around, because the code will often
+reference &lt;code&gt;s[n+1]&lt;/code&gt; or &lt;code&gt;s[n-1]&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;links&#34;&gt;Links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/gopikchr/golemon&#34;&gt;golemon&lt;/a&gt;, the port of lemon to Go&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/gopikchr/gopikchr&#34;&gt;gopikchr&lt;/a&gt;, the port of Pikchr to Go&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/gopikchr/goldmark-pikchr&#34;&gt;goldmark-pikchr&lt;/a&gt;, a
+goldmark plugin to render Pikchr diagrams in markdown&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/zellyn/hugo/commit/87bbe9f2140a21e6d2759e7005c9e5a787651832&#34;&gt;hugo commit&lt;/a&gt;,
+the tiny change needed to enable Pikchr support in Hugo in my fork&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;what-next&#34;&gt;What next?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Find the remaining bugs. I&amp;rsquo;m certain I didn&amp;rsquo;t find them all&lt;/li&gt;
+&lt;li&gt;Set up github actions to create issues in the golemon and gopikchr
+repositories whenever the C versions in Fossil change. Both change
+infrequently, so keeping up should be little work&lt;/li&gt;
+&lt;li&gt;Possibly, use these techniques to port the SQLite parser to Go, if
+&lt;a href=&#34;https://github.com/kyleconroy/sqlc/issues/161#issuecomment-1022541349&#34;&gt;someone else doesn&amp;rsquo;t do it
+first&lt;/a&gt;. A
+Go SQLite-compatible parser seems more likely to get widely used,
+and depended on, and I&amp;rsquo;m not certain I want to be the maintainer of
+a &lt;a href=&#34;https://xkcd.com/2347/&#34;&gt;popular&lt;/a&gt; open source package&lt;/li&gt;
+&lt;li&gt;Enjoy using Pikchr, and seeing other people use it!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;  &lt;!-- vertical spacer --&gt;&lt;/p&gt;
+&lt;div id=&#39;pikchr-1&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-1&#39;)&#34;&gt;
+&lt;div style=&#39;max-width:292px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 292.32 292.32&#34;&gt;
+&lt;circle cx=&#34;146&#34; cy=&#34;146&#34; r=&#34;144&#34;  style=&#34;fill:rgb(255,255,0);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M38,146Q38,254 146,254&#34;  style=&#34;fill:none;stroke-width:3.24;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M146,254Q254,254 254,146&#34;  style=&#34;fill:none;stroke-width:3.24;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;ellipse cx=&#34;102&#34; cy=&#34;88&#34; rx=&#34;18&#34; ry=&#34;36&#34;  style=&#34;fill:rgb(0,0,0);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;ellipse cx=&#34;189&#34; cy=&#34;88&#34; rx=&#34;18&#34; ry=&#34;36&#34;  style=&#34;fill:rgb(0,0,0);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+circle radius 1 fill yellow
+arc from -0.75,0 to 0,-0.75 thick
+arc same from 0,-0.75 to 0.75,0
+ellipse height 0.5 width 0.25 at -0.3,0.4 fill black
+ellipse same at 0.3,0.4
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle(&#39;hidden&#39;);
+    }
+  }
+&lt;/script&gt;</description>
+    </item>
 
 
 
