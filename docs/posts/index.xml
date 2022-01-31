@@ -24,7 +24,7 @@
 spurs implementations in other publishing pipelines.&lt;/p&gt;
 &lt;p&gt;Actually, it&amp;rsquo;s just the bottom part of an even longer yak-shave!&lt;/p&gt;
 &lt;div id=&#39;pikchr-0&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-0&#39;)&#34;&gt;
-&lt;div style=&#39;max-width:651px&#39;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:651px&#39;&gt;
 &lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 651.024 264.384&#34;&gt;
 &lt;path d=&#34;M2,30L506,30L506,2L2,2Z&#34;  style=&#34;fill:rgb(197,216,239);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
 &lt;text x=&#34;254&#34; y=&#34;16&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;open my garage with a raspberry pi&lt;/text&gt;
@@ -144,7 +144,7 @@ a &lt;a href=&#34;https://xkcd.com/2347/&#34;&gt;popular&lt;/a&gt; open source p
 &lt;/ul&gt;
 &lt;p&gt;  &lt;!-- vertical spacer --&gt;&lt;/p&gt;
 &lt;div id=&#39;pikchr-1&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-1&#39;)&#34;&gt;
-&lt;div style=&#39;max-width:292px&#39;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:292px&#39;&gt;
 &lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 292.32 292.32&#34;&gt;
 &lt;circle cx=&#34;146&#34; cy=&#34;146&#34; r=&#34;144&#34;  style=&#34;fill:rgb(255,255,0);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
 &lt;path d=&#34;M38,146Q38,254 146,254&#34;  style=&#34;fill:none;stroke-width:3.24;stroke:rgb(0,0,0);&#34; /&gt;

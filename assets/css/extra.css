@@ -9,3 +9,13 @@ div.pikchr {
     display: flex;
     justify-content: center;
 }
+
+div.pikchr-svg {
+    width: 100%;
+    height: 100%;
+}
+
+div.pikchr-svg > svg {
+    height: 100%;
+    width: 100%;
+}
