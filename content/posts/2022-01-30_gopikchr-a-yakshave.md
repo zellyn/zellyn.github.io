@@ -115,10 +115,7 @@ clever, but learned to keep things as similar as possible.
   a [popular](https://xkcd.com/2347/) open source package
 - Enjoy using Pikchr, and seeing other people use it!
 
-
 &nbsp; <!-- vertical spacer -->
-
-
 
 ```pikchr {toggle=true}
 circle radius 1 fill yellow
@@ -127,3 +124,9 @@ arc same from 0,-0.75 to 0.75,0
 ellipse height 0.5 width 0.25 at -0.3,0.4 fill black
 ellipse same at 0.3,0.4
 ```
+
+&nbsp; <!-- vertical spacer -->
+
+## Comments? Reach me on Twitter
+
+{{< tweet user="zellyn" id="1488960414595620870" >}}

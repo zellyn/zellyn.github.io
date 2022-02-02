@@ -161,6 +161,11 @@ ellipse height 0.5 width 0.25 at -0.3,0.4 fill black
 ellipse same at 0.3,0.4
 &lt;/pre&gt;
 &lt;/div&gt;
+&lt;p&gt;  &lt;!-- vertical spacer --&gt;&lt;/p&gt;
+&lt;h2 id=&#34;comments-reach-me-on-twitter&#34;&gt;Comments? Reach me on Twitter&lt;/h2&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;I blogged a few days ago about porting Pikchr and the Lemon Parser to Go, but just now realized linking to a tweet at the end of the post is a satisfactory way to do conversations if your static blog doesn&amp;#39;t have comments!&lt;a href=&#34;https://t.co/aXtDNRMsyC&#34;&gt;https://t.co/aXtDNRMsyC&lt;/a&gt;&lt;/p&gt;&amp;mdash; Zellyn Hunter 💉² 🎉 (@zellyn) &lt;a href=&#34;https://twitter.com/zellyn/status/1488960414595620870?ref_src=twsrc%5Etfw&#34;&gt;February 2, 2022&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+
 &lt;script&gt;
   function toggleHidden(id){
     for(var c of document.getElementById(id).children){
