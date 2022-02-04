@@ -722,8 +722,6 @@ bottom is useful.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-bac
       <guid>https://zellyn.com/2022/02/cs-ramble/1a/</guid>
       <description>&lt;p&gt;&lt;em&gt;These are the questions for week 1 of &lt;a href=&#34;../&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;questions-for-week-1&#34;&gt;Questions for week 1&lt;/h1&gt;
-&lt;br/&gt;
-&lt;table style=&#34;border:1px solid lightgrey;&#34;&gt;&lt;td&gt;
 &lt;ul&gt;
 &lt;li&gt;When you say &lt;code&gt;a = &amp;quot;Hello, world&amp;quot;&lt;/code&gt; in your favorite language, how is
 the string stored? How about &lt;code&gt;&amp;quot;Hello, 世界&amp;quot;&lt;/code&gt;?&lt;/li&gt;
@@ -734,7 +732,6 @@ the string stored? How about &lt;code&gt;&amp;quot;Hello, 世界&amp;quot;&lt;/c
 &lt;li&gt;Why do computer people use “foo” and “bar” all the time? What’s up
 with that? What about 42 and 17?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/table&gt;
 &lt;p&gt;&lt;em&gt;We&amp;rsquo;ll start discussing how memory is laid out and used to represent
 numbers and text in the &lt;a href=&#34;../1b/&#34;&gt;next part&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 </description>
