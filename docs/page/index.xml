@@ -11,6 +11,768 @@
 
 
     <item>
+      <title>CS Ramble — Week 1b - memory, text, numbers</title>
+      <link>https://zellyn.com/2022/02/cs-ramble/1b/</link>
+      <pubDate>Thu, 03 Feb 2022 08:00:00 -0500</pubDate>
+
+      <guid>https://zellyn.com/2022/02/cs-ramble/1b/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../1a/&#34;&gt;week 1&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
+CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;computer-memory&#34;&gt;Computer memory&lt;/h1&gt;
+&lt;p&gt;You can imagine all your computer&amp;rsquo;s memory as a series of little boxes,
+numbered from 0 (because we&amp;rsquo;re computer people), and going up, and up,
+and up. The laptop I&amp;rsquo;m typing this on has 32MB of memory, or
+34,359,738,368 little boxes!&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;div id=&#39;pikchr-0&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-0&#39;)&#34;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:513px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 513.187 60.48&#34;&gt;
+&lt;path d=&#34;M2,58L29,58L29,22L2,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M29,58L56,58L56,22L29,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M56,58L83,58L83,22L56,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M83,58L110,58L110,22L83,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M110,58L137,58L137,22L110,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M137,58L164,58L164,22L137,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M164,58L191,58L191,22L164,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M191,58L218,58L218,22L191,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M218,58L245,58L245,22L218,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M245,58L272,58L272,22L245,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M272,58L299,58L299,22L272,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M299,58L326,58L326,22L299,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M380,58L407,58L407,22L380,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;353&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;125%&#34; dominant-baseline=&#34;central&#34;&gt;· · ·&lt;/text&gt;
+&lt;text x=&#34;15&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;text x=&#34;42&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;text x=&#34;69&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;2&lt;/text&gt;
+&lt;text x=&#34;96&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;3&lt;/text&gt;
+&lt;text x=&#34;123&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;4&lt;/text&gt;
+&lt;text x=&#34;150&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;5&lt;/text&gt;
+&lt;text x=&#34;177&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;6&lt;/text&gt;
+&lt;text x=&#34;204&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;7&lt;/text&gt;
+&lt;text x=&#34;231&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;8&lt;/text&gt;
+&lt;text x=&#34;258&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;9&lt;/text&gt;
+&lt;text x=&#34;285&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;10&lt;/text&gt;
+&lt;text x=&#34;312&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;11&lt;/text&gt;
+&lt;text x=&#34;380&#34; y=&#34;12&#34; text-anchor=&#34;start&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;34,359,738,367&lt;/text&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+boxwid /=4
+boxht /= 2
+box fill lightblue
+box same
+box same
+box same
+box same
+box same
+box same
+box same
+box same
+box same
+box same
+box same
+
+move width boxwid*2
+
+box same //  &#34;34,359,738,367&#34; above
+
+text at last move &#34;· · ·&#34; big bold
+
+text at 1st box.n &#34;0&#34; above
+text at 2nd box.n &#34;1&#34; above
+text at 3rd box.n &#34;2&#34; above
+text at 4th box.n &#34;3&#34; above
+text at 5th box.n &#34;4&#34; above
+text at 6th box.n &#34;5&#34; above
+text at 7th box.n &#34;6&#34; above
+text at 8th box.n &#34;7&#34; above
+text at 9th box.n &#34;8&#34; above
+text at 10th box.n &#34;9&#34; above
+text at 11th box.n &#34;10&#34; above
+text at 12th box.n &#34;11&#34; above
+text at 13th box.nw &#34;34,359,738,367&#34; above ljust
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;We&amp;rsquo;ll get into “bits” and “bytes” and counting in “binary” later, but
+for now, let&amp;rsquo;s just take it as given that each of those boxes holds a
+single “byte”: a number from 0 to 255.&lt;/p&gt;
+&lt;h1 id=&#34;text&#34;&gt;Text&lt;/h1&gt;
+&lt;p&gt;If we want to store letters in the boxes, we have to come up with some
+kind of “&lt;a href=&#34;https://en.wikipedia.org/wiki/Character_encoding&#34;&gt;Character
+Encoding&lt;/a&gt;”,
+assigning a number to each letter.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I&amp;rsquo;d use 1 for “A”, 2 for “B”, &amp;hellip;, except it&amp;rsquo;s probably better to
+just jump straight to the actual numbers your computer (usually) uses
+(called “&lt;a href=&#34;https://en.wikipedia.org/wiki/ASCII&#34;&gt;ASCII&lt;/a&gt;”&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;) so we get used
+to seeing the real numbers:&lt;/em&gt;&lt;/p&gt;
+&lt;div id=&#39;pikchr-1&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-1&#39;)&#34;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:587px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 587.29 96.48&#34;&gt;
+&lt;text x=&#34;65&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;“Hello, world”&lt;/text&gt;
+&lt;polygon points=&#34;153,40 141,44 141,36&#34; style=&#34;fill:rgb(0,0,0)&#34;/&gt;
+&lt;path d=&#34;M117,40L147,40&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M153,58L189,58L189,22L153,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;171&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;H&lt;/text&gt;
+&lt;path d=&#34;M189,58L225,58L225,22L189,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;207&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;e&lt;/text&gt;
+&lt;path d=&#34;M225,58L261,58L261,22L225,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;243&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;l&lt;/text&gt;
+&lt;path d=&#34;M261,58L297,58L297,22L261,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;279&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;l&lt;/text&gt;
+&lt;path d=&#34;M297,58L333,58L333,22L297,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;315&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;o&lt;/text&gt;
+&lt;path d=&#34;M333,58L369,58L369,22L333,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;351&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;,&lt;/text&gt;
+&lt;path d=&#34;M369,58L405,58L405,22L369,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;387&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;␣&lt;/text&gt;
+&lt;path d=&#34;M405,58L441,58L441,22L405,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;423&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;w&lt;/text&gt;
+&lt;path d=&#34;M441,58L477,58L477,22L441,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;459&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;o&lt;/text&gt;
+&lt;path d=&#34;M477,58L513,58L513,22L477,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;495&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;r&lt;/text&gt;
+&lt;path d=&#34;M513,58L549,58L549,22L513,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;531&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;l&lt;/text&gt;
+&lt;path d=&#34;M549,58L585,58L585,22L549,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;567&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;d&lt;/text&gt;
+&lt;path d=&#34;M153,94L189,94L189,58L153,58Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;171&#34; y=&#34;76&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;72&lt;/text&gt;
+&lt;path d=&#34;M189,94L225,94L225,58L189,58Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;207&#34; y=&#34;76&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;101&lt;/text&gt;
+&lt;path d=&#34;M225,94L261,94L261,58L225,58Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;243&#34; y=&#34;76&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;108&lt;/text&gt;
+&lt;path d=&#34;M261,94L297,94L297,58L261,58Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;279&#34; y=&#34;76&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;108&lt;/text&gt;
+&lt;path d=&#34;M297,94L333,94L333,58L297,58Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;315&#34; y=&#34;76&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;111&lt;/text&gt;
+&lt;path d=&#34;M333,94L369,94L369,58L333,58Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;351&#34; y=&#34;76&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;44&lt;/text&gt;
+&lt;path d=&#34;M369,94L405,94L405,58L369,58Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;387&#34; y=&#34;76&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;32&lt;/text&gt;
+&lt;path d=&#34;M405,94L441,94L441,58L405,58Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;423&#34; y=&#34;76&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;119&lt;/text&gt;
+&lt;path d=&#34;M441,94L477,94L477,58L441,58Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;459&#34; y=&#34;76&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;111&lt;/text&gt;
+&lt;path d=&#34;M477,94L513,94L513,58L477,58Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;495&#34; y=&#34;76&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;114&lt;/text&gt;
+&lt;path d=&#34;M513,94L549,94L549,58L513,58Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;531&#34; y=&#34;76&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;108&lt;/text&gt;
+&lt;path d=&#34;M549,94L585,94L585,58L549,58Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;567&#34; y=&#34;76&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;100&lt;/text&gt;
+&lt;text x=&#34;171&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;text x=&#34;207&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;text x=&#34;243&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;2&lt;/text&gt;
+&lt;text x=&#34;279&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;3&lt;/text&gt;
+&lt;text x=&#34;315&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;4&lt;/text&gt;
+&lt;text x=&#34;351&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;5&lt;/text&gt;
+&lt;text x=&#34;387&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;6&lt;/text&gt;
+&lt;text x=&#34;423&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;7&lt;/text&gt;
+&lt;text x=&#34;459&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;8&lt;/text&gt;
+&lt;text x=&#34;495&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;9&lt;/text&gt;
+&lt;text x=&#34;531&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;10&lt;/text&gt;
+&lt;text x=&#34;567&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;11&lt;/text&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+right
+text &#34;“Hello, world”&#34;
+arrow from last text.e - (0.12,0) width linewid/2
+
+box width 0.5 * linewid height 0.5*linewid fill lightblue &#34;H&#34; bold
+box same &#34;e&#34; bold
+box same &#34;l&#34; bold
+box same &#34;l&#34; bold
+box same &#34;o&#34; bold
+box same &#34;,&#34; bold
+box same &#34;␣&#34;
+box same &#34;w&#34; bold
+box same &#34;o&#34; bold
+box same &#34;r&#34; bold
+box same &#34;l&#34; bold
+box same &#34;d&#34; bold
+
+box fill 0xd8ecf3 with n at 1st box.s height H.height width H.width &#34;72&#34;
+box same &#34;101&#34;
+box same &#34;108&#34;
+box same &#34;108&#34;
+box same &#34;111&#34;
+box same &#34;44&#34;
+box same &#34;32&#34;
+box same &#34;119&#34;
+box same &#34;111&#34;
+box same &#34;114&#34;
+box same &#34;108&#34;
+box same &#34;100&#34;
+
+text at 1st box.n &#34;0&#34; above
+text at 2nd box.n &#34;1&#34; above
+text at 3rd box.n &#34;2&#34; above
+text at 4th box.n &#34;3&#34; above
+text at 5th box.n &#34;4&#34; above
+text at 6th box.n &#34;5&#34; above
+text at 7th box.n &#34;6&#34; above
+text at 8th box.n &#34;7&#34; above
+text at 9th box.n &#34;8&#34; above
+text at 10th box.n &#34;9&#34; above
+text at 11th box.n &#34;10&#34; above
+text at 12th box.n &#34;11&#34; above
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h1 id=&#34;numbers&#34;&gt;Numbers&lt;/h1&gt;
+&lt;p&gt;Storing numbers in the boxes is easy if they&amp;rsquo;re between 0 and
+255. Just stick them in there!&lt;/p&gt;
+&lt;div id=&#39;pikchr-2&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-2&#39;)&#34;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:148px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 148.32 60.48&#34;&gt;
+&lt;path d=&#34;M2,58L38,58L38,22L2,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;20&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;42&lt;/text&gt;
+&lt;path d=&#34;M38,58L74,58L74,22L38,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;56&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;17&lt;/text&gt;
+&lt;path d=&#34;M74,58L110,58L110,22L74,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;92&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M110,58L146,58L146,22L110,22Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;128&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;255&lt;/text&gt;
+&lt;text x=&#34;20&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;text x=&#34;56&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;text x=&#34;92&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;2&lt;/text&gt;
+&lt;text x=&#34;128&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;3&lt;/text&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+box width 0.5 * linewid height 0.5*linewid fill lightblue &#34;42&#34; bold
+box same &#34;17&#34; bold
+box same &#34;0&#34; bold
+box same &#34;255&#34; bold
+
+text at 1st box.n &#34;0&#34; above
+text at 2nd box.n &#34;1&#34; above
+text at 3rd box.n &#34;2&#34; above
+text at 4th box.n &#34;3&#34; above
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;For negative numbers, we pretend some of the numbers are
+negative:&lt;/p&gt;
+&lt;div id=&#39;pikchr-3&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-3&#39;)&#34;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:213px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 213.898 480.96&#34;&gt;
+&lt;path d=&#34;M2,58L74,58L74,22L2,22Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M2,94L74,94L74,58L2,58Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;76&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M2,130L74,130L74,94L2,94Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;112&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;2&lt;/text&gt;
+&lt;text x=&#34;38&#34; y=&#34;145&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;⋮&lt;/text&gt;
+&lt;path d=&#34;M2,196L74,196L74,160L2,160Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;178&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;126&lt;/text&gt;
+&lt;path d=&#34;M2,232L74,232L74,196L2,196Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;214&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;127&lt;/text&gt;
+&lt;path d=&#34;M2,268L74,268L74,232L2,232Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;250&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;128&lt;/text&gt;
+&lt;path d=&#34;M2,304L74,304L74,268L2,268Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;286&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;129&lt;/text&gt;
+&lt;path d=&#34;M2,340L74,340L74,304L2,304Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;322&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;130&lt;/text&gt;
+&lt;text x=&#34;38&#34; y=&#34;355&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;⋮&lt;/text&gt;
+&lt;path d=&#34;M2,406L74,406L74,370L2,370Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;388&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;253&lt;/text&gt;
+&lt;path d=&#34;M2,442L74,442L74,406L2,406Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;424&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;254&lt;/text&gt;
+&lt;path d=&#34;M2,478L74,478L74,442L2,442Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;460&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;255&lt;/text&gt;
+&lt;text x=&#34;38&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;Value&lt;/text&gt;
+&lt;path d=&#34;M110,58L182,58L182,22L110,22Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M110,94L182,94L182,58L110,58Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;76&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M110,130L182,130L182,94L110,94Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;112&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;2&lt;/text&gt;
+&lt;text x=&#34;146&#34; y=&#34;145&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;⋮&lt;/text&gt;
+&lt;path d=&#34;M110,196L182,196L182,160L110,160Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;178&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;126&lt;/text&gt;
+&lt;path d=&#34;M110,232L182,232L182,196L110,196Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;214&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;127&lt;/text&gt;
+&lt;path d=&#34;M110,268L182,268L182,232L110,232Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;250&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;-128&lt;/text&gt;
+&lt;path d=&#34;M110,304L182,304L182,268L110,268Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;286&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;-127&lt;/text&gt;
+&lt;path d=&#34;M110,340L182,340L182,304L110,304Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;322&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;-126&lt;/text&gt;
+&lt;text x=&#34;146&#34; y=&#34;355&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;⋮&lt;/text&gt;
+&lt;path d=&#34;M110,406L182,406L182,370L110,370Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;388&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;-3&lt;/text&gt;
+&lt;path d=&#34;M110,442L182,442L182,406L110,406Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;424&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;-2&lt;/text&gt;
+&lt;path d=&#34;M110,478L182,478L182,442L110,442Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;460&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;-1&lt;/text&gt;
+&lt;text x=&#34;146&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;Interpretation&lt;/text&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+down
+box width linewid height 0.5*linewid &#34;0&#34;
+box same &#34;1&#34;
+box same &#34;2&#34;
+text  &#34;⋮&#34;
+box same &#34;126&#34;
+box same &#34;127&#34;
+box same &#34;128&#34;
+box same &#34;129&#34;
+box same &#34;130&#34;
+text &#34;⋮&#34;
+box same &#34;253&#34;
+box same &#34;254&#34;
+box same &#34;255&#34;
+
+text at 1st box.n &#34;Value&#34; bold above
+
+I1: box same as 1st box with w at 1st box.e + (0.5*linewid,0) &#34;0&#34;
+box same &#34;1&#34;
+box same &#34;2&#34;
+text  &#34;⋮&#34;
+box same &#34;126&#34;
+box same &#34;127&#34;
+box same &#34;-128&#34;
+box same &#34;-127&#34;
+box same &#34;-126&#34;
+text &#34;⋮&#34;
+box same &#34;-3&#34;
+box same &#34;-2&#34;
+box same &#34;-1&#34;
+
+text at I1.n &#34;Interpretation&#34; bold above
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Probably, it&amp;rsquo;s better to think of it in
+&lt;a href=&#34;https://www.youtube.com/watch?v=5OjZWSdxlU0&#34;&gt;modular&lt;/a&gt;
+(&lt;a href=&#34;http://math.ucdenver.edu/~wcherowi/clockar.html&#34;&gt;clock&lt;/a&gt;) arithmetic:&lt;/p&gt;
+&lt;div id=&#39;pikchr-4&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-4&#39;)&#34;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:475px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 476 538.2&#34;&gt;
+&lt;circle cx=&#34;237&#34; cy=&#34;288&#34; r=&#34;216&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;237&#34; y=&#34;101&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;text x=&#34;237&#34; y=&#34;50&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;text x=&#34;286&#34; y=&#34;107&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;text x=&#34;299&#34; y=&#34;58&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;text x=&#34;331&#34; y=&#34;126&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;2&lt;/text&gt;
+&lt;text x=&#34;356&#34; y=&#34;82&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;2&lt;/text&gt;
+&lt;text x=&#34;370&#34; y=&#34;155&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;3&lt;/text&gt;
+&lt;text x=&#34;406&#34; y=&#34;120&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;3&lt;/text&gt;
+&lt;text x=&#34;400&#34; y=&#34;194&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;4&lt;/text&gt;
+&lt;text x=&#34;443&#34; y=&#34;169&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;4&lt;/text&gt;
+&lt;text x=&#34;418&#34; y=&#34;239&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;417&#34; y=&#34;233&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;415&#34; y=&#34;227&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;467&#34; y=&#34;226&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;465&#34; y=&#34;218&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;462&#34; y=&#34;211&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;189&#34; y=&#34;107&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;255&lt;/text&gt;
+&lt;text x=&#34;176&#34; y=&#34;58&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;-1&lt;/text&gt;
+&lt;text x=&#34;144&#34; y=&#34;126&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;254&lt;/text&gt;
+&lt;text x=&#34;119&#34; y=&#34;82&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;-2&lt;/text&gt;
+&lt;text x=&#34;105&#34; y=&#34;155&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;253&lt;/text&gt;
+&lt;text x=&#34;69&#34; y=&#34;120&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;-3&lt;/text&gt;
+&lt;text x=&#34;75&#34; y=&#34;194&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;252&lt;/text&gt;
+&lt;text x=&#34;32&#34; y=&#34;169&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;-4&lt;/text&gt;
+&lt;text x=&#34;57&#34; y=&#34;239&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;58&#34; y=&#34;233&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;60&#34; y=&#34;227&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;8&#34; y=&#34;226&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;10&#34; y=&#34;218&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;13&#34; y=&#34;211&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;370&#34; y=&#34;420&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;365&#34; y=&#34;425&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;360&#34; y=&#34;429&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;406&#34; y=&#34;456&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;400&#34; y=&#34;462&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;393&#34; y=&#34;467&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;331&#34; y=&#34;450&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;126&lt;/text&gt;
+&lt;text x=&#34;356&#34; y=&#34;494&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;126&lt;/text&gt;
+&lt;text x=&#34;286&#34; y=&#34;469&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;127&lt;/text&gt;
+&lt;text x=&#34;299&#34; y=&#34;517&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;127&lt;/text&gt;
+&lt;text x=&#34;237&#34; y=&#34;475&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;128&lt;/text&gt;
+&lt;text x=&#34;237&#34; y=&#34;525&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;-128&lt;/text&gt;
+&lt;text x=&#34;189&#34; y=&#34;469&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;129&lt;/text&gt;
+&lt;text x=&#34;176&#34; y=&#34;517&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;-127&lt;/text&gt;
+&lt;text x=&#34;144&#34; y=&#34;450&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;130&lt;/text&gt;
+&lt;text x=&#34;119&#34; y=&#34;494&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;-126&lt;/text&gt;
+&lt;text x=&#34;105&#34; y=&#34;420&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;110&#34; y=&#34;425&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;115&#34; y=&#34;429&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;69&#34; y=&#34;456&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;75&#34; y=&#34;462&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;82&#34; y=&#34;467&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;text x=&#34;237&#34; y=&#34;144&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;125%&#34; dominant-baseline=&#34;central&#34;&gt;Value&lt;/text&gt;
+&lt;text x=&#34;237&#34; y=&#34;14&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;125%&#34; dominant-baseline=&#34;central&#34;&gt;Interpretation&lt;/text&gt;
+&lt;text x=&#34;237&#34; y=&#34;278&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;Signed interpretation&lt;/text&gt;
+&lt;text x=&#34;237&#34; y=&#34;298&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;of byte values&lt;/text&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+circle radius 1.5 fill 0xd8ecf3
+
+define $inner {
+  line from (0,0) then 1.3 heading $1 invisible
+  text at last line.end $2
+}
+
+define $outer {
+  line from (0,0) then 1.65 heading $1 invisible
+  text at last line.end $2
+}
+
+$inner(0, &#34;0&#34;); $outer(0, &#34;0&#34; bold)
+$inner(15, &#34;1&#34;); $outer(15, &#34;1&#34; bold)
+$inner(30, &#34;2&#34;); $outer(30, &#34;2&#34; bold)
+$inner(45, &#34;3&#34;); $outer(45, &#34;3&#34; bold)
+$inner(60, &#34;4&#34;); $outer(60, &#34;4&#34; bold)
+$inner(75, &#34;·&#34; bold); $inner(73, &#34;·&#34; bold); $inner(71, &#34;·&#34; bold)
+$outer(75, &#34;·&#34; bold); $outer(73, &#34;·&#34; bold); $outer(71, &#34;·&#34; bold)
+$inner(345, &#34;255&#34;); $outer(345, &#34;-1&#34; bold)
+$inner(330, &#34;254&#34;); $outer(330, &#34;-2&#34; bold)
+$inner(315, &#34;253&#34;); $outer(315, &#34;-3&#34; bold)
+$inner(300, &#34;252&#34;); $outer(300, &#34;-4&#34; bold)
+$inner(285, &#34;·&#34; bold); $inner(287, &#34;·&#34; bold); $inner(289, &#34;·&#34; bold)
+$outer(285, &#34;·&#34; bold); $outer(287, &#34;·&#34; bold); $outer(289, &#34;·&#34; bold)
+
+$inner(135, &#34;·&#34; bold); $inner(137, &#34;·&#34; bold); $inner(139, &#34;·&#34; bold)
+$outer(135, &#34;·&#34; bold); $outer(137, &#34;·&#34; bold); $outer(139, &#34;·&#34; bold)
+$inner(150, &#34;126&#34;); $outer(150, &#34;126&#34; bold)
+$inner(165, &#34;127&#34;); $outer(165, &#34;127&#34; bold)
+$inner(180, &#34;128&#34;); $outer(180, &#34;-128&#34; bold)
+$inner(195, &#34;129&#34;); $outer(195, &#34;-127&#34; bold)
+$inner(210, &#34;130&#34;); $outer(210, &#34;-126&#34; bold)
+$inner(225, &#34;·&#34; bold); $inner(223, &#34;·&#34; bold); $inner(221, &#34;·&#34; bold)
+$outer(225, &#34;·&#34; bold); $outer(223, &#34;·&#34; bold); $outer(221, &#34;·&#34; bold)
+
+
+text at (0, 1) &#34;Value&#34; big bold
+text at (0, 1.9) &#34;Interpretation&#34; big bold
+text at (0,0) &#34;Signed interpretation&#34; italic &#34;of byte values&#34; italic
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Since there are 256 spots in a full circle, going 255 spaces clockwise
+(adding 255) is the same as going one space counter-clockwise
+(subtracting 1).&lt;/p&gt;
+&lt;p&gt;But that still only gives us 256 different values.&lt;/p&gt;
+&lt;h2 id=&#34;bigger-numbers&#34;&gt;Bigger numbers&lt;/h2&gt;
+&lt;p&gt;For bigger numbers, we&amp;rsquo;ll have to combine pairs of bytes, or groups of
+4 or 8 (or more) bytes.&lt;/p&gt;
+&lt;p&gt;In normal arabic numerals, we have &lt;strong&gt;ten&lt;/strong&gt; choices, 0–9, and then
+spill over to the next space, whose value is multiplied by &lt;strong&gt;ten&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;We can do the same with bytes: we have &lt;strong&gt;256&lt;/strong&gt; choices, 0–255, and
+then spill over to the next space, whose value is multiplied by
+&lt;strong&gt;256&lt;/strong&gt;.&lt;/p&gt;
+&lt;div id=&#39;pikchr-5&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-5&#39;)&#34;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:219px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 219.093 465.12&#34;&gt;
+&lt;path d=&#34;M2,78L74,78L74,42L2,42Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;60&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M2,114L74,114L74,78L2,78Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;96&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M2,150L74,150L74,114L2,114Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;132&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;2&lt;/text&gt;
+&lt;text x=&#34;38&#34; y=&#34;165&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;⋮&lt;/text&gt;
+&lt;path d=&#34;M2,216L74,216L74,180L2,180Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;198&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;254&lt;/text&gt;
+&lt;path d=&#34;M2,252L74,252L74,216L2,216Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;234&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;255&lt;/text&gt;
+&lt;path d=&#34;M2,288L74,288L74,252L2,252Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;270&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;256&lt;/text&gt;
+&lt;path d=&#34;M2,324L74,324L74,288L2,288Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;306&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;257&lt;/text&gt;
+&lt;path d=&#34;M2,360L74,360L74,324L2,324Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;342&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;258&lt;/text&gt;
+&lt;text x=&#34;38&#34; y=&#34;375&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;⋮&lt;/text&gt;
+&lt;path d=&#34;M2,426L74,426L74,390L2,390Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;408&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;65534&lt;/text&gt;
+&lt;path d=&#34;M2,462L74,462L74,426L2,426Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;38&#34; y=&#34;444&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;65535&lt;/text&gt;
+&lt;text x=&#34;38&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;Value&lt;/text&gt;
+&lt;text x=&#34;38&#34; y=&#34;32&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;&lt;/text&gt;
+&lt;text x=&#34;38&#34; y=&#34;52&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;&lt;/text&gt;
+&lt;text x=&#34;38&#34; y=&#34;72&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;&lt;/text&gt;
+&lt;path d=&#34;M110,78L146,78L146,42L110,42Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;128&#34; y=&#34;60&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M110,114L146,114L146,78L110,78Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;128&#34; y=&#34;96&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M110,150L146,150L146,114L110,114Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;128&#34; y=&#34;132&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;text x=&#34;128&#34; y=&#34;165&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;⋮&lt;/text&gt;
+&lt;path d=&#34;M110,216L146,216L146,180L110,180Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;128&#34; y=&#34;198&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M110,252L146,252L146,216L110,216Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;128&#34; y=&#34;234&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M110,288L146,288L146,252L110,252Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;128&#34; y=&#34;270&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M110,324L146,324L146,288L110,288Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;128&#34; y=&#34;306&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M110,360L146,360L146,324L110,324Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;128&#34; y=&#34;342&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;text x=&#34;128&#34; y=&#34;375&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;⋮&lt;/text&gt;
+&lt;path d=&#34;M110,426L146,426L146,390L110,390Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;128&#34; y=&#34;408&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;255&lt;/text&gt;
+&lt;path d=&#34;M110,462L146,462L146,426L110,426Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;128&#34; y=&#34;444&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;255&lt;/text&gt;
+&lt;path d=&#34;M146,78L182,78L182,42L146,42Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;164&#34; y=&#34;60&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M146,114L182,114L182,78L146,78Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;164&#34; y=&#34;96&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M146,150L182,150L182,114L146,114Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;164&#34; y=&#34;132&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;2&lt;/text&gt;
+&lt;text x=&#34;164&#34; y=&#34;165&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;⋮&lt;/text&gt;
+&lt;path d=&#34;M146,216L182,216L182,180L146,180Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;164&#34; y=&#34;198&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;254&lt;/text&gt;
+&lt;path d=&#34;M146,252L182,252L182,216L146,216Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;164&#34; y=&#34;234&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;255&lt;/text&gt;
+&lt;path d=&#34;M146,288L182,288L182,252L146,252Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;164&#34; y=&#34;270&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M146,324L182,324L182,288L146,288Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;164&#34; y=&#34;306&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M146,360L182,360L182,324L146,324Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;164&#34; y=&#34;342&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;2&lt;/text&gt;
+&lt;text x=&#34;164&#34; y=&#34;375&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;⋮&lt;/text&gt;
+&lt;path d=&#34;M146,426L182,426L182,390L146,390Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;164&#34; y=&#34;408&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;254&lt;/text&gt;
+&lt;path d=&#34;M146,462L182,462L182,426L146,426Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;164&#34; y=&#34;444&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;255&lt;/text&gt;
+&lt;text x=&#34;146&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;Representation&lt;/text&gt;
+&lt;text x=&#34;146&#34; y=&#34;32&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;as 2 bytes&lt;/text&gt;
+&lt;text x=&#34;146&#34; y=&#34;52&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;&lt;/text&gt;
+&lt;text x=&#34;146&#34; y=&#34;72&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;&lt;/text&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+down
+box width linewid height 0.5*linewid &#34;0&#34;
+box same &#34;1&#34;
+box same &#34;2&#34;
+text  &#34;⋮&#34;
+box same &#34;254&#34;
+box same &#34;255&#34;
+box same &#34;256&#34;
+box same &#34;257&#34;
+box same &#34;258&#34;
+text  &#34;⋮&#34;
+box same &#34;65534&#34;
+box same &#34;65535&#34;
+
+text at 1st box.n &#34;Value&#34; bold &#34;&#34; &#34;&#34; &#34;&#34;
+
+I1: box same as 1st box with w at 1st box.e + (0.5*linewid,0) width 0.25 fill 0xd8ecf3 &#34;0&#34;
+box same &#34;0&#34;
+box same &#34;0&#34;
+text  &#34;⋮&#34;
+box same &#34;0&#34;
+box same &#34;0&#34;
+box same &#34;1&#34;
+box same &#34;1&#34;
+box same &#34;1&#34;
+text  &#34;⋮&#34;
+box same &#34;255&#34;
+box same &#34;255&#34;
+
+I2: box same as I1 with w at I1.e &#34;0&#34;
+box same &#34;1&#34;
+box same &#34;2&#34;
+text  &#34;⋮&#34;
+box same &#34;254&#34;
+box same &#34;255&#34;
+box same &#34;0&#34;
+box same &#34;1&#34;
+box same &#34;2&#34;
+text  &#34;⋮&#34;
+box same &#34;254&#34;
+box same &#34;255&#34;
+
+text at I1.ne &#34;Representation&#34; bold &#34;as 2 bytes&#34; bold &#34;&#34; &#34;&#34;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;So, &lt;code&gt;255 = 0×256 + 255&lt;/code&gt;, and &lt;code&gt;258 = 1×256 + 2&lt;/code&gt;. I&amp;rsquo;ve put the “×256”
+byte first, to match how in the number “12”, the “×10” digit goes
+first. Which byte you put first is a choice, and most current
+computers actually put the littlest byte first and the “×256” byte
+second. This is called “little-endian”, because the littlest byte
+comes first. The opposite
+“&lt;a href=&#34;https://en.wikipedia.org/wiki/Endianness&#34;&gt;endianness&lt;/a&gt;” is of course
+“big-endian”. When you&amp;rsquo;re storing things on disk, or &lt;a href=&#34;https://hackaday.com/2015/12/12/raspberry-pi-communication-via-laser/&#34;&gt;sending numbers
+to a Raspberry Pi with a
+laser&lt;/a&gt;,
+you can pick your own endianness!&lt;/p&gt;
+&lt;p&gt;Just like with individual bytes, you can use half the space for
+negative numbers, and turn the range 0…65535 into -32768…32767.&lt;/p&gt;
+&lt;h2 id=&#34;a-note-on-names-for-things&#34;&gt;A note on names for things&lt;/h2&gt;
+&lt;p&gt;All of these things have multiple names you might run into:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Bytes &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; Signed?&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Min&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Max&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt; Common names&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;255&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;(unsigned)&lt;/code&gt; &lt;em&gt;&lt;code&gt;byte&lt;/code&gt;&lt;/em&gt;, &lt;code&gt;(unsigned)&lt;/code&gt; &lt;em&gt;&lt;code&gt;char&lt;/code&gt;&lt;/em&gt;, &lt;code&gt;uint8&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-128&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;127&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;(signed)&lt;/code&gt; &lt;em&gt;&lt;code&gt;char&lt;/code&gt;&lt;/em&gt;, &lt;em&gt;&lt;code&gt;byte&lt;/code&gt;&lt;/em&gt;, &lt;code&gt;int8&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;65535&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;em&gt;&lt;code&gt;unsigned int&lt;/code&gt;&lt;/em&gt;, &lt;code&gt;unsigned short&lt;/code&gt;, &lt;code&gt;uint16&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-32768&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;32767&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;em&gt;&lt;code&gt;int&lt;/code&gt;&lt;/em&gt;, &lt;code&gt;short&lt;/code&gt;, &lt;code&gt;int16&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2³²-1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;em&gt;&lt;code&gt;unsigned int&lt;/code&gt;&lt;/em&gt;, &lt;em&gt;&lt;code&gt;unsigned long&lt;/code&gt;&lt;/em&gt;, &lt;code&gt;uint32&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-2³¹&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2³¹-1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;em&gt;&lt;code&gt;int&lt;/code&gt;&lt;/em&gt;, &lt;em&gt;&lt;code&gt;long&lt;/code&gt;&lt;/em&gt;, &lt;code&gt;int32&lt;/code&gt;, &lt;code&gt;rune&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;8&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2⁶⁴-1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;em&gt;&lt;code&gt;unsigned long&lt;/code&gt;&lt;/em&gt;, &lt;code&gt;uint64&lt;/code&gt;, &lt;em&gt;&lt;code&gt;uint&lt;/code&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;8&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-2⁶³&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2⁶³-1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;em&gt;&lt;code&gt;long&lt;/code&gt;&lt;/em&gt;, &lt;code&gt;int64&lt;/code&gt;, &lt;em&gt;&lt;code&gt;int&lt;/code&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Note that many of the terms are ambiguous, between programming
+languages, or even between computers.  In Go, for example, “int” can
+mean 32 or 64 bits, depending on whether your computer is running in
+32- or 64-bit mode. I&amp;rsquo;ve marked ambiguous names in &lt;em&gt;&lt;code&gt;italics&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;In the next part, we&amp;rsquo;ll discuss how your program&amp;rsquo;s
+variables point to things in memory.&lt;/em&gt;&lt;/p&gt;
+&lt;script&gt;
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle(&#39;hidden&#39;);
+    }
+  }
+&lt;/script&gt;&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;That&amp;rsquo;s 32×1024×1024×1024. 1024 bytes is a “kilobyte”, because
+1024 is close to 1000, 1024×1024=1048576 bytes is a
+“megabyte”, because it&amp;rsquo;s close to a million bytes, and
+1024×1024×1024=1073741824 bytes is a “gigabyte”.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Technically, according to the &lt;a href=&#34;https://en.wikipedia.org/wiki/Metric_prefix&#34;&gt;SI
+prefixes&lt;/a&gt;, a
+“kilobyte” (KB) is exactly 1000 bytes, and you should use
+“kibibyte” (KiB) to refer to 1024 bytes. Since “kibibyte” sounds
+more like a Pokémon or a kind of dog food for small, yappy dogs,
+&lt;em&gt;nobody&lt;/em&gt; uses it. Except hard disk manufacturers, who insist on
+using exact powers of 10 to make their hard disks sound 10%
+bigger (for terabytes) than they really are.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;If you&amp;rsquo;re on Linux or MacOS, you can also type &lt;code&gt;man ascii&lt;/code&gt; in
+your terminal to see a list of ASCII codes. Ignore the hexadecimal
+(for now) and octal (forever) sections; the decimal section at the
+bottom is useful.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+    </item>
+
+
+
+    <item>
+      <title>CS Ramble — Week 1a - questions</title>
+      <link>https://zellyn.com/2022/02/cs-ramble/1a/</link>
+      <pubDate>Wed, 02 Feb 2022 19:58:00 -0500</pubDate>
+
+      <guid>https://zellyn.com/2022/02/cs-ramble/1a/</guid>
+      <description>&lt;p&gt;&lt;em&gt;These are the questions for week 1 of &lt;a href=&#34;../&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;questions-for-week-1&#34;&gt;Questions for week 1&lt;/h1&gt;
+&lt;br/&gt;
+&lt;table style=&#34;border:1px solid lightgrey;&#34;&gt;&lt;td&gt;
+&lt;ul&gt;
+&lt;li&gt;When you say &lt;code&gt;a = &amp;quot;Hello, world&amp;quot;&lt;/code&gt; in your favorite language, how is
+the string stored? How about &lt;code&gt;&amp;quot;Hello, 世界&amp;quot;&lt;/code&gt;?&lt;/li&gt;
+&lt;li&gt;When you say &lt;code&gt;a = &amp;quot;Hello&amp;quot;&lt;/code&gt; and &lt;code&gt;b = &amp;quot; world&amp;quot;&lt;/code&gt; and then do &lt;code&gt;c = a + b&lt;/code&gt;, what happens? How are &lt;code&gt;a&lt;/code&gt;, &lt;code&gt;b&lt;/code&gt;, and &lt;code&gt;c&lt;/code&gt; stored?&lt;/li&gt;
+&lt;li&gt;When you say &lt;code&gt;a = 42&lt;/code&gt;, and then &lt;code&gt;b = a&lt;/code&gt;, and then &lt;code&gt;b = 17&lt;/code&gt;, what are
+&lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt;? Why?&lt;/li&gt;
+&lt;li&gt;When you say &lt;code&gt;a = {&amp;quot;foo&amp;quot;: 42}&lt;/code&gt;, and then &lt;code&gt;b = a&lt;/code&gt;, and then &lt;code&gt;b.foo = 17&lt;/code&gt;, what are &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt;? Why?&lt;/li&gt;
+&lt;li&gt;Why do computer people use “foo” and “bar” all the time? What’s up
+with that? What about 42 and 17?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;We&amp;rsquo;ll start discussing how memory is laid out and used to represent
+numbers and text in the &lt;a href=&#34;../1b/&#34;&gt;next part&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+
+
+
+    <item>
+      <title>A ramble around CS</title>
+      <link>https://zellyn.com/2022/02/cs-ramble/</link>
+      <pubDate>Tue, 01 Feb 2022 08:00:00 -0500</pubDate>
+
+      <guid>https://zellyn.com/2022/02/cs-ramble/</guid>
+      <description>&lt;h1 id=&#34;intro&#34;&gt;Intro&lt;/h1&gt;
+&lt;p&gt;It turns out we have several folks at Square who arrived at
+programming through boot-camps, or other non-CS paths, and feel a sort
+of lingering insecurity (or get explicitly told by unkind people) that
+their path left them without a solid grasp of “the fundamentals”.&lt;/p&gt;
+&lt;p&gt;I have the pleasure of having a boot-camp grad on our team, &lt;a href=&#34;https://amyh.dev/&#34;&gt;Amy
+Henning&lt;/a&gt;: she&amp;rsquo;s now several tech jobs in (and
+fantastically capable), and has a really great perspective on what our
+industry can be like to people coming in from outside.&lt;/p&gt;
+&lt;p&gt;We decided to try an experiment for folks in our company interested in
+learning CS: I&amp;rsquo;ll play the grizzled veteran, and come up with
+provocative questions, and we&amp;rsquo;ll meet for an hour every two weeks and
+discuss them. I&amp;rsquo;m excited to see how it goes!&lt;/p&gt;
+&lt;h2 id=&#34;week-1&#34;&gt;Week 1&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;1a/&#34;&gt;Questions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;1b/&#34;&gt;Memory, text, and numbers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Variables&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+
+
+
+    <item>
       <title>gopikchr: a yakshave</title>
       <link>https://zellyn.com/2022/01/gopikchr-a-yakshave/</link>
       <pubDate>Sun, 30 Jan 2022 13:11:00 -0500</pubDate>

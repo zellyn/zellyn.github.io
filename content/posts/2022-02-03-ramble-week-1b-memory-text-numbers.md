@@ -1,45 +1,13 @@
 ---
-title: "A ramble around CS — Week 1 / intro / memory"
-slug: "a-ramble-around-cs-intro-week-1"
-date: 2022-02-02T19:58:00-05:00
-tags: ['ramble']
-draft: true
+title: "CS Ramble — Week 1b - memory, text, numbers"
+slug: "cs-ramble/1b"
+date: 2022-02-03T08:00:00-05:00
+tags: ['ramble', 'week1']
 ---
 
-# Intro
+_This is post is part of [week 1](../1a/) of [A Ramble Around
+CS](../)._
 
-It turns out we have several folks at Square who arrived at
-programming through boot-camps, or other non-CS paths, and feel a sort
-of lingering insecurity (or get explicitly told by unkind people) that
-their path left them without a solid grasp of “the fundamentals”.
-
-I have the pleasure of having a boot-camp grad on our team: she's now
-several tech jobs in (and fantastically capable), and has a really
-great perspective on what our industry can be like to people coming in
-from outside.
-
-We decided to try an experiment for folks in our company interested in
-learning CS: I'll play the grizzled veteran, and come up with
-provocative questions, and we'll meet for an hour every two weeks and
-discuss them. I'm excited to see how it goes!
-
-# Questions for week 1
-
-<br/>
-<table style="border:1px solid lightgrey;"><td>
-
-- When you say `a = "Hello, world"` in your favorite language, how is
-  the string stored? How about `"Hello, 世界"`?
-- When you say `a = "Hello"` and `b = " world"` and then do `c = a +
-  b`, what happens? How are `a`, `b`, and `c` stored?
-- When you say `a = 42`, and then `b = a`, and then `b = 17`, what are
-  `a` and `b`? Why?
-- When you say `a = {"foo": 42}`, and then `b = a`, and then `b.foo =
-  17`, what are `a` and `b`? Why?
-- Why do computer people use “foo” and “bar” all the time? What’s up
-  with that? What about 42 and 17?
-
-</table>
 
 # Computer memory
 
@@ -104,7 +72,7 @@ We'll get into “bits” and “bytes” and counting in “binary” later, bu
 for now, let's just take it as given that each of those boxes holds a
 single “byte”: a number from 0 to 255.
 
-### Text
+# Text
 
 If we want to store letters in the boxes, we have to come up with some
 kind of “[Character
@@ -166,7 +134,7 @@ text at 11th box.n "10" above
 text at 12th box.n "11" above
 ```
 
-### Numbers
+# Numbers
 
 Storing numbers in the boxes is easy if they're between 0 and
 255. Just stick them in there!
@@ -243,14 +211,25 @@ $inner(15, "1"); $outer(15, "1" bold)
 $inner(30, "2"); $outer(30, "2" bold)
 $inner(45, "3"); $outer(45, "3" bold)
 $inner(60, "4"); $outer(60, "4" bold)
-$inner(75, "·" bold); $inner(72, "·" bold); $inner(69, "·" bold)
-$outer(75, "·" bold); $outer(72, "·" bold); $outer(69, "·" bold)
+$inner(75, "·" bold); $inner(73, "·" bold); $inner(71, "·" bold)
+$outer(75, "·" bold); $outer(73, "·" bold); $outer(71, "·" bold)
 $inner(345, "255"); $outer(345, "-1" bold)
 $inner(330, "254"); $outer(330, "-2" bold)
 $inner(315, "253"); $outer(315, "-3" bold)
 $inner(300, "252"); $outer(300, "-4" bold)
-$inner(285, "·" bold); $inner(288, "·" bold); $inner(291, "·" bold)
-$outer(285, "·" bold); $outer(288, "·" bold); $outer(291, "·" bold)
+$inner(285, "·" bold); $inner(287, "·" bold); $inner(289, "·" bold)
+$outer(285, "·" bold); $outer(287, "·" bold); $outer(289, "·" bold)
+
+$inner(135, "·" bold); $inner(137, "·" bold); $inner(139, "·" bold)
+$outer(135, "·" bold); $outer(137, "·" bold); $outer(139, "·" bold)
+$inner(150, "126"); $outer(150, "126" bold)
+$inner(165, "127"); $outer(165, "127" bold)
+$inner(180, "128"); $outer(180, "-128" bold)
+$inner(195, "129"); $outer(195, "-127" bold)
+$inner(210, "130"); $outer(210, "-126" bold)
+$inner(225, "·" bold); $inner(223, "·" bold); $inner(221, "·" bold)
+$outer(225, "·" bold); $outer(223, "·" bold); $outer(221, "·" bold)
+
 
 text at (0, 1) "Value" big bold
 text at (0, 1.9) "Interpretation" big bold
@@ -263,7 +242,7 @@ Since there are 256 spots in a full circle, going 255 spaces clockwise
 
 But that still only gives us 256 different values.
 
-#### Bigger numbers
+## Bigger numbers
 
 For bigger numbers, we'll have to combine pairs of bytes, or groups of
 4 or 8 (or more) bytes.
@@ -336,7 +315,7 @@ you can pick your own endianness!
 Just like with individual bytes, you can use half the space for
 negative numbers, and turn the range 0…65535 into -32768…32767.
 
-#### A note on names for things
+## A note on names for things
 
 All of these things have multiple names you might run into:
 
@@ -355,3 +334,6 @@ Note that many of the terms are ambiguous, between programming
 languages, or even between computers.  In Go, for example, “int” can
 mean 32 or 64 bits, depending on whether your computer is running in
 32- or 64-bit mode. I've marked ambiguous names in _`italics`_.
+
+_In the next part, we'll discuss how your program's
+variables point to things in memory._
