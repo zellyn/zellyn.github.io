@@ -2,6 +2,9 @@
 title: "gopikchr: a yakshave"
 date: 2022-01-30T13:11:00-05:00
 tags: ['pikchr']
+aliases:
+  - '/gopikchr-a-yakshave/'
+
 ---
 
 I just completed part of a long

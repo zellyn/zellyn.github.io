@@ -19,3 +19,12 @@ div.pikchr-svg > svg {
     height: 100%;
     width: 100%;
 }
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    border-top: 1px solid lightgrey;
+    padding: 5px;
+}
