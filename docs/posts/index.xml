@@ -5,9 +5,186 @@
     <link>https://zellyn.com/posts/</link>
     <description>Recent content in Posts on Zellyn Hunter</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 03 Feb 2022 08:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 07 Feb 2022 00:49:00 -0500</lastBuildDate>
 
 	<atom:link href="https://zellyn.com/posts/index.xml" rel="self" type="application/rss+xml" />
+
+
+
+    <item>
+      <title>Tailscale diagram in Pikchr</title>
+      <link>https://zellyn.com/2022/02/tailscale-diagram-in-pikchr/</link>
+      <pubDate>Mon, 07 Feb 2022 00:49:00 -0500</pubDate>
+
+      <guid>https://zellyn.com/2022/02/tailscale-diagram-in-pikchr/</guid>
+      <description>&lt;p&gt;Just for fun, I decided to try to use &lt;a href=&#34;https://pikchr.org&#34;&gt;Pikchr&lt;/a&gt;
+reproduce one of the diagrams in Tailscale&amp;rsquo;s &lt;a href=&#34;https://tailscale.com/blog/how-nat-traversal-works/&#34;&gt;How NAT traversal
+works&lt;/a&gt; article,
+which often receive praise.&lt;/p&gt;
+&lt;p&gt;Pikchr is not intended for this kind of diagram:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Pikchr is not intended as a replacement for point-and-click diagrams
+creation software. Pikchr is to point-and-click systems as Markdown
+is to MS-Word or Google-Docs. Point-and-click interfaces have their
+place. But so do text-based systems such as Markdown and Pikchr.&lt;br/&gt;
+    &amp;mdash; &lt;a href=&#34;https://pikchr.org/home/doc/trunk/doc/purpose.md&#34;&gt;The Intended Scope And Purpose Of Pikchr&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And indeed, reproducing the diagram took me hours, whereas I could
+have reproduced it in a point-and-click diagram editor in 10 or 15
+minutes.&lt;/p&gt;
+&lt;p&gt;Still, it was kind of fun, and those diagrams really are great.&lt;/p&gt;
+&lt;!-- make the image wider than the usual 600px in this theme --&gt;
+&lt;div style=&#39;width:700px;padding:auto;position:relative;left:-75px&#39;&gt;
+&lt;div id=&#39;pikchr-0&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-0&#39;)&#34;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:2913px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 2913.12 1547.28&#34;&gt;
+&lt;path d=&#34;M30,789L722,789A28 28 0 0 0 750 760L750,371A28 28 0 0 0 722 342L30,342A28 28 0 0 0 2 371L2,760A28 28 0 0 0 30 789Z&#34;  style=&#34;fill:rgb(249,249,248);&#34; /&gt;
+&lt;path d=&#34;M254,637L340,637A28 28 0 0 0 369 609L369,522A28 28 0 0 0 340 493L254,493A28 28 0 0 0 225 522L225,609A28 28 0 0 0 254 637Z&#34;  style=&#34;fill:rgb(52,52,51);&#34; /&gt;
+&lt;path d=&#34;M271,619A23 23 0 0 0 295 596L295,535A23 23 0 0 0 271 511A23 23 0 0 0 247 535L247,596A23 23 0 0 0 271 619Z&#34;  style=&#34;fill:rgb(214,214,214);&#34; /&gt;
+&lt;path d=&#34;M265,539L294,539L294,511L265,511Z&#34;  style=&#34;fill:rgb(214,214,214);&#34; /&gt;
+&lt;text x=&#34;297&#34; y=&#34;449&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(89,88,87)&#34; font-size=&#34;300%&#34; dominant-baseline=&#34;central&#34;&gt;VPN Client&lt;/text&gt;
+&lt;text x=&#34;297&#34; y=&#34;729&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(3,3,3)&#34; font-size=&#34;300%&#34; dominant-baseline=&#34;central&#34;&gt;Workstation&lt;/text&gt;
+&lt;path d=&#34;M30,1545L563,1545A28 28 0 0 0 592 1516L592,1127A28 28 0 0 0 563 1098L30,1098A28 28 0 0 0 2 1127L2,1516A28 28 0 0 0 30 1545Z&#34;  style=&#34;fill:rgb(249,249,248);&#34; /&gt;
+&lt;path d=&#34;M676,1545L733,1545A28 28 0 0 0 762 1516L762,1127A28 28 0 0 0 733 1098L676,1098A28 28 0 0 0 647 1127L647,1516A28 28 0 0 0 676 1545Z&#34;  style=&#34;fill:rgb(249,249,248);&#34; /&gt;
+&lt;path d=&#34;M254,1393L340,1393A28 28 0 0 0 369 1365L369,1278A28 28 0 0 0 340 1249L254,1249A28 28 0 0 0 225 1278L225,1365A28 28 0 0 0 254 1393Z&#34;  style=&#34;fill:rgb(52,52,51);&#34; /&gt;
+&lt;path d=&#34;M271,1375A23 23 0 0 0 295 1352L295,1291A23 23 0 0 0 271 1267A23 23 0 0 0 247 1291L247,1352A23 23 0 0 0 271 1375Z&#34;  style=&#34;fill:rgb(214,214,214);&#34; /&gt;
+&lt;path d=&#34;M265,1296L294,1296L294,1267L265,1267Z&#34;  style=&#34;fill:rgb(214,214,214);&#34; /&gt;
+&lt;text x=&#34;297&#34; y=&#34;1205&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(89,88,87)&#34; font-size=&#34;300%&#34; dominant-baseline=&#34;central&#34;&gt;VPN Client&lt;/text&gt;
+&lt;text x=&#34;297&#34; y=&#34;1485&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(3,3,3)&#34; font-size=&#34;300%&#34; dominant-baseline=&#34;central&#34;&gt;Workstation&lt;/text&gt;
+&lt;path d=&#34;M1089,1275L1895,1275A28 28 0 0 0 1924 1246L1924,547A28 28 0 0 0 1895 519L1089,519A28 28 0 0 0 1060 547L1060,1246A28 28 0 0 0 1089 1275Z&#34;  style=&#34;fill:rgb(249,249,248);&#34; /&gt;
+&lt;path d=&#34;M1449,983L1535,983A28 28 0 0 0 1564 954L1564,868A28 28 0 0 0 1535 839L1449,839A28 28 0 0 0 1420 868L1420,954A28 28 0 0 0 1449 983Z&#34;  style=&#34;fill:rgb(52,52,51);&#34; /&gt;
+&lt;path d=&#34;M1466,965A23 23 0 0 0 1490 941L1490,881A23 23 0 0 0 1466 857A23 23 0 0 0 1442 881L1442,941A23 23 0 0 0 1466 965Z&#34;  style=&#34;fill:rgb(214,214,214);&#34; /&gt;
+&lt;path d=&#34;M1460,885L1489,885L1489,856L1460,856Z&#34;  style=&#34;fill:rgb(214,214,214);&#34; /&gt;
+&lt;text x=&#34;1492&#34; y=&#34;794&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(89,88,87)&#34; font-size=&#34;300%&#34; dominant-baseline=&#34;central&#34;&gt;VPN Hub&lt;/text&gt;
+&lt;text x=&#34;1492&#34; y=&#34;1187&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(3,3,3)&#34; font-size=&#34;300%&#34; dominant-baseline=&#34;central&#34;&gt;Server&lt;/text&gt;
+&lt;path d=&#34;M2349,1134L2882,1134A28 28 0 0 0 2910 1105L2910,717A28 28 0 0 0 2882 688L2349,688A28 28 0 0 0 2320 717L2320,1105A28 28 0 0 0 2349 1134Z&#34;  style=&#34;fill:rgb(249,249,248);&#34; /&gt;
+&lt;path d=&#34;M2179,1134L2237,1134A28 28 0 0 0 2265 1105L2265,717A28 28 0 0 0 2237 688L2179,688A28 28 0 0 0 2150 717L2150,1105A28 28 0 0 0 2179 1134Z&#34;  style=&#34;fill:rgb(249,249,248);&#34; /&gt;
+&lt;path d=&#34;M2572,983L2658,983A28 28 0 0 0 2687 954L2687,868A28 28 0 0 0 2658 839L2572,839A28 28 0 0 0 2543 868L2543,954A28 28 0 0 0 2572 983Z&#34;  style=&#34;fill:rgb(52,52,51);&#34; /&gt;
+&lt;path d=&#34;M2589,965A23 23 0 0 0 2613 941L2613,881A23 23 0 0 0 2589 857A23 23 0 0 0 2566 881L2566,941A23 23 0 0 0 2589 965Z&#34;  style=&#34;fill:rgb(214,214,214);&#34; /&gt;
+&lt;path d=&#34;M2584,885L2612,885L2612,856L2584,856Z&#34;  style=&#34;fill:rgb(214,214,214);&#34; /&gt;
+&lt;text x=&#34;2615&#34; y=&#34;794&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(89,88,87)&#34; font-size=&#34;300%&#34; dominant-baseline=&#34;central&#34;&gt;VPN Client&lt;/text&gt;
+&lt;text x=&#34;2615&#34; y=&#34;1074&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(3,3,3)&#34; font-size=&#34;300%&#34; dominant-baseline=&#34;central&#34;&gt;EC2 VM&lt;/text&gt;
+&lt;path d=&#34;M703,789L812,789L812,342L703,342Z&#34;  style=&#34;fill:rgb(73,100,149);&#34; /&gt;
+&lt;path d=&#34;M703,516L812,542L812,588L703,614Z&#34;  style=&#34;fill:rgb(174,192,224);&#34; /&gt;
+&lt;text x=&#34;758&#34; y=&#34;270&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(73,100,149)&#34; font-size=&#34;300%&#34; dominant-baseline=&#34;central&#34;&gt;Windows Firewall&lt;/text&gt;
+&lt;circle cx=&#34;758&#34; cy=&#34;182&#34; r=&#34;36&#34;  style=&#34;fill:none;stroke-width:7.2;stroke:rgb(90,121,166);&#34; /&gt;
+&lt;path d=&#34;M742,182L774,182L758,166L774,182L758,198L774,182&#34;  style=&#34;fill:none;stroke-width:7.2;stroke-linejoin:round;stroke:rgb(73,100,149);&#34; /&gt;
+&lt;path d=&#34;M703,1545L812,1545L812,1098L703,1098Z&#34;  style=&#34;fill:rgb(73,100,149);&#34; /&gt;
+&lt;path d=&#34;M703,1272L812,1298L812,1344L703,1370Z&#34;  style=&#34;fill:rgb(174,192,224);&#34; /&gt;
+&lt;text x=&#34;758&#34; y=&#34;1026&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(73,100,149)&#34; font-size=&#34;300%&#34; dominant-baseline=&#34;central&#34;&gt;Office Firewall&lt;/text&gt;
+&lt;circle cx=&#34;758&#34; cy=&#34;938&#34; r=&#34;36&#34;  style=&#34;fill:none;stroke-width:7.2;stroke:rgb(90,121,166);&#34; /&gt;
+&lt;path d=&#34;M742,938L774,938L758,922L774,938L758,954L774,938&#34;  style=&#34;fill:none;stroke-width:7.2;stroke-linejoin:round;stroke:rgb(73,100,149);&#34; /&gt;
+&lt;path d=&#34;M2100,1134L2209,1134L2209,688L2100,688Z&#34;  style=&#34;fill:rgb(73,100,149);&#34; /&gt;
+&lt;path d=&#34;M2209,862L2100,888L2100,934L2209,960Z&#34;  style=&#34;fill:rgb(174,192,224);&#34; /&gt;
+&lt;text x=&#34;2154&#34; y=&#34;555&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(73,100,149)&#34; font-size=&#34;300%&#34; dominant-baseline=&#34;central&#34;&gt;AWS&lt;/text&gt;
+&lt;text x=&#34;2154&#34; y=&#34;616&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(73,100,149)&#34; font-size=&#34;300%&#34; dominant-baseline=&#34;central&#34;&gt;Security Group&lt;/text&gt;
+&lt;text x=&#34;2154&#34; y=&#34;676&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(73,100,149)&#34; font-size=&#34;300%&#34; dominant-baseline=&#34;central&#34;&gt;&lt;/text&gt;
+&lt;circle cx=&#34;2154&#34; cy=&#34;467&#34; r=&#34;36&#34;  style=&#34;fill:none;stroke-width:7.2;stroke:rgb(90,121,166);&#34; /&gt;
+&lt;path d=&#34;M2170,467L2139,467L2154,483L2139,467L2154,451L2139,467&#34;  style=&#34;fill:none;stroke-width:7.2;stroke-linejoin:round;stroke:rgb(73,100,149);&#34; /&gt;
+&lt;circle cx=&#34;369&#34; cy=&#34;565&#34; r=&#34;7.2&#34; style=&#34;fill:rgb(198,88,53);stroke-width:2.16;stroke:rgb(198,88,53);&#34; /&gt;
+&lt;circle cx=&#34;369&#34; cy=&#34;1321&#34; r=&#34;7.2&#34; style=&#34;fill:rgb(198,88,53);stroke-width:2.16;stroke:rgb(198,88,53);&#34; /&gt;
+&lt;circle cx=&#34;2543&#34; cy=&#34;911&#34; r=&#34;7.2&#34; style=&#34;fill:rgb(198,88,53);stroke-width:2.16;stroke:rgb(198,88,53);&#34; /&gt;
+&lt;path d=&#34;M369,565 L 801,565 Q 945,565 1049,665 L 1172,783 Q 1276,882 1346,882 L 1416,882&#34;  style=&#34;fill:none;stroke-width:5.76;stroke:rgb(198,88,53);&#34; /&gt;
+&lt;path d=&#34;M1416,882L1394,861L1416,882L1394,904L1416,882&#34;  style=&#34;fill:none;stroke-width:5.76;stroke-linejoin:round;stroke:rgb(198,88,53);&#34; /&gt;
+&lt;path d=&#34;M369,1321 L 801,1321 Q 945,1321 1039,1213 L 1182,1049 Q 1276,940 1346,940 L 1416,940&#34;  style=&#34;fill:none;stroke-width:5.76;stroke:rgb(198,88,53);&#34; /&gt;
+&lt;path d=&#34;M1416,940L1394,918L1416,940L1394,961L1416,940&#34;  style=&#34;fill:none;stroke-width:5.76;stroke-linejoin:round;stroke:rgb(198,88,53);&#34; /&gt;
+&lt;path d=&#34;M2543,911L1568,911&#34;  style=&#34;fill:none;stroke-width:5.76;stroke:rgb(198,88,53);&#34; /&gt;
+&lt;path d=&#34;M1568,911L1590,889L1568,911L1590,933L1568,911&#34;  style=&#34;fill:none;stroke-width:5.76;stroke-linejoin:round;stroke:rgb(198,88,53);&#34; /&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+topmargin = 1
+fontscale = 3
+color = 0xc65835 # Orange
+
+define $boxlet {
+  oval at -0.18,0 height 0.75 width 0.33 color none fill 0xd6d6d6
+  box same as last at -0.12,0.28 height 0.2 width 0.2 radius 0
+  box at 0,0 height 1 width 1 color none fill 0x343433 radius 0.2 behind last box
+}
+
+define $wall {
+  box at 0,0 height 3.1 width 0.76 color none fill 0x496495
+  line from -0.38*$1,0.34 to $1*0.38,0.16 to $1*0.38,-0.16 to -0.38*$1,-0.34 close color none fill 0xaec0e0
+}
+
+define $wall_info {
+  text at last.n + (0.0, 0.5) color 0x496495 $2 bold
+  circle at last.n + (0.0,0.3) radius 0.25 thickness 0.05 color 0x5a79a6
+  line from (last.x-$1*0.11,last circle.c.y) \
+    right $1*0.22 then \
+    up $1*0.11 left $1*0.11 then \
+    down $1*0.11 right $1*0.11 then \
+    down $1*0.11 left $1*0.11 then \
+    up $1*0.11 right $1*0.11 \
+    color 0x496495 thickness 0.05
+}
+
+define $area {
+  box at ($1,$2) width $3 height $4 color none fill 0xf9f9f8 radius 0.2
+}
+
+# Servers
+
+$area(0.55,0,5.2,3.1)
+
+WS1: [ $boxlet() ] at (0, 0)
+text at last.n + (0.0, 0.1) color 0x595857 &#34;VPN Client&#34; above
+text at last.s - (0.0, 1) color 0x030303 $2 &#34;Workstation&#34; below
+
+$area(0,-5.25,4.1,3.1)
+$area(2.83,-5.25,0.8,3.1)
+
+WS2: [ $boxlet() ] at (0, -5.25)
+text at last.n + (0.0, 0.1) color 0x595857 &#34;VPN Client&#34; above
+text at last.s - (0.0, 1) color 0x030303 &#34;Workstation&#34; below
+
+$area(8.3,-2.3,6,5.25)
+
+HUB: [ $boxlet() ] at (8.3, -2.4)
+text at last.n + (0.0, 0.1) color 0x595857 &#34;VPN Hub&#34;  above
+text at last.s - (0.0, 1.78) color 0x030303 &#34;Server&#34; below
+
+$area(16.10,HUB.c.y,4.1,3.1)
+$area(13.27,HUB.c.y,0.8,3.1)
+
+WS3: [ $boxlet() ] at (16.10, HUB.c.y)
+text at last.n + (0.0, 0.1) color 0x595857 &#34;VPN Client&#34;  above
+text at last.s - (0.0, 1) color 0x030303 &#34;EC2 VM&#34; below
+
+[ $wall(1) ] at (3.20,0)
+$wall_info(1, &#34;Windows Firewall&#34;)
+
+[ $wall(1) ] at (3.2,-5.25)
+$wall_info(1, &#34;Office Firewall&#34;)
+
+[ $wall(-1) ] at (12.9,HUB.c.y)
+$wall_info(-1, &#34;AWS&#34; bold &#34;Security Group&#34; bold &#34;&#34;)
+
+dot at WS1.e radius 0.05
+dot at WS2.e radius 0.05
+dot at WS3.w radius 0.05
+
+line from WS1.e right 4 then down until even with (0,HUB.y+0.2) right 2.3 then right until even with (HUB.w-0.03,0) thickness 0.04 radius 1
+line up 0.15 left 0.15 down 0.15 right 0.15 down 0.15 left 0.15 up 0.15 right 0.15 thickness 0.04
+
+line from WS2.e right 4 then up until even with (0,HUB.y-0.2) right 2.3 then right until even with (HUB.w-0.03,0) thickness 0.04 radius 1
+line up 0.15 left 0.15 down 0.15 right 0.15 down 0.15 left 0.15 up 0.15 right 0.15 thickness 0.04
+
+line from WS3.w to 0.03 right of HUB.e thickness 0.04
+line up 0.15 right 0.15 down 0.15 left 0.15 down 0.15 right 0.15 up 0.15 left 0.15 thickness 0.04
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;(Click image to see Pikchr source)&lt;/em&gt;&lt;/p&gt;
+&lt;script&gt;
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle(&#39;hidden&#39;);
+    }
+  }
+&lt;/script&gt;</description>
+    </item>
 
 
 

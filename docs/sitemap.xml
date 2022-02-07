@@ -2,22 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://zellyn.com/2022/02/cs-ramble/1b/</loc>
-    <lastmod>2022-02-03T08:00:00-05:00</lastmod>
+    <loc>https://zellyn.com/tags/pikchr/</loc>
+    <lastmod>2022-02-07T00:49:00-05:00</lastmod>
   </url><url>
     <loc>https://zellyn.com/posts/</loc>
+    <lastmod>2022-02-07T00:49:00-05:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/tags/</loc>
+    <lastmod>2022-02-07T00:49:00-05:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/tags/tailscale/</loc>
+    <lastmod>2022-02-07T00:49:00-05:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/2022/02/tailscale-diagram-in-pikchr/</loc>
+    <lastmod>2022-02-07T00:49:00-05:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/</loc>
+    <lastmod>2022-02-07T00:49:00-05:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/2022/02/cs-ramble/1b/</loc>
     <lastmod>2022-02-03T08:00:00-05:00</lastmod>
   </url><url>
     <loc>https://zellyn.com/tags/ramble/</loc>
     <lastmod>2022-02-03T08:00:00-05:00</lastmod>
   </url><url>
-    <loc>https://zellyn.com/tags/</loc>
-    <lastmod>2022-02-03T08:00:00-05:00</lastmod>
-  </url><url>
     <loc>https://zellyn.com/tags/week1/</loc>
-    <lastmod>2022-02-03T08:00:00-05:00</lastmod>
-  </url><url>
-    <loc>https://zellyn.com/</loc>
     <lastmod>2022-02-03T08:00:00-05:00</lastmod>
   </url><url>
     <loc>https://zellyn.com/2022/02/cs-ramble/1a/</loc>
@@ -27,9 +36,6 @@
     <lastmod>2022-02-01T08:00:00-05:00</lastmod>
   </url><url>
     <loc>https://zellyn.com/2022/01/gopikchr-a-yakshave/</loc>
-    <lastmod>2022-01-30T13:11:00-05:00</lastmod>
-  </url><url>
-    <loc>https://zellyn.com/tags/pikchr/</loc>
     <lastmod>2022-01-30T13:11:00-05:00</lastmod>
   </url><url>
     <loc>https://zellyn.com/2018/03/project-todos/</loc>

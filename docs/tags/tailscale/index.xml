@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ramble on Zellyn Hunter</title>
-    <link>https://zellyn.com/tags/ramble/</link>
-    <description>Recent content in ramble on Zellyn Hunter</description>
+    <title>tailscale on Zellyn Hunter</title>
+    <link>https://zellyn.com/tags/tailscale/</link>
+    <description>Recent content in tailscale on Zellyn Hunter</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 03 Feb 2022 08:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 07 Feb 2022 00:49:00 -0500</lastBuildDate>
 
-	<atom:link href="https://zellyn.com/tags/ramble/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zellyn.com/tags/tailscale/index.xml" rel="self" type="application/rss+xml" />
 
 
 
