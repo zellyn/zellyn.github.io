@@ -31,8 +31,11 @@ place. But so do text-based systems such as Markdown and Pikchr.&lt;br/&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;And indeed, reproducing the diagram took me hours, whereas I could
 have reproduced it in a point-and-click diagram editor in 10 or 15
-minutes.&lt;/p&gt;
-&lt;p&gt;Still, it was kind of fun, and those diagrams really are great.&lt;/p&gt;
+minutes. The diagrams I made about &lt;a href=&#34;../cs-ramble/1b/&#34;&gt;memory and
+variables&lt;/a&gt; are a better example of the kind of thing
+you can whip up quickly while writing.&lt;/p&gt;
+&lt;p&gt;Still, it was fun, and hopefully instructive, and those diagrams
+really are great.&lt;/p&gt;
 &lt;!-- make the image wider than the usual 600px in this theme --&gt;
 &lt;div style=&#39;width:700px;padding:auto;position:relative;left:-75px&#39;&gt;
 &lt;div id=&#39;pikchr-0&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-0&#39;)&#34;&gt;

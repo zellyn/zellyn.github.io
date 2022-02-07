@@ -5,7 +5,7 @@ date: 2022-02-07T00:49:00-05:00
 tags: ['pikchr', 'tailscale']
 ---
 
-Just for fun, I decided to try to use [Pikchr](https://pikchr.org)
+Just for fun, I decided to try to use [Pikchr](https://pikchr.org) to
 reproduce one of the diagrams in Tailscale's [How NAT traversal
 works](https://tailscale.com/blog/how-nat-traversal-works/) article,
 which often receive praise.
@@ -20,9 +20,12 @@ Pikchr is not intended for this kind of diagram:
 
 And indeed, reproducing the diagram took me hours, whereas I could
 have reproduced it in a point-and-click diagram editor in 10 or 15
-minutes.
+minutes. The diagrams I made about [memory and
+variables](../cs-ramble/1b/) are a better example of the kind of thing
+you can whip up quickly while writing.
 
-Still, it was kind of fun, and those diagrams really are great.
+Still, it was fun, and hopefully instructive, and those diagrams
+really are great.
 
 <!-- make the image wider than the usual 600px in this theme -->
 <div style='width:700px;padding:auto;position:relative;left:-75px'>
