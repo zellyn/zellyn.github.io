@@ -16,7 +16,7 @@
       <pubDate>Mon, 07 Feb 2022 00:49:00 -0500</pubDate>
 
       <guid>https://zellyn.com/2022/02/tailscale-diagram-in-pikchr/</guid>
-      <description>&lt;p&gt;Just for fun, I decided to try to use &lt;a href=&#34;https://pikchr.org&#34;&gt;Pikchr&lt;/a&gt;
+      <description>&lt;p&gt;Just for fun, I decided to try to use &lt;a href=&#34;https://pikchr.org&#34;&gt;Pikchr&lt;/a&gt; to
 reproduce one of the diagrams in Tailscale&amp;rsquo;s &lt;a href=&#34;https://tailscale.com/blog/how-nat-traversal-works/&#34;&gt;How NAT traversal
 works&lt;/a&gt; article,
 which often receive praise.&lt;/p&gt;
