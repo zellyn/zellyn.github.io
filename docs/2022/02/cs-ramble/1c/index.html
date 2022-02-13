@@ -872,7 +872,150 @@ dot at last radius 0.03
 arrow from last dot go right 0.33 then right 0.33 up 0.43 then right 0.33 radius 0.3
 </pre>
 </div>
-<h1 id="text">Text</h1>
+<p>If you now change part of what <code>b</code> points to, you&rsquo;re changing the
+thing <code>a</code> points to too, since they point to the same value!</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#60a0b0;font-style:italic">// In Go, you can refer to the `y` field of `b` with `b.y`, whether
+</span><span style="color:#60a0b0;font-style:italic">// `b` is a struct value, or a pointer to a struct value. In C, you&#39;d
+</span><span style="color:#60a0b0;font-style:italic">// need to use `b-&gt;y` if `b` was a pointer.
+</span><span style="color:#60a0b0;font-style:italic"></span>b.y = <span style="color:#40a070">23</span>
+
+fmt.<span style="color:#06287e">Println</span>(b.y) <span style="color:#60a0b0;font-style:italic">// 23
+</span><span style="color:#60a0b0;font-style:italic"></span>fmt.<span style="color:#06287e">Println</span>(a.y) <span style="color:#60a0b0;font-style:italic">// 23
+</span></code></pre></div><h1 id="text">Text</h1>
+<p>We finally have enough background to write about how text is
+stored. Most languages have a <code>string</code> type, which stores pieces of
+text. A common value for a <code>string</code> type, under the covers, is a
+pointer to an area of memory to hold the text, and integer holding the
+length in bytes.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>The actual characters are stored in memory as we described in the
+<a href="../1b">last post</a>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">a <span style="color:#666">:=</span> <span style="color:#4070a0">&#34;Hello, world&#34;</span>
+</code></pre></div><div id='pikchr-17' class='pikchr' onclick="toggleHidden('pikchr-17')">
+<div class='pikchr-svg' style='max-width:619px'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 619.446 198.303">
+<text x="12" y="40" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a:</text>
+<path d="M29,58L101,58L101,22L29,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<circle cx="65" cy="40" r="4.32" style="fill:rgb(0,0,0);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M101,58L173,58L173,22L101,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<text x="137" y="40" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">12</text>
+<text x="65" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">str</text>
+<text x="137" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">len</text>
+<path d="M29,58L173,58L173,22L29,22Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M185,160L221,160L221,124L185,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="203" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">H</text>
+<path d="M221,160L257,160L257,124L221,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="239" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">e</text>
+<path d="M257,160L293,160L293,124L257,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="275" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">l</text>
+<path d="M293,160L329,160L329,124L293,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="311" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">l</text>
+<path d="M329,160L365,160L365,124L329,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="347" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">o</text>
+<path d="M365,160L401,160L401,124L365,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="383" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">,</text>
+<path d="M401,160L437,160L437,124L401,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="419" y="142" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">␣</text>
+<path d="M437,160L473,160L473,124L437,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="455" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">w</text>
+<path d="M473,160L509,160L509,124L473,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="491" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">o</text>
+<path d="M509,160L545,160L545,124L509,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="527" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">r</text>
+<path d="M545,160L581,160L581,124L545,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="563" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">l</text>
+<path d="M581,160L617,160L617,124L581,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="599" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">d</text>
+<path d="M185,196L221,196L221,160L185,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="203" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">72</text>
+<path d="M221,196L257,196L257,160L221,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="239" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">101</text>
+<path d="M257,196L293,196L293,160L257,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="275" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">108</text>
+<path d="M293,196L329,196L329,160L293,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="311" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">108</text>
+<path d="M329,196L365,196L365,160L329,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="347" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">111</text>
+<path d="M365,196L401,196L401,160L365,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="383" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">44</text>
+<path d="M401,196L437,196L437,160L401,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="419" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">32</text>
+<path d="M437,196L473,196L473,160L437,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="455" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">119</text>
+<path d="M473,196L509,196L509,160L473,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="491" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">111</text>
+<path d="M509,196L545,196L545,160L509,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="527" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">114</text>
+<path d="M545,196L581,196L581,160L545,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="563" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">108</text>
+<path d="M581,196L617,196L617,160L581,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="599" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">100</text>
+<polygon points="185,142 174,147 173,138" style="fill:rgb(0,0,0)"/>
+<path d="M65,40Q74,151 179,142"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+</svg>
+</div>
+<pre class='hidden'>
+
+text "a:" big bold
+box width 0.5 height 0.25 fill lightblue thin
+dot at last radius 0.03
+box same with w at last box.e "12"
+text at 2nd last box.n "str" above
+text at last box.n "len" above
+box same with w at 2nd last box.w width 1 thickness 0.015 fill none
+
+box at 1 se of first box.e width 0.5 * linewid height 0.5*linewid fill lightblue "H" bold
+box same "e" bold
+box same "l" bold
+box same "l" bold
+box same "o" bold
+box same "," bold
+box same "␣"
+box same "w" bold
+box same "o" bold
+box same "r" bold
+box same "l" bold
+box same "d" bold
+
+box fill 0xd8ecf3 with n at H.s height H.height width H.width "72"
+box same "101"
+box same "108"
+box same "108"
+box same "111"
+box same "44"
+box same "32"
+box same "119"
+box same "111"
+box same "114"
+box same "108"
+box same "100"
+
+arc from last dot to H.w ->
+</pre>
+</div>
+<p>How about letters and words in foreign scripts? Well, for that, you
+need a “character encoding”, a way of giving each character a number
+and a representation as bytes. The most common one used to be
+<a href="https://www.asciitable.com/">ASCII</a><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, but the modern answer the
+problem is <a href="https://home.unicode.org/">Unicode</a>, an ambitious scheme
+to assign a unique number to every letter in every alphabet of every
+written language. And a bunch of
+<a href="https://emojipedia.org/poodle/">Emojis</a>. And <a href="https://unicode-table.com/en/blocks/box-drawing/">other
+things</a>.</p>
+<p>Unicode takes care of giving each character/symbol a unique
+number<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>, but the numbers get pretty big, and you still have to
+figure out how to represent them in just little old bytes. For that
+you need an <em>encoding</em>. Unless you have good reasons and know what
+you&rsquo;re doing, you&rsquo;ll mostly want to use
+<a href="https://sethmlarson.dev/blog/utf-8">UTF-8</a>, which leaves the lower
+128 ASCII characters alone, and then uses a clever encoding to encode
+all the other Unicode code points. The <a href="https://www.cl.cam.ac.uk/~mgk25/ucs/utf-8-history.txt">origin
+story</a> is fun.</p>
+<h1 id="summary">Summary</h1>
+<p>Well, that&rsquo;s been a fun ramble; thanks for sticking with us!
+Remember, you can start at any of the concepts we&rsquo;ve discussed here,
+and explore as deeply as you want. There are is nothing wrong with not
+knowing, questions, disinterest, or <em>way</em> too much interest, and no
+such thing as bad questions or things you&rsquo;re “supposed” to know.</p>
 <script>
   function toggleHidden(id){
     for(var c of document.getElementById(id).children){
@@ -886,6 +1029,26 @@ arrow from last dot go right 0.33 then right 0.33 up 0.43 then right 0.33 radius
 <p>Many consider null pointers to be a <a href="https://news.ycombinator.com/item?id=12427069">big
 mistake</a>, and
 many modern languages make them impossible.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>At least, that&rsquo;s how <a href="https://github.com/golang/go/blob/6f327f7b889b81549d551ce6963067267578bd70/src/runtime/string.go#L238-L241">Go does
+it</a>. In
+C, it&rsquo;s just a pointer, and you count on a <code>0</code> byte to terminate the
+string. If that sounds risky, like you could miss the <code>0</code>, and just
+run off into some other part of memory, well, yep!&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>On Unix systems, like Linux and Mac OS, you can type <code>man ascii</code>
+in a terminal window to see the ASCII values. The bottom set shows
+them in decimal, and is probably what you want. We&rsquo;ll get into Octal
+and Hexadecimal and all that some other time.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>Actually, it gives each <em>code point</em> a number, and then one or
+more of those combine to make one “user-perceived character”, as
+Wikipedia puts it. It&rsquo;s complicated. <a href="https://manishearth.github.io/blog/2017/01/14/stop-ascribing-meaning-to-unicode-code-points/">This post by Manish
+Goregaokar</a>
+goes into lots of details.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>

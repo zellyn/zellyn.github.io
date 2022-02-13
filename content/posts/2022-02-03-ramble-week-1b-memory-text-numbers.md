@@ -84,10 +84,10 @@ just jump straight to the actual numbers your computer (usually) uses
 (called “[ASCII](https://en.wikipedia.org/wiki/ASCII)”[^3]) so we get used
 to seeing the real numbers:_
 
-[^3]: If you're on Linux or MacOS, you can also type `man ascii` in
-your terminal to see a list of ASCII codes. Ignore the hexadecimal
-(for now) and octal (forever) sections; the decimal section at the
-bottom is useful.
+[^3]: If you're on Linux or MacOS, you can type `man ascii` in your
+terminal to see a list of ASCII codes. Ignore the hexadecimal (for
+now) and octal (forever) sections; the decimal section at the bottom
+is useful.
 
 ```pikchr {toggle=true}
 right
