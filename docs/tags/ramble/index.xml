@@ -562,7 +562,7 @@ digit”, a “sixteens digit”, etc. Just like with base 10, each time you
 move one digit to the left, you multiply by the base. &lt;em&gt;(Our gangly
 molluscan friends would have a “ones digit”, an “eights digit”, a
 “sixty-fours digit”, etc.)&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;If we have four switches, we can represent &lt;code&gt;0101&lt;/code&gt; (&lt;code&gt;7&lt;/code&gt; in decimal)
+&lt;p&gt;If we have four switches, we can represent &lt;code&gt;0101&lt;/code&gt; (&lt;code&gt;5&lt;/code&gt; in decimal)
 using “·” for off and “✓” for on like this:&lt;/p&gt;
 &lt;div id=&#39;pikchr-4&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-4&#39;)&#34;&gt;
 &lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:96px&#39;&gt;
@@ -607,31 +607,32 @@ Segment
 Display&lt;/a&gt;:&lt;/p&gt;
 &lt;div id=&#39;pikchr-5&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-5&#39;)&#34;&gt;
 &lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:509px&#39;&gt;
-&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 509.811 271.779&#34;&gt;
-&lt;path d=&#34;M390,179L500,179L500,9L390,9Z&#34;  style=&#34;fill:rgb(0,0,0);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
-&lt;path d=&#34;M2,253L25,253L25,223L2,223Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
-&lt;text x=&#34;13&#34; y=&#34;238&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
-&lt;path d=&#34;M25,253L48,253L48,223L25,223Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:3.2562;stroke:rgb(0,0,0);&#34; /&gt;
-&lt;text x=&#34;36&#34; y=&#34;238&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;✓&lt;/text&gt;
-&lt;path d=&#34;M48,253L71,253L71,223L48,223Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:1.46171;stroke:rgb(0,0,0);&#34; /&gt;
-&lt;text x=&#34;59&#34; y=&#34;238&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
-&lt;path d=&#34;M71,253L94,253L94,223L71,223Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:3.28884;stroke:rgb(0,0,0);&#34; /&gt;
-&lt;text x=&#34;82&#34; y=&#34;238&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;✓&lt;/text&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 509.811 273.219&#34;&gt;
+&lt;path d=&#34;M390,182L500,182L500,9L390,9Z&#34;  style=&#34;fill:rgb(0,0,0);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M2,254L25,254L25,224L2,224Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;13&#34; y=&#34;239&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;path d=&#34;M25,254L48,254L48,224L25,224Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:3.2562;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;36&#34; y=&#34;239&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;✓&lt;/text&gt;
+&lt;path d=&#34;M48,254L71,254L71,224L48,224Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:1.46171;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;59&#34; y=&#34;239&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;·&lt;/text&gt;
+&lt;path d=&#34;M71,254L94,254L94,224L71,224Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:3.28884;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;82&#34; y=&#34;239&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;✓&lt;/text&gt;
 &lt;path d=&#34;M413,90L405,82L405,46L413,37L422,46L422,82Z&#34;  style=&#34;fill:rgb(255,0,0);stroke-width:2.16;stroke-linejoin:round;stroke:rgb(255,0,0);&#34; /&gt;
 &lt;path d=&#34;M419,32L427,23L463,23L472,32L463,41L427,41Z&#34;  style=&#34;fill:rgb(255,0,0);stroke-width:2.16;stroke-linejoin:round;stroke:rgb(255,0,0);&#34; /&gt;
-&lt;path d=&#34;M477,37L468,46L468,82L477,90L486,82L486,46Z&#34;  style=&#34;fill:rgb(255,0,0);stroke-width:2.16;stroke-linejoin:round;stroke:rgb(255,0,0);&#34; /&gt;
-&lt;path d=&#34;M477,97L468,106L468,142L477,151L486,142L486,106Z&#34;  style=&#34;fill:rgb(255,0,0);stroke-width:2.16;stroke-linejoin:round;stroke:rgb(255,0,0);&#34; /&gt;
-&lt;path d=&#34;M472,156L463,147L427,147L419,156L427,164L463,164Z&#34;  style=&#34;fill:rgb(68,68,68);stroke-width:2.16;stroke-linejoin:round;stroke:rgb(68,68,68);&#34; /&gt;
-&lt;path d=&#34;M413,151L405,142L405,106L413,97L422,106L422,142Z&#34;  style=&#34;fill:rgb(68,68,68);stroke-width:2.16;stroke-linejoin:round;stroke:rgb(68,68,68);&#34; /&gt;
-&lt;path d=&#34;M383,186L507,186L507,2L383,2Z&#34;  style=&#34;fill:none;stroke-width:3.24;stroke:rgb(0,0,0);&#34; /&gt;
-&lt;text x=&#34;13&#34; y=&#34;261&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;8&lt;/text&gt;
-&lt;text x=&#34;36&#34; y=&#34;261&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;4&lt;/text&gt;
-&lt;text x=&#34;59&#34; y=&#34;261&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;2&lt;/text&gt;
-&lt;text x=&#34;82&#34; y=&#34;261&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
-&lt;path d=&#34;M13,223L13,77L383,77&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke-linejoin:round;stroke:rgb(128,128,128);&#34; /&gt;
-&lt;path d=&#34;M36,223L36,88L383,88&#34;  style=&#34;fill:none;stroke-width:3.24;stroke-linejoin:round;stroke:rgb(139,0,0);&#34; /&gt;
-&lt;path d=&#34;M59,223L59,100L383,100&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke-linejoin:round;stroke:rgb(128,128,128);&#34; /&gt;
-&lt;path d=&#34;M82,223L82,111L383,111&#34;  style=&#34;fill:none;stroke-width:3.24;stroke-linejoin:round;stroke:rgb(139,0,0);&#34; /&gt;
+&lt;path d=&#34;M477,37L468,46L468,82L477,90L486,82L486,46Z&#34;  style=&#34;fill:rgb(68,68,68);stroke-width:2.16;stroke-linejoin:round;stroke:rgb(68,68,68);&#34; /&gt;
+&lt;path d=&#34;M477,100L468,109L468,145L477,154L486,145L486,109Z&#34;  style=&#34;fill:rgb(255,0,0);stroke-width:2.16;stroke-linejoin:round;stroke:rgb(255,0,0);&#34; /&gt;
+&lt;path d=&#34;M472,159L463,150L427,150L419,159L427,167L463,167Z&#34;  style=&#34;fill:rgb(255,0,0);stroke-width:2.16;stroke-linejoin:round;stroke:rgb(255,0,0);&#34; /&gt;
+&lt;path d=&#34;M413,154L405,145L405,109L413,100L422,109L422,145Z&#34;  style=&#34;fill:rgb(68,68,68);stroke-width:2.16;stroke-linejoin:round;stroke:rgb(68,68,68);&#34; /&gt;
+&lt;path d=&#34;M419,95L427,87L463,87L472,95L463,104L427,104Z&#34;  style=&#34;fill:rgb(255,0,0);stroke-width:2.16;stroke-linejoin:round;stroke:rgb(255,0,0);&#34; /&gt;
+&lt;path d=&#34;M383,189L507,189L507,2L383,2Z&#34;  style=&#34;fill:none;stroke-width:3.24;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;13&#34; y=&#34;262&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;8&lt;/text&gt;
+&lt;text x=&#34;36&#34; y=&#34;262&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;4&lt;/text&gt;
+&lt;text x=&#34;59&#34; y=&#34;262&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;2&lt;/text&gt;
+&lt;text x=&#34;82&#34; y=&#34;262&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M13,224L13,78L383,78&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke-linejoin:round;stroke:rgb(128,128,128);&#34; /&gt;
+&lt;path d=&#34;M36,224L36,90L383,90&#34;  style=&#34;fill:none;stroke-width:3.24;stroke-linejoin:round;stroke:rgb(139,0,0);&#34; /&gt;
+&lt;path d=&#34;M59,224L59,101L383,101&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke-linejoin:round;stroke:rgb(128,128,128);&#34; /&gt;
+&lt;path d=&#34;M82,224L82,113L383,113&#34;  style=&#34;fill:none;stroke-width:3.24;stroke-linejoin:round;stroke:rgb(139,0,0);&#34; /&gt;
 &lt;/svg&gt;
 &lt;/div&gt;
 &lt;pre class=&#39;hidden&#39;&gt;
@@ -649,10 +650,11 @@ $off = 0x444444
 [
 line up $s left $s then up $b then up $s right $s then down $s right $s then down $b close fill $on color $on
 line from $g ne of last.n up $s right $s then right $b then down $s right $s then down $s left $s then left $b close fill $on color $on
-line from $g se of last.e down $s left $s then down $b then down $s right $s then up $s right $s then up $b close fill $on color $on
-line from $g s of last.s down $s left $s then down $b then down $s right $s then up $s right $s then up $b close fill $on color $on
-line from $g sw of last.s up $s left $s then left $b then down $s left $s then down $s right $s then right $b close fill $off color $off
+line from $g se of last.e down $s left $s then down $b then down $s right $s then up $s right $s then up $b close fill $off color $off
+line from 1.4*$g s of last.s down $s left $s then down $b then down $s right $s then up $s right $s then up $b close fill $on color $on
+line from $g sw of last.s up $s left $s then left $b then down $s left $s then down $s right $s then right $b close fill $on color $on
 line from $g nw of last.w up $s left $s then up $b then up $s right $s then down $s right $s then down $b close fill $off color $off
+line from $g ne of last.n up $s right $s then right $b then down $s right $s then down $s left $s then left $b close fill $on color $on
 ] at (3,1)
 
 box at last.c behind last width last.width + 0.2 height last.height + 0.2 fill black

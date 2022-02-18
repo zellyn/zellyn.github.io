@@ -219,7 +219,7 @@ move one digit to the left, you multiply by the base. _(Our gangly
 molluscan friends would have a “ones digit”, an “eights digit”, a
 “sixty-fours digit”, etc.)_
 
-If we have four switches, we can represent `0101` (`7` in decimal)
+If we have four switches, we can represent `0101` (`5` in decimal)
 using “·” for off and “✓” for on like this:
 
 ```pikchr {toggle=true}
@@ -258,10 +258,11 @@ $off = 0x444444
 [
 line up $s left $s then up $b then up $s right $s then down $s right $s then down $b close fill $on color $on
 line from $g ne of last.n up $s right $s then right $b then down $s right $s then down $s left $s then left $b close fill $on color $on
-line from $g se of last.e down $s left $s then down $b then down $s right $s then up $s right $s then up $b close fill $on color $on
-line from $g s of last.s down $s left $s then down $b then down $s right $s then up $s right $s then up $b close fill $on color $on
-line from $g sw of last.s up $s left $s then left $b then down $s left $s then down $s right $s then right $b close fill $off color $off
+line from $g se of last.e down $s left $s then down $b then down $s right $s then up $s right $s then up $b close fill $off color $off
+line from 1.4*$g s of last.s down $s left $s then down $b then down $s right $s then up $s right $s then up $b close fill $on color $on
+line from $g sw of last.s up $s left $s then left $b then down $s left $s then down $s right $s then right $b close fill $on color $on
 line from $g nw of last.w up $s left $s then up $b then up $s right $s then down $s right $s then down $b close fill $off color $off
+line from $g ne of last.n up $s right $s then right $b then down $s right $s then down $s left $s then left $b close fill $on color $on
 ] at (3,1)
 
 box at last.c behind last width last.width + 0.2 height last.height + 0.2 fill black
