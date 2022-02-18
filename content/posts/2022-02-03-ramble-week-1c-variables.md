@@ -647,3 +647,13 @@ Remember, you can start at any of the concepts we've discussed here,
 and explore as deeply as you want. There are is nothing wrong with not
 knowing, questions, disinterest, or _way_ too much interest, and no
 such thing as bad questions or things you're “supposed” to know.
+
+A couple of interesting links to leave you with, since they contain
+interesting and clear discussions of topics we've covered here:
+
+- [How does UTF-8 turn “😂” into
+  “F09F9882”?](https://sethmlarson.dev/blog/utf-8) by Seth Michael
+  Larson
+- [Why can't you reverse a string with a flag
+  emoji?](https://davidamos.dev/why-cant-you-reverse-a-flag-emoji/) by
+  David Amos

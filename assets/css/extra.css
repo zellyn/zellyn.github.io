@@ -28,3 +28,8 @@ td {
     border-top: 1px solid lightgrey;
     padding: 5px;
 }
+
+/* Make h1 just a little bigger than h2 */
+main#content h1 {
+    font-size: 28px;
+}

@@ -335,5 +335,5 @@ languages, or even between computers.  In Go, for example, “int” can
 mean 32 or 64 bits, depending on whether your computer is running in
 32- or 64-bit mode. I've marked ambiguous names in _`italics`_.
 
-_In the next part, we'll discuss how your program's
+_In the [next part](../1c/), we'll discuss how your program's
 variables point to things in memory._

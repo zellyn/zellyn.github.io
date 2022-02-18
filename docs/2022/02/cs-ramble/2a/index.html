@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zellyn&#39;s Website">
+
+    <link rel="shortcut icon" href="https://zellyn.com/favicon.ico">
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <title>CS Ramble — Week 2a - questions</title>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body><header id="banner">
+    <h2><a href="https://zellyn.com/">Zellyn Hunter</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/page/projects/todo" title="projects">projects</a>
+            </li><li>
+                <a href="/about/" title="about">about</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>CS Ramble — Week 2a - questions</h1>
+            <div>
+                <time>February 15, 2022</time>
+                </div>
+    </header><p><em>These are the questions for week 2 of <a href="../">A Ramble Around CS</a>.</em></p>
+<h1 id="questions-for-week-2">Questions for week 2</h1>
+<ul>
+<li>If humans had eight fingers, and only used the digits 0–7 to count,
+how would they write what we call “ten”? What would they mean when
+they wrote “100”? What would a “round number” mean to them? (To us, 10, 100, 1000,
+etc. are “round numbers”.)</li>
+<li>What if you only had the digits 0 and 1? How would you write what we
+call “ten”? What would it mean when you wrote “100”? What would a
+“round number” look like?</li>
+<li>What does <code>print(1&lt;&lt;8)</code> print in your favorite programming language?
+Why? What’s going on?</li>
+<li>What does <code>print(65 | 32)</code> print in your favorite programming
+language? Why? What’s going on? How about <code>print(90 | 32)</code>?</li>
+<li>What does it mean that ‘A’ is 65, and ‘a’ is 65|32, ‘Z’ is 90, and
+‘z’ is 90|32?
+<ul>
+<li>Ruby: <code>('A'.ord | 32).chr</code> → <code>&quot;a&quot;</code></li>
+<li>Python: <code>chr(ord('a') | 32)</code> → <code>'a'</code></li>
+<li>Javascript: <code>String.fromCharCode('A'.charCodeAt(0) | 32)</code> → <code>&quot;a&quot;</code></li>
+<li>Hint: what kind of number is 32 in binary?</li>
+</ul>
+</li>
+<li>What if humans had 16 fingers and had 16 different digits? (Let’s
+say, 0–9 for the first ten, and A–F for the next 6.) How would they
+write what we call “ten”? What would they mean when they wrote
+“100”?</li>
+</ul>
+<p><em>We&rsquo;ll start discussing numeric bases in the <a href="../2b/">next part</a>.</em></p>
+</article>
+
+        </main><footer id="footer">
+
+</footer>
+</body>
+</html>
