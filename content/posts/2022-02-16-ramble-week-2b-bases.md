@@ -15,7 +15,7 @@ We humans have 10 fingers, and we use ten digits for counting: **`0,
 kind of like a car odometer. We have wheels with 10 digits on each of
 them, 0--9. We turn the right-most wheel one digit to add one:
 
-```pikchr {toggle=true}
+```pikchr
 box fill 0x333333 color 0xEEEEEE fit "0" bold fit
 box same "0" bold; box same "0" bold; box same "0" bold; box same "0" bold
 box same "0" bold
@@ -46,7 +46,7 @@ second-rightmost digit. The wheels are rigged up so that when a wheel
 goes all the way around back to `0`, it turns the wheel to its left
 once, “carrying the 1”:
 
-```pikchr {toggle=true}
+```pikchr
 box fill 0x333333 color 0xEEEEEE fit "0" bold fit
 box same "0" bold; box same "0" bold; box same "0" bold; box same "0" bold
 box same "9" bold
@@ -73,7 +73,7 @@ I suppose they'd count the same way, but start counting up on the
 second-rightmost digit after `7`. And the wheels on their odometers
 would have only digits 0--7:
 
-```pikchr {toggle=true}
+```pikchr
 box fill 0x333333 color 0xEEEEEE fit "0" bold fit
 box same "0" bold; box same "0" bold; box same "0" bold; box same "0" bold
 box same "0" bold
@@ -158,7 +158,7 @@ Base 2 is like counting if you're a ... bird? using only your wings?
 ... and have only two limbs to count on. It works just like the other
 bases we've played with, except you're “carrying the 1” a **lot**!
 
-```pikchr {toggle=true}
+```pikchr
 box fill 0x333333 color 0xEEEEEE fit "0" bold fit
 box same "0" bold; box same "0" bold; box same "0" bold; box same "0" bold
 box same "0" bold
@@ -222,7 +222,7 @@ molluscan friends would have a “ones digit”, an “eights digit”, a
 If we have four switches, we can represent `0101` (`5` in decimal)
 using “·” for off and “✓” for on like this:
 
-```pikchr {toggle=true}
+```pikchr
 box "·" fit fill lightblue thin
 box same "✓" thick thick
 box same "·" thin thin
@@ -243,7 +243,7 @@ We can then use wires to carry these signals around, like to a [Seven
 Segment
 Display](https://www.jameco.com/Jameco/workshop/TechTip/working-with-seven-segment-displays.html):
 
-```pikchr {toggle=true}
+```pikchr
 box "·" fit fill lightblue thin
 box same "✓" thick thick
 box same "·" thin thin
@@ -315,7 +315,7 @@ D, E, F`.
 Other than that, things work the same as before; the odometer wheels
 just have 16 digits:
 
-```pikchr {toggle=true}
+```pikchr
 box fill 0x333333 color 0xEEEEEE fit "0" bold fit
 box same "0" bold; box same "0" bold; box same "0" bold; box same "0" bold
 box same "0" bold
@@ -390,7 +390,7 @@ up a lot of space, and is hard to read. It happens that one
 hexadecimal digit holds exactly four bits, and so any byte value can
 be represented with two hex digits:
 
-```pikchr {toggle=true}
+```pikchr
 box "1" fit fill lightblue
 box same "0"
 box same "1"
@@ -455,4 +455,4 @@ you'll often see it show up as `%23` in the URL, as in
 [google.com/search?q=%23](https://google.com/search?q=%23). (You can
 say the octothorpe is “percent encoded” as `%23`.)
 
-_We'll get deeper into binary and working with bits in the next part._
+_We'll get deeper into binary and working with bits in the [next part](../2c/)._

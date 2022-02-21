@@ -696,14 +696,14 @@ you can have: true/false, yes/no, +/-, on/off, <em>(heads/tails,
 left/right, up/down, &hellip;)</em></p>
 <p>In many programming languages, you can use binary numbers directly in
 your programs by using a prefix of <code>0b</code>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#60a0b0;font-style:italic"># A `0b` prefix indicates a binary number:</span>
-a <span style="color:#666">=</span> <span style="color:#40a070">0b101</span>      <span style="color:#60a0b0;font-style:italic"># 5: 1×1 + 0×2 + 1×4</span>
-b <span style="color:#666">=</span> <span style="color:#40a070">0b11111111</span> <span style="color:#60a0b0;font-style:italic"># 255: 1×1 + 1×2 + 1×4 + 1×8 + 1×16 + 1×32 + 1×64 + 1×128</span>
-
-<span style="color:#60a0b0;font-style:italic"># In many languages, you can even break the digis into</span>
-<span style="color:#60a0b0;font-style:italic"># groups for readability. Here we use groups of 4 bits:</span>
-c <span style="color:#666">=</span> <span style="color:#40a070">0b1000_0000</span> <span style="color:#60a0b0;font-style:italic"># 128</span>
-</code></pre></div><h2 id="base-16-hexadecimal">Base 16: “Hexadecimal”</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># A `0b` prefix indicates a binary number:</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#666">=</span> <span style="color:#40a070">0b101</span>      <span style="color:#60a0b0;font-style:italic"># 5: 1×1 + 0×2 + 1×4</span>
+</span></span><span style="display:flex;"><span>b <span style="color:#666">=</span> <span style="color:#40a070">0b11111111</span> <span style="color:#60a0b0;font-style:italic"># 255: 1×1 + 1×2 + 1×4 + 1×8 + 1×16 + 1×32 + 1×64 + 1×128</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># In many languages, you can even break the digis into</span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># groups for readability. Here we use groups of 4 bits:</span>
+</span></span><span style="display:flex;"><span>c <span style="color:#666">=</span> <span style="color:#40a070">0b1000_0000</span> <span style="color:#60a0b0;font-style:italic"># 128</span>
+</span></span></code></pre></div><h2 id="base-16-hexadecimal">Base 16: “Hexadecimal”</h2>
 <p>It&rsquo;s very common to use base 16, or “hexadecimal”, numbers in computer
 programs. To expand our repertoire to 16 digits, we use the usual
 <code>0–9</code> and then add on <code>A–F</code>: <code>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F</code>.</p>
@@ -894,10 +894,10 @@ box same "0" bold
 </div>
 <p>In most programming languages, you can use hexadecimal numbers
 directly in your programs by using a prefix of <code>0x</code>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#60a0b0;font-style:italic"># A `0x` prefix indicates a hexadecimal number:</span>
-a <span style="color:#666">=</span> <span style="color:#40a070">0x0101</span>  <span style="color:#60a0b0;font-style:italic"># 257: 1×1 + 0×16 + 1×256 + 0×4096</span>
-b <span style="color:#666">=</span> <span style="color:#40a070">0xFF</span>    <span style="color:#60a0b0;font-style:italic"># 255: 15×1 + 15×16</span>
-</code></pre></div><h3 id="why-hexadecimal">Why hexadecimal?</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># A `0x` prefix indicates a hexadecimal number:</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#666">=</span> <span style="color:#40a070">0x0101</span>  <span style="color:#60a0b0;font-style:italic"># 257: 1×1 + 0×16 + 1×256 + 0×4096</span>
+</span></span><span style="display:flex;"><span>b <span style="color:#666">=</span> <span style="color:#40a070">0xFF</span>    <span style="color:#60a0b0;font-style:italic"># 255: 15×1 + 15×16</span>
+</span></span></code></pre></div><h3 id="why-hexadecimal">Why hexadecimal?</h3>
 <p>We mentioned <a href="../1b/#computer-memory">last week</a> that a byte can hold
 numbers from 0&ndash;255. That&rsquo;s because a byte is made up of 8
 bits. <em>(This is where the
@@ -1036,7 +1036,7 @@ can also write 23<sub>16</sub>). If you type a “#” into a web form,
 you&rsquo;ll often see it show up as <code>%23</code> in the URL, as in
 <a href="https://google.com/search?q=%23">google.com/search?q=%23</a>. (You can
 say the octothorpe is “percent encoded” as <code>%23</code>.)</p>
-<p><em>We&rsquo;ll get deeper into binary and working with bits in the next part.</em></p>
+<p><em>We&rsquo;ll get deeper into binary and working with bits in the <a href="../2c/">next part</a>.</em></p>
 <script>
   function toggleHidden(id){
     for(var c of document.getElementById(id).children){

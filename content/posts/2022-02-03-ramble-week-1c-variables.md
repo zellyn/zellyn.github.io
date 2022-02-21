@@ -20,7 +20,7 @@ memory.
 Let's say your program happend to put `a` in memory location `1234`:
 
 
-```pikchr {toggle=true}
+```pikchr
 box width 0.5 height 0.25 fill lightblue "0" bold
 box same "42" bold
 box same "0" bold
@@ -35,7 +35,7 @@ text at 4th box.n "1236" above
 If we don't care about the exact memory location (and we usually
 don't), we can draw that like this:
 
-```pikchr {toggle=true}
+```pikchr
 box width 0.5 height 0.25 fill lightblue "42"
 text at last box.w "a:  " bold rjust big
 ```
@@ -43,7 +43,7 @@ text at last box.w "a:  " bold rjust big
 Now, when you say `b = a` (and assuming your program happens to pick
 `1235` for `b`), we get:
 
-```pikchr {toggle=true}
+```pikchr
 box width 0.5 height 0.25 fill lightblue "0" bold
 box same "42" bold
 box same "42" bold
@@ -57,7 +57,7 @@ text at 4th box.n "1236" above
 
 or, alternatively:
 
-```pikchr {toggle=true}
+```pikchr
 down
 box width 0.5 height 0.25 fill lightblue "42"
 move
@@ -89,7 +89,7 @@ a := MyThing{ x: 42, y: 99 }
 Now, what we have is this:
 
 
-```pikchr {toggle=true}
+```pikchr
 box width 0.5 height 0.25 fill lightblue "0" bold
 box same "42" bold
 box same "99" bold
@@ -111,7 +111,7 @@ text at last arc.nw + (0,0.03) "a" bold above
 
 or, alternatively:
 
-```pikchr {toggle=true}
+```pikchr
 text "a:" big bold
 box width 0.5 height 0.25 fill lightblue "42" thin
 box same "99"
@@ -128,7 +128,7 @@ a.y = 17
 ```
 
 And now we have:
-```pikchr {toggle=true}
+```pikchr
 text "a:" big bold
 box width 0.5 height 0.25 fill lightblue "42" thin
 box same "17"
@@ -146,7 +146,7 @@ b := a
 ```
 
 We get:
-```pikchr {toggle=true}
+```pikchr
 text "a:" big bold
 box width 0.5 height 0.25 fill lightblue "42" thin
 box same "17"
@@ -183,7 +183,7 @@ c := YourThing{ w: 42, z: 258 }
 
 Which looks like:
 
-```pikchr {toggle=true}
+```pikchr
 define $brace {
   $offsety = $4 / 2
   $offsetx = $3/abs($3) * abs($offsety)
@@ -215,7 +215,7 @@ text at last arc.start "z" below "(258 = 2 + 1×256)" below
 
 Or, alternatively:
 
-```pikchr {toggle=true}
+```pikchr
 text "c:" big bold
 box width 0.5 height 0.25 fill lightblue "42" thin
 box same width 1 "258"
@@ -236,7 +236,7 @@ Remember when we said we'd put `42` in `a`, and that our program
 happened to put `a` in location `1234` in memory? Here's the diagram
 again:
 
-```pikchr {toggle=true}
+```pikchr
 box width 0.5 height 0.25 fill lightblue "0" bold
 box same "42" bold
 box same "0" bold
@@ -251,7 +251,7 @@ text at 4th box.n "1236" above
 Well, `1234` is called the “address” of `a`. If you put that in a
 variable, say `b`, then we say `b` is a “pointer” to `a`:
 
-```pikchr {toggle=true}
+```pikchr
 define $brace {
   $offsety = $4 / 2
   $offsetx = $3/abs($3) * abs($offsety)
@@ -312,7 +312,7 @@ are in 32- or 64-bit mode, so pointers take 32 or 64 bits (4 or 8
 bytes) to store. So the example above would more accurately look
 something like this:
 
-```pikchr {toggle=true}
+```pikchr
 define $brace {
   $offsety = $4 / 2
   $offsetx = $3/abs($3) * abs($offsety)
@@ -361,7 +361,7 @@ We don't usually care about exactly how big pointers are (unless we're
 in a phase of caring how big everything is), and often draw that last
 picture like this:
 
-```pikchr {toggle=true}
+```pikchr
 text "a:" big bold
 box width 0.5 height 0.25 fill lightblue "42"
 
@@ -381,7 +381,7 @@ exactly what it sounds like: just follow the arrow!
 
 You actually now know enough to understand what a “linked list” is!
 
-```pikchr {toggle=true}
+```pikchr
 text "a:" big bold
 box width 0.5 height 0.25 fill lightblue
 dot at last radius 0.03
@@ -487,7 +487,7 @@ b := a
 ```
 
 which copied `a`'s _value_ into `b`, giving us:
-```pikchr {toggle=true}
+```pikchr
 text "a:" big bold
 box width 0.5 height 0.25 fill lightblue "42" thin
 box same "17"
@@ -517,7 +517,7 @@ Now, `a`'s value is a pointer: a 64-bit number, the address of that
 `MyThing` structure. So copying that value into `b` makes `b` point to
 the _same_ structure!
 
-```pikchr {toggle=true}
+```pikchr
 text "a:" big bold
 box width 0.5 height 0.25 fill lightblue
 dot at last radius 0.03
@@ -570,8 +570,7 @@ The actual characters are stored in memory as we described in the
 a := "Hello, world"
 ```
 
-```pikchr {toggle=true}
-
+```pikchr
 text "a:" big bold
 box width 0.5 height 0.25 fill lightblue thin
 dot at last radius 0.03

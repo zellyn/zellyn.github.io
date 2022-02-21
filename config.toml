@@ -9,6 +9,7 @@ theme = 'etch'
   [markup.goldmark]
     [markup.goldmark.extensions]
       pikchr = true
+      pikchrToggle = true
       mathjax = true
 
 languageCode = "en-US"

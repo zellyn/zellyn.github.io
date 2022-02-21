@@ -5,9 +5,408 @@
     <link>https://zellyn.com/</link>
     <description>Recent content on Zellyn Hunter</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 16 Feb 2022 20:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 17 Feb 2022 21:30:00 -0500</lastBuildDate>
 
 	<atom:link href="https://zellyn.com/index.xml" rel="self" type="application/rss+xml" />
+
+
+
+    <item>
+      <title>CS Ramble — Week 2c - Binary and Bits</title>
+      <link>https://zellyn.com/2022/02/cs-ramble/2c/</link>
+      <pubDate>Thu, 17 Feb 2022 21:30:00 -0500</pubDate>
+
+      <guid>https://zellyn.com/2022/02/cs-ramble/2c/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;week 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
+CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In this post, we&amp;rsquo;re going to become more familiar with thinking in
+binary, and messing around with individual bits: “bit twiddling”.&lt;/p&gt;
+&lt;h2 id=&#34;basics&#34;&gt;Basics&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s use our example byte from last time to show the anatomy of a byte: &lt;code&gt;0b10111001 == 0xB9 == 185&lt;/code&gt;&lt;/p&gt;
+&lt;div id=&#39;pikchr-0&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-0&#39;)&#34;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:242px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 242.554 164.16&#34;&gt;
+&lt;path d=&#34;M35,85L57,85L57,55L35,55Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;46&#34; y=&#34;70&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M57,85L79,85L79,55L57,55Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;68&#34; y=&#34;70&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M79,85L101,85L101,55L79,55Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;90&#34; y=&#34;70&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M101,85L123,85L123,55L101,55Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;112&#34; y=&#34;70&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M123,85L145,85L145,55L123,55Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;134&#34; y=&#34;70&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M145,85L167,85L167,55L145,55Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;156&#34; y=&#34;70&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M167,85L189,85L189,55L167,55Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;178&#34; y=&#34;70&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M189,85L211,85L211,55L189,55Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;200&#34; y=&#34;70&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;text x=&#34;46&#34; y=&#34;93&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;128&lt;/text&gt;
+&lt;text x=&#34;68&#34; y=&#34;93&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;64&lt;/text&gt;
+&lt;text x=&#34;90&#34; y=&#34;93&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;32&lt;/text&gt;
+&lt;text x=&#34;112&#34; y=&#34;93&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;16&lt;/text&gt;
+&lt;text x=&#34;134&#34; y=&#34;93&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;8&lt;/text&gt;
+&lt;text x=&#34;156&#34; y=&#34;93&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;4&lt;/text&gt;
+&lt;text x=&#34;178&#34; y=&#34;93&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;2&lt;/text&gt;
+&lt;text x=&#34;200&#34; y=&#34;93&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;80%&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;text x=&#34;46&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;“high bit”&lt;/text&gt;
+&lt;polygon points=&#34;46,55 41,43 50,43&#34; style=&#34;fill:rgb(0,0,0)&#34;/&gt;
+&lt;path d=&#34;M46,27L46,49&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;200&#34; y=&#34;12&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;“low bit”&lt;/text&gt;
+&lt;polygon points=&#34;200,55 195,43 204,43&#34; style=&#34;fill:rgb(0,0,0)&#34;/&gt;
+&lt;path d=&#34;M200,27L200,49&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M116,114Q123,114 123,107&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M35,107Q35,114 42,114&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M86,114Q79,114 79,121&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M79,121Q79,114 72,114&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M116,114L86,114&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M72,114L42,114&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;79&#34; y=&#34;131&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;B&lt;/text&gt;
+&lt;text x=&#34;79&#34; y=&#34;151&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;“high nibble”    &lt;/text&gt;
+&lt;path d=&#34;M204,114Q211,114 211,107&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M123,107Q123,114 130,114&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M174,114Q167,114 167,121&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M167,121Q167,114 160,114&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M204,114L174,114&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M160,114L130,114&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;167&#34; y=&#34;131&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;9&lt;/text&gt;
+&lt;text x=&#34;167&#34; y=&#34;151&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;    “low nibble”&lt;/text&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+define $brace {
+  $offsety = $4 / 2
+  $offsetx = $3/abs($3) * abs($offsety)
+  $pointx = $1+0.5*$3
+  $pointy = $2+$4
+  arc from ($1+$offsetx,$2+$offsety) to ($1,$2) thin
+  arc from ($1+$3,$2) to ($1+$3-$offsetx, $2+$offsety) thin
+  arc from ($pointx-$offsetx,$pointy-$offsety) to ($pointx,$pointy) thin
+  arc from ($pointx,$pointy) to ($pointx+$offsetx,$pointy-$offsety) thin
+  line from 4th last arc.start to 2nd last arc.start thin
+  line from last arc.end to 3rd last arc.end thin
+}
+
+box &#34;1&#34; fit fill lightblue
+box same &#34;0&#34;
+box same &#34;1&#34;
+box same &#34;1&#34;
+box same &#34;1&#34;
+box same &#34;0&#34;
+box same &#34;0&#34;
+box same &#34;1&#34;
+
+text at 1st box .s &#34;128&#34; below italic small
+text at 2nd box .s &#34;64&#34; below italic small
+text at 3rd box .s &#34;32&#34; below italic small
+text at 4th box .s &#34;16&#34; below italic small
+text at 5th box .s &#34;8&#34; below italic small
+text at 6th box .s &#34;4&#34; below italic small
+text at 7th box .s &#34;2&#34; below italic small
+text at 8th box .s &#34;1&#34; below italic small
+
+text at 0.3 n of 1st box.n &#34;“high bit”&#34; italic
+arrow from last text.s to first box.n
+
+text at 0.3 n of last box.n &#34;“low bit”&#34; italic
+arrow from last text.s to last box.n
+
+$width = 1st box.w.x - 4th box.e.x
+$brace(4th box.se.x, 4th box.se.y-0.15, $width, -0.1)
+text at last arc.start &#34;B&#34; below &#34;“high nibble”    &#34; below italic
+$brace(last box.se.x, 4th box.se.y-0.15, $width, -0.1)
+text at last arc.start &#34;9&#34; below &#34;    “low nibble”&#34; below italic
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; the work “nibble” is less common these days than it used
+to be, when computers had much less memory, and making maximum use
+of every little bit was more important. Don&amp;rsquo;t be surprised if people
+haven&amp;rsquo;t heard of it: you can name-drop “high nibble” to increase
+your nerd cred!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;bit-shifting&#34;&gt;Bit shifting&lt;/h2&gt;
+&lt;p&gt;In base 10, if we shift digits to the left or right, we&amp;rsquo;re multiplying
+or dividing by 10:&lt;/p&gt;
+&lt;div id=&#39;pikchr-1&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-1&#39;)&#34;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:125px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 125.28 365.76&#34;&gt;
+&lt;path d=&#34;M30,46L59,46L59,16L30,16Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;45&#34; y=&#34;31&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M59,46L88,46L88,16L59,16Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;74&#34; y=&#34;31&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;8&lt;/text&gt;
+&lt;path d=&#34;M88,46L117,46L117,16L88,16Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;102&#34; y=&#34;31&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;5&lt;/text&gt;
+&lt;path d=&#34;M2,147L30,147L30,117L2,117Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;16&#34; y=&#34;132&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M30,147L59,147L59,117L30,117Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;45&#34; y=&#34;132&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;8&lt;/text&gt;
+&lt;path d=&#34;M59,147L88,147L88,117L59,117Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;74&#34; y=&#34;132&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;5&lt;/text&gt;
+&lt;path d=&#34;M88,147L117,147L117,117L88,117Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;102&#34; y=&#34;132&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M30,46L2,117&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;&#34; /&gt;
+&lt;path d=&#34;M59,46L30,117&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;&#34; /&gt;
+&lt;path d=&#34;M88,46L59,117&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;&#34; /&gt;
+&lt;path d=&#34;M117,46L88,117&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;&#34; /&gt;
+&lt;text x=&#34;59&#34; y=&#34;82&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;shift ←&lt;/text&gt;
+&lt;path d=&#34;M26,97L92,97L92,66L26,66Z&#34;  style=&#34;fill:rgb(255,255,255);stroke-width:2.16;stroke:rgb(255,255,255);&#34; /&gt;
+&lt;text x=&#34;59&#34; y=&#34;82&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;shift ←&lt;/text&gt;
+&lt;path d=&#34;M30,248L59,248L59,218L30,218Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;45&#34; y=&#34;233&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M59,248L88,248L88,218L59,218Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;74&#34; y=&#34;233&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;8&lt;/text&gt;
+&lt;path d=&#34;M88,248L117,248L117,218L88,218Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;102&#34; y=&#34;233&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;5&lt;/text&gt;
+&lt;path d=&#34;M59,349L88,349L88,318L59,318Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;74&#34; y=&#34;334&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M88,349L117,349L117,318L88,318Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;102&#34; y=&#34;334&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;8&lt;/text&gt;
+&lt;path d=&#34;M30,248L59,318&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;&#34; /&gt;
+&lt;path d=&#34;M59,248L88,318&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;&#34; /&gt;
+&lt;path d=&#34;M88,248L117,318&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;&#34; /&gt;
+&lt;text x=&#34;74&#34; y=&#34;283&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;shift →&lt;/text&gt;
+&lt;path d=&#34;M41,298L106,298L106,268L41,268Z&#34;  style=&#34;fill:rgb(255,255,255);stroke-width:2.16;stroke:rgb(255,255,255);&#34; /&gt;
+&lt;text x=&#34;74&#34; y=&#34;283&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;shift →&lt;/text&gt;
+&lt;path d=&#34;M120,363L123,363L123,2L120,2Z&#34;  style=&#34;fill:rgb(238,238,238);stroke-width:2.16;stroke:rgb(238,238,238);&#34; /&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+box &#34;1&#34; fit width 0.2 fill lightblue
+box same &#34;8&#34;
+box same &#34;5&#34;
+
+box same at 1st box + (-1st box.width, -0.7) &#34;1&#34;
+box same &#34;8&#34;
+box same &#34;5&#34;
+box same &#34;0&#34;
+
+line from 1st box.sw to 4th box.nw dashed thin
+line same from 2nd box.sw to 5th box.nw
+line same from 3rd box.sw to 6th box.nw
+line same from 3rd box.se to 7th box.nw
+
+text at ((2nd box.x + 5th box.x)/2, (2nd box.s.y + 5th box.n.y)/2) &#34;shift ←&#34;
+box at last text width last text.width height last text.height color white fill white
+text at last &#34;shift ←&#34; italic
+
+RIGHT: box same as 1st box at 1.4 s of 1st box &#34;1&#34;
+box same &#34;8&#34;
+box same &#34;5&#34;
+
+box same at RIGHT + (1st box.width, -0.7) &#34;1&#34;
+box same &#34;8&#34;
+
+line from 5th last box.sw to 2nd last box.nw dashed thin
+line same from 4th last box.sw to last box.nw
+line same from 3rd last box.sw to last box.ne
+
+text at ((4th last box.w.x + last box.w.x)/2, (4th last box.s.y + last box.n.y)/2) &#34;shift →&#34;
+box at last text width last text.width height last text.height color white fill white
+text at last &#34;shift →&#34; italic
+
+box with nw at 3rd box.ne + (0.02,0.1) height (1st box.n.y - 3rd last box.s.y + 0.2) \
+  width 0.02 color 0xEEEEEE fill 0xEEEEEE
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;In base 2, if we shift digits to the left or right, we&amp;rsquo;re multiplying
+or dividing by 2:&lt;/p&gt;
+&lt;div id=&#39;pikchr-2&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-2&#39;)&#34;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:125px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 125.28 365.76&#34;&gt;
+&lt;path d=&#34;M30,46L59,46L59,16L30,16Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;45&#34; y=&#34;31&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M59,46L88,46L88,16L59,16Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;74&#34; y=&#34;31&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M88,46L117,46L117,16L88,16Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;102&#34; y=&#34;31&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M2,147L30,147L30,117L2,117Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;16&#34; y=&#34;132&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M30,147L59,147L59,117L30,117Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;45&#34; y=&#34;132&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M59,147L88,147L88,117L59,117Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;74&#34; y=&#34;132&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M88,147L117,147L117,117L88,117Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;102&#34; y=&#34;132&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M30,46L2,117&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;&#34; /&gt;
+&lt;path d=&#34;M59,46L30,117&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;&#34; /&gt;
+&lt;path d=&#34;M88,46L59,117&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;&#34; /&gt;
+&lt;path d=&#34;M117,46L88,117&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;&#34; /&gt;
+&lt;text x=&#34;59&#34; y=&#34;82&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;shift ←&lt;/text&gt;
+&lt;path d=&#34;M26,97L92,97L92,66L26,66Z&#34;  style=&#34;fill:rgb(255,255,255);stroke-width:2.16;stroke:rgb(255,255,255);&#34; /&gt;
+&lt;text x=&#34;59&#34; y=&#34;82&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;shift ←&lt;/text&gt;
+&lt;path d=&#34;M30,248L59,248L59,218L30,218Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;45&#34; y=&#34;233&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M59,248L88,248L88,218L59,218Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;74&#34; y=&#34;233&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M88,248L117,248L117,218L88,218Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;102&#34; y=&#34;233&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M59,349L88,349L88,318L59,318Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;74&#34; y=&#34;334&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M88,349L117,349L117,318L88,318Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;102&#34; y=&#34;334&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M30,248L59,318&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;&#34; /&gt;
+&lt;path d=&#34;M59,248L88,318&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;&#34; /&gt;
+&lt;path d=&#34;M88,248L117,318&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;&#34; /&gt;
+&lt;text x=&#34;74&#34; y=&#34;283&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;shift →&lt;/text&gt;
+&lt;path d=&#34;M41,298L106,298L106,268L41,268Z&#34;  style=&#34;fill:rgb(255,255,255);stroke-width:2.16;stroke:rgb(255,255,255);&#34; /&gt;
+&lt;text x=&#34;74&#34; y=&#34;283&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;shift →&lt;/text&gt;
+&lt;path d=&#34;M120,363L123,363L123,2L120,2Z&#34;  style=&#34;fill:rgb(238,238,238);stroke-width:2.16;stroke:rgb(238,238,238);&#34; /&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+box &#34;1&#34; fit width 0.2 fill lightblue
+	box same &#34;1&#34;
+box same &#34;1&#34;
+
+box same at 1st box + (-1st box.width, -0.7) &#34;1&#34;
+box same &#34;1&#34;
+box same &#34;1&#34;
+box same &#34;0&#34;
+
+line from 1st box.sw to 4th box.nw dashed thin
+line same from 2nd box.sw to 5th box.nw
+line same from 3rd box.sw to 6th box.nw
+line same from 3rd box.se to 7th box.nw
+
+text at ((2nd box.x + 5th box.x)/2, (2nd box.s.y + 5th box.n.y)/2) &#34;shift ←&#34;
+box at last text width last text.width height last text.height color white fill white
+text at last &#34;shift ←&#34; italic
+
+RIGHT: box same as 1st box at 1.4 s of 1st box &#34;1&#34;
+box same &#34;1&#34;
+box same &#34;1&#34;
+
+box same at RIGHT + (1st box.width, -0.7) &#34;1&#34;
+box same &#34;1&#34;
+
+line from 5th last box.sw to 2nd last box.nw dashed thin
+line same from 4th last box.sw to last box.nw
+line same from 3rd last box.sw to last box.ne
+
+text at ((4th last box.w.x + last box.w.x)/2, (4th last box.s.y + last box.n.y)/2) &#34;shift →&#34;
+box at last text width last text.width height last text.height color white fill white
+text at last &#34;shift →&#34; italic
+
+box with nw at 3rd box.ne + (0.02,0.1) height (1st box.n.y - 3rd last box.s.y + 0.2) \
+  width 0.02 color 0xEEEEEE fill 0xEEEEEE
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;In code, we use &lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt; to shift left, and &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; to shift right:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# python:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#007020&#34;&gt;bin&lt;/span&gt;(&lt;span style=&#34;color:#40a070&#34;&gt;0b111&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;))  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 0b1110&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#007020&#34;&gt;bin&lt;/span&gt;(&lt;span style=&#34;color:#40a070&#34;&gt;0b111&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;))  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 0b11&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We can shift by a lot if we have the space for it. In python, there&amp;rsquo;s
+no real limit on how big numbers can be, so we can shift as far as we
+like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#007020&#34;&gt;bin&lt;/span&gt;(&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;10&lt;/span&gt;))     &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 0b10000000000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;10&lt;/span&gt;)          &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 1024&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;130&lt;/span&gt;)           &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 1361129467683753853853498429727072845824&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In a language like Go, where the bit widths are fixed (because numbers
+occupy a specific number of bytes), we can shift right off the end!&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;var&lt;/span&gt; a &lt;span style=&#34;color:#902000&#34;&gt;uint8&lt;/span&gt; = &lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(a&lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;7&lt;/span&gt;)  &lt;span style=&#34;&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;128&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(a&lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;8&lt;/span&gt;)  &lt;span style=&#34;&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;(Longer example with several different widths you can play around with &lt;a href=&#34;https://go.dev/play/p/UF31Z4jEBig&#34;&gt;here&lt;/a&gt;.)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;As you may have noticed, you can (within the bounds of the bit-width
+of your variable), replace &lt;code&gt;2ⁿ &lt;/code&gt; with &lt;code&gt;1 &amp;lt;&amp;lt; n&lt;/code&gt;, and you can likewise
+replace &lt;code&gt;x × 2ⁿ&lt;/code&gt; with &lt;code&gt;x &amp;lt;&amp;lt; n&lt;/code&gt;. You can also replace &lt;code&gt;⌊ˣ⁄₂⌋&lt;/code&gt; with
+&lt;code&gt;x &amp;gt;&amp;gt; 1&lt;/code&gt; and &lt;code&gt;⌊x/2ⁿ⌋&lt;/code&gt; with &lt;code&gt;x &amp;gt;&amp;gt; n&lt;/code&gt;&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. In fact, in compiled languages,
+your compiler will make these substitutions in the compiled code
+whenever it can, because bit-shifting is faster than multiplication.&lt;/p&gt;
+&lt;p&gt;Although that may take a few minutes to sink in, you&amp;rsquo;re already
+familiar with it in good old base 10: how do you multiply by &lt;code&gt;1000&lt;/code&gt;?
+Just shift left three places (add three zeros). Since you multiply by
+&lt;code&gt;10&lt;/code&gt; each time you shift left once, you can multiply by &lt;code&gt;10³&lt;/code&gt; by
+shifting left &lt;code&gt;3&lt;/code&gt; places.&lt;/p&gt;
+&lt;h3 id=&#34;fractions&#34;&gt;Fractions&lt;/h3&gt;
+&lt;p&gt;We&amp;rsquo;re going to get into it deeply, but you can of course write
+fractions in other bases. In base &lt;code&gt;10&lt;/code&gt;, we divide by ten each time we
+move to the right, so the digit to the right of the “decimal” point is
+of course the ⅒ column. To represent ½, we use ⁵⁄₁₀, and write &lt;code&gt;0.5&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In octal, the column to the right of the point is the ⅛ column, so
+we&amp;rsquo;d use ⁴⁄₈, and write &lt;code&gt;0.4₈&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In binary, it&amp;rsquo;s the ½ column already, so we&amp;rsquo;d use ½, and write
+&lt;code&gt;0.1₂&lt;/code&gt;. ¼ would be &lt;code&gt;0.01₂&lt;/code&gt;, and ¾ would be &lt;code&gt;0.11₂&lt;/code&gt;. Weird, huh? But it
+all makes sense:&lt;/p&gt;
+&lt;div id=&#39;pikchr-3&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-3&#39;)&#34;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:235px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 235.109 106.56&#34;&gt;
+&lt;path d=&#34;M2,37L26,37L26,2L2,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;14&#34; y=&#34;19&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;125%&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M26,37L51,37L51,2L26,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;39&#34; y=&#34;19&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;125%&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M51,37L76,37L76,2L51,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;63&#34; y=&#34;19&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;125%&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M76,37L100,37L100,2L76,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;88&#34; y=&#34;19&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;125%&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M100,37L125,37L125,2L100,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;112&#34; y=&#34;19&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;156.25%&#34; dominant-baseline=&#34;central&#34;&gt;.&lt;/text&gt;
+&lt;path d=&#34;M125,37L149,37L149,2L125,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;137&#34; y=&#34;19&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;125%&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M149,37L174,37L174,2L149,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;162&#34; y=&#34;19&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;125%&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M174,37L199,37L199,2L174,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;186&#34; y=&#34;19&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;125%&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M199,37L223,37L223,2L199,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;211&#34; y=&#34;19&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;125%&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;text x=&#34;14&#34; y=&#34;47&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;8&lt;/text&gt;
+&lt;text x=&#34;39&#34; y=&#34;47&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;4&lt;/text&gt;
+&lt;text x=&#34;63&#34; y=&#34;47&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;2&lt;/text&gt;
+&lt;text x=&#34;88&#34; y=&#34;47&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;text x=&#34;137&#34; y=&#34;47&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;½&lt;/text&gt;
+&lt;text x=&#34;162&#34; y=&#34;47&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;¼&lt;/text&gt;
+&lt;text x=&#34;186&#34; y=&#34;47&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;⅛&lt;/text&gt;
+&lt;text x=&#34;211&#34; y=&#34;47&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1⁄16&lt;/text&gt;
+&lt;text x=&#34;112&#34; y=&#34;91&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;125%&#34; dominant-baseline=&#34;central&#34;&gt;¾ ＝ ½ + ¼&lt;/text&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+box &#34;0&#34; big fit fill lightblue
+box same &#34;0&#34; big
+box same &#34;0&#34; big
+box same &#34;0&#34; big
+box same &#34;.&#34; big big bold
+box same &#34;1&#34; big
+box same &#34;1&#34; big
+box same &#34;0&#34; big
+box same &#34;0&#34; big
+
+text at 1st box .s &#34;8&#34; below italic
+text at 2nd box .s &#34;4&#34; below italic
+text at 3rd box .s &#34;2&#34; below italic
+text at 4th box .s &#34;1&#34; below italic
+text at 6th box .s &#34;½&#34; below italic
+text at 7th box .s &#34;¼&#34; below italic
+text at 8th box .s &#34;⅛&#34; below italic
+text at 9th box .s &#34;1⁄16&#34; below italic
+
+text at 0.5 s of 5th box &#34;¾ ＝ ½ + ¼&#34; big
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;We&amp;rsquo;ll explore how to work with the values of individual bits in the
+next part.&lt;/em&gt;&lt;/p&gt;
+&lt;script&gt;
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle(&#39;hidden&#39;);
+    }
+  }
+&lt;/script&gt;&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;If you&amp;rsquo;re a bit rusty, &lt;code&gt;⌊a⌋&lt;/code&gt; means the next integer (whole
+number) equal to or less than &lt;code&gt;a&lt;/code&gt;. It&amp;rsquo;s called the “floor” of &lt;code&gt;a&lt;/code&gt;:
+&lt;code&gt;⌊2⌋&lt;/code&gt; ＝ &lt;code&gt;2&lt;/code&gt;, &lt;code&gt;⌊1.9⌋&lt;/code&gt; ＝ &lt;code&gt;1&lt;/code&gt;, and &lt;code&gt;⌊−1.9⌋&lt;/code&gt; ＝ &lt;code&gt;−2&lt;/code&gt;. Similarly,
+&lt;code&gt;⌈a⌉&lt;/code&gt; is the “ceiling” of &lt;code&gt;a&lt;/code&gt;: &lt;code&gt;⌈2⌉&lt;/code&gt; ＝ &lt;code&gt;2&lt;/code&gt;, &lt;code&gt;⌈1.9⌉&lt;/code&gt; ＝ &lt;code&gt;2&lt;/code&gt;, and
+&lt;code&gt;⌈−1.9⌉&lt;/code&gt; ＝ &lt;code&gt;−1&lt;/code&gt;.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+    </item>
 
 
 
@@ -683,14 +1082,14 @@ you can have: true/false, yes/no, +/-, on/off, &lt;em&gt;(heads/tails,
 left/right, up/down, &amp;hellip;)&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In many programming languages, you can use binary numbers directly in
 your programs by using a prefix of &lt;code&gt;0b&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# A `0b` prefix indicates a binary number:&lt;/span&gt;
-a &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0b101&lt;/span&gt;      &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 5: 1×1 + 0×2 + 1×4&lt;/span&gt;
-b &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0b11111111&lt;/span&gt; &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 255: 1×1 + 1×2 + 1×4 + 1×8 + 1×16 + 1×32 + 1×64 + 1×128&lt;/span&gt;
-
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# In many languages, you can even break the digis into&lt;/span&gt;
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# groups for readability. Here we use groups of 4 bits:&lt;/span&gt;
-c &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0b1000_0000&lt;/span&gt; &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 128&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;base-16-hexadecimal&#34;&gt;Base 16: “Hexadecimal”&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# A `0b` prefix indicates a binary number:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0b101&lt;/span&gt;      &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 5: 1×1 + 0×2 + 1×4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;b &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0b11111111&lt;/span&gt; &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 255: 1×1 + 1×2 + 1×4 + 1×8 + 1×16 + 1×32 + 1×64 + 1×128&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# In many languages, you can even break the digis into&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# groups for readability. Here we use groups of 4 bits:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;c &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0b1000_0000&lt;/span&gt; &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 128&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;base-16-hexadecimal&#34;&gt;Base 16: “Hexadecimal”&lt;/h2&gt;
 &lt;p&gt;It&amp;rsquo;s very common to use base 16, or “hexadecimal”, numbers in computer
 programs. To expand our repertoire to 16 digits, we use the usual
 &lt;code&gt;0–9&lt;/code&gt; and then add on &lt;code&gt;A–F&lt;/code&gt;: &lt;code&gt;0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F&lt;/code&gt;.&lt;/p&gt;
@@ -881,10 +1280,10 @@ box same &#34;0&#34; bold
 &lt;/div&gt;
 &lt;p&gt;In most programming languages, you can use hexadecimal numbers
 directly in your programs by using a prefix of &lt;code&gt;0x&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# A `0x` prefix indicates a hexadecimal number:&lt;/span&gt;
-a &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0x0101&lt;/span&gt;  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 257: 1×1 + 0×16 + 1×256 + 0×4096&lt;/span&gt;
-b &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0xFF&lt;/span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 255: 15×1 + 15×16&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;why-hexadecimal&#34;&gt;Why hexadecimal?&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# A `0x` prefix indicates a hexadecimal number:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0x0101&lt;/span&gt;  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 257: 1×1 + 0×16 + 1×256 + 0×4096&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;b &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0xFF&lt;/span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 255: 15×1 + 15×16&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;why-hexadecimal&#34;&gt;Why hexadecimal?&lt;/h3&gt;
 &lt;p&gt;We mentioned &lt;a href=&#34;../1b/#computer-memory&#34;&gt;last week&lt;/a&gt; that a byte can hold
 numbers from 0&amp;ndash;255. That&amp;rsquo;s because a byte is made up of 8
 bits. &lt;em&gt;(This is where the
@@ -1023,7 +1422,7 @@ can also write 23&lt;sub&gt;16&lt;/sub&gt;). If you type a “#” into a web fo
 you&amp;rsquo;ll often see it show up as &lt;code&gt;%23&lt;/code&gt; in the URL, as in
 &lt;a href=&#34;https://google.com/search?q=%23&#34;&gt;google.com/search?q=%23&lt;/a&gt;. (You can
 say the octothorpe is “percent encoded” as &lt;code&gt;%23&lt;/code&gt;.)&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;We&amp;rsquo;ll get deeper into binary and working with bits in the next part.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;We&amp;rsquo;ll get deeper into binary and working with bits in the &lt;a href=&#34;../2c/&#34;&gt;next part&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;script&gt;
   function toggleHidden(id){
     for(var c of document.getElementById(id).children){
@@ -1382,16 +1781,16 @@ given &lt;code&gt;b&lt;/code&gt; the same value.&lt;/p&gt;
 &lt;p&gt;What if we have a more complicated value? Many languages have
 “structure” or “struct” types, which can combine pieces of data together. For
 instance, here&amp;rsquo;s a snippet of Go:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Define a “struct” with two fields, both bytes, named `x` and `y`:
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; MyThing &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; {
-  x &lt;span style=&#34;color:#902000&#34;&gt;byte&lt;/span&gt;
-  y &lt;span style=&#34;color:#902000&#34;&gt;byte&lt;/span&gt;
-}
-
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Create a new variable named `a`, of type MyThing, and give it some
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// initial values:
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;a &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; MyThing{ x: &lt;span style=&#34;color:#40a070&#34;&gt;42&lt;/span&gt;, y: &lt;span style=&#34;color:#40a070&#34;&gt;99&lt;/span&gt; }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, what we have is this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Define a “struct” with two fields, both bytes, named `x` and `y`:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; MyThing &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  x &lt;span style=&#34;color:#902000&#34;&gt;byte&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  y &lt;span style=&#34;color:#902000&#34;&gt;byte&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Create a new variable named `a`, of type MyThing, and give it some
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// initial values:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;a &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; MyThing{ x: &lt;span style=&#34;color:#40a070&#34;&gt;42&lt;/span&gt;, y: &lt;span style=&#34;color:#40a070&#34;&gt;99&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, what we have is this:&lt;/p&gt;
 &lt;div id=&#39;pikchr-4&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-4&#39;)&#34;&gt;
 &lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:292px&#39;&gt;
 &lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 292.32 108&#34;&gt;
@@ -1460,9 +1859,9 @@ box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;We can update the individual fields of &lt;code&gt;a&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Update the `9` field of `a` to 17:
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;a.y = &lt;span style=&#34;color:#40a070&#34;&gt;17&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And now we have:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Update the `9` field of `a` to 17:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;a.y = &lt;span style=&#34;color:#40a070&#34;&gt;17&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And now we have:&lt;/p&gt;
 &lt;div id=&#39;pikchr-6&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-6&#39;)&#34;&gt;
 &lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:175px&#39;&gt;
 &lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 175.622 60.48&#34;&gt;
@@ -1486,10 +1885,10 @@ box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;If we now create a variable &lt;code&gt;b&lt;/code&gt; with &lt;code&gt;a&lt;/code&gt;&amp;rsquo;s value:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Create a new variable named `b`, also of type MyThing, and give it
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// the same value as `a`:
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;b &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; a
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We get:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Create a new variable named `b`, also of type MyThing, and give it
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// the same value as `a`:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;b &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; a
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We get:&lt;/p&gt;
 &lt;div id=&#39;pikchr-7&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-7&#39;)&#34;&gt;
 &lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:176px&#39;&gt;
 &lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 176.573 132.48&#34;&gt;
@@ -1531,17 +1930,17 @@ box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 &lt;p&gt;Once again, our program created a &lt;strong&gt;copy&lt;/strong&gt; of the &lt;strong&gt;value&lt;/strong&gt; of &lt;code&gt;a&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;What if we have wider types inside the struct? No problem, they work
 just as described in the &lt;a href=&#34;../1b&#34;&gt;last post&lt;/a&gt;:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Define a struct with two fields, one a byte, and one a 16-bit
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// unsigned integer (which takes up 2 bytes):
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; YourThing &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; {
-  w &lt;span style=&#34;color:#902000&#34;&gt;byte&lt;/span&gt;
-  z &lt;span style=&#34;color:#902000&#34;&gt;uint16&lt;/span&gt;
-}
-
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Create a new variable named `c`, of type YourThing, and give it some
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// initial values:
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;c &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; YourThing{ w: &lt;span style=&#34;color:#40a070&#34;&gt;42&lt;/span&gt;, z: &lt;span style=&#34;color:#40a070&#34;&gt;258&lt;/span&gt; }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Which looks like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Define a struct with two fields, one a byte, and one a 16-bit
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// unsigned integer (which takes up 2 bytes):
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; YourThing &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  w &lt;span style=&#34;color:#902000&#34;&gt;byte&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  z &lt;span style=&#34;color:#902000&#34;&gt;uint16&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Create a new variable named `c`, of type YourThing, and give it some
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// initial values:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;c &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; YourThing{ w: &lt;span style=&#34;color:#40a070&#34;&gt;42&lt;/span&gt;, z: &lt;span style=&#34;color:#40a070&#34;&gt;258&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Which looks like:&lt;/p&gt;
 &lt;div id=&#39;pikchr-8&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-8&#39;)&#34;&gt;
 &lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:364px&#39;&gt;
 &lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 364.32 162.72&#34;&gt;
@@ -1736,20 +2135,20 @@ text at last arc.start &#34;b&#34; big bold below &#34;(1234 = 210 + 4×256)&#34
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;In Go, you&amp;rsquo;d do that like this:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;a &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;42&lt;/span&gt;
-b &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;a
-
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// `b` now points to `a`. It&amp;#39;s value is the address at which a&amp;#39;s value
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// is stored. In Go (and most languages), the computer still keeps
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// track of the fact that it is a &amp;#34;pointer to integer&amp;#34;, not just a
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// generic &amp;#34;pointer&amp;#34;, so that it knows what to do with it if you, say,
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// print the value:
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;
-fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(a)  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// → 42
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;b) &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// → 42, *b is &amp;#34;the value that `b` points&amp;#34; to (`a`)
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(b)  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// → 0xc00009c000, when I ran it; of course it varies
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(&lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;b) &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// → 0xc000094018, this is where `b` is stored
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;(&lt;a href=&#34;https://go.dev/play/p/DlLW6MtzNSd&#34;&gt;live example for you to play
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;42&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;b &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;a
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// `b` now points to `a`. It&amp;#39;s value is the address at which a&amp;#39;s value
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// is stored. In Go (and most languages), the computer still keeps
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// track of the fact that it is a &amp;#34;pointer to integer&amp;#34;, not just a
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// generic &amp;#34;pointer&amp;#34;, so that it knows what to do with it if you, say,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// print the value:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(a)  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// → 42
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;b) &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// → 42, *b is &amp;#34;the value that `b` points&amp;#34; to (`a`)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(b)  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// → 0xc00009c000, when I ran it; of course it varies
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(&lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;b) &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// → 0xc000094018, this is where `b` is stored
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;(&lt;a href=&#34;https://go.dev/play/p/DlLW6MtzNSd&#34;&gt;live example for you to play
 with&lt;/a&gt; - click “run”)&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;That last value—&lt;code&gt;0xc00009c000&lt;/code&gt;—brings up a good point. The example we
 showed above, with &lt;code&gt;b&lt;/code&gt; getting a value of &lt;code&gt;1234&lt;/code&gt;, that fits in just
@@ -1969,61 +2368,61 @@ line up 0.07 down 0.14 up 0.07
 &lt;p&gt;That last pointer is a “null pointer”&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;: by convention, a pointer with
 the value &lt;code&gt;0&lt;/code&gt;—also called &lt;code&gt;null&lt;/code&gt;—points to nothing, and is drawn as ⟶‖&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s create that linked list in Go:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Each Node has some data, and a pointer to the next Node (possibly
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// null)
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; Node &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; {
-	data &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt;
-	next &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;Node
-}
-
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Construct the linked list in the diagram above, the laborious way:
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;node1 &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; Node{data:&lt;span style=&#34;color:#40a070&#34;&gt;42&lt;/span&gt;}
-node2 &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; Node{data:&lt;span style=&#34;color:#40a070&#34;&gt;17&lt;/span&gt;}
-node3 &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; Node{data:&lt;span style=&#34;color:#40a070&#34;&gt;23&lt;/span&gt;}
-node1.next = &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;node2
-node2.next = &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;node3
-node3.next = &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;nil&lt;/span&gt; &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Go spells &amp;#34;null&amp;#34; as &amp;#34;nil&amp;#34;.
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;a &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;node1
-
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Construct the linked list in a more concise way. `&amp;amp;Node{}` is Go
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// shorthand for creating a struct value and then immediately taking
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// its address.
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;a = &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;Node{
-	data: &lt;span style=&#34;color:#40a070&#34;&gt;42&lt;/span&gt;,
-	next: &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;Node{
-		data: &lt;span style=&#34;color:#40a070&#34;&gt;17&lt;/span&gt;,
-		next: &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;Node{
-			data: &lt;span style=&#34;color:#40a070&#34;&gt;23&lt;/span&gt;,
-			next: &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;nil&lt;/span&gt;,
-		},
-	},
-}
-
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Print the linked list by repeatedly following the `next` pointer
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// until we get a null pointer.
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; a &lt;span style=&#34;color:#666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;nil&lt;/span&gt; {
-	fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(a.data)
-	a = a.next
-}
-
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Prints:
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// 42
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// 17
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// 23
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;(&lt;a href=&#34;https://go.dev/play/p/rh067JWmftb&#34;&gt;playground version&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Each Node has some data, and a pointer to the next Node (possibly
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// null)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; Node &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	data &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	next &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;Node
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Construct the linked list in the diagram above, the laborious way:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;node1 &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; Node{data:&lt;span style=&#34;color:#40a070&#34;&gt;42&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node2 &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; Node{data:&lt;span style=&#34;color:#40a070&#34;&gt;17&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node3 &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; Node{data:&lt;span style=&#34;color:#40a070&#34;&gt;23&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node1.next = &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;node2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node2.next = &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;node3
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node3.next = &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;nil&lt;/span&gt; &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Go spells &amp;#34;null&amp;#34; as &amp;#34;nil&amp;#34;.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;a &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;node1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Construct the linked list in a more concise way. `&amp;amp;Node{}` is Go
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// shorthand for creating a struct value and then immediately taking
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// its address.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;a = &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;Node{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	data: &lt;span style=&#34;color:#40a070&#34;&gt;42&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	next: &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;Node{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		data: &lt;span style=&#34;color:#40a070&#34;&gt;17&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		next: &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;Node{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			data: &lt;span style=&#34;color:#40a070&#34;&gt;23&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			next: &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;nil&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		},
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	},
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Print the linked list by repeatedly following the `next` pointer
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// until we get a null pointer.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; a &lt;span style=&#34;color:#666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;nil&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(a.data)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	a = a.next
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Prints:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// 42
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// 17
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// 23
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;(&lt;a href=&#34;https://go.dev/play/p/rh067JWmftb&#34;&gt;playground version&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;values-vs-references&#34;&gt;Values vs References&lt;/h3&gt;
 &lt;p&gt;Once last thing for this part. Remember our earlier &lt;code&gt;MyThing&lt;/code&gt; example?&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Define a “struct” with two fields, both bytes, named `x` and `y`:
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; MyThing &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; {
-  x &lt;span style=&#34;color:#902000&#34;&gt;byte&lt;/span&gt;
-  y &lt;span style=&#34;color:#902000&#34;&gt;byte&lt;/span&gt;
-}
-
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Create a new variable named `a`, of type MyThing, and give it some
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// initial values:
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;a &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; MyThing{ x: &lt;span style=&#34;color:#40a070&#34;&gt;42&lt;/span&gt;, y: &lt;span style=&#34;color:#40a070&#34;&gt;17&lt;/span&gt; }
-b &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; a
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;which copied &lt;code&gt;a&lt;/code&gt;&amp;rsquo;s &lt;em&gt;value&lt;/em&gt; into &lt;code&gt;b&lt;/code&gt;, giving us:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Define a “struct” with two fields, both bytes, named `x` and `y`:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;type&lt;/span&gt; MyThing &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  x &lt;span style=&#34;color:#902000&#34;&gt;byte&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  y &lt;span style=&#34;color:#902000&#34;&gt;byte&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Create a new variable named `a`, of type MyThing, and give it some
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// initial values:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;a &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; MyThing{ x: &lt;span style=&#34;color:#40a070&#34;&gt;42&lt;/span&gt;, y: &lt;span style=&#34;color:#40a070&#34;&gt;17&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;b &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; a
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;which copied &lt;code&gt;a&lt;/code&gt;&amp;rsquo;s &lt;em&gt;value&lt;/em&gt; into &lt;code&gt;b&lt;/code&gt;, giving us:&lt;/p&gt;
 &lt;div id=&#39;pikchr-15&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-15&#39;)&#34;&gt;
 &lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:176px&#39;&gt;
 &lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 176.573 132.48&#34;&gt;
@@ -2063,12 +2462,12 @@ box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;What if &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; were pointers instead?&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Create a new variable named `a`, of type pointer-to-MyThing, and
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// give it some initial values:
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;a &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;MyThing{ x: &lt;span style=&#34;color:#40a070&#34;&gt;42&lt;/span&gt;, y: &lt;span style=&#34;color:#40a070&#34;&gt;17&lt;/span&gt; }
-&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Copy a&amp;#39;s value into b:
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;b &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; a
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, &lt;code&gt;a&lt;/code&gt;&amp;rsquo;s value is a pointer: a 64-bit number, the address of that
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Create a new variable named `a`, of type pointer-to-MyThing, and
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// give it some initial values:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;a &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;MyThing{ x: &lt;span style=&#34;color:#40a070&#34;&gt;42&lt;/span&gt;, y: &lt;span style=&#34;color:#40a070&#34;&gt;17&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Copy a&amp;#39;s value into b:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;b &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; a
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, &lt;code&gt;a&lt;/code&gt;&amp;rsquo;s value is a pointer: a 64-bit number, the address of that
 &lt;code&gt;MyThing&lt;/code&gt; structure. So copying that value into &lt;code&gt;b&lt;/code&gt; makes &lt;code&gt;b&lt;/code&gt; point to
 the &lt;em&gt;same&lt;/em&gt; structure!&lt;/p&gt;
 &lt;div id=&#39;pikchr-16&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-16&#39;)&#34;&gt;
@@ -2114,14 +2513,14 @@ arrow from last dot go right 0.33 then right 0.33 up 0.43 then right 0.33 radius
 &lt;/div&gt;
 &lt;p&gt;If you now change part of what &lt;code&gt;b&lt;/code&gt; points to, you&amp;rsquo;re changing the
 thing &lt;code&gt;a&lt;/code&gt; points to too, since they point to the same value!&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// In Go, you can refer to the `y` field of `b` with `b.y`, whether
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// `b` is a struct value, or a pointer to a struct value. In C, you&amp;#39;d
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// need to use `b-&amp;gt;y` if `b` was a pointer.
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;b.y = &lt;span style=&#34;color:#40a070&#34;&gt;23&lt;/span&gt;
-
-fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(b.y) &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// 23
-&lt;/span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(a.y) &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// 23
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;text&#34;&gt;Text&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// In Go, you can refer to the `y` field of `b` with `b.y`, whether
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// `b` is a struct value, or a pointer to a struct value. In C, you&amp;#39;d
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// need to use `b-&amp;gt;y` if `b` was a pointer.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;b.y = &lt;span style=&#34;color:#40a070&#34;&gt;23&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(b.y) &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// 23
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Println&lt;/span&gt;(a.y) &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// 23
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;text&#34;&gt;Text&lt;/h1&gt;
 &lt;p&gt;We finally have enough background to write about how text is
 stored. Most languages have a &lt;code&gt;string&lt;/code&gt; type, which stores pieces of
 text. A common value for a &lt;code&gt;string&lt;/code&gt; type, under the covers, is a
@@ -2129,8 +2528,8 @@ pointer to an area of memory to hold the text, and integer holding the
 length in bytes.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;The actual characters are stored in memory as we described in the
 &lt;a href=&#34;../1b&#34;&gt;last post&lt;/a&gt;:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;a &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;Hello, world&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div id=&#39;pikchr-17&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-17&#39;)&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#666&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;Hello, world&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div id=&#39;pikchr-17&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-17&#39;)&#34;&gt;
 &lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:619px&#39;&gt;
 &lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 619.446 198.303&#34;&gt;
 &lt;text x=&#34;12&#34; y=&#34;40&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; font-size=&#34;125%&#34; dominant-baseline=&#34;central&#34;&gt;a:&lt;/text&gt;
@@ -2194,7 +2593,6 @@ length in bytes.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class
 &lt;/svg&gt;
 &lt;/div&gt;
 &lt;pre class=&#39;hidden&#39;&gt;
-
 text &#34;a:&#34; big bold
 box width 0.5 height 0.25 fill lightblue thin
 dot at last radius 0.03
@@ -3055,6 +3453,21 @@ industry can be like to people coming in from outside.&lt;/p&gt;
 learning CS: I&amp;rsquo;ll play the grizzled veteran, and come up with
 provocative questions, and we&amp;rsquo;ll meet for an hour every two weeks and
 discuss them. I&amp;rsquo;m excited to see how it goes!&lt;/p&gt;
+&lt;h2 id=&#34;encouragement&#34;&gt;Encouragement&lt;/h2&gt;
+&lt;p&gt;As mentioned above, the genesis of this ramble was trying to fill in
+the gaps that cause bootcamp grads to feel shaky. There&amp;rsquo;s an
+interesting (and hopefully encouraging) thing about the stuff we&amp;rsquo;re
+going to cover: for many of the concepts, after learning, thinking,
+and chatting about them for an hour or two, you&amp;rsquo;ll be more comfortable
+with them than many working programmers!&lt;/p&gt;
+&lt;p&gt;For every CS grad who spent entire classes working with 1s and 0s,
+desigining circuits to add and manipulate binary numbers, there are
+two more programmers who&amp;rsquo;ve spent years working with simple web apps,
+and never learned&amp;mdash;or don&amp;rsquo;t remember&amp;mdash;how to twiddle bits. Even a
+hand-wavy understanding of how the processor&amp;rsquo;s use of memory affects
+the speed at which your program executes will put you ahead of the
+40%&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; of all programmers for whom the CPU is just a complete
+mystery.&lt;/p&gt;
 &lt;h2 id=&#34;week-1&#34;&gt;Week 1&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;1a/&#34;&gt;Questions&lt;/a&gt;&lt;/li&gt;
@@ -3065,7 +3478,19 @@ discuss them. I&amp;rsquo;m excited to see how it goes!&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;2a/&#34;&gt;Questions&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;2b/&#34;&gt;Bases&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;2c/&#34;&gt;Binary and bits&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;83% of all statistics are made up on the spot&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Yes, including this one.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
 </description>
     </item>
 

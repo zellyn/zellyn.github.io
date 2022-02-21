@@ -142,16 +142,16 @@ given <code>b</code> the same value.</p>
 <p>What if we have a more complicated value? Many languages have
 “structure” or “struct” types, which can combine pieces of data together. For
 instance, here&rsquo;s a snippet of Go:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#60a0b0;font-style:italic">// Define a “struct” with two fields, both bytes, named `x` and `y`:
-</span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">type</span> MyThing <span style="color:#007020;font-weight:bold">struct</span> {
-  x <span style="color:#902000">byte</span>
-  y <span style="color:#902000">byte</span>
-}
-
-<span style="color:#60a0b0;font-style:italic">// Create a new variable named `a`, of type MyThing, and give it some
-</span><span style="color:#60a0b0;font-style:italic">// initial values:
-</span><span style="color:#60a0b0;font-style:italic"></span>a <span style="color:#666">:=</span> MyThing{ x: <span style="color:#40a070">42</span>, y: <span style="color:#40a070">99</span> }
-</code></pre></div><p>Now, what we have is this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Define a “struct” with two fields, both bytes, named `x` and `y`:
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">type</span> MyThing <span style="color:#007020;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  x <span style="color:#902000">byte</span>
+</span></span><span style="display:flex;"><span>  y <span style="color:#902000">byte</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Create a new variable named `a`, of type MyThing, and give it some
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// initial values:
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>a <span style="color:#666">:=</span> MyThing{ x: <span style="color:#40a070">42</span>, y: <span style="color:#40a070">99</span> }
+</span></span></code></pre></div><p>Now, what we have is this:</p>
 <div id='pikchr-4' class='pikchr' onclick="toggleHidden('pikchr-4')">
 <div class='pikchr-svg' style='max-width:292px'>
 <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 292.32 108">
@@ -220,9 +220,9 @@ box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 </pre>
 </div>
 <p>We can update the individual fields of <code>a</code>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#60a0b0;font-style:italic">// Update the `9` field of `a` to 17:
-</span><span style="color:#60a0b0;font-style:italic"></span>a.y = <span style="color:#40a070">17</span>
-</code></pre></div><p>And now we have:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Update the `9` field of `a` to 17:
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>a.y = <span style="color:#40a070">17</span>
+</span></span></code></pre></div><p>And now we have:</p>
 <div id='pikchr-6' class='pikchr' onclick="toggleHidden('pikchr-6')">
 <div class='pikchr-svg' style='max-width:175px'>
 <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 175.622 60.48">
@@ -246,10 +246,10 @@ box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 </pre>
 </div>
 <p>If we now create a variable <code>b</code> with <code>a</code>&rsquo;s value:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#60a0b0;font-style:italic">// Create a new variable named `b`, also of type MyThing, and give it
-</span><span style="color:#60a0b0;font-style:italic">// the same value as `a`:
-</span><span style="color:#60a0b0;font-style:italic"></span>b <span style="color:#666">:=</span> a
-</code></pre></div><p>We get:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Create a new variable named `b`, also of type MyThing, and give it
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// the same value as `a`:
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>b <span style="color:#666">:=</span> a
+</span></span></code></pre></div><p>We get:</p>
 <div id='pikchr-7' class='pikchr' onclick="toggleHidden('pikchr-7')">
 <div class='pikchr-svg' style='max-width:176px'>
 <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 176.573 132.48">
@@ -291,17 +291,17 @@ box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 <p>Once again, our program created a <strong>copy</strong> of the <strong>value</strong> of <code>a</code>.</p>
 <p>What if we have wider types inside the struct? No problem, they work
 just as described in the <a href="../1b">last post</a>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#60a0b0;font-style:italic">// Define a struct with two fields, one a byte, and one a 16-bit
-</span><span style="color:#60a0b0;font-style:italic">// unsigned integer (which takes up 2 bytes):
-</span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">type</span> YourThing <span style="color:#007020;font-weight:bold">struct</span> {
-  w <span style="color:#902000">byte</span>
-  z <span style="color:#902000">uint16</span>
-}
-
-<span style="color:#60a0b0;font-style:italic">// Create a new variable named `c`, of type YourThing, and give it some
-</span><span style="color:#60a0b0;font-style:italic">// initial values:
-</span><span style="color:#60a0b0;font-style:italic"></span>c <span style="color:#666">:=</span> YourThing{ w: <span style="color:#40a070">42</span>, z: <span style="color:#40a070">258</span> }
-</code></pre></div><p>Which looks like:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Define a struct with two fields, one a byte, and one a 16-bit
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// unsigned integer (which takes up 2 bytes):
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">type</span> YourThing <span style="color:#007020;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  w <span style="color:#902000">byte</span>
+</span></span><span style="display:flex;"><span>  z <span style="color:#902000">uint16</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Create a new variable named `c`, of type YourThing, and give it some
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// initial values:
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>c <span style="color:#666">:=</span> YourThing{ w: <span style="color:#40a070">42</span>, z: <span style="color:#40a070">258</span> }
+</span></span></code></pre></div><p>Which looks like:</p>
 <div id='pikchr-8' class='pikchr' onclick="toggleHidden('pikchr-8')">
 <div class='pikchr-svg' style='max-width:364px'>
 <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 364.32 162.72">
@@ -496,20 +496,20 @@ text at last arc.start "b" big bold below "(1234 = 210 + 4×256)" below
 </pre>
 </div>
 <p>In Go, you&rsquo;d do that like this:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">a <span style="color:#666">:=</span> <span style="color:#40a070">42</span>
-b <span style="color:#666">:=</span> <span style="color:#666">&amp;</span>a
-
-<span style="color:#60a0b0;font-style:italic">// `b` now points to `a`. It&#39;s value is the address at which a&#39;s value
-</span><span style="color:#60a0b0;font-style:italic">// is stored. In Go (and most languages), the computer still keeps
-</span><span style="color:#60a0b0;font-style:italic">// track of the fact that it is a &#34;pointer to integer&#34;, not just a
-</span><span style="color:#60a0b0;font-style:italic">// generic &#34;pointer&#34;, so that it knows what to do with it if you, say,
-</span><span style="color:#60a0b0;font-style:italic">// print the value:
-</span><span style="color:#60a0b0;font-style:italic"></span>
-fmt.<span style="color:#06287e">Println</span>(a)  <span style="color:#60a0b0;font-style:italic">// → 42
-</span><span style="color:#60a0b0;font-style:italic"></span>fmt.<span style="color:#06287e">Println</span>(<span style="color:#666">*</span>b) <span style="color:#60a0b0;font-style:italic">// → 42, *b is &#34;the value that `b` points&#34; to (`a`)
-</span><span style="color:#60a0b0;font-style:italic"></span>fmt.<span style="color:#06287e">Println</span>(b)  <span style="color:#60a0b0;font-style:italic">// → 0xc00009c000, when I ran it; of course it varies
-</span><span style="color:#60a0b0;font-style:italic"></span>fmt.<span style="color:#06287e">Println</span>(<span style="color:#666">&amp;</span>b) <span style="color:#60a0b0;font-style:italic">// → 0xc000094018, this is where `b` is stored
-</span></code></pre></div><p><em>(<a href="https://go.dev/play/p/DlLW6MtzNSd">live example for you to play
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>a <span style="color:#666">:=</span> <span style="color:#40a070">42</span>
+</span></span><span style="display:flex;"><span>b <span style="color:#666">:=</span> <span style="color:#666">&amp;</span>a
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// `b` now points to `a`. It&#39;s value is the address at which a&#39;s value
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// is stored. In Go (and most languages), the computer still keeps
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// track of the fact that it is a &#34;pointer to integer&#34;, not just a
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// generic &#34;pointer&#34;, so that it knows what to do with it if you, say,
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// print the value:
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>fmt.<span style="color:#06287e">Println</span>(a)  <span style="color:#60a0b0;font-style:italic">// → 42
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>fmt.<span style="color:#06287e">Println</span>(<span style="color:#666">*</span>b) <span style="color:#60a0b0;font-style:italic">// → 42, *b is &#34;the value that `b` points&#34; to (`a`)
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>fmt.<span style="color:#06287e">Println</span>(b)  <span style="color:#60a0b0;font-style:italic">// → 0xc00009c000, when I ran it; of course it varies
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>fmt.<span style="color:#06287e">Println</span>(<span style="color:#666">&amp;</span>b) <span style="color:#60a0b0;font-style:italic">// → 0xc000094018, this is where `b` is stored
+</span></span></span></code></pre></div><p><em>(<a href="https://go.dev/play/p/DlLW6MtzNSd">live example for you to play
 with</a> - click “run”)</em></p>
 <p>That last value—<code>0xc00009c000</code>—brings up a good point. The example we
 showed above, with <code>b</code> getting a value of <code>1234</code>, that fits in just
@@ -729,61 +729,61 @@ line up 0.07 down 0.14 up 0.07
 <p>That last pointer is a “null pointer”<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>: by convention, a pointer with
 the value <code>0</code>—also called <code>null</code>—points to nothing, and is drawn as ⟶‖</p>
 <p>Let&rsquo;s create that linked list in Go:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#60a0b0;font-style:italic">// Each Node has some data, and a pointer to the next Node (possibly
-</span><span style="color:#60a0b0;font-style:italic">// null)
-</span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">type</span> Node <span style="color:#007020;font-weight:bold">struct</span> {
-	data <span style="color:#902000">int</span>
-	next <span style="color:#666">*</span>Node
-}
-
-<span style="color:#60a0b0;font-style:italic">// Construct the linked list in the diagram above, the laborious way:
-</span><span style="color:#60a0b0;font-style:italic"></span>node1 <span style="color:#666">:=</span> Node{data:<span style="color:#40a070">42</span>}
-node2 <span style="color:#666">:=</span> Node{data:<span style="color:#40a070">17</span>}
-node3 <span style="color:#666">:=</span> Node{data:<span style="color:#40a070">23</span>}
-node1.next = <span style="color:#666">&amp;</span>node2
-node2.next = <span style="color:#666">&amp;</span>node3
-node3.next = <span style="color:#007020;font-weight:bold">nil</span> <span style="color:#60a0b0;font-style:italic">// Go spells &#34;null&#34; as &#34;nil&#34;.
-</span><span style="color:#60a0b0;font-style:italic"></span>a <span style="color:#666">:=</span> <span style="color:#666">&amp;</span>node1
-
-<span style="color:#60a0b0;font-style:italic">// Construct the linked list in a more concise way. `&amp;Node{}` is Go
-</span><span style="color:#60a0b0;font-style:italic">// shorthand for creating a struct value and then immediately taking
-</span><span style="color:#60a0b0;font-style:italic">// its address.
-</span><span style="color:#60a0b0;font-style:italic"></span>a = <span style="color:#666">&amp;</span>Node{
-	data: <span style="color:#40a070">42</span>,
-	next: <span style="color:#666">&amp;</span>Node{
-		data: <span style="color:#40a070">17</span>,
-		next: <span style="color:#666">&amp;</span>Node{
-			data: <span style="color:#40a070">23</span>,
-			next: <span style="color:#007020;font-weight:bold">nil</span>,
-		},
-	},
-}
-
-<span style="color:#60a0b0;font-style:italic">// Print the linked list by repeatedly following the `next` pointer
-</span><span style="color:#60a0b0;font-style:italic">// until we get a null pointer.
-</span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">for</span> a <span style="color:#666">!=</span> <span style="color:#007020;font-weight:bold">nil</span> {
-	fmt.<span style="color:#06287e">Println</span>(a.data)
-	a = a.next
-}
-
-<span style="color:#60a0b0;font-style:italic">// Prints:
-</span><span style="color:#60a0b0;font-style:italic">// 42
-</span><span style="color:#60a0b0;font-style:italic">// 17
-</span><span style="color:#60a0b0;font-style:italic">// 23
-</span></code></pre></div><p><em>(<a href="https://go.dev/play/p/rh067JWmftb">playground version</a>)</em></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Each Node has some data, and a pointer to the next Node (possibly
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// null)
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">type</span> Node <span style="color:#007020;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>	data <span style="color:#902000">int</span>
+</span></span><span style="display:flex;"><span>	next <span style="color:#666">*</span>Node
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Construct the linked list in the diagram above, the laborious way:
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>node1 <span style="color:#666">:=</span> Node{data:<span style="color:#40a070">42</span>}
+</span></span><span style="display:flex;"><span>node2 <span style="color:#666">:=</span> Node{data:<span style="color:#40a070">17</span>}
+</span></span><span style="display:flex;"><span>node3 <span style="color:#666">:=</span> Node{data:<span style="color:#40a070">23</span>}
+</span></span><span style="display:flex;"><span>node1.next = <span style="color:#666">&amp;</span>node2
+</span></span><span style="display:flex;"><span>node2.next = <span style="color:#666">&amp;</span>node3
+</span></span><span style="display:flex;"><span>node3.next = <span style="color:#007020;font-weight:bold">nil</span> <span style="color:#60a0b0;font-style:italic">// Go spells &#34;null&#34; as &#34;nil&#34;.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>a <span style="color:#666">:=</span> <span style="color:#666">&amp;</span>node1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Construct the linked list in a more concise way. `&amp;Node{}` is Go
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// shorthand for creating a struct value and then immediately taking
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// its address.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>a = <span style="color:#666">&amp;</span>Node{
+</span></span><span style="display:flex;"><span>	data: <span style="color:#40a070">42</span>,
+</span></span><span style="display:flex;"><span>	next: <span style="color:#666">&amp;</span>Node{
+</span></span><span style="display:flex;"><span>		data: <span style="color:#40a070">17</span>,
+</span></span><span style="display:flex;"><span>		next: <span style="color:#666">&amp;</span>Node{
+</span></span><span style="display:flex;"><span>			data: <span style="color:#40a070">23</span>,
+</span></span><span style="display:flex;"><span>			next: <span style="color:#007020;font-weight:bold">nil</span>,
+</span></span><span style="display:flex;"><span>		},
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Print the linked list by repeatedly following the `next` pointer
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// until we get a null pointer.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">for</span> a <span style="color:#666">!=</span> <span style="color:#007020;font-weight:bold">nil</span> {
+</span></span><span style="display:flex;"><span>	fmt.<span style="color:#06287e">Println</span>(a.data)
+</span></span><span style="display:flex;"><span>	a = a.next
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Prints:
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// 42
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// 17
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// 23
+</span></span></span></code></pre></div><p><em>(<a href="https://go.dev/play/p/rh067JWmftb">playground version</a>)</em></p>
 <h3 id="values-vs-references">Values vs References</h3>
 <p>Once last thing for this part. Remember our earlier <code>MyThing</code> example?</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#60a0b0;font-style:italic">// Define a “struct” with two fields, both bytes, named `x` and `y`:
-</span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">type</span> MyThing <span style="color:#007020;font-weight:bold">struct</span> {
-  x <span style="color:#902000">byte</span>
-  y <span style="color:#902000">byte</span>
-}
-
-<span style="color:#60a0b0;font-style:italic">// Create a new variable named `a`, of type MyThing, and give it some
-</span><span style="color:#60a0b0;font-style:italic">// initial values:
-</span><span style="color:#60a0b0;font-style:italic"></span>a <span style="color:#666">:=</span> MyThing{ x: <span style="color:#40a070">42</span>, y: <span style="color:#40a070">17</span> }
-b <span style="color:#666">:=</span> a
-</code></pre></div><p>which copied <code>a</code>&rsquo;s <em>value</em> into <code>b</code>, giving us:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Define a “struct” with two fields, both bytes, named `x` and `y`:
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">type</span> MyThing <span style="color:#007020;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  x <span style="color:#902000">byte</span>
+</span></span><span style="display:flex;"><span>  y <span style="color:#902000">byte</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Create a new variable named `a`, of type MyThing, and give it some
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// initial values:
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>a <span style="color:#666">:=</span> MyThing{ x: <span style="color:#40a070">42</span>, y: <span style="color:#40a070">17</span> }
+</span></span><span style="display:flex;"><span>b <span style="color:#666">:=</span> a
+</span></span></code></pre></div><p>which copied <code>a</code>&rsquo;s <em>value</em> into <code>b</code>, giving us:</p>
 <div id='pikchr-15' class='pikchr' onclick="toggleHidden('pikchr-15')">
 <div class='pikchr-svg' style='max-width:176px'>
 <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 176.573 132.48">
@@ -823,12 +823,12 @@ box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 </pre>
 </div>
 <p>What if <code>a</code> and <code>b</code> were pointers instead?</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#60a0b0;font-style:italic">// Create a new variable named `a`, of type pointer-to-MyThing, and
-</span><span style="color:#60a0b0;font-style:italic">// give it some initial values:
-</span><span style="color:#60a0b0;font-style:italic"></span>a <span style="color:#666">:=</span> <span style="color:#666">&amp;</span>MyThing{ x: <span style="color:#40a070">42</span>, y: <span style="color:#40a070">17</span> }
-<span style="color:#60a0b0;font-style:italic">// Copy a&#39;s value into b:
-</span><span style="color:#60a0b0;font-style:italic"></span>b <span style="color:#666">:=</span> a
-</code></pre></div><p>Now, <code>a</code>&rsquo;s value is a pointer: a 64-bit number, the address of that
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Create a new variable named `a`, of type pointer-to-MyThing, and
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// give it some initial values:
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>a <span style="color:#666">:=</span> <span style="color:#666">&amp;</span>MyThing{ x: <span style="color:#40a070">42</span>, y: <span style="color:#40a070">17</span> }
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Copy a&#39;s value into b:
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>b <span style="color:#666">:=</span> a
+</span></span></code></pre></div><p>Now, <code>a</code>&rsquo;s value is a pointer: a 64-bit number, the address of that
 <code>MyThing</code> structure. So copying that value into <code>b</code> makes <code>b</code> point to
 the <em>same</em> structure!</p>
 <div id='pikchr-16' class='pikchr' onclick="toggleHidden('pikchr-16')">
@@ -874,14 +874,14 @@ arrow from last dot go right 0.33 then right 0.33 up 0.43 then right 0.33 radius
 </div>
 <p>If you now change part of what <code>b</code> points to, you&rsquo;re changing the
 thing <code>a</code> points to too, since they point to the same value!</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#60a0b0;font-style:italic">// In Go, you can refer to the `y` field of `b` with `b.y`, whether
-</span><span style="color:#60a0b0;font-style:italic">// `b` is a struct value, or a pointer to a struct value. In C, you&#39;d
-</span><span style="color:#60a0b0;font-style:italic">// need to use `b-&gt;y` if `b` was a pointer.
-</span><span style="color:#60a0b0;font-style:italic"></span>b.y = <span style="color:#40a070">23</span>
-
-fmt.<span style="color:#06287e">Println</span>(b.y) <span style="color:#60a0b0;font-style:italic">// 23
-</span><span style="color:#60a0b0;font-style:italic"></span>fmt.<span style="color:#06287e">Println</span>(a.y) <span style="color:#60a0b0;font-style:italic">// 23
-</span></code></pre></div><h1 id="text">Text</h1>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// In Go, you can refer to the `y` field of `b` with `b.y`, whether
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// `b` is a struct value, or a pointer to a struct value. In C, you&#39;d
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// need to use `b-&gt;y` if `b` was a pointer.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>b.y = <span style="color:#40a070">23</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fmt.<span style="color:#06287e">Println</span>(b.y) <span style="color:#60a0b0;font-style:italic">// 23
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>fmt.<span style="color:#06287e">Println</span>(a.y) <span style="color:#60a0b0;font-style:italic">// 23
+</span></span></span></code></pre></div><h1 id="text">Text</h1>
 <p>We finally have enough background to write about how text is
 stored. Most languages have a <code>string</code> type, which stores pieces of
 text. A common value for a <code>string</code> type, under the covers, is a
@@ -889,8 +889,8 @@ pointer to an area of memory to hold the text, and integer holding the
 length in bytes.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
 <p>The actual characters are stored in memory as we described in the
 <a href="../1b">last post</a>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">a <span style="color:#666">:=</span> <span style="color:#4070a0">&#34;Hello, world&#34;</span>
-</code></pre></div><div id='pikchr-17' class='pikchr' onclick="toggleHidden('pikchr-17')">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>a <span style="color:#666">:=</span> <span style="color:#4070a0">&#34;Hello, world&#34;</span>
+</span></span></code></pre></div><div id='pikchr-17' class='pikchr' onclick="toggleHidden('pikchr-17')">
 <div class='pikchr-svg' style='max-width:619px'>
 <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 619.446 198.303">
 <text x="12" y="40" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a:</text>
@@ -954,7 +954,6 @@ length in bytes.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc
 </svg>
 </div>
 <pre class='hidden'>
-
 text "a:" big bold
 box width 0.5 height 0.25 fill lightblue thin
 dot at last radius 0.03

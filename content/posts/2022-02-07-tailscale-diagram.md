@@ -30,7 +30,7 @@ really are great.
 <!-- make the image wider than the usual 600px in this theme -->
 <div style='width:700px;padding:auto;position:relative;left:-75px'>
 
-```pikchr {toggle=true}
+```pikchr
 topmargin = 1
 fontscale = 3
 color = 0xc65835 # Orange

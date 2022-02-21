@@ -15,7 +15,7 @@ spurs implementations in other publishing pipelines.
 
 Actually, it's just the bottom part of an even longer yak-shave!
 
-```pikchr {toggle=true,widthlimit=FALSE}
+```pikchr {widthlimit=FALSE}
 down
 box width 3.5in height 0.2in fill 0xc5d8ef \
                        "open my garage with a raspberry pi"
@@ -120,7 +120,7 @@ clever, but learned to keep things as similar as possible.
 
 &nbsp; <!-- vertical spacer -->
 
-```pikchr {toggle=true}
+```pikchr
 circle radius 1 fill yellow
 arc from -0.75,0 to 0,-0.75 thick
 arc same from 0,-0.75 to 0.75,0

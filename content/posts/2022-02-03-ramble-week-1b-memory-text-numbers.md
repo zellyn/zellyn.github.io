@@ -31,7 +31,7 @@ and up. The laptop I'm typing this on has 32MB of memory, or
       bigger (for terabytes) than they really are.
 
 
-```pikchr {toggle=true}
+```pikchr
 boxwid /=4
 boxht /= 2
 box fill lightblue
@@ -89,7 +89,7 @@ terminal to see a list of ASCII codes. Ignore the hexadecimal (for
 now) and octal (forever) sections; the decimal section at the bottom
 is useful.
 
-```pikchr {toggle=true}
+```pikchr
 right
 text "“Hello, world”"
 arrow from last text.e - (0.12,0) width linewid/2
@@ -139,7 +139,7 @@ text at 12th box.n "11" above
 Storing numbers in the boxes is easy if they're between 0 and
 255. Just stick them in there!
 
-```pikchr {toggle=true}
+```pikchr
 box width 0.5 * linewid height 0.5*linewid fill lightblue "42" bold
 box same "17" bold
 box same "0" bold
@@ -154,7 +154,7 @@ text at 4th box.n "3" above
 For negative numbers, we pretend some of the numbers are
 negative:
 
-```pikchr {toggle=true}
+```pikchr
 down
 box width linewid height 0.5*linewid "0"
 box same "1"
@@ -193,7 +193,7 @@ Probably, it's better to think of it in
 [modular](https://www.youtube.com/watch?v=5OjZWSdxlU0)
 ([clock](http://math.ucdenver.edu/~wcherowi/clockar.html)) arithmetic:
 
-```pikchr {toggle=true}
+```pikchr
 circle radius 1.5 fill 0xd8ecf3
 
 define $inner {
@@ -254,7 +254,7 @@ We can do the same with bytes: we have **256** choices, 0–255, and
 then spill over to the next space, whose value is multiplied by
 **256**.
 
-```pikchr {toggle=true}
+```pikchr
 down
 box width linewid height 0.5*linewid "0"
 box same "1"
