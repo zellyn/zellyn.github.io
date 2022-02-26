@@ -1,5 +1,5 @@
 ---
-title: "CS Ramble — Week 2c - Binary and Bits"
+title: "CS Ramble — Week 2c - binary and bits"
 slug: "cs-ramble/2c"
 date: 2022-02-17T21:30:00-05:00
 tags: ['ramble', 'week2']
@@ -9,7 +9,7 @@ _This is post is part of [week 2](../2a/) of [A Ramble Around
 CS](../)._
 
 In this post, we're going to become more familiar with thinking in
-binary, and messing around with individual bits: “bit twiddling”.
+binary.
 
 ## Basics
 
@@ -235,5 +235,5 @@ text at 9th box .s "1⁄16" below italic
 text at 0.5 s of 5th box "¾ ＝ ½ + ¼" big
 ```
 
-_We'll explore how to work with the values of individual bits in the
-next part._
+_We'll explore how to work with the values of individual bits or
+true/false values in the [next part](../2d/)._

@@ -5,6 +5,21 @@ title: 'Projects: TODO'
 
 This is a list of side projects I would _like_ to do.
 
+```pikchr
+box "Get new idea"
+arrow
+box "Start new" "project"
+down
+arrow
+box "Tell" "everyone"
+left
+move
+box "Finish" "project"
+arrow from 3rd box.w go 0.25 w then 0.5 n then left until even with 1st box then to 1st box.s
+```
+
+<center><i><a href="https://twitter.com/jmspool/status/1496552435392860161">source</a></i></center>
+
 I'm trying to create a structured list of next steps: hopefully
 that'll make it easier to pick off tasks to work on, and (less likely)
 attract interest from others.

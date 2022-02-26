@@ -1,5 +1,5 @@
 ---
-title: "CS Ramble — Week 2b - Bases"
+title: "CS Ramble — Week 2b - bases"
 slug: "cs-ramble/2b"
 date: 2022-02-16T20:00:00-05:00
 tags: ['ramble', 'week2']

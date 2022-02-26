@@ -5,14 +5,538 @@
     <link>https://zellyn.com/</link>
     <description>Recent content on Zellyn Hunter</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 17 Feb 2022 21:30:00 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 25 Feb 2022 20:10:00 -0500</lastBuildDate>
 
 	<atom:link href="https://zellyn.com/index.xml" rel="self" type="application/rss+xml" />
 
 
 
     <item>
-      <title>CS Ramble — Week 2c - Binary and Bits</title>
+      <title>CS Ramble — Week 2d - boolean logic</title>
+      <link>https://zellyn.com/2022/02/cs-ramble/2d/</link>
+      <pubDate>Fri, 25 Feb 2022 20:10:00 -0500</pubDate>
+
+      <guid>https://zellyn.com/2022/02/cs-ramble/2d/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;week 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
+CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In this post, we&amp;rsquo;re going to become more familiar with messing around
+with individual bits: “bit twiddling”.&lt;/p&gt;
+&lt;h2 id=&#34;and-or-not-etc&#34;&gt;And, Or, Not, etc.&lt;/h2&gt;
+&lt;p&gt;When dealing with bits&amp;mdash;or with “boolean” values (&lt;code&gt;True&lt;/code&gt; or
+&lt;code&gt;False&lt;/code&gt;)&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&amp;mdash;we talk about value a &lt;strong&gt;&lt;em&gt;and&lt;/em&gt;&lt;/strong&gt; value b, value a
+&lt;strong&gt;&lt;em&gt;or&lt;/em&gt;&lt;/strong&gt; value b, etc. They have more precise meanings than their
+normal English usage:&lt;/p&gt;
+&lt;p&gt;In normal usage, you might say, “I&amp;rsquo;ll wash the dishes if you take the
+trash out &lt;strong&gt;&lt;em&gt;and&lt;/em&gt;&lt;/strong&gt; feed the dog.“ The first part (washing the dishes)
+will be true if both (taking the trash out) &lt;strong&gt;&lt;em&gt;and&lt;/em&gt;&lt;/strong&gt; (feeding the
+dog) are true. This actually corresponds pretty much exactly to
+boolean values:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;a&lt;/th&gt;
+&lt;th&gt;b&lt;/th&gt;
+&lt;th&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;a &lt;em&gt;and&lt;/em&gt; b&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;False&lt;/td&gt;
+&lt;td&gt;False&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;False&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;False&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;False&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;False&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;False&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Using &lt;code&gt;1&lt;/code&gt; to represent &lt;code&gt;True&lt;/code&gt;, and &lt;code&gt;0&lt;/code&gt; for &lt;code&gt;False&lt;/code&gt;, we could also
+write that like so:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;a&lt;/th&gt;
+&lt;th&gt;b&lt;/th&gt;
+&lt;th&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;a &lt;em&gt;and&lt;/em&gt; b&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;In English, though, when we say, “I&amp;rsquo;m going to take the trash out
+&lt;strong&gt;&lt;em&gt;or&lt;/em&gt;&lt;/strong&gt; feed the dog,” we usually mean we&amp;rsquo;ll do one or the other, but
+not both.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;With boolean logic, “or” doesn&amp;rsquo;t imply that both won&amp;rsquo;t be true. Here&amp;rsquo;s
+the truth table:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;a&lt;/th&gt;
+&lt;th&gt;b&lt;/th&gt;
+&lt;th&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;a &lt;em&gt;or&lt;/em&gt; b&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;False&lt;/td&gt;
+&lt;td&gt;False&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;False&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;False&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;False&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;And again with &lt;code&gt;0&lt;/code&gt; and &lt;code&gt;1&lt;/code&gt; (which we&amp;rsquo;ll stick to from now on):&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;a&lt;/th&gt;
+&lt;th&gt;b&lt;/th&gt;
+&lt;th&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;a &lt;em&gt;or&lt;/em&gt; b&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The word for “a or b, &lt;em&gt;but not both&lt;/em&gt;” is called “exclusive or”
+(“xor”), and means what it sounds like:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;a&lt;/th&gt;
+&lt;th&gt;b&lt;/th&gt;
+&lt;th&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;a &lt;em&gt;xor&lt;/em&gt; b&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;False&lt;/td&gt;
+&lt;td&gt;False&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;False&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;False&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;False&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;True&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;mark&gt;False&lt;/mark&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;There&amp;rsquo;s one more basic boolean operation: &lt;strong&gt;&lt;em&gt;not&lt;/em&gt;&lt;/strong&gt;:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;a&lt;/th&gt;
+&lt;th&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;&lt;em&gt;not&lt;/em&gt; a&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;an-aside-circuits-and-gates&#34;&gt;An aside: circuits and gates&lt;/h3&gt;
+&lt;p&gt;In an electrical circuit, we call the components that perform these
+operations “gates”, and use the following symbols:&lt;/p&gt;
+&lt;div id=&#39;pikchr-0&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-0&#39;)&#34;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:253px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 253.987 508.32&#34;&gt;
+&lt;path d=&#34;M53,74L111,74&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M111,74Q147,74 147,38&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M147,38Q147,2 111,2&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M111,2L53,2&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M53,2L53,74&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;97&#34; y=&#34;38&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;AND&lt;/text&gt;
+&lt;path d=&#34;M147,38L183,38&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;183&#34; y=&#34;38&#34; text-anchor=&#34;start&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt; a and b&lt;/text&gt;
+&lt;path d=&#34;M53,23L17,23&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;17&#34; y=&#34;23&#34; text-anchor=&#34;end&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;a &lt;/text&gt;
+&lt;path d=&#34;M53,52L17,52&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;17&#34; y=&#34;52&#34; text-anchor=&#34;end&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;b &lt;/text&gt;
+&lt;path d=&#34;M53,146 L 82,146 Q 111,146 129,164 L 147,182&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M53,218 L 82,218 Q 111,218 129,200 L 147,182&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M53,146 L 61,156 Q 68,167 68,182 Q 68,196 61,207 L 53,218&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;99&#34; y=&#34;182&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;OR&lt;/text&gt;
+&lt;path d=&#34;M147,182L183,182&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;183&#34; y=&#34;182&#34; text-anchor=&#34;start&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt; a or b&lt;/text&gt;
+&lt;path d=&#34;M66,167L17,167&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;17&#34; y=&#34;167&#34; text-anchor=&#34;end&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;a &lt;/text&gt;
+&lt;path d=&#34;M66,196L17,196&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;17&#34; y=&#34;196&#34; text-anchor=&#34;end&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;b &lt;/text&gt;
+&lt;path d=&#34;M58,290 L 87,290 Q 116,290 134,308 L 152,326&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M58,362 L 87,362 Q 116,362 134,344 L 152,326&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M58,290 L 66,300 Q 73,311 73,326 Q 73,340 66,351 L 58,362&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M48,290 L 56,300 Q 63,311 63,326 Q 63,340 56,351 L 48,362&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;106&#34; y=&#34;326&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;XOR&lt;/text&gt;
+&lt;path d=&#34;M152,326L188,326&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;188&#34; y=&#34;326&#34; text-anchor=&#34;start&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt; a xor b&lt;/text&gt;
+&lt;path d=&#34;M61,311L18,311&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;18&#34; y=&#34;311&#34; text-anchor=&#34;end&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;a &lt;/text&gt;
+&lt;path d=&#34;M61,340L18,340&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;18&#34; y=&#34;340&#34; text-anchor=&#34;end&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;b &lt;/text&gt;
+&lt;path d=&#34;M57,506L57,434L129,470Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke-linejoin:round;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;circle cx=&#34;136&#34; cy=&#34;470&#34; r=&#34;7.2&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;85&#34; y=&#34;470&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;NOT&lt;/text&gt;
+&lt;path d=&#34;M143,470L187,470&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;187&#34; y=&#34;470&#34; text-anchor=&#34;start&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt; a not b&lt;/text&gt;
+&lt;path d=&#34;M57,455L18,455&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;18&#34; y=&#34;455&#34; text-anchor=&#34;end&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;a &lt;/text&gt;
+&lt;path d=&#34;M57,484L18,484&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;18&#34; y=&#34;484&#34; text-anchor=&#34;end&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;b &lt;/text&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+
+AND: [
+	right; line 0.4; arc
+	up; arc
+	left; line 0.4
+	down; line 0.5
+] at (0,0)
+text at AND - (0.02,0) &#34;AND&#34; bold
+
+line from AND.e right 0.25
+text at last line.e &#34; a and b&#34; ljust
+line from AND.w + (0,0.1) left 0.25
+text at last line.w &#34;a &#34; rjust
+line from AND.w - (0,0.1) left 0.25
+text at last line.w &#34;b &#34; rjust
+
+OR: [
+	line from (0, 0.25) then right 0.4 then down 0.25 right 0.25 radius 0.25
+	line from (0, -0.25) then right 0.4 then up 0.25 right 0.25 radius 0.25
+	line from (0, 0.25) to (0.1,0.1) to (0.1, -0.1) to (0, -0.25) radius 0.25
+] at (0,-1)
+text at OR - (0.01,0)  &#34;OR&#34; bold
+
+line from OR.e right 0.25
+text at last line.e &#34; a or b&#34; ljust
+line from OR.w + (0.09,0.1) left 0.34
+text at last line.w &#34;a &#34; rjust
+line from OR.w + (0.09,-0.1) left 0.34
+text at last line.w &#34;b &#34; rjust
+
+XOR: [
+	line from (0, 0.25) then right 0.4 then down 0.25 right 0.25 radius 0.25
+	line from (0, -0.25) then right 0.4 then up 0.25 right 0.25 radius 0.25
+	line from (0, 0.25) to (0.1,0.1) to (0.1, -0.1) to (0, -0.25) radius 0.25
+	line from (-0.07, 0.25) to (0.03,0.1) to (0.03, -0.1) to (-0.07, -0.25) radius 0.25
+] at (0,-2)
+text at XOR + (0.04,0) &#34;XOR&#34; bold
+
+line from XOR.e right 0.25
+text at last line.e &#34; a xor b&#34; ljust
+line from XOR.w + (0.09,0.1) left 0.3
+text at last line.w &#34;a &#34; rjust
+line from XOR.w + (0.09,-0.1) left 0.3
+text at last line.w &#34;b &#34; rjust
+
+NOT: [
+	line from (0, 0) then up 0.5 then right 0.5 down 0.25 close
+	circle radius 0.05 with w at last line.e
+] at (0,-3)
+text at NOT - (0.105,0) &#34;NOT&#34; bold
+
+line from NOT.e right 0.3
+text at last line.e &#34; a not b&#34; ljust
+line from NOT.w + (0,0.1) left 0.27
+text at last line.w &#34;a &#34; rjust
+line from NOT.w + (0,-0.1) left 0.27
+text at last line.w &#34;b &#34; rjust
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;A guick search yielded a &lt;a href=&#34;https://youtu.be/kbXwFWMl6WA&#34;&gt;decent YouTube
+video&lt;/a&gt; on simple gates. To see a more
+complex example of how to combine several gates to do something
+useful, go to &lt;a href=&#34;https://sciencedemos.org.uk/logic_gates.php&#34;&gt;this site&lt;/a&gt;
+and choose the “4-bit addition” preset.&lt;/p&gt;
+&lt;h2 id=&#34;anding-and-oring-bits&#34;&gt;“ANDing” and “ORing” bits&lt;/h2&gt;
+&lt;p&gt;Just as we can &lt;code&gt;and&lt;/code&gt; together two bits, we can &lt;code&gt;and&lt;/code&gt; together two
+numbers each made up of many bits: we just perform the &lt;code&gt;and&lt;/code&gt; bit by
+bit:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;a&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0 1 0 1 0 1 1 0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;b&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1 0 1 1 0 0 1 0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;a &lt;em&gt;and&lt;/em&gt; b&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0 0 0 1 0 0 1 0 &lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Same with &lt;code&gt;or:&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;a&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0 1 0 1 0 1 1 0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;b&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1 0 1 1 0 0 1 0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;a &lt;em&gt;or&lt;/em&gt; b&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1 1 1 1 0 1 1 0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;xor:&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;a&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0 1 0 1 0 1 1 0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;b&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1 0 1 1 0 0 1 0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;a &lt;em&gt;or&lt;/em&gt; b&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1 1 1 0 0 1 0 0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;not:&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;a&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0 1 0 1 0 1 1 0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;&lt;em&gt;not&lt;/em&gt; a&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1 0 1 0 1 0 0 1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;In Go code, these operations would use &lt;code&gt;&amp;amp;&lt;/code&gt; for &lt;code&gt;and&lt;/code&gt;, &lt;code&gt;|&lt;/code&gt; for &lt;code&gt;or&lt;/code&gt;,
+&lt;code&gt;^&lt;/code&gt; for &lt;code&gt;xor&lt;/code&gt;, and a prefixed &lt;code&gt;^&lt;/code&gt; for &lt;code&gt;not&lt;/code&gt; (most languages use a
+prefixed &lt;code&gt;~&lt;/code&gt;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;var&lt;/span&gt; a &lt;span style=&#34;color:#902000&#34;&gt;uint8&lt;/span&gt; = &lt;span style=&#34;color:#40a070&#34;&gt;0b01010110&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;var&lt;/span&gt; b &lt;span style=&#34;color:#902000&#34;&gt;uint8&lt;/span&gt; = &lt;span style=&#34;color:#40a070&#34;&gt;0b10110010&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Printf&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;a:       %08b\n&amp;#34;&lt;/span&gt;, a)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Printf&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;b:       %08b\n&amp;#34;&lt;/span&gt;, b)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Printf&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;a and b: %08b\n&amp;#34;&lt;/span&gt;, a&lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;b)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Printf&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;a or b:  %08b\n&amp;#34;&lt;/span&gt;, a|b)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Printf&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;a xor b: %08b\n&amp;#34;&lt;/span&gt;, a^b)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fmt.&lt;span style=&#34;color:#06287e&#34;&gt;Printf&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;not a:   %08b\n&amp;#34;&lt;/span&gt;, ^a)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;a:       01010110
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;b:       10110010
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;a and b: 00010010
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;a or b:  11110110
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;a xor b: 11100100
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;not a:   10101001
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div align=&#34;center&#34;&gt;&lt;i&gt;(playground version &lt;a href=&#34;https://go.dev/play/p/9IbjCDynXWf&#34;&gt;here&lt;/a&gt;)&lt;/i&gt;&lt;/div&gt;
+&lt;p&gt;In Python, it would look very similar:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0b01010110&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;b &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0b10110010&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;a:       &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# a:       01010110&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;b:       &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# b:       01010110&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;a and b: &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;b&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# a and b: 00010010&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;a or b:  &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#666&#34;&gt;|&lt;/span&gt;b&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# a or b:  11110110&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;a xor b: &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#666&#34;&gt;^&lt;/span&gt;b&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# a xor b: 11100100&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# For not, we have to force the result back into the range [0,255].&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# (If the highest bit in a number is set, the number is&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# interpreted as a negative number.)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;not a:   &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;~&lt;/span&gt;a &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# not a:   10101001&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;In the next part, we&amp;rsquo;ll learn how to read and change the values of individual bits.&lt;/em&gt;&lt;/p&gt;
+&lt;script&gt;
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle(&#39;hidden&#39;);
+    }
+  }
+&lt;/script&gt;&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Named after &lt;a href=&#34;https://www.irishphilosophy.com/2014/12/08/ones-and-zeros/&#34;&gt;George Boole&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Although, of course, if I said, “I&amp;rsquo;ll wash the dishes if you
+take the trash out &lt;strong&gt;&lt;em&gt;or&lt;/em&gt;&lt;/strong&gt; feed the dog,“ and you did both, I&amp;rsquo;d still
+wash the dishes!&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+    </item>
+
+
+
+    <item>
+      <title>CS Ramble — Week 2c - binary and bits</title>
       <link>https://zellyn.com/2022/02/cs-ramble/2c/</link>
       <pubDate>Thu, 17 Feb 2022 21:30:00 -0500</pubDate>
 
@@ -20,7 +544,7 @@
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;week 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In this post, we&amp;rsquo;re going to become more familiar with thinking in
-binary, and messing around with individual bits: “bit twiddling”.&lt;/p&gt;
+binary.&lt;/p&gt;
 &lt;h2 id=&#34;basics&#34;&gt;Basics&lt;/h2&gt;
 &lt;p&gt;Let&amp;rsquo;s use our example byte from last time to show the anatomy of a byte: &lt;code&gt;0b10111001 == 0xB9 == 185&lt;/code&gt;&lt;/p&gt;
 &lt;div id=&#39;pikchr-0&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-0&#39;)&#34;&gt;
@@ -385,8 +909,8 @@ text at 9th box .s &#34;1⁄16&#34; below italic
 text at 0.5 s of 5th box &#34;¾ ＝ ½ + ¼&#34; big
 &lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;em&gt;We&amp;rsquo;ll explore how to work with the values of individual bits in the
-next part.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;We&amp;rsquo;ll explore how to work with the values of individual bits or
+true/false values in the &lt;a href=&#34;../2d/&#34;&gt;next part&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;script&gt;
   function toggleHidden(id){
     for(var c of document.getElementById(id).children){
@@ -411,7 +935,7 @@ number) equal to or less than &lt;code&gt;a&lt;/code&gt;. It&amp;rsquo;s called 
 
 
     <item>
-      <title>CS Ramble — Week 2b - Bases</title>
+      <title>CS Ramble — Week 2b - bases</title>
       <link>https://zellyn.com/2022/02/cs-ramble/2b/</link>
       <pubDate>Wed, 16 Feb 2022 20:00:00 -0500</pubDate>
 
@@ -3479,6 +4003,7 @@ mystery.&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;2a/&#34;&gt;Questions&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;2b/&#34;&gt;Bases&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;2c/&#34;&gt;Binary and bits&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;2d/&#34;&gt;Boolean logic&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
