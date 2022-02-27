@@ -12,6 +12,385 @@
 
 
     <item>
+      <title>CS Ramble — Week 2e - bit twiddling</title>
+      <link>https://zellyn.com/2022/02/cs-ramble/2e/</link>
+      <pubDate>Sat, 26 Feb 2022 20:21:00 -0500</pubDate>
+
+      <guid>https://zellyn.com/2022/02/cs-ramble/2e/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;week 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
+CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In this post, we&amp;rsquo;re going to look at how to get, set, and otherwise
+manipulate individual bits.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Bit twiddling and bit bashing are often used interchangeably with
+bit manipulation, but sometimes exclusively refer to clever or
+non-obvious ways or uses of bit manipulation, or tedious or
+challenging low-level device control data manipulation tasks.&lt;/p&gt;
+&lt;p&gt;The term bit twiddling dates from early computing hardware, where
+computer operators would make adjustments by tweaking or twiddling
+computer controls. As computer programming languages evolved,
+programmers adopted the term to mean any handling of data that
+involved bit-level computation.&lt;/p&gt;
+&lt;p&gt;&amp;mdash;&lt;a href=&#34;https://en.wikipedia.org/wiki/Bit_manipulation#Terminology&#34;&gt;Wikipedia: Bit manipulation&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;masks&#34;&gt;Masks&lt;/h2&gt;
+&lt;p&gt;We often refer to clearing or setting all but a certain set of bits in
+a number as “masking“. &lt;a href=&#34;https://stackoverflow.com/a/53722721/23582&#34;&gt;This Stackoverflow
+answer&lt;/a&gt; gives a good
+visual explanation of where the term comes from.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s say we want to check whether a number is even or odd. In
+decimal, since the base itself is even, nothing can make the number
+odd except the last digit, so we check whether the last digit is even
+(0, 2, 4, 6, 8) or odd (1, 3, 5, 7, 9).&lt;/p&gt;
+&lt;p&gt;In binary, again, the base (2) is even, so only the last digit can
+make a number odd. So we check whether the last digit is even (0) or
+odd (1). Well, that&amp;rsquo;s pretty simple!&lt;/p&gt;
+&lt;p&gt;So how do we check the last digit only? The answer is to throw away,
+or “mask out” all the other digits. In the &lt;a href=&#34;../2d/&#34;&gt;last part&lt;/a&gt;, we
+showed that you can &lt;code&gt;and&lt;/code&gt;, &lt;code&gt;or&lt;/code&gt;, or &lt;code&gt;xor&lt;/code&gt; whole numbers against each
+other at once, and it performs a bitwise &lt;code&gt;and&lt;/code&gt;, &lt;code&gt;or&lt;/code&gt;, or &lt;code&gt;xor&lt;/code&gt; on
+corresponding pairs of bits. We can use that to clear out everything
+but the last bit:&lt;/p&gt;
+&lt;h4 id=&#34;even-example&#34;&gt;Even example:&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt; &lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;a&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;01010110&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;mask&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;00000001&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;a&lt;/strong&gt; &lt;em&gt;and&lt;/em&gt; &lt;strong&gt;mask&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;00000000&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;odd-example&#34;&gt;Odd example:&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt; &lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;a&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;01010111&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;mask&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;00000001&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;a&lt;/strong&gt; &lt;em&gt;and&lt;/em&gt; &lt;strong&gt;mask&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;00000001&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;You can see that when &lt;code&gt;and&lt;/code&gt;ing a number with a mask, any digit that is
+&lt;code&gt;0&lt;/code&gt; in the mask will be &lt;code&gt;0&lt;/code&gt; in the result, and any digit that is &lt;code&gt;1&lt;/code&gt;
+in the mask will be unchanged by the mask. So we can clear all the
+digits except the lowest (0ᵗʰ) by &lt;code&gt;and&lt;/code&gt;ing with &lt;code&gt;00000001&lt;/code&gt;, or just
+&lt;code&gt;1&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;So by checking whether &lt;code&gt;n&amp;amp;1 == 0&lt;/code&gt;, we can tell if &lt;code&gt;n&lt;/code&gt; is even! In
+Ruby, that would look like this&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# Ruby&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;is_even&lt;/span&gt;(n)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; n&lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;puts&lt;/span&gt; is_even &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;puts&lt;/span&gt; is_even &lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;puts&lt;/span&gt; is_even &lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;puts&lt;/span&gt; is_even &lt;span style=&#34;color:#40a070&#34;&gt;3&lt;/span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;puts&lt;/span&gt; is_even &lt;span style=&#34;color:#40a070&#34;&gt;99&lt;/span&gt;   &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;puts&lt;/span&gt; is_even &lt;span style=&#34;color:#40a070&#34;&gt;100&lt;/span&gt;  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;_or_-ing&#34;&gt;&lt;em&gt;Or&lt;/em&gt;-ing&lt;/h3&gt;
+&lt;p&gt;As &lt;code&gt;and&lt;/code&gt; can be used to clear bits or leave them alone, &lt;code&gt;or&lt;/code&gt; can be
+used to &lt;em&gt;set&lt;/em&gt; bits or leave them alone. For instance, to set the 5ᵗʰ
+bit from lowest (counting from 0, of course), we can &lt;code&gt;or&lt;/code&gt; with
+&lt;code&gt;0b100000&lt;/code&gt; == &lt;code&gt;32&lt;/code&gt; == &lt;code&gt;1 &amp;lt;&amp;lt; 5&lt;/code&gt;:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt; &lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;a&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;01001101&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;mask&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;00100000&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;a&lt;/strong&gt; &lt;em&gt;or&lt;/em&gt; &lt;strong&gt;mask&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;01101101&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;In fact, in ASCII, the uppercase and lowercase English letters are
+laid out so that they&amp;rsquo;re exactly the same, except for the 5th bit!&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ python3
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Python 3.9.10 &lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;main, Jan &lt;span style=&#34;color:#40a070&#34;&gt;15&lt;/span&gt; 2022, 11:48:04&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Type &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;help&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;copyright&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;credits&amp;#34;&lt;/span&gt; or &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;license&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; more information.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; chr&lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;0b01001101&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;M&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; chr&lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;0b01001101 | 1&amp;lt;&amp;lt;5&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;m&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As you can see in this partial excerpt from the ASCII table, the
+uppercase and lowercase numbers differ by exactly &lt;code&gt;32&lt;/code&gt; ==
+&lt;code&gt;1&amp;lt;&amp;lt;5&lt;/code&gt;. Neat, huh?&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;64:&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;@&lt;/td&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;td&gt;E&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;G&lt;/td&gt;
+&lt;td&gt;H&lt;/td&gt;
+&lt;td&gt;I&lt;/td&gt;
+&lt;td&gt;J&lt;/td&gt;
+&lt;td&gt;K&lt;/td&gt;
+&lt;td&gt;L&lt;/td&gt;
+&lt;td&gt;&lt;mark&gt;&lt;strong&gt;M&lt;/strong&gt;&lt;/mark&gt;&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;O&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;80:&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;P&lt;/td&gt;
+&lt;td&gt;Q&lt;/td&gt;
+&lt;td&gt;R&lt;/td&gt;
+&lt;td&gt;S&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;U&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;W&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Z&lt;/td&gt;
+&lt;td&gt;[&lt;/td&gt;
+&lt;td&gt;\ &lt;/td&gt;
+&lt;td&gt;]&lt;/td&gt;
+&lt;td&gt;^&lt;/td&gt;
+&lt;td&gt;_&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;96:&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;`&lt;/td&gt;
+&lt;td&gt;a&lt;/td&gt;
+&lt;td&gt;b&lt;/td&gt;
+&lt;td&gt;c&lt;/td&gt;
+&lt;td&gt;d&lt;/td&gt;
+&lt;td&gt;e&lt;/td&gt;
+&lt;td&gt;f&lt;/td&gt;
+&lt;td&gt;g&lt;/td&gt;
+&lt;td&gt;h&lt;/td&gt;
+&lt;td&gt;i&lt;/td&gt;
+&lt;td&gt;j&lt;/td&gt;
+&lt;td&gt;k&lt;/td&gt;
+&lt;td&gt;l&lt;/td&gt;
+&lt;td&gt;&lt;mark&gt;&lt;strong&gt;m&lt;/strong&gt;&lt;/mark&gt;&lt;/td&gt;
+&lt;td&gt;n&lt;/td&gt;
+&lt;td&gt;o&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;112:&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;p&lt;/td&gt;
+&lt;td&gt;q&lt;/td&gt;
+&lt;td&gt;r&lt;/td&gt;
+&lt;td&gt;s&lt;/td&gt;
+&lt;td&gt;t&lt;/td&gt;
+&lt;td&gt;u&lt;/td&gt;
+&lt;td&gt;v&lt;/td&gt;
+&lt;td&gt;w&lt;/td&gt;
+&lt;td&gt;x&lt;/td&gt;
+&lt;td&gt;y&lt;/td&gt;
+&lt;td&gt;z&lt;/td&gt;
+&lt;td&gt;{&lt;/td&gt;
+&lt;td&gt;|&lt;/td&gt;
+&lt;td&gt;}&lt;/td&gt;
+&lt;td&gt;~&lt;/td&gt;
+&lt;td&gt;del&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;masking-more-than-one-bit-at-a-time-hex-digits&#34;&gt;Masking more than one bit at a time: hex digits&lt;/h3&gt;
+&lt;p&gt;As you may recall from the &lt;a href=&#34;../2b/#why-hexadecimal&#34;&gt;“Why hexadecimal?” section of part
+b&lt;/a&gt;, hexadecimal is often used because it maps
+nicely to binary: one hex digit to four bits:&lt;/p&gt;
+&lt;div id=&#39;pikchr-0&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-0&#39;)&#34;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:180px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 180.346 76.32&#34;&gt;
+&lt;path d=&#34;M2,32L24,32L24,2L2,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;13&#34; y=&#34;17&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M24,32L46,32L46,2L24,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;35&#34; y=&#34;17&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M46,32L68,32L68,2L46,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;57&#34; y=&#34;17&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M68,32L90,32L90,2L68,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;79&#34; y=&#34;17&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M90,32L112,32L112,2L90,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;101&#34; y=&#34;17&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M112,32L134,32L134,2L112,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;123&#34; y=&#34;17&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M134,32L156,32L156,2L134,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;145&#34; y=&#34;17&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;0&lt;/text&gt;
+&lt;path d=&#34;M156,32L178,32L178,2L156,2Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;167&#34; y=&#34;17&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;1&lt;/text&gt;
+&lt;path d=&#34;M82,46Q90,46 90,39&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M2,39Q2,46 9,46&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M53,46Q46,46 46,54&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M46,54Q46,46 38,46&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M82,46L53,46&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M38,46L9,46&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;46&#34; y=&#34;64&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;B&lt;/text&gt;
+&lt;path d=&#34;M170,46Q178,46 178,39&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M90,39Q90,46 97,46&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M141,46Q134,46 134,54&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M134,54Q134,46 126,46&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M170,46L141,46&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;path d=&#34;M126,46L97,46&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;134&#34; y=&#34;64&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;9&lt;/text&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+define $brace {
+  $offsety = $4 / 2
+  $offsetx = $3/abs($3) * abs($offsety)
+  $pointx = $1+0.5*$3
+  $pointy = $2+$4
+  arc from ($1+$offsetx,$2+$offsety) to ($1,$2) thin
+  arc from ($1+$3,$2) to ($1+$3-$offsetx, $2+$offsety) thin
+  arc from ($pointx-$offsetx,$pointy-$offsety) to ($pointx,$pointy) thin
+  arc from ($pointx,$pointy) to ($pointx+$offsetx,$pointy-$offsety) thin
+  line from 4th last arc.start to 2nd last arc.start thin
+  line from last arc.end to 3rd last arc.end thin
+}
+
+box &#34;1&#34; fit fill lightblue
+box same &#34;0&#34;
+box same &#34;1&#34;
+box same &#34;1&#34;
+box same &#34;1&#34;
+box same &#34;0&#34;
+box same &#34;0&#34;
+box same &#34;1&#34;
+
+$width = 1st box.w.x - 4th box.e.x
+$brace(4th box.se.x, 4th box.se.y-0.05, $width, -0.1)
+text at last arc.start &#34;B&#34; below
+$brace(last box.se.x, 4th box.se.y-0.05, $width, -0.1)
+text at last arc.start &#34;9&#34; below
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;We can mask with &lt;code&gt;0b1111&lt;/code&gt; to get just the low four bits, which is the
+same as masking with &lt;code&gt;0xF&lt;/code&gt; to get just the low hex digit. To get the
+high digit, we can shift right, &lt;em&gt;then&lt;/em&gt; mask:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Javascript
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;console.log(&lt;span style=&#34;color:#40a070&#34;&gt;0xB9&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0xF&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// 9
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;console.log((&lt;span style=&#34;color:#40a070&#34;&gt;0xB9&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;4&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0xF&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// 11
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;console.log(((&lt;span style=&#34;color:#40a070&#34;&gt;0xB9&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;4&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0xF&lt;/span&gt;).toString(&lt;span style=&#34;color:#40a070&#34;&gt;16&lt;/span&gt;).toUpperCase())
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// B
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I think that&amp;rsquo;s enough for now, eh? Until next time!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;script&gt;
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle(&#39;hidden&#39;);
+    }
+  }
+&lt;/script&gt;&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Actually, many programming languages have a convention that &lt;code&gt;0&lt;/code&gt;
+is &lt;code&gt;false&lt;/code&gt; and anything else is &lt;code&gt;true&lt;/code&gt;, so in Python, you could
+write this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# Python&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;is_even&lt;/span&gt;(n):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;not&lt;/span&gt; n&lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;is_odd&lt;/span&gt;(n):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; n&lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You could do more or less the same thing in C. In fact, &lt;code&gt;n&amp;amp;1&lt;/code&gt; is so
+terse and&amp;mdash;once you get used to it&amp;mdash;clear, that you&amp;rsquo;d seldom create
+an &lt;code&gt;is_even&lt;/code&gt; or &lt;code&gt;is_odd&lt;/code&gt; function in any language.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+    </item>
+
+
+
+    <item>
       <title>CS Ramble — Week 2d - boolean logic</title>
       <link>https://zellyn.com/2022/02/cs-ramble/2d/</link>
       <pubDate>Fri, 25 Feb 2022 20:10:00 -0500</pubDate>
@@ -510,7 +889,8 @@ prefixed &lt;code&gt;~&lt;/code&gt;):&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# interpreted as a negative number.)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;not a:   &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;~&lt;/span&gt;a &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# not a:   10101001&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;In the next part, we&amp;rsquo;ll learn how to read and change the values of individual bits.&lt;/em&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;In the &lt;a href=&#34;../2e/&#34;&gt;next part&lt;/a&gt;, we&amp;rsquo;ll learn how to read and change the
+values of individual bits.&lt;/em&gt;&lt;/p&gt;
 &lt;script&gt;
   function toggleHidden(id){
     for(var c of document.getElementById(id).children){
@@ -3992,6 +4372,18 @@ hand-wavy understanding of how the processor&amp;rsquo;s use of memory affects
 the speed at which your program executes will put you ahead of the
 40%&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; of all programmers for whom the CPU is just a complete
 mystery.&lt;/p&gt;
+&lt;h2 id=&#34;how-to-use-these-blog-posts&#34;&gt;How to use these blog posts&lt;/h2&gt;
+&lt;p&gt;As mentioned briefly before, every two weeks, we discuss a list of
+questions shared two weeks previously. The next day, I send out a new
+set of questions for folks to ponder, and we discuss those two weeks
+later.&lt;/p&gt;
+&lt;p&gt;The questions for each week below are verbatim from our group, while
+the following posts are longer and prettier versions than we could
+manage to discuss verbally in just one hour.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;ll probably be more satisfying to read the questions, and then give
+yourself some time to investigate or at least think about them for a
+while before reading the discussion posts. Or even work through the
+questions with a group. If you do that, please get in touch!&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;h2 id=&#34;week-1&#34;&gt;Week 1&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;1a/&#34;&gt;Questions&lt;/a&gt;&lt;/li&gt;
@@ -4004,6 +4396,7 @@ mystery.&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;2b/&#34;&gt;Bases&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;2c/&#34;&gt;Binary and bits&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;2d/&#34;&gt;Boolean logic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;2e/&#34;&gt;Bit twiddling&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
@@ -4013,6 +4406,11 @@ mystery.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
 &lt;p&gt;Yes, including this one.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;In fact, please get in touch for any reason at all! We&amp;rsquo;re doing
+this to be helpful to people, and any feedback that could make it more
+useful to more people would be welcome.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/section&gt;

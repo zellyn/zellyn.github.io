@@ -247,4 +247,5 @@ print(f'not a:   {~a % 256:08b}')
 # not a:   10101001
 ```
 
-_In the next part, we'll learn how to read and change the values of individual bits._
+_In the [next part](../2e/), we'll learn how to read and change the
+values of individual bits._
