@@ -1,0 +1,67 @@
+
+* Feedback from Eric Ayers
+
+** General feedback:
+
+You've covered a lot of ground and I commend you for thinking this out.
+I think that working with a mentor this would be a great resource.
+Working on your own, it could be overwhelming.
+
+*** TODO Could you provide some exercises?
+
+*** DONE "simple web apps"
+For the Intro, is saying "simple web apps" condescending to folks that
+have created some great things, they just never have had to worry
+about how JavaScript is implemented?
+
+** Week 1a questions:
+
+*** TODO How to find answers
+How is someone out of bootcamp supposed to get answers to some of
+these questions?  Are they supposed to research it?  Ask a friend?  Or
+are you only expected to be able to answer these questions after the
+next two posts?  If so, maybe say that up front?
+
+** Week 1b - memory, text, numbers
+
+*** TODO How do we pretend numbers are negative?  How Dad How?  (reading too much Berenstain Bears at the moment)
+
+*** TODO 2 byte numbers
+For bigger numbers, I have never seen the representation of 2 bytes as
+two decimal numbers.  It's not necessarily wrong, but it kind of blows
+my mind. I've been using hexadecimal too long.  would putting a header
+on the blue column of numbers so you can show the first column is the
+'256' column help?
+
+*** TODO Types?
+At the 'A note on names for things', would it help to briefly
+introduce the concept of 'type' first? That's what everyone else will
+call this.
+
+*** TODO Too long?
+Do you think that the variables post might cover too much ground? The
+pointers topic is a really complicated one.  I remember folks at Tech
+having a hard time getting their heads around it.  Languages don't
+have explicit pointers anymore, but I agree the concept is important
+to understand how memory is managed.
+
+*** TODO Language dependence, overwhelming?
+Text: Is the storage of text you give language dependent?  I think
+this is a good example to use but maybe point out there are
+differences in the text not just the footnote?  Is the description of
+character encoding going to overwhelm the reader?
+
+** Week 2b - Bases
+
+I really like the odometers
+
+*** TODO Prefixes
+Do you think you should call out 'dec' as a prefix when you are using
+decimal numbers in this example?  e.g. 256 *could* be octal, as they
+haven't learned how to distinguish when written.
+
+*** DONE Need a link to the 'next part' to easily navigate from this page
+
+** Week 2c - Binary and Bits
+
+*** TODO Is nibble spelled nibble or nybble? I've seen it both ways.

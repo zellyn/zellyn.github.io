@@ -1,11 +1,11 @@
 ---
-title: "CS Ramble — Week 2e - bit twiddling"
+title: "CS Ramble — Set 2e - bit twiddling"
 slug: "cs-ramble/2e"
 date: 2022-02-26T20:21:00-05:00
-tags: ['ramble', 'week2']
+tags: ['ramble', 'set2']
 ---
 
-_This is post is part of [week 2](../2a/) of [A Ramble Around
+_This is post is part of [set 2](../2a/) of [A Ramble Around
 CS](../)._
 
 In this post, we're going to look at how to get, set, and otherwise

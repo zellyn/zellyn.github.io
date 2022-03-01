@@ -1,14 +1,14 @@
 ---
-title: "CS Ramble — Week 1c: variables"
+title: "CS Ramble — Set 1c: variables"
 slug: "cs-ramble/1c"
 date: 2022-02-03T20:12:00-05:00
-tags: ['ramble', 'week1']
+tags: ['ramble', 'set1']
 # draft: true
 # _build:
 #  list: never
 ---
 
-_This is post is part of [week 1](../1a/) of [A Ramble Around
+_This is post is part of [set 1](../1a/) of [A Ramble Around
 CS](../)._
 
 # Variables
@@ -656,3 +656,7 @@ interesting and clear discussions of topics we've covered here:
 - [Why can't you reverse a string with a flag
   emoji?](https://davidamos.dev/why-cant-you-reverse-a-flag-emoji/) by
   David Amos
+
+&nbsp;
+
+_Up next are the [questions for set 2](../2a/)._

@@ -1,11 +1,11 @@
 ---
-title: "CS Ramble — Week 2c - binary and bits"
+title: "CS Ramble — Set 2c - binary and bits"
 slug: "cs-ramble/2c"
 date: 2022-02-17T21:30:00-05:00
-tags: ['ramble', 'week2']
+tags: ['ramble', 'set2']
 ---
 
-_This is post is part of [week 2](../2a/) of [A Ramble Around
+_This is post is part of [set 2](../2a/) of [A Ramble Around
 CS](../)._
 
 In this post, we're going to become more familiar with thinking in

@@ -1,13 +1,13 @@
 ---
-title: "CS Ramble — Week 2a - questions"
+title: "CS Ramble — Set 2a - questions"
 slug: "cs-ramble/2a"
 date: 2022-02-15T20:15:00-05:00
-tags: ['ramble', 'week2']
+tags: ['ramble', 'set2']
 ---
 
-_These are the questions for week 2 of [A Ramble Around CS](../)._
+_These are the questions for set 2 of [A Ramble Around CS](../)._
 
-# Questions for week 2
+# Questions for set 2
 
 - If humans had eight fingers, and only used the digits 0–7 to count,
   how would they write what we call “ten”? What would they mean when

@@ -1,11 +1,11 @@
 ---
-title: "CS Ramble — Week 1b - memory, text, numbers"
+title: "CS Ramble — Set 1b - memory, text, numbers"
 slug: "cs-ramble/1b"
 date: 2022-02-03T08:00:00-05:00
-tags: ['ramble', 'week1']
+tags: ['ramble', 'set1']
 ---
 
-_This is post is part of [week 1](../1a/) of [A Ramble Around
+_This is post is part of [set 1](../1a/) of [A Ramble Around
 CS](../)._
 
 

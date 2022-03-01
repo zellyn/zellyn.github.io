@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>week1 on Zellyn Hunter</title>
-    <link>https://zellyn.com/tags/week1/</link>
-    <description>Recent content in week1 on Zellyn Hunter</description>
+    <title>set2 on Zellyn Hunter</title>
+    <link>https://zellyn.com/tags/set2/</link>
+    <description>Recent content in set2 on Zellyn Hunter</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 03 Feb 2022 20:12:00 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 26 Feb 2022 20:21:00 -0500</lastBuildDate>
 
-	<atom:link href="https://zellyn.com/tags/week1/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zellyn.com/tags/set2/index.xml" rel="self" type="application/rss+xml" />
 
 
 
     <item>
-      <title>CS Ramble — Week 2e - bit twiddling</title>
+      <title>CS Ramble — Set 2e - bit twiddling</title>
       <link>https://zellyn.com/2022/02/cs-ramble/2e/</link>
       <pubDate>Sat, 26 Feb 2022 20:21:00 -0500</pubDate>
 
       <guid>https://zellyn.com/2022/02/cs-ramble/2e/</guid>
-      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;week 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
+      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In this post, we&amp;rsquo;re going to look at how to get, set, and otherwise
 manipulate individual bits.&lt;/p&gt;
@@ -391,12 +391,12 @@ an &lt;code&gt;is_even&lt;/code&gt; or &lt;code&gt;is_odd&lt;/code&gt; function 
 
 
     <item>
-      <title>CS Ramble — Week 2d - boolean logic</title>
+      <title>CS Ramble — Set 2d - boolean logic</title>
       <link>https://zellyn.com/2022/02/cs-ramble/2d/</link>
       <pubDate>Fri, 25 Feb 2022 20:10:00 -0500</pubDate>
 
       <guid>https://zellyn.com/2022/02/cs-ramble/2d/</guid>
-      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;week 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
+      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In this post, we&amp;rsquo;re going to become more familiar with messing around
 with individual bits: “bit twiddling”.&lt;/p&gt;
@@ -916,12 +916,12 @@ wash the dishes!&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-back
 
 
     <item>
-      <title>CS Ramble — Week 2c - binary and bits</title>
+      <title>CS Ramble — Set 2c - binary and bits</title>
       <link>https://zellyn.com/2022/02/cs-ramble/2c/</link>
       <pubDate>Thu, 17 Feb 2022 21:30:00 -0500</pubDate>
 
       <guid>https://zellyn.com/2022/02/cs-ramble/2c/</guid>
-      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;week 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
+      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In this post, we&amp;rsquo;re going to become more familiar with thinking in
 binary.&lt;/p&gt;
@@ -1315,12 +1315,12 @@ number) equal to or less than &lt;code&gt;a&lt;/code&gt;. It&amp;rsquo;s called 
 
 
     <item>
-      <title>CS Ramble — Week 2b - bases</title>
+      <title>CS Ramble — Set 2b - bases</title>
       <link>https://zellyn.com/2022/02/cs-ramble/2b/</link>
       <pubDate>Wed, 16 Feb 2022 20:00:00 -0500</pubDate>
 
       <guid>https://zellyn.com/2022/02/cs-ramble/2b/</guid>
-      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;week 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
+      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;counting-in-tens-like-a-normal-human&#34;&gt;Counting in tens, like a normal human&lt;/h1&gt;
 &lt;p&gt;We humans have 10 fingers, and we use ten digits for counting: &lt;strong&gt;&lt;code&gt;0, 1, 2, 3, 4, 5, 6, 7, 8, 9&lt;/code&gt;&lt;/strong&gt;. You can imagine that counting up works
@@ -2188,7 +2188,7 @@ directly in your programs by using a prefix of &lt;code&gt;0x&lt;/code&gt;:&lt;/
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0x0101&lt;/span&gt;  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 257: 1×1 + 0×16 + 1×256 + 0×4096&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;b &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0xFF&lt;/span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# 255: 15×1 + 15×16&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;why-hexadecimal&#34;&gt;Why hexadecimal?&lt;/h3&gt;
-&lt;p&gt;We mentioned &lt;a href=&#34;../1b/#computer-memory&#34;&gt;last week&lt;/a&gt; that a byte can hold
+&lt;p&gt;We mentioned &lt;a href=&#34;../1b/#computer-memory&#34;&gt;last set&lt;/a&gt; that a byte can hold
 numbers from 0&amp;ndash;255. That&amp;rsquo;s because a byte is made up of 8
 bits. &lt;em&gt;(This is where the
 “&lt;a href=&#34;https://www.hbomax.com/8-bit-christmas&#34;&gt;8-bit&lt;/a&gt;” moniker comes from
@@ -2348,13 +2348,13 @@ say the octothorpe is “percent encoded” as &lt;code&gt;%23&lt;/code&gt;.)&lt
 
 
     <item>
-      <title>CS Ramble — Week 2a - questions</title>
+      <title>CS Ramble — Set 2a - questions</title>
       <link>https://zellyn.com/2022/02/cs-ramble/2a/</link>
       <pubDate>Tue, 15 Feb 2022 20:15:00 -0500</pubDate>
 
       <guid>https://zellyn.com/2022/02/cs-ramble/2a/</guid>
-      <description>&lt;p&gt;&lt;em&gt;These are the questions for week 2 of &lt;a href=&#34;../&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;h1 id=&#34;questions-for-week-2&#34;&gt;Questions for week 2&lt;/h1&gt;
+      <description>&lt;p&gt;&lt;em&gt;These are the questions for set 2 of &lt;a href=&#34;../&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;questions-for-set-2&#34;&gt;Questions for set 2&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;If humans had eight fingers, and only used the digits 0–7 to count,
 how would they write what we call “ten”? What would they mean when
@@ -2568,12 +2568,12 @@ line up 0.15 right 0.15 down 0.15 left 0.15 down 0.15 right 0.15 up 0.15 left 0.
 
 
     <item>
-      <title>CS Ramble — Week 1c: variables</title>
+      <title>CS Ramble — Set 1c: variables</title>
       <link>https://zellyn.com/2022/02/cs-ramble/1c/</link>
       <pubDate>Thu, 03 Feb 2022 20:12:00 -0500</pubDate>
 
       <guid>https://zellyn.com/2022/02/cs-ramble/1c/</guid>
-      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../1a/&#34;&gt;week 1&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
+      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../1a/&#34;&gt;set 1&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;variables&#34;&gt;Variables&lt;/h1&gt;
 &lt;p&gt;When you say &lt;code&gt;a = 42&lt;/code&gt;, what is happening in memory? Well, &lt;code&gt;a&lt;/code&gt; is
@@ -3568,6 +3568,8 @@ Larson&lt;/li&gt;
 emoji?&lt;/a&gt; by
 David Amos&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Up next are the &lt;a href=&#34;../2a/&#34;&gt;questions for set 2&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;script&gt;
   function toggleHidden(id){
     for(var c of document.getElementById(id).children){
@@ -3610,12 +3612,12 @@ goes into lots of details.&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;foo
 
 
     <item>
-      <title>CS Ramble — Week 1b - memory, text, numbers</title>
+      <title>CS Ramble — Set 1b - memory, text, numbers</title>
       <link>https://zellyn.com/2022/02/cs-ramble/1b/</link>
       <pubDate>Thu, 03 Feb 2022 08:00:00 -0500</pubDate>
 
       <guid>https://zellyn.com/2022/02/cs-ramble/1b/</guid>
-      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../1a/&#34;&gt;week 1&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
+      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../1a/&#34;&gt;set 1&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;computer-memory&#34;&gt;Computer memory&lt;/h1&gt;
 &lt;p&gt;You can imagine all your computer&amp;rsquo;s memory as a series of little boxes,
@@ -4314,13 +4316,13 @@ is useful.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#3
 
 
     <item>
-      <title>CS Ramble — Week 1a - questions</title>
+      <title>CS Ramble — Set 1a - questions</title>
       <link>https://zellyn.com/2022/02/cs-ramble/1a/</link>
       <pubDate>Wed, 02 Feb 2022 19:58:00 -0500</pubDate>
 
       <guid>https://zellyn.com/2022/02/cs-ramble/1a/</guid>
-      <description>&lt;p&gt;&lt;em&gt;These are the questions for week 1 of &lt;a href=&#34;../&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;h1 id=&#34;questions-for-week-1&#34;&gt;Questions for week 1&lt;/h1&gt;
+      <description>&lt;p&gt;&lt;em&gt;These are the questions for set 1 of &lt;a href=&#34;../&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;questions-for-set-1&#34;&gt;Questions for set 1&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;When you say &lt;code&gt;a = &amp;quot;Hello, world&amp;quot;&lt;/code&gt; in your favorite language, how is
 the string stored? How about &lt;code&gt;&amp;quot;Hello, 世界&amp;quot;&lt;/code&gt;?&lt;/li&gt;
@@ -4366,17 +4368,22 @@ and chatting about them for an hour or two, you&amp;rsquo;ll be more comfortable
 with them than many working programmers!&lt;/p&gt;
 &lt;p&gt;For every CS grad who spent entire classes working with 1s and 0s,
 desigining circuits to add and manipulate binary numbers, there are
-two more programmers who&amp;rsquo;ve spent years working with simple web apps,
-and never learned&amp;mdash;or don&amp;rsquo;t remember&amp;mdash;how to twiddle bits. Even a
-hand-wavy understanding of how the processor&amp;rsquo;s use of memory affects
-the speed at which your program executes will put you ahead of the
-40%&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; of all programmers for whom the CPU is just a complete
-mystery.&lt;/p&gt;
+two more programmers who took a different path and never learned&amp;mdash;or
+don&amp;rsquo;t remember&amp;mdash;how to twiddle bits. Even a hand-wavy understanding
+of how the processor&amp;rsquo;s use of memory affects the speed at which your
+program executes will put you ahead of the 40%&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; of all programmers
+for whom the CPU is just a complete mystery.&lt;/p&gt;
 &lt;h2 id=&#34;how-to-use-these-blog-posts&#34;&gt;How to use these blog posts&lt;/h2&gt;
 &lt;p&gt;As mentioned briefly before, every two weeks, we discuss a list of
 questions shared two weeks previously. The next day, I send out a new
 set of questions for folks to ponder, and we discuss those two weeks
 later.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There is actually a &lt;strong&gt;lot&lt;/strong&gt; of material here. Working through it on
+your own might be overwhelming, and a group or mentor would be very
+helpful. If you decide to do it alone, don&amp;rsquo;t be afraid to go as
+slowly as you need to. There&amp;rsquo;s no time limit!&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;The questions for each week below are verbatim from our group, while
 the following posts are longer and prettier versions than we could
 manage to discuss verbally in just one hour.&lt;/p&gt;
@@ -4384,13 +4391,16 @@ manage to discuss verbally in just one hour.&lt;/p&gt;
 yourself some time to investigate or at least think about them for a
 while before reading the discussion posts. Or even work through the
 questions with a group. If you do that, please get in touch!&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-&lt;h2 id=&#34;week-1&#34;&gt;Week 1&lt;/h2&gt;
+&lt;h2 id=&#34;code-snippets&#34;&gt;Code snippets&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;ll try to jump between common programming languages&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;, but keep all
+snippets short and understandable.&lt;/p&gt;
+&lt;h2 id=&#34;set-1&#34;&gt;Set 1&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;1a/&#34;&gt;Questions&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;1b/&#34;&gt;Memory, text, and numbers&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;1c/&#34;&gt;Variables&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;week-2&#34;&gt;Week 2&lt;/h2&gt;
+&lt;h2 id=&#34;set-2&#34;&gt;Set 2&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;2a/&#34;&gt;Questions&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;2b/&#34;&gt;Bases&lt;/a&gt;&lt;/li&gt;
@@ -4413,6 +4423,9 @@ questions with a group. If you do that, please get in touch!&lt;sup id=&#34;fnre
 &lt;p&gt;In fact, please get in touch for any reason at all! We&amp;rsquo;re doing
 this to be helpful to people, and any feedback that could make it more
 useful to more people would be welcome.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;But my preference for Go might occasionally be obvious!&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/section&gt;

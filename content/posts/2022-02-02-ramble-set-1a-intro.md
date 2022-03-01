@@ -1,13 +1,13 @@
 ---
-title: "CS Ramble — Week 1a - questions"
+title: "CS Ramble — Set 1a - questions"
 slug: "cs-ramble/1a"
 date: 2022-02-02T19:58:00-05:00
-tags: ['ramble', 'week1']
+tags: ['ramble', 'set1']
 ---
 
-_These are the questions for week 1 of [A Ramble Around CS](../)._
+_These are the questions for set 1 of [A Ramble Around CS](../)._
 
-# Questions for week 1
+# Questions for set 1
 
 - When you say `a = "Hello, world"` in your favorite language, how is
   the string stored? How about `"Hello, 世界"`?

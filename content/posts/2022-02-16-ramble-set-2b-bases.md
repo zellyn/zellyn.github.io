@@ -1,11 +1,11 @@
 ---
-title: "CS Ramble — Week 2b - bases"
+title: "CS Ramble — Set 2b - bases"
 slug: "cs-ramble/2b"
 date: 2022-02-16T20:00:00-05:00
-tags: ['ramble', 'week2']
+tags: ['ramble', 'set2']
 ---
 
-_This is post is part of [week 2](../2a/) of [A Ramble Around
+_This is post is part of [set 2](../2a/) of [A Ramble Around
 CS](../)._
 
 # Counting in tens, like a normal human
@@ -376,7 +376,7 @@ b = 0xFF    # 255: 15×1 + 15×16
 
 ### Why hexadecimal?
 
-We mentioned [last week](../1b/#computer-memory) that a byte can hold
+We mentioned [last set](../1b/#computer-memory) that a byte can hold
 numbers from 0--255. That's because a byte is made up of 8
 bits. _(This is where the
 “[8-bit](https://www.hbomax.com/8-bit-christmas)” moniker comes from
