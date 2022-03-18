@@ -18,7 +18,7 @@ enableInlineShortcodes = true
 [params]
   description = "Zellyn's Website"
   # copyright = "Copyright © 2021 Zellyn Hunter"
-  dark = "auto"
+  dark = "off"
   highlight = true
 
 [menu]
