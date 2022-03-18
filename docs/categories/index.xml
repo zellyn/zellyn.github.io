@@ -4407,6 +4407,18 @@ snippets short and understandable.&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;2d/&#34;&gt;Boolean logic&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;2e/&#34;&gt;Bit twiddling&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;!--
+## Set 3
+- [Questions](../../03/cs-ramble/3a/)
+- [TBD](3b/)
+--&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;p&gt;Any errors, omissions, or tangled didactic paths are the fault of me,
+Zellyn.&lt;/p&gt;
+&lt;p&gt;Thanks to Amy Henning and the whole boot-camp-grad crew at Square for
+working through the first draft of this, making it up as we go along.&lt;/p&gt;
+&lt;p&gt;Thanks to Eric Ayers for thoughtful suggestions and comments, most of
+which I&amp;rsquo;m still working to incorporate!&lt;/p&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
