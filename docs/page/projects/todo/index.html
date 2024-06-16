@@ -3,14 +3,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zellyn&#39;s Website">
-
+    
     <link rel="shortcut icon" href="https://zellyn.com/favicon.ico">
-
+    
     <link rel="stylesheet" href="/css/style.min.css">
 
     <title>Projects: TODO</title>
-    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+          inlineMath: [['\\(', '\\)']]                  
+        }
+      };
+    </script>
 
+    
 </head>
 <body><header id="banner">
     <h2><a href="https://zellyn.com/">Zellyn Hunter</a></h2>
@@ -128,6 +137,19 @@ etc.</li>
 <li><input disabled="" type="checkbox"> turking / collaborative editing</li>
 </ul>
 <h1 id="native-go-game-controller-library">Native Go game controller library</h1>
+<p>I&rsquo;m unlikely to ever do this. If I needed controller input, I&rsquo;d
+probably use something existing. A native one that does <em>all</em> the
+controllers would be nice, though.</p>
+<h2 id="ebitengine">Ebitengine:</h2>
+<ul>
+<li>Example on their page: <a href="https://ebitengine.org/en/examples/gamepad.html">examples/gamepad.html</a></li>
+<li>Third-party example using ebitengine: <a href="https://github.com/tinne26/gamepad-quicktest">github.com/tinne26/gamepad-quicktest</a></li>
+</ul>
+<h2 id="other">Other</h2>
+<ul>
+<li><a href="https://github.com/0xcafed00d/joystick">github.com/0xcafed00d/joystick</a></li>
+</ul>
+<h2 id="original-step-listing">Original step listing</h2>
 <ul>
 <li><input disabled="" type="checkbox"> Figure out where <a href="https://cs.chromium.org/chromium/src/device/gamepad/?q=gamepad&amp;sq=package:chromium&amp;dr">Chromium MacOS XBox
 code</a>
@@ -138,7 +160,10 @@ find controller</li>
 have the correct lifecycle/memory management, and call back into Go safely.</li>
 <li><input disabled="" type="checkbox"> Organize a community effort to port all the Chrome code to Go on all the OSes :-)</li>
 </ul>
-<h1 id="lambdamoo-go-port">LambdaMoo Go port</h1>
+<h1 id="lambdamoo-go-port"><del>LambdaMoo Go port</del></h1>
+<p>Someone already did this in Rust! And far better than I ever could
+have. See <a href="https://github.com/rdaum/moor">github.com/rdaum/moor</a></p>
+<strike style='color:grey'>
 <ul>
 <li><input disabled="" type="checkbox"> Write some actual tests</li>
 <li><input disabled="" type="checkbox"> Figure out what to do for regexes: they have backrefs :-(</li>
@@ -150,6 +175,7 @@ downsides from simply supporting utf8</li>
 <li><input disabled="" type="checkbox"> Figure out how to add more concurrency using goroutines</li>
 <li><input disabled="" type="checkbox"> Use something like sqlite?</li>
 </ul>
+</strike>
 <h1 id="apple-ii-emulator-improvementstasks">Apple II emulator improvements/tasks</h1>
 <h2 id="update-visual-6502">Update visual 6502</h2>
 <ul>
@@ -179,7 +205,7 @@ port</a>.</li>
 </script></article>
 
         </main><footer id="footer">
-
+    
 </footer>
 </body>
 </html>

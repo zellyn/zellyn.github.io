@@ -3,7 +3,6 @@ title: "CS Ramble — Set 3b - operating systems"
 slug: "cs-ramble/3b"
 date: 2022-03-16T20:10:00-04:00
 tags: ['ramble', 'set3']
-draft: true
 ---
 
 _This is post is part of [set 3](../3a/) of [A Ramble Around CS](../../../02/cs-ramble/)._

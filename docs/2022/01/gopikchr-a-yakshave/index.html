@@ -3,14 +3,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zellyn&#39;s Website">
-
+    
     <link rel="shortcut icon" href="https://zellyn.com/favicon.ico">
-
+    
     <link rel="stylesheet" href="/css/style.min.css">
 
     <title>gopikchr: a yakshave</title>
-    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+          inlineMath: [['\\(', '\\)']]                  
+        }
+      };
+    </script>
 
+    
 </head>
 <body><header id="banner">
     <h2><a href="https://zellyn.com/">Zellyn Hunter</a></h2>
@@ -177,8 +186,9 @@ ellipse same at 0.3,0.4
 </div>
 <p>  <!-- vertical spacer --></p>
 <h2 id="comments-reach-me-on-twitter">Comments? Reach me on Twitter</h2>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I blogged a few days ago about porting Pikchr and the Lemon Parser to Go, but just now realized linking to a tweet at the end of the post is a satisfactory way to do conversations if your static blog doesn&#39;t have comments!<a href="https://t.co/aXtDNRMsyC">https://t.co/aXtDNRMsyC</a></p>&mdash; Zellyn Hunter 💉² 🎉 (@zellyn) <a href="https://twitter.com/zellyn/status/1488960414595620870?ref_src=twsrc%5Etfw">February 2, 2022</a></blockquote>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I blogged a few days ago about porting Pikchr and the Lemon Parser to Go, but just now realized linking to a tweet at the end of the post is a satisfactory way to do conversations if your static blog doesn&#39;t have comments!<a href="https://t.co/aXtDNRMsyC">https://t.co/aXtDNRMsyC</a></p>&mdash; @zellyn@hachyderm.io (@zellyn) <a href="https://twitter.com/zellyn/status/1488960414595620870?ref_src=twsrc%5Etfw">February 2, 2022</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 <script>
   function toggleHidden(id){
@@ -189,7 +199,7 @@ ellipse same at 0.3,0.4
 </script></article>
 
         </main><footer id="footer">
-
+    
 </footer>
 </body>
 </html>

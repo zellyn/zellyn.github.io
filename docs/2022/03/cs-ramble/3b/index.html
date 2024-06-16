@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zellyn&#39;s Website">
+    
+    <link rel="shortcut icon" href="https://zellyn.com/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <title>CS Ramble — Set 3b - operating systems</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+          inlineMath: [['\\(', '\\)']]                  
+        }
+      };
+    </script>
+
+    
+</head>
+<body><header id="banner">
+    <h2><a href="https://zellyn.com/">Zellyn Hunter</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/page/projects/todo" title="projects">projects</a>
+            </li><li>
+                <a href="/about/" title="about">about</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>CS Ramble — Set 3b - operating systems</h1>
+            <div>
+                <time>March 16, 2022</time>
+                </div>
+    </header><p><em>This is post is part of <a href="../3a/">set 3</a> of <a href="../../../02/cs-ramble/">A Ramble Around CS</a>.</em></p>
+<p>We&rsquo;ll get to processes, threads, and fibers soon, but first we need to
+talk about how all the things your computer is doing at any given time
+are organized.</p>
+<h1 id="what-is-an-operating-system">What is an Operating System?</h1>
+<p>Early personal computers more or less gave the currently-running
+program full control of the machine.</p>
+<p>For instance, a simplified map of the memory of the Apple II computer looks like this:</p>
+<div id='pikchr-0' class='pikchr' onclick="toggleHidden('pikchr-0')">
+<div class='pikchr-svg' style='max-width:292px'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 292.32 645.12">
+<path d="M2,45L290,45L290,2L2,2Z"  style="fill:rgb(216,236,243);stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<text x="146" y="23" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">Free RAM</text>
+<path d="M2,74L290,74L290,45L2,45Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<text x="146" y="59" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Text screen data</text>
+<path d="M2,146L290,146L290,74L2,74Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<text x="146" y="110" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Graphical screen data</text>
+<path d="M2,578L290,578L290,146L2,146Z"  style="fill:rgb(216,236,243);stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<text x="146" y="352" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">Free RAM</text>
+<text x="146" y="372" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">(not to scale)</text>
+<path d="M2,585L290,585L290,578L2,578Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<text x="146" y="551" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">“Memory” that controls devices</text>
+<text x="146" y="571" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central"></text>
+<path d="M2,642L290,642L290,585L2,585Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<text x="146" y="614" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">ROM</text>
+<path d="M2,642L290,642L290,2L2,2Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<polygon points="268,579 265,571 271,571" style="fill:rgb(0,0,0)"/>
+<path d="M268,553L268,575"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
+</svg>
+</div>
+<pre class='hidden'>
+down
+LOW: box width 2 height 0.3 fill 0xd8ecf3 thin "Free RAM" bold
+TEXT: box same fill lightblue height 0.2 "Text screen data"
+GR: box same height 0.5 "Graphical screen data"
+RAM: box same as LOW height 3 "Free RAM" bold "(not to scale)" italic
+IO: box same as GR height 0.05 "“Memory” that controls devices" above "" above
+ROM: box same height 0.4 "ROM"
+
+# Border
+box with nw at 1st box.nw width 2 height (first box.n.y - last box.s.y)
+
+arrow from IO.ne + (-0.15,0.17) down until even with IO.n - (0,0.01) thin
+</pre>
+</div>
+<div align="center"><i>Apple II Memory Map</i></div>
+<p>Within limits<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, your code was pretty much free to use the <strong>Free
+RAM</strong> (“Random Access Memory”) however it wanted.</p>
+<p><em>We&rsquo;ll discuss TBD in the next part.</em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The ROM (“Read-Only Memory”) used certain locations to keep
+track of things like the current position on the screen, current
+drawing color, etc., so you had to avoid those if you wanted to
+keep using the ROM routines.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+<script>
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle('hidden');
+    }
+  }
+</script></article>
+
+        </main><footer id="footer">
+    
+</footer>
+</body>
+</html>

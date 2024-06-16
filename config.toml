@@ -8,9 +8,15 @@ theme = 'etch'
 [markup]
   [markup.goldmark]
     [markup.goldmark.extensions]
-      pikchr = true
-      pikchrToggle = true
-      mathjax = true
+      [markup.goldmark.extensions.pikchr]
+        Enabled = true
+        ToggleDefault = true
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+
 
 languageCode = "en-US"
 enableInlineShortcodes = true
@@ -20,6 +26,7 @@ enableInlineShortcodes = true
   # copyright = "Copyright © 2021 Zellyn Hunter"
   dark = "off"
   highlight = true
+  math = true
 
 [menu]
   # [[menu.main]]

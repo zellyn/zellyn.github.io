@@ -3,14 +3,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zellyn&#39;s Website">
-
+    
     <link rel="shortcut icon" href="https://zellyn.com/favicon.ico">
-
+    
     <link rel="stylesheet" href="/css/style.min.css">
 
     <title>A ramble around CS</title>
-    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+          inlineMath: [['\\(', '\\)']]                  
+        }
+      };
+    </script>
 
+    
 </head>
 <body><header id="banner">
     <h2><a href="https://zellyn.com/">Zellyn Hunter</a></h2>
@@ -107,29 +116,29 @@ working through the first draft of this, making it up as we go along.</p>
 which I&rsquo;m still working to incorporate!</p>
 <p> </p>
 <p> </p>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>83% of all statistics are made up on the spot<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
+<li id="fn:2">
 <p>Yes, including this one.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
+<li id="fn:3">
 <p>In fact, please get in touch for any reason at all! We&rsquo;re doing
 this to be helpful to people, and any feedback that could make it more
 useful to more people would be welcome.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4" role="doc-endnote">
+<li id="fn:4">
 <p>But my preference for Go might occasionally be obvious!&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 </article>
 
         </main><footer id="footer">
-
+    
 </footer>
 </body>
 </html>

@@ -3,14 +3,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zellyn&#39;s Website">
-
+    
     <link rel="shortcut icon" href="https://zellyn.com/favicon.ico">
-
+    
     <link rel="stylesheet" href="/css/style.min.css">
 
     <title>CS Ramble — Set 1c: variables</title>
-    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+          inlineMath: [['\\(', '\\)']]                  
+        }
+      };
+    </script>
 
+    
 </head>
 <body><header id="banner">
     <h2><a href="https://zellyn.com/">Zellyn Hunter</a></h2>
@@ -1028,34 +1037,28 @@ David Amos</li>
 </ul>
 <p> </p>
 <p><em>Up next are the <a href="../2a/">questions for set 2</a>.</em></p>
-<script>
-  function toggleHidden(id){
-    for(var c of document.getElementById(id).children){
-      c.classList.toggle('hidden');
-    }
-  }
-</script><section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>Many consider null pointers to be a <a href="https://news.ycombinator.com/item?id=12427069">big
 mistake</a>, and
 many modern languages make them impossible.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
+<li id="fn:2">
 <p>At least, that&rsquo;s how <a href="https://github.com/golang/go/blob/6f327f7b889b81549d551ce6963067267578bd70/src/runtime/string.go#L238-L241">Go does
 it</a>. In
 C, it&rsquo;s just a pointer, and you count on a <code>0</code> byte to terminate the
 string. If that sounds risky, like you could miss the <code>0</code>, and just
 run off into some other part of memory, well, yep!&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
+<li id="fn:3">
 <p>On Unix systems, like Linux and Mac OS, you can type <code>man ascii</code>
 in a terminal window to see the ASCII values. The bottom set shows
 them in decimal, and is probably what you want. We&rsquo;ll get into Octal
 and Hexadecimal and all that some other time.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4" role="doc-endnote">
+<li id="fn:4">
 <p>Actually, it gives each <em>code point</em> a number, and then one or
 more of those combine to make one “user-perceived character”, as
 Wikipedia puts it. It&rsquo;s complicated. <a href="https://manishearth.github.io/blog/2017/01/14/stop-ascribing-meaning-to-unicode-code-points/">This post by Manish
@@ -1063,11 +1066,17 @@ Goregaokar</a>
 goes into lots of details.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
-</article>
+</div>
+<script>
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle('hidden');
+    }
+  }
+</script></article>
 
         </main><footer id="footer">
-
+    
 </footer>
 </body>
 </html>

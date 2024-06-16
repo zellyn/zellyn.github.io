@@ -2,22 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://zellyn.com/posts/</loc>
+    <lastmod>2024-06-15T20:20:00-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/</loc>
+    <lastmod>2024-06-15T20:20:00-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/2024/06/blog-fixed/</loc>
+    <lastmod>2024-06-15T19:45:31-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/tags/goldmark/</loc>
+    <lastmod>2024-06-15T19:45:31-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/tags/hugo/</loc>
+    <lastmod>2024-06-15T19:45:31-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/tags/</loc>
+    <lastmod>2024-06-15T19:45:31-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/2022/03/cs-ramble/3b/</loc>
+    <lastmod>2022-03-16T20:10:00-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/tags/ramble/</loc>
+    <lastmod>2022-03-16T20:10:00-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/tags/set3/</loc>
+    <lastmod>2022-03-16T20:10:00-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/2022/03/cs-ramble/3a/</loc>
+    <lastmod>2022-03-16T20:03:00-04:00</lastmod>
+  </url><url>
     <loc>https://zellyn.com/2022/02/cs-ramble/2e/</loc>
     <lastmod>2022-02-26T20:21:00-05:00</lastmod>
   </url><url>
-    <loc>https://zellyn.com/posts/</loc>
-    <lastmod>2022-02-26T20:21:00-05:00</lastmod>
-  </url><url>
-    <loc>https://zellyn.com/tags/ramble/</loc>
-    <lastmod>2022-02-26T20:21:00-05:00</lastmod>
-  </url><url>
     <loc>https://zellyn.com/tags/set2/</loc>
-    <lastmod>2022-02-26T20:21:00-05:00</lastmod>
-  </url><url>
-    <loc>https://zellyn.com/tags/</loc>
-    <lastmod>2022-02-26T20:21:00-05:00</lastmod>
-  </url><url>
-    <loc>https://zellyn.com/</loc>
     <lastmod>2022-02-26T20:21:00-05:00</lastmod>
   </url><url>
     <loc>https://zellyn.com/2022/02/cs-ramble/2d/</loc>

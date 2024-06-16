@@ -88,6 +88,21 @@ would be instructive.
 
 # Native Go game controller library
 
+I'm unlikely to ever do this. If I needed controller input, I'd
+probably use something existing. A native one that does _all_ the
+controllers would be nice, though.
+
+## Ebitengine:
+
+* Example on their page: [examples/gamepad.html](https://ebitengine.org/en/examples/gamepad.html)
+* Third-party example using ebitengine: [github.com/tinne26/gamepad-quicktest](https://github.com/tinne26/gamepad-quicktest)
+
+## Other
+
+* [github.com/0xcafed00d/joystick](https://github.com/0xcafed00d/joystick)
+
+## Original step listing
+
 - [ ] Figure out where [Chromium MacOS XBox
   code](https://cs.chromium.org/chromium/src/device/gamepad/?q=gamepad&sq=package:chromium&dr)
   gets called from
@@ -97,7 +112,12 @@ would be instructive.
   have the correct lifecycle/memory management, and call back into Go safely.
 - [ ] Organize a community effort to port all the Chrome code to Go on all the OSes :-)
 
-# LambdaMoo Go port
+# ~LambdaMoo Go port~
+
+Someone already did this in Rust! And far better than I ever could
+have. See [github.com/rdaum/moor](https://github.com/rdaum/moor)
+
+<strike style='color:grey'>
 
 - [ ] Write some actual tests
 - [ ] Figure out what to do for regexes: they have backrefs :-(
@@ -108,6 +128,8 @@ would be instructive.
 - [ ] Port the 64-bit ints
 - [ ] Figure out how to add more concurrency using goroutines
 - [ ] Use something like sqlite?
+
+</strike>
 
 # Apple II emulator improvements/tasks
 

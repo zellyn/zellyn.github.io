@@ -30,6 +30,15 @@
     {{ printf `<link rel="stylesheet" href="%s">` $css.RelPermalink | safeHTML }}
 
     <title>{{ .Title }}</title>
-    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          displayMath: [['\\[', '\\]'], ['$$', '$$']],  // block
+          inlineMath: [['\\(', '\\)']]                  // inline
+        }
+      };
+    </script>
+
     {{ with .Params.customcss }}<link rel="stylesheet" href="{{ . }}" />{{ end }}
 </head>

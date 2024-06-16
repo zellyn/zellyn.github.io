@@ -5,17 +5,141 @@
     <link>https://zellyn.com/</link>
     <description>Recent content on Zellyn Hunter</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 26 Feb 2022 20:21:00 -0500</lastBuildDate>
-
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Jun 2024 20:20:00 -0400</lastBuildDate>
+    
 	<atom:link href="https://zellyn.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <item>
+      <title>Blog machinery back up</title>
+      <link>https://zellyn.com/2024/06/blog-fixed/</link>
+      <pubDate>Sat, 15 Jun 2024 19:45:31 -0400</pubDate>
+      
+      <guid>https://zellyn.com/2024/06/blog-fixed/</guid>
+      <description>&lt;h1 id=&#34;blog-machinery-back-up&#34;&gt;Blog machinery back up&lt;/h1&gt;
+&lt;p&gt;The downside of running a (slightly) custom&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; version of
+&lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; is that it can break when things get
+updated. Somewhere around 2022 or 2023 I noticed that the &lt;code&gt;pikchr&lt;/code&gt;
+diagrams weren&amp;rsquo;t rendering properly when I tried to regenerate my site.&lt;/p&gt;
+&lt;p&gt;Well, yesterday, I finally got around to fixing it, mainly so that I
+can write some posts to properly document my experience playing around
+with ESP32-C3 chips and Adafruit Neopixels.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;modified to run pikchr in goldmark as described in
+&lt;a href=&#34;https://zellyn.com/2022/01/gopikchr-a-yakshave/&#34;&gt;gopikchr: a yakshave&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>CS Ramble — Set 3b - operating systems</title>
+      <link>https://zellyn.com/2022/03/cs-ramble/3b/</link>
+      <pubDate>Wed, 16 Mar 2022 20:10:00 -0400</pubDate>
+      
+      <guid>https://zellyn.com/2022/03/cs-ramble/3b/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../3a/&#34;&gt;set 3&lt;/a&gt; of &lt;a href=&#34;../../../02/cs-ramble/&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ll get to processes, threads, and fibers soon, but first we need to
+talk about how all the things your computer is doing at any given time
+are organized.&lt;/p&gt;
+&lt;h1 id=&#34;what-is-an-operating-system&#34;&gt;What is an Operating System?&lt;/h1&gt;
+&lt;p&gt;Early personal computers more or less gave the currently-running
+program full control of the machine.&lt;/p&gt;
+&lt;p&gt;For instance, a simplified map of the memory of the Apple II computer looks like this:&lt;/p&gt;
+&lt;div id=&#39;pikchr-0&#39; class=&#39;pikchr&#39; onclick=&#34;toggleHidden(&#39;pikchr-0&#39;)&#34;&gt;
+&lt;div class=&#39;pikchr-svg&#39; style=&#39;max-width:292px&#39;&gt;
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#34;0 0 292.32 645.12&#34;&gt;
+&lt;path d=&#34;M2,45L290,45L290,2L2,2Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;23&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;Free RAM&lt;/text&gt;
+&lt;path d=&#34;M2,74L290,74L290,45L2,45Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;59&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;Text screen data&lt;/text&gt;
+&lt;path d=&#34;M2,146L290,146L290,74L2,74Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;110&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;Graphical screen data&lt;/text&gt;
+&lt;path d=&#34;M2,578L290,578L290,146L2,146Z&#34;  style=&#34;fill:rgb(216,236,243);stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;352&#34; text-anchor=&#34;middle&#34; font-weight=&#34;bold&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;Free RAM&lt;/text&gt;
+&lt;text x=&#34;146&#34; y=&#34;372&#34; text-anchor=&#34;middle&#34; font-style=&#34;italic&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;(not to scale)&lt;/text&gt;
+&lt;path d=&#34;M2,585L290,585L290,578L2,578Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;551&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;“Memory” that controls devices&lt;/text&gt;
+&lt;text x=&#34;146&#34; y=&#34;571&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;&lt;/text&gt;
+&lt;path d=&#34;M2,642L290,642L290,585L2,585Z&#34;  style=&#34;fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;text x=&#34;146&#34; y=&#34;614&#34; text-anchor=&#34;middle&#34; fill=&#34;rgb(0,0,0)&#34; dominant-baseline=&#34;central&#34;&gt;ROM&lt;/text&gt;
+&lt;path d=&#34;M2,642L290,642L290,2L2,2Z&#34;  style=&#34;fill:none;stroke-width:2.16;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;polygon points=&#34;268,579 265,571 271,571&#34; style=&#34;fill:rgb(0,0,0)&#34;/&gt;
+&lt;path d=&#34;M268,553L268,575&#34;  style=&#34;fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);&#34; /&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;pre class=&#39;hidden&#39;&gt;
+down
+LOW: box width 2 height 0.3 fill 0xd8ecf3 thin &#34;Free RAM&#34; bold
+TEXT: box same fill lightblue height 0.2 &#34;Text screen data&#34;
+GR: box same height 0.5 &#34;Graphical screen data&#34;
+RAM: box same as LOW height 3 &#34;Free RAM&#34; bold &#34;(not to scale)&#34; italic
+IO: box same as GR height 0.05 &#34;“Memory” that controls devices&#34; above &#34;&#34; above
+ROM: box same height 0.4 &#34;ROM&#34;
 
+# Border
+box with nw at 1st box.nw width 2 height (first box.n.y - last box.s.y)
 
-
+arrow from IO.ne + (-0.15,0.17) down until even with IO.n - (0,0.01) thin
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div align=&#34;center&#34;&gt;&lt;i&gt;Apple II Memory Map&lt;/i&gt;&lt;/div&gt;
+&lt;p&gt;Within limits&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, your code was pretty much free to use the &lt;strong&gt;Free
+RAM&lt;/strong&gt; (“Random Access Memory”) however it wanted.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;We&amp;rsquo;ll discuss TBD in the next part.&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;The ROM (“Read-Only Memory”) used certain locations to keep
+track of things like the current position on the screen, current
+drawing color, etc., so you had to avoid those if you wanted to
+keep using the ROM routines.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle(&#39;hidden&#39;);
+    }
+  }
+&lt;/script&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>CS Ramble — Set 3a - questions</title>
+      <link>https://zellyn.com/2022/03/cs-ramble/3a/</link>
+      <pubDate>Wed, 16 Mar 2022 20:03:00 -0400</pubDate>
+      
+      <guid>https://zellyn.com/2022/03/cs-ramble/3a/</guid>
+      <description>&lt;p&gt;&lt;em&gt;These are the questions for set 3 of &lt;a href=&#34;../../../02/cs-ramble/&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;questions-for-set-3&#34;&gt;Questions for set 3&lt;/h1&gt;
+&lt;p&gt;Just one question this time:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;What are threads, processes, and fibers?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;We&amp;rsquo;ll start discussing the answers in the &lt;a href=&#34;../3b/&#34;&gt;next part&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    
+    
     <item>
       <title>CS Ramble — Set 2e - bit twiddling</title>
       <link>https://zellyn.com/2022/02/cs-ramble/2e/</link>
       <pubDate>Sat, 26 Feb 2022 20:21:00 -0500</pubDate>
-
+      
       <guid>https://zellyn.com/2022/02/cs-ramble/2e/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
@@ -359,16 +483,10 @@ high digit, we can shift right, &lt;em&gt;then&lt;/em&gt; mask:&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;I think that&amp;rsquo;s enough for now, eh? Until next time!&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;p&gt; &lt;/p&gt;
-&lt;script&gt;
-  function toggleHidden(id){
-    for(var c of document.getElementById(id).children){
-      c.classList.toggle(&#39;hidden&#39;);
-    }
-  }
-&lt;/script&gt;&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
 &lt;ol&gt;
-&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
 &lt;p&gt;Actually, many programming languages have a convention that &lt;code&gt;0&lt;/code&gt;
 is &lt;code&gt;false&lt;/code&gt; and anything else is &lt;code&gt;true&lt;/code&gt;, so in Python, you could
 write this:&lt;/p&gt;
@@ -384,17 +502,23 @@ terse and&amp;mdash;once you get used to it&amp;mdash;clear, that you&amp;rsquo;
 an &lt;code&gt;is_even&lt;/code&gt; or &lt;code&gt;is_odd&lt;/code&gt; function in any language.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/section&gt;
-</description>
+&lt;/div&gt;
+&lt;script&gt;
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle(&#39;hidden&#39;);
+    }
+  }
+&lt;/script&gt;</description>
     </item>
-
-
-
+    
+    
+    
     <item>
       <title>CS Ramble — Set 2d - boolean logic</title>
       <link>https://zellyn.com/2022/02/cs-ramble/2d/</link>
       <pubDate>Fri, 25 Feb 2022 20:10:00 -0500</pubDate>
-
+      
       <guid>https://zellyn.com/2022/02/cs-ramble/2d/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
@@ -869,57 +993,57 @@ prefixed &lt;code&gt;~&lt;/code&gt;):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0b01010110&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;b &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0b10110010&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;a:       &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;a:       &lt;/span&gt;&lt;span style=&#34;color:#70a0d0&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#70a0d0&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# a:       01010110&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;b:       &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;b:       &lt;/span&gt;&lt;span style=&#34;color:#70a0d0&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#70a0d0&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# b:       01010110&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;a and b: &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;b&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;a and b: &lt;/span&gt;&lt;span style=&#34;color:#70a0d0&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;b&lt;span style=&#34;color:#70a0d0&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# a and b: 00010010&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;a or b:  &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#666&#34;&gt;|&lt;/span&gt;b&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;a or b:  &lt;/span&gt;&lt;span style=&#34;color:#70a0d0&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#666&#34;&gt;|&lt;/span&gt;b&lt;span style=&#34;color:#70a0d0&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# a or b:  11110110&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;a xor b: &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#666&#34;&gt;^&lt;/span&gt;b&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;a xor b: &lt;/span&gt;&lt;span style=&#34;color:#70a0d0&#34;&gt;{&lt;/span&gt;a&lt;span style=&#34;color:#666&#34;&gt;^&lt;/span&gt;b&lt;span style=&#34;color:#70a0d0&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# a xor b: 11100100&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# For not, we have to force the result back into the range [0,255].&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# (If the highest bit in a number is set, the number is&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# interpreted as a negative number.)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;not a:   &lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;~&lt;/span&gt;a &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0;font-style:italic&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;not a:   &lt;/span&gt;&lt;span style=&#34;color:#70a0d0&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;~&lt;/span&gt;a &lt;span style=&#34;color:#666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;&lt;span style=&#34;color:#70a0d0&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;08b&lt;/span&gt;&lt;span style=&#34;color:#70a0d0&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# not a:   10101001&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;In the &lt;a href=&#34;../2e/&#34;&gt;next part&lt;/a&gt;, we&amp;rsquo;ll learn how to read and change the
 values of individual bits.&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Named after &lt;a href=&#34;https://www.irishphilosophy.com/2014/12/08/ones-and-zeros/&#34;&gt;George Boole&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;Although, of course, if I said, “I&amp;rsquo;ll wash the dishes if you
+take the trash out &lt;strong&gt;&lt;em&gt;or&lt;/em&gt;&lt;/strong&gt; feed the dog,“ and you did both, I&amp;rsquo;d still
+wash the dishes!&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 &lt;script&gt;
   function toggleHidden(id){
     for(var c of document.getElementById(id).children){
       c.classList.toggle(&#39;hidden&#39;);
     }
   }
-&lt;/script&gt;&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;Named after &lt;a href=&#34;https://www.irishphilosophy.com/2014/12/08/ones-and-zeros/&#34;&gt;George Boole&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;Although, of course, if I said, “I&amp;rsquo;ll wash the dishes if you
-take the trash out &lt;strong&gt;&lt;em&gt;or&lt;/em&gt;&lt;/strong&gt; feed the dog,“ and you did both, I&amp;rsquo;d still
-wash the dishes!&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/section&gt;
-</description>
+&lt;/script&gt;</description>
     </item>
-
-
-
+    
+    
+    
     <item>
       <title>CS Ramble — Set 2c - binary and bits</title>
       <link>https://zellyn.com/2022/02/cs-ramble/2c/</link>
       <pubDate>Thu, 17 Feb 2022 21:30:00 -0500</pubDate>
-
+      
       <guid>https://zellyn.com/2022/02/cs-ramble/2c/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
@@ -1291,16 +1415,10 @@ text at 0.5 s of 5th box &#34;¾ ＝ ½ + ¼&#34; big
 &lt;/div&gt;
 &lt;p&gt;&lt;em&gt;We&amp;rsquo;ll explore how to work with the values of individual bits or
 true/false values in the &lt;a href=&#34;../2d/&#34;&gt;next part&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;script&gt;
-  function toggleHidden(id){
-    for(var c of document.getElementById(id).children){
-      c.classList.toggle(&#39;hidden&#39;);
-    }
-  }
-&lt;/script&gt;&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
 &lt;ol&gt;
-&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
 &lt;p&gt;If you&amp;rsquo;re a bit rusty, &lt;code&gt;⌊a⌋&lt;/code&gt; means the next integer (whole
 number) equal to or less than &lt;code&gt;a&lt;/code&gt;. It&amp;rsquo;s called the “floor” of &lt;code&gt;a&lt;/code&gt;:
 &lt;code&gt;⌊2⌋&lt;/code&gt; ＝ &lt;code&gt;2&lt;/code&gt;, &lt;code&gt;⌊1.9⌋&lt;/code&gt; ＝ &lt;code&gt;1&lt;/code&gt;, and &lt;code&gt;⌊−1.9⌋&lt;/code&gt; ＝ &lt;code&gt;−2&lt;/code&gt;. Similarly,
@@ -1308,17 +1426,23 @@ number) equal to or less than &lt;code&gt;a&lt;/code&gt;. It&amp;rsquo;s called 
 &lt;code&gt;⌈−1.9⌉&lt;/code&gt; ＝ &lt;code&gt;−1&lt;/code&gt;.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/section&gt;
-</description>
+&lt;/div&gt;
+&lt;script&gt;
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle(&#39;hidden&#39;);
+    }
+  }
+&lt;/script&gt;</description>
     </item>
-
-
-
+    
+    
+    
     <item>
       <title>CS Ramble — Set 2b - bases</title>
       <link>https://zellyn.com/2022/02/cs-ramble/2b/</link>
       <pubDate>Wed, 16 Feb 2022 20:00:00 -0500</pubDate>
-
+      
       <guid>https://zellyn.com/2022/02/cs-ramble/2b/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
@@ -2327,31 +2451,31 @@ you&amp;rsquo;ll often see it show up as &lt;code&gt;%23&lt;/code&gt; in the URL
 &lt;a href=&#34;https://google.com/search?q=%23&#34;&gt;google.com/search?q=%23&lt;/a&gt;. (You can
 say the octothorpe is “percent encoded” as &lt;code&gt;%23&lt;/code&gt;.)&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;We&amp;rsquo;ll get deeper into binary and working with bits in the &lt;a href=&#34;../2c/&#34;&gt;next part&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;A group of four bits is also called a
+“&lt;a href=&#34;https://en.wikipedia.org/wiki/Nibble&#34;&gt;nibble&lt;/a&gt;” &amp;mdash; half a “bite”!&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 &lt;script&gt;
   function toggleHidden(id){
     for(var c of document.getElementById(id).children){
       c.classList.toggle(&#39;hidden&#39;);
     }
   }
-&lt;/script&gt;&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;A group of four bits is also called a
-“&lt;a href=&#34;https://en.wikipedia.org/wiki/Nibble&#34;&gt;nibble&lt;/a&gt;” &amp;mdash; half a “bite”!&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/section&gt;
-</description>
+&lt;/script&gt;</description>
     </item>
-
-
-
+    
+    
+    
     <item>
       <title>CS Ramble — Set 2a - questions</title>
       <link>https://zellyn.com/2022/02/cs-ramble/2a/</link>
       <pubDate>Tue, 15 Feb 2022 20:15:00 -0500</pubDate>
-
+      
       <guid>https://zellyn.com/2022/02/cs-ramble/2a/</guid>
       <description>&lt;p&gt;&lt;em&gt;These are the questions for set 2 of &lt;a href=&#34;../&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;questions-for-set-2&#34;&gt;Questions for set 2&lt;/h1&gt;
@@ -2384,14 +2508,14 @@ write what we call “ten”? What would they mean when they wrote
 &lt;p&gt;&lt;em&gt;We&amp;rsquo;ll start discussing numeric bases in the &lt;a href=&#34;../2b/&#34;&gt;next part&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
-
-
-
+    
+    
+    
     <item>
       <title>Tailscale diagram in Pikchr</title>
       <link>https://zellyn.com/2022/02/tailscale-diagram-in-pikchr/</link>
       <pubDate>Mon, 07 Feb 2022 00:49:00 -0500</pubDate>
-
+      
       <guid>https://zellyn.com/2022/02/tailscale-diagram-in-pikchr/</guid>
       <description>&lt;p&gt;Just for fun, I decided to try to use &lt;a href=&#34;https://pikchr.org&#34;&gt;Pikchr&lt;/a&gt; to
 reproduce one of the diagrams in Tailscale&amp;rsquo;s &lt;a href=&#34;https://tailscale.com/blog/how-nat-traversal-works/&#34;&gt;How NAT traversal
@@ -2564,14 +2688,14 @@ line up 0.15 right 0.15 down 0.15 left 0.15 down 0.15 right 0.15 up 0.15 left 0.
   }
 &lt;/script&gt;</description>
     </item>
-
-
-
+    
+    
+    
     <item>
       <title>CS Ramble — Set 1c: variables</title>
       <link>https://zellyn.com/2022/02/cs-ramble/1c/</link>
       <pubDate>Thu, 03 Feb 2022 20:12:00 -0500</pubDate>
-
+      
       <guid>https://zellyn.com/2022/02/cs-ramble/1c/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../1a/&#34;&gt;set 1&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
@@ -3570,34 +3694,28 @@ David Amos&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Up next are the &lt;a href=&#34;../2a/&#34;&gt;questions for set 2&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;script&gt;
-  function toggleHidden(id){
-    for(var c of document.getElementById(id).children){
-      c.classList.toggle(&#39;hidden&#39;);
-    }
-  }
-&lt;/script&gt;&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
 &lt;ol&gt;
-&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
 &lt;p&gt;Many consider null pointers to be a &lt;a href=&#34;https://news.ycombinator.com/item?id=12427069&#34;&gt;big
 mistake&lt;/a&gt;, and
 many modern languages make them impossible.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
 &lt;p&gt;At least, that&amp;rsquo;s how &lt;a href=&#34;https://github.com/golang/go/blob/6f327f7b889b81549d551ce6963067267578bd70/src/runtime/string.go#L238-L241&#34;&gt;Go does
 it&lt;/a&gt;. In
 C, it&amp;rsquo;s just a pointer, and you count on a &lt;code&gt;0&lt;/code&gt; byte to terminate the
 string. If that sounds risky, like you could miss the &lt;code&gt;0&lt;/code&gt;, and just
 run off into some other part of memory, well, yep!&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
 &lt;p&gt;On Unix systems, like Linux and Mac OS, you can type &lt;code&gt;man ascii&lt;/code&gt;
 in a terminal window to see the ASCII values. The bottom set shows
 them in decimal, and is probably what you want. We&amp;rsquo;ll get into Octal
 and Hexadecimal and all that some other time.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li id=&#34;fn:4&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;li id=&#34;fn:4&#34;&gt;
 &lt;p&gt;Actually, it gives each &lt;em&gt;code point&lt;/em&gt; a number, and then one or
 more of those combine to make one “user-perceived character”, as
 Wikipedia puts it. It&amp;rsquo;s complicated. &lt;a href=&#34;https://manishearth.github.io/blog/2017/01/14/stop-ascribing-meaning-to-unicode-code-points/&#34;&gt;This post by Manish
@@ -3605,17 +3723,23 @@ Goregaokar&lt;/a&gt;
 goes into lots of details.&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/section&gt;
-</description>
+&lt;/div&gt;
+&lt;script&gt;
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle(&#39;hidden&#39;);
+    }
+  }
+&lt;/script&gt;</description>
     </item>
-
-
-
+    
+    
+    
     <item>
       <title>CS Ramble — Set 1b - memory, text, numbers</title>
       <link>https://zellyn.com/2022/02/cs-ramble/1b/</link>
       <pubDate>Thu, 03 Feb 2022 08:00:00 -0500</pubDate>
-
+      
       <guid>https://zellyn.com/2022/02/cs-ramble/1b/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../1a/&#34;&gt;set 1&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
@@ -4277,22 +4401,16 @@ mean 32 or 64 bits, depending on whether your computer is running in
 32- or 64-bit mode. I&amp;rsquo;ve marked ambiguous names in &lt;em&gt;&lt;code&gt;italics&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;In the &lt;a href=&#34;../1c/&#34;&gt;next part&lt;/a&gt;, we&amp;rsquo;ll discuss how your program&amp;rsquo;s
 variables point to things in memory.&lt;/em&gt;&lt;/p&gt;
-&lt;script&gt;
-  function toggleHidden(id){
-    for(var c of document.getElementById(id).children){
-      c.classList.toggle(&#39;hidden&#39;);
-    }
-  }
-&lt;/script&gt;&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
 &lt;ol&gt;
-&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
 &lt;p&gt;That&amp;rsquo;s 32×1024×1024×1024. 1024 bytes is a “kilobyte”, because
 1024 is close to 1000, 1024×1024=1048576 bytes is a
 “megabyte”, because it&amp;rsquo;s close to a million bytes, and
 1024×1024×1024=1073741824 bytes is a “gigabyte”.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
 &lt;p&gt;Technically, according to the &lt;a href=&#34;https://en.wikipedia.org/wiki/Metric_prefix&#34;&gt;SI
 prefixes&lt;/a&gt;, a
 “kilobyte” (KB) is exactly 1000 bytes, and you should use
@@ -4302,24 +4420,30 @@ more like a Pokémon or a kind of dog food for small, yappy dogs,
 using exact powers of 10 to make their hard disks sound 10%
 bigger (for terabytes) than they really are.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
 &lt;p&gt;If you&amp;rsquo;re on Linux or MacOS, you can type &lt;code&gt;man ascii&lt;/code&gt; in your
 terminal to see a list of ASCII codes. Ignore the hexadecimal (for
 now) and octal (forever) sections; the decimal section at the bottom
 is useful.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/section&gt;
-</description>
+&lt;/div&gt;
+&lt;script&gt;
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle(&#39;hidden&#39;);
+    }
+  }
+&lt;/script&gt;</description>
     </item>
-
-
-
+    
+    
+    
     <item>
       <title>CS Ramble — Set 1a - questions</title>
       <link>https://zellyn.com/2022/02/cs-ramble/1a/</link>
       <pubDate>Wed, 02 Feb 2022 19:58:00 -0500</pubDate>
-
+      
       <guid>https://zellyn.com/2022/02/cs-ramble/1a/</guid>
       <description>&lt;p&gt;&lt;em&gt;These are the questions for set 1 of &lt;a href=&#34;../&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;questions-for-set-1&#34;&gt;Questions for set 1&lt;/h1&gt;
@@ -4337,14 +4461,14 @@ with that? What about 42 and 17?&lt;/li&gt;
 numbers and text in the &lt;a href=&#34;../1b/&#34;&gt;next part&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
-
-
-
+    
+    
+    
     <item>
       <title>A ramble around CS</title>
       <link>https://zellyn.com/2022/02/cs-ramble/</link>
       <pubDate>Tue, 01 Feb 2022 08:00:00 -0500</pubDate>
-
+      
       <guid>https://zellyn.com/2022/02/cs-ramble/</guid>
       <description>&lt;h1 id=&#34;intro&#34;&gt;Intro&lt;/h1&gt;
 &lt;p&gt;It turns out we have several folks at Square who arrived at
@@ -4422,35 +4546,35 @@ working through the first draft of this, making it up as we go along.&lt;/p&gt;
 which I&amp;rsquo;m still working to incorporate!&lt;/p&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;p&gt; &lt;/p&gt;
-&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
 &lt;ol&gt;
-&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
 &lt;p&gt;83% of all statistics are made up on the spot&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
 &lt;p&gt;Yes, including this one.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
 &lt;p&gt;In fact, please get in touch for any reason at all! We&amp;rsquo;re doing
 this to be helpful to people, and any feedback that could make it more
 useful to more people would be welcome.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li id=&#34;fn:4&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;li id=&#34;fn:4&#34;&gt;
 &lt;p&gt;But my preference for Go might occasionally be obvious!&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/section&gt;
+&lt;/div&gt;
 </description>
     </item>
-
-
-
+    
+    
+    
     <item>
       <title>gopikchr: a yakshave</title>
       <link>https://zellyn.com/2022/01/gopikchr-a-yakshave/</link>
       <pubDate>Sun, 30 Jan 2022 13:11:00 -0500</pubDate>
-
+      
       <guid>https://zellyn.com/2022/01/gopikchr-a-yakshave/</guid>
       <description>&lt;p&gt;I just completed part of a long
 &lt;a href=&#34;https://en.wiktionary.org/wiki/yak_shaving&#34;&gt;yak-shave&lt;/a&gt; to add
@@ -4598,8 +4722,9 @@ ellipse same at 0.3,0.4
 &lt;/div&gt;
 &lt;p&gt;  &lt;!-- vertical spacer --&gt;&lt;/p&gt;
 &lt;h2 id=&#34;comments-reach-me-on-twitter&#34;&gt;Comments? Reach me on Twitter&lt;/h2&gt;
-&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;I blogged a few days ago about porting Pikchr and the Lemon Parser to Go, but just now realized linking to a tweet at the end of the post is a satisfactory way to do conversations if your static blog doesn&amp;#39;t have comments!&lt;a href=&#34;https://t.co/aXtDNRMsyC&#34;&gt;https://t.co/aXtDNRMsyC&lt;/a&gt;&lt;/p&gt;&amp;mdash; Zellyn Hunter 💉² 🎉 (@zellyn) &lt;a href=&#34;https://twitter.com/zellyn/status/1488960414595620870?ref_src=twsrc%5Etfw&#34;&gt;February 2, 2022&lt;/a&gt;&lt;/blockquote&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;I blogged a few days ago about porting Pikchr and the Lemon Parser to Go, but just now realized linking to a tweet at the end of the post is a satisfactory way to do conversations if your static blog doesn&amp;#39;t have comments!&lt;a href=&#34;https://t.co/aXtDNRMsyC&#34;&gt;https://t.co/aXtDNRMsyC&lt;/a&gt;&lt;/p&gt;&amp;mdash; @zellyn@hachyderm.io (@zellyn) &lt;a href=&#34;https://twitter.com/zellyn/status/1488960414595620870?ref_src=twsrc%5Etfw&#34;&gt;February 2, 2022&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+
 
 &lt;script&gt;
   function toggleHidden(id){
@@ -4609,14 +4734,14 @@ ellipse same at 0.3,0.4
   }
 &lt;/script&gt;</description>
     </item>
-
-
-
+    
+    
+    
     <item>
       <title>Project Todos</title>
       <link>https://zellyn.com/2018/03/project-todos/</link>
       <pubDate>Sat, 31 Mar 2018 22:50:18 -0400</pubDate>
-
+      
       <guid>https://zellyn.com/2018/03/project-todos/</guid>
       <description>&lt;p&gt;In an effort to organize the many side-projects I would &lt;em&gt;like&lt;/em&gt; to do
 — at least in my mind — but probably never will, I created
@@ -4625,31 +4750,32 @@ a &lt;a href=&#34;https://zellyn.com/page/projects/todo/&#34;&gt;Projects: TODO&
 your fancy, I would &lt;em&gt;love&lt;/em&gt; to work together.&lt;/p&gt;
 </description>
     </item>
-
-
-
+    
+    
+    
     <item>
       <title>New new site</title>
       <link>https://zellyn.com/2016/04/new-new-site/</link>
       <pubDate>Sun, 03 Apr 2016 16:57:38 -0400</pubDate>
-
+      
       <guid>https://zellyn.com/2016/04/new-new-site/</guid>
       <description>&lt;p&gt;I just migrated this site from &lt;a href=&#34;http://octopress.org/&#34;&gt;Octopress&lt;/a&gt; to
 &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. Expect problems (and hopefully more
 frequent updates).&lt;/p&gt;
 </description>
     </item>
-
-
-
+    
+    
+    
     <item>
       <title>Continued fractions</title>
       <link>https://zellyn.com/2016/04/continued-fractions/</link>
       <pubDate>Sun, 03 Apr 2016 15:30:06 -0400</pubDate>
-
+      
       <guid>https://zellyn.com/2016/04/continued-fractions/</guid>
-      <description>&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[26 + \frac{1}{5 + \frac{1}{12 + \frac{1}{12 + \frac{1}{25 + \frac{1}{14 + \cdots}}}}}
-\]&lt;/span&gt;&lt;/p&gt;
+      <description>$$
+26 + \frac{1}{5 + \frac{1}{12 + \frac{1}{12 + \frac{1}{25 + \frac{1}{14 + \cdots}}}}}
+$$
 &lt;p&gt;Last night I lay thinking of
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Continued_fraction&#34;&gt;Continued Fractions&lt;/a&gt;,
 trying to understand not just the notation, but what they mean.&lt;/p&gt;
@@ -4663,14 +4789,14 @@ with the world, that Mum and Dad are in charge, that I am safe.&lt;/p&gt;
 &lt;p&gt;It’s amazing how profoundly we lose that feeling.&lt;/p&gt;
 </description>
     </item>
-
-
-
+    
+    
+    
     <item>
       <title>New Site</title>
       <link>https://zellyn.com/2016/04/new-site/</link>
       <pubDate>Sun, 03 Apr 2016 15:30:00 -0400</pubDate>
-
+      
       <guid>https://zellyn.com/2016/04/new-site/</guid>
       <description>&lt;p&gt;Welcome to my new site. I’m just trying to get everything working:
 expect both style and substance later.&lt;/p&gt;
@@ -4678,13 +4804,13 @@ expect both style and substance later.&lt;/p&gt;
 interesting.&lt;/p&gt;
 </description>
     </item>
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
   </channel>
 </rss>

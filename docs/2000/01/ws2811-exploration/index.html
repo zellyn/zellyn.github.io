@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zellyn&#39;s Website">
+    
+    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <title>An exploration of the ws2811 code</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+          inlineMath: [['\\(', '\\)']]                  
+        }
+      };
+    </script>
+
+    <link rel="stylesheet" href="/css/widecode.css" />
+</head>
+<body><header id="banner">
+    <h2><a href="http://localhost:1313/">Zellyn Hunter</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/page/projects/todo" title="projects">projects</a>
+            </li><li>
+                <a href="/about/" title="about">about</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>An exploration of the ws2811 code</h1>
+            <div>
+                <time>January 1, 2000</time>
+                </div>
+    </header><div class="toc">
+  <nav id="TableOfContents">
+  <ol>
+    <li><a href="#general-notes">General notes</a>
+      <ol>
+        <li><a href="#devices-used">Devices used:</a></li>
+        <li><a href="#useful-references">Useful references</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+</div>
+
+<p>We&rsquo;re going to be looking at
+<a href="https://github.com/jgarff/rpi_ws281x/blob/master/ws2811.c"><code>ws2811.c</code></a>, and
+occasionally various ancillary files, in the
+<a href="https://github.com/jgarff/rpi_ws281x#readme">jgarff/rpi_ws281x</a> project.</p>
+<h2 id="general-notes">General notes</h2>
+<h3 id="devices-used">Devices used:</h3>
+<ul>
+<li><code>/dev/vcio</code> - used to access VideoCore memory. Code is confined to
+<a href="https://github.com/jgarff/rpi_ws281x/blob/master/mailbox.c"><code>mailbox.c</code></a></li>
+<li><code>/dev/mem</code> - used to access and allocate regular memory, including regular GPIO access</li>
+<li><code>/devbase/gpiomem</code> - used to map GPIO access in <code>spi_init</code> (???)</li>
+<li><code>/dev/spidev0.0</code> - used to access SPI (needs the spi_bcm2835 module
+to be loaded: use <code>raspi-config</code> or add <code>dtparam=spi=on</code> to
+<code>/boot/config.txt</code>)</li>
+</ul>
+<h3 id="useful-references">Useful references</h3>
+<h4 id="clocks">Clocks</h4>
+<p><a href="https://starfishmedical.com/blog/raspberry-pi-clock-conundrum/">Understanding the Raspberry Pi Clock
+Conundrum</a>
+by Tristan Nixon on the StarFish Medical site dives into how varying
+clock rates affect serial communications.</p>
+<h4 id="spi">SPI</h4>
+<p><a href="https://www.takaitra.com/spi-device-raspberry-pi/">Controlling an SPI device with the Raspberry
+Pi</a> is an overview
+by Matthew Toso of using SPI from Python, along with a brief
+discussion of available frequencies.</p>
+<h4 id="general">General</h4>
+<p>The official <a href="https://www.raspberrypi.com/documentation/computers/raspberry-pi.html">Raspberry Pi
+Hardware</a>
+and
+<a href="https://www.raspberrypi.com/documentation/computers/configuration.html">Configuration</a>
+pages are very helpful.</p>
+<p>The main type we&rsquo;re dealing with is a <code>ws2811_t</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">86</span><span><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> <span style="color:#902000">ws2811_t</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">87</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">88</span><span>    <span style="color:#902000">uint64_t</span> render_wait_time;                   <span style="color:#60a0b0;font-style:italic">//&lt; time in µs before the next render can run
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">89</span><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#007020;font-weight:bold">struct</span> ws2811_device <span style="color:#666">*</span>device;                <span style="color:#60a0b0;font-style:italic">//&lt; Private data for driver use
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">90</span><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">rpi_hw_t</span> <span style="color:#666">*</span>rpi_hw;                      <span style="color:#60a0b0;font-style:italic">//&lt; RPI Hardware Information
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">91</span><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">uint32_t</span> freq;                               <span style="color:#60a0b0;font-style:italic">//&lt; Required output frequency
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">92</span><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">int</span> dmanum;                                  <span style="color:#60a0b0;font-style:italic">//&lt; DMA number _not_ already in use
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">93</span><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">ws2811_channel_t</span> channel[RPI_PWM_CHANNELS];
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">94</span><span>} <span style="color:#902000">ws2811_t</span>;
+</span></span></code></pre></div><p>The <code>device</code> field holds a <code>ws2811_device</code>.</p>
+<p>Looking at the memory-unmapping process used on shutdown, these are
+the devices that need to be unmapped:</p>
+<ul>
+<li><code>dma</code></li>
+<li><code>pwm</code></li>
+<li><code>pcm</code></li>
+<li><code>cm_clk</code></li>
+<li><code>gpio</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> ws2811_device
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#902000">int</span> driver_mode;
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">volatile</span> <span style="color:#902000">uint8_t</span> <span style="color:#666">*</span>pxl_raw;
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">volatile</span> <span style="color:#902000">dma_t</span> <span style="color:#666">*</span>dma;
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">volatile</span> <span style="color:#902000">pwm_t</span> <span style="color:#666">*</span>pwm;
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">volatile</span> <span style="color:#902000">pcm_t</span> <span style="color:#666">*</span>pcm;
+</span></span><span style="display:flex;"><span>    <span style="color:#902000">int</span> spi_fd;
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">volatile</span> <span style="color:#902000">dma_cb_t</span> <span style="color:#666">*</span>dma_cb;
+</span></span><span style="display:flex;"><span>    <span style="color:#902000">uint32_t</span> dma_cb_addr;
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">volatile</span> <span style="color:#902000">gpio_t</span> <span style="color:#666">*</span>gpio;
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">volatile</span> <span style="color:#902000">cm_clk_t</span> <span style="color:#666">*</span>cm_clk;
+</span></span><span style="display:flex;"><span>    <span style="color:#902000">videocore_mbox_t</span> mbox;
+</span></span><span style="display:flex;"><span>    <span style="color:#902000">int</span> max_count;
+</span></span><span style="display:flex;"><span>} <span style="color:#902000">ws2811_device_t</span>;
+</span></span></code></pre></div><p>The <code>rpi_hw</code> field contains a struct holding information about the auto-detected
+RPi model:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        .hwver <span style="color:#666">=</span> <span style="color:#40a070">0xD03114</span>,
+</span></span><span style="display:flex;"><span>        .type <span style="color:#666">=</span> RPI_HWVER_TYPE_PI4,
+</span></span><span style="display:flex;"><span>        .periph_base <span style="color:#666">=</span> PERIPH_BASE_RPI4,
+</span></span><span style="display:flex;"><span>        .videocore_base <span style="color:#666">=</span> VIDEOCORE_BASE_RPI2,
+</span></span><span style="display:flex;"><span>        .desc <span style="color:#666">=</span> <span style="color:#4070a0">&#34;Pi 4 Model B - 8GB v1.4&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span></code></pre></div><p>And the <code>channel</code> array holds LED information</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#902000">uint32_t</span> <span style="color:#902000">ws2811_led_t</span>;                   <span style="color:#60a0b0;font-style:italic">//&lt; 0xWWRRGGBB
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> <span style="color:#902000">ws2811_channel_t</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#902000">int</span> gpionum;                                 <span style="color:#60a0b0;font-style:italic">//&lt; GPIO Pin with PWM alternate function, 0 if unused
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">int</span> invert;                                  <span style="color:#60a0b0;font-style:italic">//&lt; Invert output signal
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">int</span> count;                                   <span style="color:#60a0b0;font-style:italic">//&lt; Number of LEDs, 0 if channel is unused
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">int</span> strip_type;                              <span style="color:#60a0b0;font-style:italic">//&lt; Strip color layout -- one of WS2811_STRIP_xxx constants
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">ws2811_led_t</span> <span style="color:#666">*</span>leds;                          <span style="color:#60a0b0;font-style:italic">//&lt; LED buffers, allocated by driver based on count
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">uint8_t</span> brightness;                          <span style="color:#60a0b0;font-style:italic">//&lt; Brightness value between 0 and 255
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">uint8_t</span> wshift;                              <span style="color:#60a0b0;font-style:italic">//&lt; White shift value
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">uint8_t</span> rshift;                              <span style="color:#60a0b0;font-style:italic">//&lt; Red shift value
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">uint8_t</span> gshift;                              <span style="color:#60a0b0;font-style:italic">//&lt; Green shift value
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">uint8_t</span> bshift;                              <span style="color:#60a0b0;font-style:italic">//&lt; Blue shift value
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">uint8_t</span> <span style="color:#666">*</span>gamma;                              <span style="color:#60a0b0;font-style:italic">//&lt; Gamma correction table
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>} <span style="color:#902000">ws2811_channel_t</span>;
+</span></span></code></pre></div><p><code>main.c</code> has this to say about which pins work with which mechanisms
+on different models:</p>
+<ul>
+<li><strong>PWM0:</strong> GPIOs 12, 18, (and 40, 52 after B+/2B/3B)</li>
+<li><strong>PWM1:</strong> GPIOs 13, (and 19, 41, 45, 53 after B+/2B/PiZero/3B)</li>
+<li><strong>PCM_DOUT:</strong> GPIOs 21 (and 31 after B+/2B/PiZero/3B)</li>
+<li><strong>SPI0-MOSI:</strong> GPIOs 10 (and 38 on some models)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">	PWM0, which can be set to use GPIOs 12, 18, 40, and 52.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">	Only 12 (pin 32) and 18 (pin 12) are available on the B+/2B/3B
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">	PWM1 which can be set to use GPIOs 13, 19, 41, 45 and 53.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">	Only 13 is available on the B+/2B/PiZero/3B, on pin 33
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">	PCM_DOUT, which can be set to use GPIOs 21 and 31.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">	Only 21 is available on the B+/2B/PiZero/3B, on pin 40.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">	SPI0-MOSI is available on GPIOs 10 and 38.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">	Only GPIO 10 is available on all models.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">	The library checks if the specified gpio is available
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">	on the specific model (from model B rev 1 till 3B)
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">*/</span>
+</span></span></code></pre></div><p>Cleanup looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"> * Shut down DMA, PWM, and cleanup memory.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"> * @param    ws2811  ws2811 instance pointer.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"> * @returns  None
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#902000">void</span> <span style="color:#06287e">ws2811_fini</span>(<span style="color:#902000">ws2811_t</span> <span style="color:#666">*</span>ws2811)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">volatile</span> <span style="color:#902000">pcm_t</span> <span style="color:#666">*</span>pcm <span style="color:#666">=</span> ws2811<span style="color:#666">-&gt;</span>device<span style="color:#666">-&gt;</span>pcm;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#06287e">ws2811_wait</span>(ws2811);
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">switch</span> (ws2811<span style="color:#666">-&gt;</span>device<span style="color:#666">-&gt;</span>driver_mode) {
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">case</span> <span style="color:#002070;font-weight:bold">PWM</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#06287e">stop_pwm</span>(ws2811);
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">case</span> <span style="color:#002070;font-weight:bold">PCM</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">while</span> (<span style="color:#666">!</span>(pcm<span style="color:#666">-&gt;</span>cs <span style="color:#666">&amp;</span> RPI_PCM_CS_TXE)) ;    <span style="color:#60a0b0;font-style:italic">// Wait till TX FIFO is empty
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>        <span style="color:#06287e">stop_pcm</span>(ws2811);
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#06287e">unmap_registers</span>(ws2811);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#06287e">ws2811_cleanup</span>(ws2811);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The <code>ws2811_init</code> function that sets everything up:</p>
+<ul>
+<li>the first part is <a href="focus://ws2811.c#10:15">setup</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"> * Allocate and initialize memory, buffers, pages, PWM, DMA, and GPIO.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"> * @param    ws2811  ws2811 instance pointer.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"> * @returns  0 on success, -1 otherwise.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#902000">ws2811_return_t</span> <span style="color:#06287e">ws2811_init</span>(<span style="color:#902000">ws2811_t</span> <span style="color:#666">*</span>ws2811)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#902000">ws2811_device_t</span> <span style="color:#666">*</span>device;
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">rpi_hw_t</span> <span style="color:#666">*</span>rpi_hw;
+</span></span><span style="display:flex;"><span>    <span style="color:#902000">int</span> chan;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ws2811<span style="color:#666">-&gt;</span>rpi_hw <span style="color:#666">=</span> <span style="color:#06287e">rpi_hw_detect</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#666">!</span>ws2811<span style="color:#666">-&gt;</span>rpi_hw)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">return</span> WS2811_ERROR_HW_NOT_SUPPORTED;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    rpi_hw <span style="color:#666">=</span> ws2811<span style="color:#666">-&gt;</span>rpi_hw;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ws2811<span style="color:#666">-&gt;</span>device <span style="color:#666">=</span> <span style="color:#06287e">malloc</span>(<span style="color:#007020;font-weight:bold">sizeof</span>(<span style="color:#666">*</span>ws2811<span style="color:#666">-&gt;</span>device));
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#666">!</span>ws2811<span style="color:#666">-&gt;</span>device)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">return</span> WS2811_ERROR_OUT_OF_MEMORY;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#06287e">memset</span>(ws2811<span style="color:#666">-&gt;</span>device, <span style="color:#40a070">0</span>, <span style="color:#007020;font-weight:bold">sizeof</span>(<span style="color:#666">*</span>ws2811<span style="color:#666">-&gt;</span>device));
+</span></span><span style="display:flex;"><span>    device <span style="color:#666">=</span> ws2811<span style="color:#666">-&gt;</span>device;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#06287e">check_hwver_and_gpionum</span>(ws2811) <span style="color:#666">&lt;</span> <span style="color:#40a070">0</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">return</span> WS2811_ERROR_ILLEGAL_GPIO;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    device<span style="color:#666">-&gt;</span>max_count <span style="color:#666">=</span> <span style="color:#06287e">max_channel_led_count</span>(ws2811);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">if</span> (device<span style="color:#666">-&gt;</span>driver_mode <span style="color:#666">==</span> SPI) {
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">return</span> <span style="color:#06287e">spi_init</span>(ws2811);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// Determine how much physical memory we need for DMA
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#007020;font-weight:bold">switch</span> (device<span style="color:#666">-&gt;</span>driver_mode) {
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">case</span> <span style="color:#002070;font-weight:bold">PWM</span>:
+</span></span><span style="display:flex;"><span>        device<span style="color:#666">-&gt;</span>mbox.size <span style="color:#666">=</span> <span style="color:#06287e">PWM_BYTE_COUNT</span>(device<span style="color:#666">-&gt;</span>max_count, ws2811<span style="color:#666">-&gt;</span>freq) <span style="color:#666">+</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#007020;font-weight:bold">sizeof</span>(<span style="color:#902000">dma_cb_t</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">case</span> <span style="color:#002070;font-weight:bold">PCM</span>:
+</span></span><span style="display:flex;"><span>        device<span style="color:#666">-&gt;</span>mbox.size <span style="color:#666">=</span> <span style="color:#06287e">PCM_BYTE_COUNT</span>(device<span style="color:#666">-&gt;</span>max_count, ws2811<span style="color:#666">-&gt;</span>freq) <span style="color:#666">+</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#007020;font-weight:bold">sizeof</span>(<span style="color:#902000">dma_cb_t</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// Round up to page size multiple
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    device<span style="color:#666">-&gt;</span>mbox.size <span style="color:#666">=</span> (device<span style="color:#666">-&gt;</span>mbox.size <span style="color:#666">+</span> (PAGE_SIZE <span style="color:#666">-</span> <span style="color:#40a070">1</span>)) <span style="color:#666">&amp;</span> <span style="color:#666">~</span>(PAGE_SIZE <span style="color:#666">-</span> <span style="color:#40a070">1</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    device<span style="color:#666">-&gt;</span>mbox.handle <span style="color:#666">=</span> <span style="color:#06287e">mbox_open</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">if</span> (device<span style="color:#666">-&gt;</span>mbox.handle <span style="color:#666">==</span> <span style="color:#666">-</span><span style="color:#40a070">1</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">return</span> WS2811_ERROR_MAILBOX_DEVICE;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    device<span style="color:#666">-&gt;</span>mbox.mem_ref <span style="color:#666">=</span> <span style="color:#06287e">mem_alloc</span>(device<span style="color:#666">-&gt;</span>mbox.handle, device<span style="color:#666">-&gt;</span>mbox.size, PAGE_SIZE,
+</span></span><span style="display:flex;"><span>                                     rpi_hw<span style="color:#666">-&gt;</span>videocore_base <span style="color:#666">==</span> <span style="color:#40a070">0x40000000</span> <span style="color:#666">?</span> <span style="color:#40a070">0xC</span> <span style="color:#666">:</span> <span style="color:#40a070">0x4</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">if</span> (device<span style="color:#666">-&gt;</span>mbox.mem_ref <span style="color:#666">==</span> <span style="color:#40a070">0</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">return</span> WS2811_ERROR_OUT_OF_MEMORY;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    device<span style="color:#666">-&gt;</span>mbox.bus_addr <span style="color:#666">=</span> <span style="color:#06287e">mem_lock</span>(device<span style="color:#666">-&gt;</span>mbox.handle, device<span style="color:#666">-&gt;</span>mbox.mem_ref);
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">if</span> (device<span style="color:#666">-&gt;</span>mbox.bus_addr <span style="color:#666">==</span> (<span style="color:#902000">uint32_t</span>) <span style="color:#666">~</span><span style="color:#40a070">0UL</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>       <span style="color:#06287e">mem_free</span>(device<span style="color:#666">-&gt;</span>mbox.handle, device<span style="color:#666">-&gt;</span>mbox.size);
+</span></span><span style="display:flex;"><span>       <span style="color:#007020;font-weight:bold">return</span> WS2811_ERROR_MEM_LOCK;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    device<span style="color:#666">-&gt;</span>mbox.virt_addr <span style="color:#666">=</span> <span style="color:#06287e">mapmem</span>(<span style="color:#06287e">BUS_TO_PHYS</span>(device<span style="color:#666">-&gt;</span>mbox.bus_addr), device<span style="color:#666">-&gt;</span>mbox.size, DEV_MEM);
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#666">!</span>device<span style="color:#666">-&gt;</span>mbox.virt_addr)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#06287e">mem_unlock</span>(device<span style="color:#666">-&gt;</span>mbox.handle, device<span style="color:#666">-&gt;</span>mbox.mem_ref);
+</span></span><span style="display:flex;"><span>        <span style="color:#06287e">mem_free</span>(device<span style="color:#666">-&gt;</span>mbox.handle, device<span style="color:#666">-&gt;</span>mbox.size);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#06287e">ws2811_cleanup</span>(ws2811);
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">return</span> WS2811_ERROR_MMAP;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// Initialize all pointers to NULL.  Any non-NULL pointers will be freed on cleanup.
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    device<span style="color:#666">-&gt;</span>pxl_raw <span style="color:#666">=</span> <span style="color:#007020">NULL</span>;
+</span></span><span style="display:flex;"><span>    device<span style="color:#666">-&gt;</span>dma_cb <span style="color:#666">=</span> <span style="color:#007020">NULL</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">for</span> (chan <span style="color:#666">=</span> <span style="color:#40a070">0</span>; chan <span style="color:#666">&lt;</span> RPI_PWM_CHANNELS; chan<span style="color:#666">++</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        ws2811<span style="color:#666">-&gt;</span>channel[chan].leds <span style="color:#666">=</span> <span style="color:#007020">NULL</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// Allocate the LED buffers
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#007020;font-weight:bold">for</span> (chan <span style="color:#666">=</span> <span style="color:#40a070">0</span>; chan <span style="color:#666">&lt;</span> RPI_PWM_CHANNELS; chan<span style="color:#666">++</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#902000">ws2811_channel_t</span> <span style="color:#666">*</span>channel <span style="color:#666">=</span> <span style="color:#666">&amp;</span>ws2811<span style="color:#666">-&gt;</span>channel[chan];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        channel<span style="color:#666">-&gt;</span>leds <span style="color:#666">=</span> <span style="color:#06287e">malloc</span>(<span style="color:#007020;font-weight:bold">sizeof</span>(<span style="color:#902000">ws2811_led_t</span>) <span style="color:#666">*</span> channel<span style="color:#666">-&gt;</span>count);
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#666">!</span>channel<span style="color:#666">-&gt;</span>leds)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#06287e">ws2811_cleanup</span>(ws2811);
+</span></span><span style="display:flex;"><span>            <span style="color:#007020;font-weight:bold">return</span> WS2811_ERROR_OUT_OF_MEMORY;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#06287e">memset</span>(channel<span style="color:#666">-&gt;</span>leds, <span style="color:#40a070">0</span>, <span style="color:#007020;font-weight:bold">sizeof</span>(<span style="color:#902000">ws2811_led_t</span>) <span style="color:#666">*</span> channel<span style="color:#666">-&gt;</span>count);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#666">!</span>channel<span style="color:#666">-&gt;</span>strip_type)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>          channel<span style="color:#666">-&gt;</span>strip_type<span style="color:#666">=</span>WS2811_STRIP_RGB;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#60a0b0;font-style:italic">// Set default uncorrected gamma table
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>        <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#666">!</span>channel<span style="color:#666">-&gt;</span>gamma)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>          channel<span style="color:#666">-&gt;</span>gamma <span style="color:#666">=</span> <span style="color:#06287e">malloc</span>(<span style="color:#007020;font-weight:bold">sizeof</span>(<span style="color:#902000">uint8_t</span>) <span style="color:#666">*</span> <span style="color:#40a070">256</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#902000">int</span> x;
+</span></span><span style="display:flex;"><span>          <span style="color:#007020;font-weight:bold">for</span>(x <span style="color:#666">=</span> <span style="color:#40a070">0</span>; x <span style="color:#666">&lt;</span> <span style="color:#40a070">256</span>; x<span style="color:#666">++</span>){
+</span></span><span style="display:flex;"><span>            channel<span style="color:#666">-&gt;</span>gamma[x] <span style="color:#666">=</span> x;
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        channel<span style="color:#666">-&gt;</span>wshift <span style="color:#666">=</span> (channel<span style="color:#666">-&gt;</span>strip_type <span style="color:#666">&gt;&gt;</span> <span style="color:#40a070">24</span>) <span style="color:#666">&amp;</span> <span style="color:#40a070">0xff</span>;
+</span></span><span style="display:flex;"><span>        channel<span style="color:#666">-&gt;</span>rshift <span style="color:#666">=</span> (channel<span style="color:#666">-&gt;</span>strip_type <span style="color:#666">&gt;&gt;</span> <span style="color:#40a070">16</span>) <span style="color:#666">&amp;</span> <span style="color:#40a070">0xff</span>;
+</span></span><span style="display:flex;"><span>        channel<span style="color:#666">-&gt;</span>gshift <span style="color:#666">=</span> (channel<span style="color:#666">-&gt;</span>strip_type <span style="color:#666">&gt;&gt;</span> <span style="color:#40a070">8</span>)  <span style="color:#666">&amp;</span> <span style="color:#40a070">0xff</span>;
+</span></span><span style="display:flex;"><span>        channel<span style="color:#666">-&gt;</span>bshift <span style="color:#666">=</span> (channel<span style="color:#666">-&gt;</span>strip_type <span style="color:#666">&gt;&gt;</span> <span style="color:#40a070">0</span>)  <span style="color:#666">&amp;</span> <span style="color:#40a070">0xff</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    device<span style="color:#666">-&gt;</span>dma_cb <span style="color:#666">=</span> (<span style="color:#902000">dma_cb_t</span> <span style="color:#666">*</span>)device<span style="color:#666">-&gt;</span>mbox.virt_addr;
+</span></span><span style="display:flex;"><span>    device<span style="color:#666">-&gt;</span>pxl_raw <span style="color:#666">=</span> (<span style="color:#902000">uint8_t</span> <span style="color:#666">*</span>)device<span style="color:#666">-&gt;</span>mbox.virt_addr <span style="color:#666">+</span> <span style="color:#007020;font-weight:bold">sizeof</span>(<span style="color:#902000">dma_cb_t</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">switch</span> (device<span style="color:#666">-&gt;</span>driver_mode) {
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">case</span> <span style="color:#002070;font-weight:bold">PWM</span>:
+</span></span><span style="display:flex;"><span>       <span style="color:#06287e">pwm_raw_init</span>(ws2811);
+</span></span><span style="display:flex;"><span>       <span style="color:#007020;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">case</span> <span style="color:#002070;font-weight:bold">PCM</span>:
+</span></span><span style="display:flex;"><span>       <span style="color:#06287e">pcm_raw_init</span>(ws2811);
+</span></span><span style="display:flex;"><span>       <span style="color:#007020;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#06287e">memset</span>((<span style="color:#902000">dma_cb_t</span> <span style="color:#666">*</span>)device<span style="color:#666">-&gt;</span>dma_cb, <span style="color:#40a070">0</span>, <span style="color:#007020;font-weight:bold">sizeof</span>(<span style="color:#902000">dma_cb_t</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// Cache the DMA control block bus address
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    device<span style="color:#666">-&gt;</span>dma_cb_addr <span style="color:#666">=</span> <span style="color:#06287e">addr_to_bus</span>(device, device<span style="color:#666">-&gt;</span>dma_cb);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// Map the physical registers into userspace
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#06287e">map_registers</span>(ws2811))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#06287e">ws2811_cleanup</span>(ws2811);
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">return</span> WS2811_ERROR_MAP_REGISTERS;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// Initialize the GPIO pins
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#06287e">gpio_init</span>(ws2811))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#06287e">unmap_registers</span>(ws2811);
+</span></span><span style="display:flex;"><span>        <span style="color:#06287e">ws2811_cleanup</span>(ws2811);
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">return</span> WS2811_ERROR_GPIO_INIT;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">switch</span> (device<span style="color:#666">-&gt;</span>driver_mode) {
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">case</span> <span style="color:#002070;font-weight:bold">PWM</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#60a0b0;font-style:italic">// Setup the PWM, clocks, and DMA
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>        <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#06287e">setup_pwm</span>(ws2811))
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#06287e">unmap_registers</span>(ws2811);
+</span></span><span style="display:flex;"><span>            <span style="color:#06287e">ws2811_cleanup</span>(ws2811);
+</span></span><span style="display:flex;"><span>            <span style="color:#007020;font-weight:bold">return</span> WS2811_ERROR_PWM_SETUP;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">case</span> <span style="color:#002070;font-weight:bold">PCM</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// Setup the PCM, clock, and DMA
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>        <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#06287e">setup_pcm</span>(ws2811))
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#06287e">unmap_registers</span>(ws2811);
+</span></span><span style="display:flex;"><span>            <span style="color:#06287e">ws2811_cleanup</span>(ws2811);
+</span></span><span style="display:flex;"><span>            <span style="color:#007020;font-weight:bold">return</span> WS2811_ERROR_PCM_SETUP;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> WS2811_SUCCESS;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></article>
+
+        </main><footer id="footer">
+    
+</footer>
+</body>
+</html>

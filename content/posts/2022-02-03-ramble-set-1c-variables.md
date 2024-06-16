@@ -3,9 +3,6 @@ title: "CS Ramble — Set 1c: variables"
 slug: "cs-ramble/1c"
 date: 2022-02-03T20:12:00-05:00
 tags: ['ramble', 'set1']
-# draft: true
-# _build:
-#  list: never
 ---
 
 _This is post is part of [set 1](../1a/) of [A Ramble Around
