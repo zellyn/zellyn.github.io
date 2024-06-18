@@ -13,6 +13,17 @@
     
     
     <item>
+      <title>ESP32-C3:  Part 1</title>
+      <link>http://localhost:1313/2024/06/esp32c3-01/</link>
+      <pubDate>Sat, 15 Jun 2024 20:20:00 -0400</pubDate>
+      
+      <guid>http://localhost:1313/2024/06/esp32c3-01/</guid>
+      <description></description>
+    </item>
+    
+    
+    
+    <item>
       <title>Blog machinery back up</title>
       <link>http://localhost:1313/2024/06/blog-fixed/</link>
       <pubDate>Sat, 15 Jun 2024 19:45:31 -0400</pubDate>
@@ -25,13 +36,7 @@ updated. Somewhere around 2022 or 2023 I noticed that the &lt;code&gt;pikchr&lt;
 diagrams weren&amp;rsquo;t rendering properly when I tried to regenerate my site.&lt;/p&gt;
 &lt;p&gt;Well, yesterday, I finally got around to fixing it, mainly so that I
 can write some posts to properly document my experience playing around
-with ESP32-C3 chips and Adafruit Neopixels. For now, the github repo
-&amp;ndash; &lt;a href=&#34;https://github.com/zellyn/weblight&#34;&gt;github.com/zellyn/weblight&lt;/a&gt;
-will have to be enough, but suffice it to say: if you&amp;rsquo;ve been thinking
-about playing around with micro-controllers and LEDs and things, this
-little Espressif chip is fantastic. For $5 you can get Wifi, battery
-charging, and a built-in USB connector. And Espressif&amp;rsquo;s tooling is
-suprisingly great.&lt;/p&gt;
+with ESP32-C3 chips and Adafruit Neopixels.&lt;/p&gt;
 &lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
 &lt;ol&gt;
@@ -5352,6 +5357,17 @@ on different models:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; WS2811_SUCCESS;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title></title>
+      <link>http://localhost:1313/1/01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/1/01/</guid>
+      <description></description>
     </item>
     
     
