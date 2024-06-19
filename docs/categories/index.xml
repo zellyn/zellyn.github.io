@@ -12,6 +12,333 @@
     
     
     <item>
+      <title>Schotter - Georg Nees — part 1</title>
+      <link>https://zellyn.com/2024/06/schotter-1/</link>
+      <pubDate>Mon, 17 Jun 2024 22:11:00 -0400</pubDate>
+      
+      <guid>https://zellyn.com/2024/06/schotter-1/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/schotter/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;Source: Victoria and Albert &amp;mdash; &lt;a href=&#34;https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg/&#34;&gt;link&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;As a way of dipping my toe into generative art, I&amp;rsquo;ve been trying to
+recreate one of the most iconic images in computer-generated art:
+&lt;em&gt;Schotter&lt;/em&gt; (&amp;ldquo;Gravel&amp;rdquo;, aka &amp;ldquo;Cubic Disarray&amp;rdquo;) by Georg Nees.&lt;/p&gt;
+&lt;h1 id=&#34;original-code&#34;&gt;Original code&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.slideshare.net/slideshow/kunst-und-computer/67510183#16&#34;&gt;source&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1   &amp;#39;BEGIN&amp;#39;&amp;#39;COMMENT&amp;#39;SCHOTTER.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2   &amp;#39;REAL&amp;#39;R,PIHALB,PI4T.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3   &amp;#39;INTEGER&amp;#39;I.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;4   &amp;#39;PROCEDURE&amp;#39;QUAD.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;5   &amp;#39;BEGIN&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;6   &amp;#39;REAL&amp;#39;P1,Q1,PSI.,&amp;#39;INTEGER&amp;#39;S.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;7   JE1.=5*1/264.,JA1.=-JE1.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;8   JE2.=PI4T*(1+I/264).,JA2.=PI4T*(1-I/264).,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;9   P1.=P+5+J1.,Q1.=Q+5+J1.,PS1.=J2.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;10  LEER(P1+R*COS(PSI),Q1+R*SIN(PSI)).,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;11  &amp;#39;FOR&amp;#39;S.=1&amp;#39;STEP&amp;#39;1&amp;#39;UNTIL&amp;#39;4&amp;#39;DO&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;12  &amp;#39;BEGIN&amp;#39;PSI.=PSI+PIHALB.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;13  LINE(P1+R*COS(PSI),Q1+R*SIN(PSI)).,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;14  &amp;#39;END&amp;#34;.,I.=I+1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;15  &amp;#39;END&amp;#39;QUAD.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;16  R.=5*1.4142.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;17  PIHALB.=3.14159*.5.,P14T.=PIHALB*.5.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;18  I.=0.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;19  SERIE(10.0,10.0,22,12,QUAD)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;20  &amp;#39;END&amp;#39; SCHOTTER.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1   &amp;#39;REAL&amp;#39;P,Q,P1,Q1,XM,YM,HOR,VER,JLI,JRE,JUN,JOB.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;5   &amp;#39;INTEGER&amp;#39;I,M,M,T.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;7   &amp;#39;PROCEDURE&amp;#39;SERIE(QUER,HOCH,XMAL,YMAL,FIGUR).,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;8   &amp;#39;VALUE&amp;#39;QUER,HOCH,XMAL,YMAL.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;9   &amp;#39;REAL&amp;#39;QUER,HOCH.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;10  &amp;#39;INTEGER&amp;#39;XMAL,YMAL.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;11  &amp;#39;PROCEDURE&amp;#39;FIGUR.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;12  &amp;#39;BEGIN&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;13  &amp;#39;REAL&amp;#39;YANF.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;14  &amp;#39;INTEGER&amp;#39;COUNTX,COUNTY.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;15  P.=-QUER*XMAL*.5.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;16  Q.=YANF.=-HOCH*YMAL*.5.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;17  &amp;#39;FOR&amp;#39;COUNTX.=1&amp;#39;STEP&amp;#39;1&amp;#39;UNTIL&amp;#39;XMAL&amp;#39;DO&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;18  &amp;#39;BEGIN&amp;#39;Q.=YANF.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;19  &amp;#39;FOR&amp;#39;COUNTY.=1&amp;#39;STEP&amp;#39;1&amp;#39;UNTIL&amp;#39;YMAL&amp;#39;DO&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;20  &amp;#39;BEGIN&amp;#39;FIGUR.,Q.=Q+HOCH
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;21  &amp;#39;END&amp;#39;.,P.=P+QUER
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;22  &amp;#39;END&amp;#39;.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;23  LEER(-148.0,-105.0).,CLOSE.,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;24  SONK(11).,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;25  OPBEN(X,Y)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;26  &amp;#39;END&amp;#39;SERIE.,
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Nees&amp;rsquo; comments:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;«Image 38 [«Schotter»] is produced by invoking the SERIE procedure […]. The non-parametric procedure QUAD serves to generate the elementary figure which is reproduced multiple times in the composition process controlled by SERIE. QUAD is located in lines 4 through 15 of the generator. This procedure draws squares with sides of constant length but at random locations and different angles. From lines 9 and 10, it can be seen that the position of a single square is influenced by random generator J1, and the angle placement by J2. The successively increasing variation between the relative coordinates P and Q, and the angle position PSI of a given square, is controlled by the counter index I, which is invoked by each call from QUAD (see line 14).»&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://ems.andrew.cmu.edu/2013_60210a/assignments/assignment-04/index.html&#34;&gt;source&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;python-translation&#34;&gt;Python translation&lt;/h1&gt;
+&lt;p&gt;With a few helper functions and ugly uses of &lt;code&gt;global&lt;/code&gt;, we can write a
+Python implementation that is almost just a transliteration.&lt;/p&gt;
+&lt;h2 id=&#34;helper-functions&#34;&gt;Helper functions&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;math&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;random&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;drawsvg&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;draw&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;d &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; draw&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;Drawing(&lt;span style=&#34;color:#40a070&#34;&gt;250&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;250&lt;/span&gt;, origin&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;center&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;p &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;LEER&lt;/span&gt;(x,y):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;global&lt;/span&gt; p
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; p &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;is&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;None&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        d&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;append(p)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    p &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; draw&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;Path(stroke&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;black&amp;#39;&lt;/span&gt;, stroke_width&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;0.5&amp;#39;&lt;/span&gt;, fill&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;none&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    p&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;M(y,x)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;LINE&lt;/span&gt;(x,y):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    p&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;L(y,x)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;CLOSE&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; p &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;is&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;None&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        d&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;append(p)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;JE1 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; JA1 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; JE2 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; JA2 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;J1&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; random&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;uniform(JE1, JA1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;J2&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; random&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;uniform(JE2, JA2)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;SIN&lt;/span&gt;(x):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; math&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;sin(x)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;COS&lt;/span&gt;(x):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; math&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;cos(x)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;transliteration&#34;&gt;Transliteration&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# SCHOTTER&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;R &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;1.4142&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;HALFPI &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;3.14159&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0.5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PI4T &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; HALFPI &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0.5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;I &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;P &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; Q &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; PSI &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;QUAD&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;global&lt;/span&gt; I, JE1, JA1, JE2, JA2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  JE1 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;I&lt;span style=&#34;color:#666&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;264&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  JA1 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt;JE1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  JE2 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; PI4T &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; (&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;I&lt;span style=&#34;color:#666&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;264&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  JA2 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; PI4T &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; (&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt;I&lt;span style=&#34;color:#666&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;264&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  P1 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; P&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;J1()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Q1 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; Q&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;J1()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PSI &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; J2()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  LEER(P1&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;R&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;COS(PSI), Q1&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;R&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;SIN(PSI))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; S &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; (&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;color:#40a070&#34;&gt;3&lt;/span&gt;,&lt;span style=&#34;color:#40a070&#34;&gt;4&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    PSI &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; PSI&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;HALFPI
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    LINE (P1&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;R&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;COS(PSI), Q1&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;R&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;SIN(PSI))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  I &lt;span style=&#34;color:#666&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;SERIE&lt;/span&gt;(QUER, HOCH, XMAL, YMAL, FIGUR):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;global&lt;/span&gt; P, Q
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  P &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt;QUER &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; XMAL &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0.5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Q &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; YANF &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt;HOCH &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; YMAL &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0.5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; COUNTX &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;range&lt;/span&gt;(&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;, XMAL&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Q &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; YANF
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; COUNTY &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;range&lt;/span&gt;(&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;, YMAL&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      FIGUR()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      Q &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; Q &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; HOCH
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    P &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; P &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; QUER
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  LEER(&lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;148.0&lt;/span&gt;, &lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;105.0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  CLOSE()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SERIE(&lt;span style=&#34;color:#40a070&#34;&gt;10.0&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;10.0&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;22&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;12&lt;/span&gt;, QUAD)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;# /SCHOTTER&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;br&gt;
+&lt;center style=&#34;background-color:black&#34;&gt;
+&lt;br&gt;
+&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;90%&#34; viewBox=&#34;-90 -140 180 280&#34; style=&#34;background-color:#eae6e2&#34;&gt;
+&lt;g stroke-width=&#34;.4&#34; stroke=&#34;#41403a&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+&lt;path d=&#34;M-50-100v-10h-10v10h10m10.008-.007v-10h-10v10h10&#34;/&gt;
+&lt;path d=&#34;m-30.016-99.982.045-10-10-.045-.045 10 10 .045m10.053-.038.036-10-10-.037-.036 10 10 .036&#34;/&gt;
+&lt;path d=&#34;m-9.978-100.006.1-9.999-10-.1-.1 10 10 .1&#34;/&gt;
+&lt;path d=&#34;m-.047-99.879.147-9.999-9.999-.146-.146 9.999 9.998.146&#34;/&gt;
+&lt;path d=&#34;m9.955-99.975.1-10-9.999-.1-.1 10 9.999.1&#34;/&gt;
+&lt;path d=&#34;m19.974-99.925.002-10-10-.002-.002 10 10 .002&#34;/&gt;
+&lt;path d=&#34;m30.01-100.077-.057-10-10 .057.058 10 10-.057m10.09-.09-.083-10-10 .084.084 10 10-.084m10.005.394.088-10-10-.087-.087 10 10 .087&#34;/&gt;
+&lt;path d=&#34;m59.928-100.158.075-10-10-.075-.075 10 10 .075M-50.063-89.98l.197-9.997-9.998-.197-.197 9.997 9.998.198&#34;/&gt;
+&lt;path d=&#34;m-39.73-89.91-.306-9.996-9.995.306.306 9.995 9.995-.306m10.109-.306-.237-9.998-9.997.237.237 9.997 9.997-.236&#34;/&gt;
+&lt;path d=&#34;m-20.187-90.06.288-9.996-9.996-.288-.288 9.996 9.996.288&#34;/&gt;
+&lt;path d=&#34;m-9.641-89.996-.438-9.99-9.99.437.437 9.99 9.99-.437&#34;/&gt;
+&lt;path d=&#34;m.267-89.713.093-9.999-10-.093-.092 10 9.999.092&#34;/&gt;
+&lt;path d=&#34;m9.863-89.738.277-9.996-9.996-.278-.278 9.996 9.996.278&#34;/&gt;
+&lt;path d=&#34;m19.781-89.89.088-10-10-.087-.087 10 10 .087&#34;/&gt;
+&lt;path d=&#34;m29.503-90.024.457-9.99-9.99-.456-.456 9.99 9.989.456&#34;/&gt;
+&lt;path d=&#34;m39.866-90.235-.195-9.998-9.998.195.195 9.998 9.998-.195m10.256.513.065-10-10-.065-.065 10 10 .065&#34;/&gt;
+&lt;path d=&#34;m59.357-89.35.524-9.986-9.986-.524-.525 9.986 9.987.524m-109.225 9.376-.22-9.997-9.997.22.22 9.997 9.997-.22&#34;/&gt;
+&lt;path d=&#34;m-40.006-80.103.338-9.994-9.995-.338-.338 9.994 9.994.338&#34;/&gt;
+&lt;path d=&#34;m-29.767-80.268-.254-9.996-9.996.254.253 9.996 9.997-.254&#34;/&gt;
+&lt;path d=&#34;m-20.106-79.929.24-9.997-9.997-.24-.24 9.997 9.997.24&#34;/&gt;
+&lt;path d=&#34;m-10.238-79.799-.39-9.992-9.992.39.39 9.992 9.992-.39m10.708.056-.477-9.988-9.988.476.476 9.988 9.988-.476&#34;/&gt;
+&lt;path d=&#34;m10.348-80.75-.446-9.99-9.99.447.447 9.99 9.99-.447&#34;/&gt;
+&lt;path d=&#34;m19.335-79.499.254-9.996-9.997-.255-.254 9.997 9.997.254&#34;/&gt;
+&lt;path d=&#34;m29.295-79.067.784-9.97-9.97-.784-.783 9.97 9.969.784m10.641-1.021.61-9.98-9.982-.61-.609 9.981 9.981.61&#34;/&gt;
+&lt;path d=&#34;m49.694-80.004-.511-9.987-9.987.511.511 9.987 9.987-.51m10.233.237.309-9.996-9.995-.308-.309 9.995 9.995.309m-108.959 9.02-.913-9.958-9.958.912.913 9.958 9.958-.912&#34;/&gt;
+&lt;path d=&#34;m-39.863-70.084.155-9.999-9.999-.154-.155 9.998 10 .155&#34;/&gt;
+&lt;path d=&#34;m-30.35-69.943-.188-9.999-9.998.188.188 9.998 9.998-.187m10.71-.977-.856-9.964-9.963.855.855 9.964 9.963-.856&#34;/&gt;
+&lt;path d=&#34;m-10.026-70.587-.755-9.971-9.97.754.754 9.972 9.971-.755&#34;/&gt;
+&lt;path d=&#34;m-.067-70.369-.389-9.992-9.992.39.39 9.991 9.991-.389m10.01.995.367-9.993-9.993-.366-.367 9.993 9.993.366m10.295-1.006.694-9.976-9.976-.693-.694 9.975 9.976.694&#34;/&gt;
+&lt;path d=&#34;m30.182-70.429-.579-9.983-9.983.579.579 9.983 9.983-.578&#34;/&gt;
+&lt;path d=&#34;m38.483-69.64 1.288-9.917-9.916-1.289-1.289 9.917 9.917 1.288&#34;/&gt;
+&lt;path d=&#34;m48.99-69.628.386-9.993-9.992-.386-.387 9.992 9.993.387m10.397-.017.196-9.998-9.998-.196-.196 9.998 9.998.196M-51.13-59.605l.841-9.965-9.965-.84-.84 9.964 9.965.84m10.1.595 1.175-9.931-9.93-1.175-1.176 9.93 9.931 1.176m11.373-1.04.248-9.997-9.997-.249-.248 9.997 9.997.249&#34;/&gt;
+&lt;path d=&#34;m-20.365-60.6.078-10-10-.077-.077 10 10 .077m10.798.985-.375-9.992-9.993.375.375 9.993 9.993-.376&#34;/&gt;
+&lt;path d=&#34;m-.255-59.337 1.508-9.886-9.885-1.508-1.508 9.886 9.885 1.508&#34;/&gt;
+&lt;path d=&#34;m9.829-60.728-1.002-9.95-9.95 1.001 1.002 9.95 9.95-1.001&#34;/&gt;
+&lt;path d=&#34;m19.559-59.643-1.217-9.925-9.926 1.217 1.217 9.925 9.926-1.217m11.413-.315-1.2-9.928-9.927 1.2 1.2 9.928 9.927-1.2m10.512-1.247-1.05-9.945-9.945 1.05 1.05 9.945 9.945-1.05&#34;/&gt;
+&lt;path d=&#34;m50.804-60.852-.925-9.957-9.957.926.925 9.957 9.957-.926&#34;/&gt;
+&lt;path d=&#34;m59.665-58.942 1.035-9.946-9.946-1.035-1.035 9.946 9.946 1.035m-108.551 9.144-1.613-9.869-9.869 1.613 1.613 9.87 9.869-1.614&#34;/&gt;
+&lt;path d=&#34;m-39.932-49.703-.583-9.982-9.983.583.584 9.983 9.982-.584&#34;/&gt;
+&lt;path d=&#34;m-30.078-50.048-1.375-9.905-9.905 1.375 1.375 9.905 9.905-1.375m10.298-.357-.976-9.952-9.952.976.976 9.952 9.952-.976&#34;/&gt;
+&lt;path d=&#34;m-11.338-50.051 1.514-9.885-9.884-1.514-1.515 9.884 9.885 1.515m12.82-1.559L.095-61.513l-9.903 1.386 1.387 9.904 9.903-1.387&#34;/&gt;
+&lt;path d=&#34;M11.597-50.324 10.4-60.252.472-59.055l1.197 9.928 9.928-1.197&#34;/&gt;
+&lt;path d=&#34;m20.535-49.813-.933-9.957-9.956.933.933 9.956 9.956-.932m10.491-1.607-.685-9.977-9.976.684.684 9.977 9.977-.684&#34;/&gt;
+&lt;path d=&#34;m41.117-50.672-1.92-9.813-9.814 1.92 1.92 9.814 9.814-1.92&#34;/&gt;
+&lt;path d=&#34;m50.978-49.728-.94-9.956-9.955.94.94 9.955 9.955-.94&#34;/&gt;
+&lt;path d=&#34;m59.748-49.661-1.383-9.904-9.904 1.383 1.383 9.904 9.904-1.383M-51.541-39.55l.644-9.98-9.98-.644-.643 9.98 9.979.643m12.266-1.374.192-9.998-9.998-.192-.192 9.998 9.998.192&#34;/&gt;
+&lt;path d=&#34;m-29.77-41.984-1.46-9.893-9.892 1.46 1.46 9.892 9.892-1.459&#34;/&gt;
+&lt;path d=&#34;m-20.885-40.802-.897-9.96-9.96.898.897 9.96 9.96-.898m11.676-.268-1.956-9.806-9.806 1.956 1.955 9.806 9.807-1.955&#34;/&gt;
+&lt;path d=&#34;m-.235-40.084.28-9.996-9.996-.28-.28 9.996 9.996.28&#34;/&gt;
+&lt;path d=&#34;m8.964-39.06 1.223-9.925-9.925-1.223-1.223 9.925 9.925 1.223m12.21-.69-.563-9.984-9.984.563.563 9.984 9.984-.563&#34;/&gt;
+&lt;path d=&#34;m28.213-37.794 2.242-9.745-9.745-2.243-2.243 9.746 9.745 2.242&#34;/&gt;
+&lt;path d=&#34;m39.51-40.043-2.3-9.732-9.732 2.3 2.3 9.732 9.732-2.3&#34;/&gt;
+&lt;path d=&#34;m49.215-40.934-.488-9.988-9.988.487.488 9.988 9.988-.487M60.196-37.6l2.003-9.798-9.797-2.003-2.003 9.797 9.797 2.004m-111.522 8.847.287-9.995-9.996-.287-.286 9.996 9.995.287&#34;/&gt;
+&lt;path d=&#34;m-40.282-30.31-1.715-9.851-9.851 1.714 1.714 9.852 9.852-1.715m11.375.928-1.689-9.856-9.856 1.688 1.688 9.856 9.857-1.688m9.887-2.296-1.407-9.9-9.9 1.407 1.407 9.9 9.9-1.407&#34;/&gt;
+&lt;path d=&#34;m-10.815-29.648-.642-9.979-9.98.642.642 9.98 9.98-.643M.084-27.904l1.978-9.803-9.803-1.977-1.977 9.802 9.802 1.978&#34;/&gt;
+&lt;path d=&#34;m10.596-29.145.541-9.985-9.985-.542-.542 9.985 9.986.542&#34;/&gt;
+&lt;path d=&#34;m20.276-30.055-.194-9.998-9.998.194.194 9.998 9.998-.194&#34;/&gt;
+&lt;path d=&#34;m29.609-29.087-.207-9.997-9.998.207.207 9.998 9.998-.208m11.782-1.375-.72-9.974-9.974.72.72 9.974 9.974-.72&#34;/&gt;
+&lt;path d=&#34;m49.871-30.831-.622-9.98-9.98.622.622 9.98 9.98-.622&#34;/&gt;
+&lt;path d=&#34;m58.977-27.767 1.54-9.88-9.88-1.54-1.54 9.88 9.88 1.54m-107.516 7.323-1.53-9.882-9.882 1.53 1.53 9.882 9.882-1.53&#34;/&gt;
+&lt;path d=&#34;m-41.461-20.39 2.202-9.754-9.754-2.202-2.203 9.754 9.755 2.203m10.33-.256 2.698-9.629-9.63-2.698-2.697 9.63 9.629 2.697&#34;/&gt;
+&lt;path d=&#34;m-23.338-20.289 2.598-9.656-9.656-2.599-2.599 9.657 9.657 2.598m12.191 1.82 1.711-9.852-9.852-1.711L-21-20.18l9.852 1.711m12.739-.723.454-9.99-9.99-.453-.453 9.99 9.99.453&#34;/&gt;
+&lt;path d=&#34;m11.748-21.016-1.258-9.92L.57-29.68l1.257 9.92 9.92-1.257&#34;/&gt;
+&lt;path d=&#34;m20.804-21.485-1.965-9.805-9.805 1.965L11-19.52l9.805-1.965&#34;/&gt;
+&lt;path d=&#34;m27.245-21.103 1.868-9.824-9.824-1.868-1.868 9.824 9.824 1.868&#34;/&gt;
+&lt;path d=&#34;m39.208-22.301-1.582-9.874-9.874 1.581 1.582 9.874 9.874-1.581m13.332 1.214-1.226-9.924-9.925 1.226 1.226 9.925 9.925-1.227&#34;/&gt;
+&lt;path d=&#34;m58.94-19.357 3.035-9.529-9.529-3.034-3.034 9.528 9.528 3.035M-51.372-9.656l2.528-9.675-9.675-2.528-2.528 9.675 9.675 2.528m13.182.346-.289-9.996-9.996.289.289 9.995 9.995-.288&#34;/&gt;
+&lt;path d=&#34;m-28.54-11.905-3.18-9.481-9.48 3.18 3.18 9.48 9.48-3.18&#34;/&gt;
+&lt;path d=&#34;m-20.007-9.503-.44-9.99-9.99.44.44 9.99 9.99-.44&#34;/&gt;
+&lt;path d=&#34;m-10.156-9.752-.415-9.992-9.99.415.414 9.991 9.99-.414&#34;/&gt;
+&lt;path d=&#34;M.297-11.284-2.74-20.81l-9.528 3.036 3.037 9.528 9.528-3.037&#34;/&gt;
+&lt;path d=&#34;m9.477-8.765-1.323-9.912-9.912 1.324 1.323 9.911 9.912-1.323&#34;/&gt;
+&lt;path d=&#34;m17.758-9.777 2.693-9.63L10.82-22.1l-2.692 9.631 9.63 2.692m13.7 1.462-.385-9.993-9.993.386.386 9.992 9.992-.385&#34;/&gt;
+&lt;path d=&#34;m37.05-7.159 3.165-9.485-9.485-3.166-3.166 9.486L37.05-7.16m14.092-2.642-1.006-9.949-9.95 1.007 1.007 9.949 9.95-1.007&#34;/&gt;
+&lt;path d=&#34;m58.209-8.757 1.625-9.867-9.867-1.626-1.625 9.867 9.867 1.626M-52.942.9l1.548-9.88-9.88-1.547-1.547 9.88L-52.942.9m11.821-.961 2.917-9.565-9.566-2.917-2.916 9.566 9.565 2.916&#34;/&gt;
+&lt;path d=&#34;m-32.992 1.554 3.245-9.459-9.459-3.245-3.245 9.459 9.459 3.245m14.25.058.243-9.997-9.997-.244-.243 9.997 9.997.244&#34;/&gt;
+&lt;path d=&#34;m-10.743.876 1.927-9.813-9.813-1.926-1.926 9.813 9.812 1.926M-.015 3.158 2.19-6.596-7.564-8.8-9.77.953l9.753 2.205&#34;/&gt;
+&lt;path d=&#34;m8.09 1.838 2.855-9.584-9.585-2.853-2.853 9.584L8.09 1.838M23.682.023l-3.38-9.412-9.412 3.38 3.38 9.412 9.412-3.38&#34;/&gt;
+&lt;path d=&#34;m27.929.186.324-9.995-9.995-.324-.324 9.995 9.994.324&#34;/&gt;
+&lt;path d=&#34;m36.095 1.768 2.612-9.652-9.652-2.613-2.613 9.653 9.653 2.612&#34;/&gt;
+&lt;path d=&#34;M50.136-2.195 46.6-11.548l-9.353 3.536 3.536 9.354 9.354-3.537M61.406.332l-.988-9.951-9.951.988.988 9.951 9.951-.988M-49.303 11.015l2.052-9.787-9.787-2.052-2.052 9.787 9.787 2.052&#34;/&gt;
+&lt;path d=&#34;m-41.681 7.486-.729-9.973-9.973.728.729 9.974 9.973-.729&#34;/&gt;
+&lt;path d=&#34;m-32.87 11.177 3.231-9.463-9.463-3.232-3.232 9.463 9.463 3.232&#34;/&gt;
+&lt;path d=&#34;m-22.723 12.668 1.47-9.891-9.891-1.47-1.47 9.89 9.89 1.471m11.021-.961.557-9.984-9.985-.557-.556 9.985 9.984.556m10.106.946L1.941 3.3-7.412-.238l-3.538 9.353 9.353 3.538&#34;/&gt;
+&lt;path d=&#34;M6.232 13.858 9.654 4.46.258 1.04l-3.422 9.396 9.396 3.422&#34;/&gt;
+&lt;path d=&#34;m18.815 11.157-2.423-9.702L6.69 3.878l2.424 9.702 9.701-2.423m10.807 1.028.64-9.98-9.98-.64-.64 9.98 9.98.64&#34;/&gt;
+&lt;path d=&#34;m39.553 7.955.878-9.962-9.961-.877-.878 9.96 9.961.879m10.369 4.53 3.088-9.511-9.511-3.088-3.088 9.511 9.511 3.088&#34;/&gt;
+&lt;path d=&#34;M59.666 11.522 58.3 1.615l-9.906 1.366 1.365 9.906 9.907-1.365m-113.494 8.664 2.158-9.765-9.764-2.158-2.158 9.765 9.764 2.158m13.125-.269.405-9.992-9.991-.405-.406 9.991 9.992.406&#34;/&gt;
+&lt;path d=&#34;m-32.565 21.303.177-9.998-9.998-.177-.177 9.999 9.998.176m12.455-.518 1.291-9.916-9.916-1.29-1.291 9.915 9.916 1.291m12.746-1.867-.248-9.997-9.997.248.249 9.997 9.996-.248&#34;/&gt;
+&lt;path d=&#34;m-1.166 18.466.648-9.98-9.978-.648-.65 9.979 9.98.649&#34;/&gt;
+&lt;path d=&#34;m6.978 20.293 1.866-9.824L-.98 8.603l-1.866 9.824 9.824 1.866m14.386-1.759-2.2-9.755-9.755 2.201 2.2 9.755 9.755-2.2&#34;/&gt;
+&lt;path d=&#34;m25.317 20.384 4.328-9.015-9.015-4.327-4.328 9.015 9.015 4.327m15.556-1.63-1.437-9.896-9.896 1.436 1.436 9.897 9.897-1.437&#34;/&gt;
+&lt;path d=&#34;m48.04 23.62 2.89-9.572-9.573-2.891-2.89 9.573 9.572 2.89&#34;/&gt;
+&lt;path d=&#34;m60.898 18.66-.711-9.974-9.975.711.711 9.975 9.975-.711M-46.25 30.119l-2.195-9.756-9.756 2.195 2.195 9.756 9.756-2.195&#34;/&gt;
+&lt;path d=&#34;m-38.512 31.397-.798-9.968-9.968.799.798 9.968 9.968-.8&#34;/&gt;
+&lt;path d=&#34;m-31.147 31.127.616-9.98-9.981-.617-.616 9.981 9.98.616&#34;/&gt;
+&lt;path d=&#34;m-20.534 29.076-2.502-9.682-9.682 2.502 2.502 9.682 9.682-2.502&#34;/&gt;
+&lt;path d=&#34;m-9.131 29.806-3.815-9.244-9.244 3.815 3.815 9.244 9.244-3.815&#34;/&gt;
+&lt;path d=&#34;M-3.045 31.652.75 22.4l-9.252-3.794-3.795 9.251 9.252 3.795M9.328 33.03l4.2-9.075-9.075-4.2-4.2 9.076 9.075 4.2&#34;/&gt;
+&lt;path d=&#34;m19.262 28.91-3.977-9.174-9.175 3.978 3.978 9.175 9.174-3.978m12.868 1.797-1.475-9.89-9.89 1.474 1.474 9.89 9.89-1.474&#34;/&gt;
+&lt;path d=&#34;m39.614 27.979-3.091-9.51-9.51 3.09 3.09 9.51 9.51-3.09&#34;/&gt;
+&lt;path d=&#34;m47.856 29.681 1.466-9.892-9.891-1.466-1.467 9.892 9.892 1.466m12.85.725-.208-9.998-9.997.207.207 9.998 9.998-.207M-48.738 40.945l-3.251-9.457-9.457 3.252 3.252 9.456 9.456-3.251&#34;/&gt;
+&lt;path d=&#34;m-42.112 41.385 3.432-9.393-9.393-3.432-3.431 9.393 9.392 3.432&#34;/&gt;
+&lt;path d=&#34;m-32.365 43.691 3.74-9.274-9.274-3.74-3.74 9.275 9.274 3.74&#34;/&gt;
+&lt;path d=&#34;m-18.409 38.088-1.113-9.938-9.938 1.113 1.113 9.938 9.938-1.113&#34;/&gt;
+&lt;path d=&#34;m-7.549 34.057-4.46-8.95-8.95 4.46 4.46 8.95 8.95-4.46M2.4 38.376l.216-9.998-9.998-.215-.215 9.998 9.998.215&#34;/&gt;
+&lt;path d=&#34;m5.256 42.109 4.441-8.96-8.96-4.441-4.44 8.959 8.959 4.442&#34;/&gt;
+&lt;path d=&#34;m17.896 38.85.427-9.99-9.99-.428-.428 9.99 9.99.428m15.973-1.582-2.377-9.713-9.714 2.377 2.377 9.713 9.714-2.376&#34;/&gt;
+&lt;path d=&#34;m44.537 36.43-3.404-9.403-9.403 3.404 3.404 9.402 9.403-3.404&#34;/&gt;
+&lt;path d=&#34;m49.122 38.294-4.759-8.795-8.795 4.759 4.76 8.795 8.794-4.76&#34;/&gt;
+&lt;path d=&#34;m56.213 44.364 2.69-9.631-9.63-2.691-2.691 9.63 9.63 2.692m-110.873 4.819 2.897-9.57-9.571-2.898-2.897 9.571 9.57 2.897&#34;/&gt;
+&lt;path d=&#34;m-45.837 51.722 4.798-8.773-8.774-4.798-4.797 8.773 8.773 4.798m17.033-.735 1.83-9.83-9.83-1.831-1.83 9.83 9.83 1.831&#34;/&gt;
+&lt;path d=&#34;m-24.562 49.324 2.307-9.73-9.73-2.308-2.307 9.73 9.73 2.308m13.716-.237 3.263-9.452-9.452-3.264-3.263 9.453 9.452 3.263&#34;/&gt;
+&lt;path d=&#34;m3.56 44.29-4.999-8.66-8.66 4.999 5 8.66 8.66-5&#34;/&gt;
+&lt;path d=&#34;m10.76 52.622.73-9.973-9.974-.73-.73 9.973 9.973.73&#34;/&gt;
+&lt;path d=&#34;m22.862 48.65-5.17-8.559-8.56 5.17 5.17 8.56 8.56-5.17&#34;/&gt;
+&lt;path d=&#34;m25.401 51.73 5.063-8.624-8.624-5.063-5.062 8.624 8.623 5.062m17.109-4.745-3.372-9.414-9.414 3.372 3.372 9.414 9.414-3.372&#34;/&gt;
+&lt;path d=&#34;m49.724 48.59 2.039-9.79-9.79-2.039-2.039 9.79 9.79 2.039&#34;/&gt;
+&lt;path d=&#34;m60.32 47.621-.112-10-9.999.113.112 9.999 10-.112M-50.088 61.783l1.362-9.906-9.907-1.363-1.362 9.907 9.907 1.363&#34;/&gt;
+&lt;path d=&#34;m-40.59 61.966-.086-10-10 .087.087 10 10-.087m13.569-4.074-.723-9.974-9.973.724.723 9.974 9.974-.724&#34;/&gt;
+&lt;path d=&#34;m-24.591 60.915 5.193-8.546-8.546-5.193-5.193 8.546 8.546 5.193m17.795-3.748.28-9.996-9.995-.281-.281 9.996 9.996.28&#34;/&gt;
+&lt;path d=&#34;m-1.615 61.53-.664-9.978-9.977.664.663 9.978 9.978-.664&#34;/&gt;
+&lt;path d=&#34;m10.985 58.15-5.298-8.48-8.481 5.296 5.297 8.482 8.482-5.297m7.88 1.684 5.359-8.442-8.443-5.36-5.359 8.443 8.443 5.36&#34;/&gt;
+&lt;path d=&#34;M27.128 61.934 25.304 52.1l-9.832 1.824 1.824 9.832 9.832-1.823M45 54.694l-4.202-9.074-9.074 4.202 4.202 9.074L45 54.694&#34;/&gt;
+&lt;path d=&#34;m44.736 58.408 3.05-9.523-9.523-3.05-3.05 9.523 9.523 3.05m16.128 3.164 2.261-9.74-9.74-2.262-2.262 9.741 9.741 2.261m-111.368 9.005-2.577-9.663-9.662 2.577 2.577 9.662 9.662-2.576&#34;/&gt;
+&lt;path d=&#34;m-45.548 74.223 3.034-9.528-9.528-3.034-3.034 9.528 9.528 3.034m16.206.118 4.444-8.958-8.957-4.444-4.445 8.958 8.958 4.444&#34;/&gt;
+&lt;path d=&#34;m-24.39 75.014 2.913-9.566-9.567-2.913-2.912 9.567 9.566 2.912m9.435-6.717 4.526-8.917-8.917-4.526-4.526 8.917 8.917 4.526&#34;/&gt;
+&lt;path d=&#34;m-3.92 72.635.27-9.996-9.997-.27-.269 9.997 9.996.27&#34;/&gt;
+&lt;path d=&#34;m7.125 67.753-2.516-9.678-9.678 2.516 2.516 9.678 9.678-2.516m14.606-3.02-4.326-9.016-9.016 4.326 4.326 9.016 9.016-4.326&#34;/&gt;
+&lt;path d=&#34;m27.738 70.302 4.664-8.846-8.845-4.664-4.664 8.846 8.845 4.664m16.299-1.869-.058-10-10 .058.058 10 10-.058&#34;/&gt;
+&lt;path d=&#34;m47.38 69.94-2.855-9.584-9.584 2.855 2.855 9.584 9.583-2.855m11.26 1.582 4.76-8.794-8.794-4.76-4.76 8.794 8.794 4.76M-49.01 78.528l2.955-9.553-9.554-2.954-2.954 9.553 9.554 2.954&#34;/&gt;
+&lt;path d=&#34;m-34.992 76.998-5.958-8.031-8.031 5.957 5.957 8.032 8.032-5.958&#34;/&gt;
+&lt;path d=&#34;m-26.879 78.856-4.655-8.85-8.85 4.656 4.656 8.85 8.85-4.656&#34;/&gt;
+&lt;path d=&#34;m-19.78 77.146 1.51-9.885-9.886-1.51-1.51 9.886 9.886 1.51m12.385.707 1.638-9.865-9.865-1.638-1.638 9.864 9.865 1.639&#34;/&gt;
+&lt;path d=&#34;m1.246 78.508-4.742-8.804-8.804 4.742 4.742 8.804 8.804-4.742m11.057-3.529-3.166-9.485L-.35 68.66l3.167 9.485 9.485-3.166m6.588 10.713 4.95-8.69-8.69-4.948-4.949 8.69 8.69 4.948&#34;/&gt;
+&lt;path d=&#34;m26.819 79.744 2.161-9.764-9.763-2.162-2.162 9.764 9.764 2.162m15.669 1.555L40.493 71.5l-9.8 1.996 1.996 9.799 9.799-1.996&#34;/&gt;
+&lt;path d=&#34;m49.199 81.652-3.096-9.51-9.509 3.097 3.096 9.508 9.509-3.095&#34;/&gt;
+&lt;path d=&#34;m54.24 77.218 2.722-9.622-9.622-2.723-2.723 9.622 9.622 2.723M-54.29 92.92l.408-9.99-9.992-.409-.408 9.992 9.992.408m16.602-8.121-5.288-8.488-8.487 5.288 5.287 8.487 8.488-5.287&#34;/&gt;
+&lt;path d=&#34;m-33.296 92.057 6.1-7.924-7.924-6.1-6.1 7.924 7.924 6.1&#34;/&gt;
+&lt;path d=&#34;m-16.084 84.302-5.203-8.54-8.54 5.203 5.203 8.54 8.54-5.203m4.977 11.702 4.976-8.673-8.673-4.977-4.977 8.674 8.674 4.977&#34;/&gt;
+&lt;path d=&#34;m1.582 89.99-5.644-8.256-8.255 5.644 5.644 8.255 8.255-5.644&#34;/&gt;
+&lt;path d=&#34;m7.564 84.873-2.446-9.696-9.696 2.447 2.446 9.696 9.696-2.447m14.05.724-2.366-9.716-9.716 2.366 2.366 9.716 9.716-2.366&#34;/&gt;
+&lt;path d=&#34;m25.187 89.762 5.782-8.159-8.159-5.782-5.782 8.16 8.159 5.781&#34;/&gt;
+&lt;path d=&#34;m36.313 92.205 4.807-8.769-8.769-4.807-4.807 8.769 8.769 4.807&#34;/&gt;
+&lt;path d=&#34;m49.684 90.979-4.542-8.91-8.91 4.542 4.543 8.91 8.909-4.542m13.515-2.716 1.679-9.858-9.858-1.68-1.68 9.859 9.859 1.679M-49.82 96.415l-5.74-8.189-8.189 5.739 5.739 8.19 8.19-5.74&#34;/&gt;
+&lt;path d=&#34;m-40.182 104.061.41-9.991-9.992-.41-.41 9.991 9.992.41m8.895-1.436 5.755-8.178-8.178-5.754-5.755 8.177 8.178 5.755&#34;/&gt;
+&lt;path d=&#34;m-25.705 102.006 6.216-7.833-7.834-6.216-6.215 7.833 7.833 6.216&#34;/&gt;
+&lt;path d=&#34;m-13.506 100.94 6.3-7.766-7.767-6.3-6.3 7.767 7.767 6.3m15.678 3.471 2.037-9.79-9.79-2.037-2.037 9.79 9.79 2.037&#34;/&gt;
+&lt;path d=&#34;M9.957 104.913 11.273 95 1.36 93.684l-1.316 9.913 9.913 1.316&#34;/&gt;
+&lt;path d=&#34;m16.169 102.17 4.48-8.94-8.94-4.48-4.48 8.94 8.94 4.48&#34;/&gt;
+&lt;path d=&#34;m31.142 101.792-3.412-9.4-9.4 3.413 3.413 9.4 9.4-3.413&#34;/&gt;
+&lt;path d=&#34;m39.29 99.886-2.533-9.674-9.674 2.533 2.533 9.674 9.674-2.533&#34;/&gt;
+&lt;path d=&#34;m42.652 103.786 6.7-7.424-7.425-6.7-6.7 7.424 7.425 6.7m18.931-11.068-5.251-8.51-8.51 5.252 5.252 8.51 8.51-5.252m-109.747 14.345 2.3-9.732-9.732-2.3-2.3 9.732 9.732 2.3&#34;/&gt;
+&lt;path d=&#34;m-39.942 110.362-2.22-9.75-9.75 2.218 2.22 9.75 9.75-2.218&#34;/&gt;
+&lt;path d=&#34;m-34.204 116.54 5.076-8.616-8.616-5.076-5.076 8.616 8.616 5.076m15.724-8.831 4.747-8.802-8.802-4.747-4.746 8.802 8.801 4.747&#34;/&gt;
+&lt;path d=&#34;m-5.24 111.919-1.007-9.95-9.949 1.008 1.008 9.95 9.949-1.008&#34;/&gt;
+&lt;path d=&#34;m1.168 108.48 2.396-9.708-9.71-2.396-2.395 9.709 9.709 2.396&#34;/&gt;
+&lt;path d=&#34;m9.84 113.38 2.591-9.658-9.658-2.592-2.592 9.658 9.658 2.592&#34;/&gt;
+&lt;path d=&#34;m11.442 111.216 6.507-7.593-7.593-6.507-6.507 7.593 7.593 6.507m22.018-4.927 1.986-9.801-9.801-1.985-1.985 9.801 9.8 1.985&#34;/&gt;
+&lt;path d=&#34;m36.074 107.233 3.87-9.22-9.221-3.87-3.87 9.22 9.221 3.87&#34;/&gt;
+&lt;path d=&#34;m44.932 108.518.9-9.96-9.96-.898-.899 9.96 9.96.898m17.912-.284-6.53-7.573-7.573 6.53 6.53 7.573 7.573-6.53&#34;/&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;/center&gt;
+&lt;br&gt;
+&lt;p&gt;For more details on the converstion, as well as a more idiomatic
+Python version, see the &lt;a href=&#34;https://github.com/zellyn/genart/blob/main/schotter/transliteration.ipynb&#34;&gt;Jupyter
+notebook&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;small&gt;
+&lt;p&gt;I &lt;a href=&#34;https://hachyderm.io/@zellyn/112635691268932381&#34;&gt;posted on Mastodon&lt;/a&gt;,
+asking Jason Scott and Kay Savetz for pointers on how one would go
+about tracking down the source code for the &lt;code&gt;J1&lt;/code&gt;/&lt;code&gt;J2&lt;/code&gt; generators. I&amp;rsquo;ll
+post an update here if anything comes of that.&lt;/p&gt;
+&lt;/small&gt;
+</description>
+    </item>
+    
+    
+    
+    <item>
       <title>Blog machinery back up</title>
       <link>https://zellyn.com/2024/06/blog-fixed/</link>
       <pubDate>Sat, 15 Jun 2024 19:45:31 -0400</pubDate>
