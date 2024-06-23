@@ -13,18 +13,404 @@
     
     
     <item>
-      <title>Schotter - Georg Nees — part 1</title>
+      <title>Schotter - Georg Nees - Part 3</title>
+      <link>http://localhost:1313/2024/06/schotter-3/</link>
+      <pubDate>Fri, 21 Jun 2024 14:30:00 -0400</pubDate>
+      
+      <guid>http://localhost:1313/2024/06/schotter-3/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../schotter-1&#34;&gt;Part one: Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../schotter-2&#34;&gt;Part two: Investigation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../schotter-3&#34;&gt;Part three: Definitive reference&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/schotter/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;
+&lt;small&gt;Source: Victoria and Albert &amp;mdash; &lt;a href=&#34;https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg/&#34;&gt;link&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Recreations by eye&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://billglover.me/2018/08/25/art-in-the-age-of-computers/&#34;&gt;https://billglover.me/2018/08/25/art-in-the-age-of-computers/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Articles about Georg Nees&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/the-link-art-blocks/ab-101-historical-figures-in-generative-art-georg-nees-6b006e62126a&#34;&gt;https://medium.com/the-link-art-blocks/ab-101-historical-figures-in-generative-art-georg-nees-6b006e62126a&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;bits-and-pieces&#34;&gt;Bits and pieces&lt;/h2&gt;
+&lt;p&gt;Wikipedia reference for Schotter:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Georg Nees: Computerkunst, in: Katalog, Konstruktive Kunst: Elemente + Prinzipien, Biennale Nürnberg, 1969. No page numbers in the catalog&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Schotter - Georg Nees - Part 2</title>
+      <link>http://localhost:1313/2024/06/schotter-2/</link>
+      <pubDate>Wed, 19 Jun 2024 14:30:00 -0400</pubDate>
+      
+      <guid>http://localhost:1313/2024/06/schotter-2/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/schotter/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;
+&lt;small&gt;Source: Victoria and Albert &amp;mdash; &lt;a href=&#34;https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg/&#34;&gt;link&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;In &lt;a href=&#34;../schotter-1&#34;&gt;part 1&lt;/a&gt;, we found the original ALGOL-60 code for
+&lt;em&gt;Schotter&lt;/em&gt;, and converted it to Python. Correctly matching the style
+was satisfying&amp;hellip; but wouldn&amp;rsquo;t it be nice to exactly recreate the
+entire original plot?&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the problem: we see references to random generators, but not
+their source. From Nees&amp;rsquo; quote about the work:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;From lines 9 and 10, it can be seen that the position of a single
+square is influenced by random generator J1, and the angle placement
+by J2.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Not so satisfying.&lt;/p&gt;
+&lt;h2 id=&#34;step-one-lots-of-searching-some-asking&#34;&gt;Step one: lots of searching, some asking&lt;/h2&gt;
+&lt;p&gt;Schotter is an early, deservedly famous example of computer-generated
+art. There are a &lt;em&gt;lot&lt;/em&gt; of references to it online! And a lot of
+recreations. They vary in their fidelity to the original, but it&amp;rsquo;s
+lovely to see how Nees&amp;rsquo; work from the late 1960s continually inspires
+people to try generating art themselves.&lt;/p&gt;
+&lt;h3 id=&#34;an-influential-example&#34;&gt;An influential example&lt;/h3&gt;
+&lt;p&gt;An influential recreation seems to be
+&lt;a href=&#34;https://www.artsnova.com/Nees_Schotter_Tutorial.html&#34;&gt;this well-written tutorial&lt;/a&gt;
+by Jim Plaxco.&lt;/p&gt;
+&lt;p&gt;It doesn&amp;rsquo;t match the actual implementation, but takes an interesting
+approach: the same random value is used both to rotate the squares,
+and (scaled by a factor of &lt;code&gt;0.45&lt;/code&gt; named &lt;code&gt;dampen&lt;/code&gt;) to shift them, down
+and to the right.&lt;/p&gt;
+&lt;p&gt;Looking for that dampening value is an easy way to identify
+descendants of this tutorial. &lt;a href=&#34;https://scruss.com/blog/2019/11/25/schotter-on-a-tek-4010/&#34;&gt;Here&amp;rsquo;s a fun
+version&lt;/a&gt;
+by Stewart Russell, animating the drawing of the artwork on a
+simulated Tektronix 4010 vector display.&lt;/p&gt;
+&lt;p&gt;Jim Plaxco&amp;rsquo;s verion is the one I copied when I first tried an
+implementation (in Elm). In retrospect, I&amp;rsquo;m glad that it doesn&amp;rsquo;t look
+quite right&amp;mdash;the randomness doesn&amp;rsquo;t creep in fast enough, and there&amp;rsquo;s
+no left-to-right increase in disorder&amp;mdash;because that drove me to dive
+deeper.&lt;/p&gt;
+&lt;p&gt;There are also many exaxmples where people recreated the artwork by
+eyeballing it until it looked right, and many where people continue to
+implement fascinating variations. In &lt;a href=&#34;https://billglover.me/2018/08/25/art-in-the-age-of-computers/&#34;&gt;this post by Bill
+Glover&lt;/a&gt;,
+you can see both.&lt;/p&gt;
+&lt;h3 id=&#34;lots-of-information&#34;&gt;Lots of information&lt;/h3&gt;
+&lt;p&gt;There are also lots of articles about Georg Nees, many of which mention &lt;em&gt;Schotter&lt;/em&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/the-link-art-blocks/ab-101-historical-figures-in-generative-art-georg-nees-6b006e62126a&#34;&gt;2021 Medium article by Druid&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.katevassgalerie.com/blog/georg-nees-computer-art-and-graphics&#34;&gt;2020 post at the Kate Vass Galerie in Zurich&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Georg_Nees&#34;&gt;Good old Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;td style=&#34;border:4px #d4ccc4 solid&#34;&gt;
+I&#39;ll put a callout to &lt;a href=&#34;https://www.amygoodchild.com/blog/computer-art-50s-and-60s&#34;&gt;&#34;Early Computer Art in the 50’s &amp;
+60’s&#34;&lt;/a&gt; by
+Amy Goodchild here, because it&#39;s such a fantastic, beautiful article,
+and because &lt;a href=&#34;https://www.amygoodchild.com/blog&#34;&gt;her blog&lt;/a&gt; is so
+excellent too – I&#39;m pretty sure I&#39;m going to spend weeks or months
+recreating everything she&#39;s blogged about.
+&lt;/table&gt;
+&lt;h3 id=&#34;asking-for-help&#34;&gt;Asking for help&lt;/h3&gt;
+&lt;p&gt;I figured &lt;a href=&#34;https://ascii.textfiles.com/about&#34;&gt;Jason Scott&lt;/a&gt; and &lt;a href=&#34;https://www.savetz.com/&#34;&gt;Kay
+Savetz&lt;/a&gt;, heroes of the Internet Archive and
+frequent retrocomputing historians, might have ideas about how to
+track down original source code, so I &lt;a href=&#34;https://hachyderm.io/@zellyn/112635691268932381&#34;&gt;asked on
+Mastodon&lt;/a&gt;. They
+didn&amp;rsquo;t know offhand, but did mention Paul Rickards, who has &lt;a href=&#34;https://shop.paulrickards.com/&#34;&gt;some
+absolutely amazing plotter art&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;following-the-breadcrumbs-myself&#34;&gt;Following the breadcrumbs myself&lt;/h3&gt;
+&lt;p&gt;Nees had an early exhibition in 1968 or so, and published a PhD thesis
+in 1969, &lt;em&gt;Generative Computergraphik&lt;/em&gt;. Several of the histories
+mentioned his research into randomness and random number generation,
+so I figured he may have written about it in his thesis.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/Eko3316/status/1476502991003914242&#34;&gt;This twitter
+post&lt;/a&gt; had a
+tantalizing cover image, which could be found elsewhere with Google
+Image Search
+(&lt;a href=&#34;https://twitter.com/keyvass/status/1471060332617637889&#34;&gt;example&lt;/a&gt;,
+&lt;a href=&#34;https://twitter.com/REAS/status/1473041398962159617&#34;&gt;example&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/schotter/generative-computergraphik-cover-smaller.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34; title=&#34;=350x&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;jackpot&#34;&gt;Jackpot!&lt;/h2&gt;
+&lt;p&gt;I forget how I eventually found it, but the publisher
+&lt;a href=&#34;https://www.diaphanes.net/page/about-3677&#34;&gt;Diaphenes&lt;/a&gt; in Zurich have
+a &lt;a href=&#34;https://www.diaphanes.net/titel/generative-computergraphik-1948&#34;&gt;PDF of a 2006 reprint of the
+thesis&lt;/a&gt;!
+€30 later, I was off to the races!&lt;/p&gt;
+&lt;p&gt;Excitedly, I started copy-pasting screenshots into Google
+Translate. Eventually, that got tedious, and I tracked down
+&lt;a href=&#34;https://ocrmypdf.readthedocs.io/en/latest/&#34;&gt;OCRmyPDF&lt;/a&gt;, which can use
+Tesseract&amp;rsquo;s language packs to OCR in German. Translation is still
+necessary, but it&amp;rsquo;s easier to copy and paste longer sections.&lt;/p&gt;
+&lt;h2 id=&#34;excerpts-from-the-thesis&#34;&gt;Excerpts from the thesis&lt;/h2&gt;
+&lt;h2 id=&#34;bits-and-pieces&#34;&gt;Bits and pieces&lt;/h2&gt;
+&lt;p&gt;The following texts are taken from Georg Nees&amp;rsquo; &lt;em&gt;Generative
+Computergraphik (1969)&lt;/em&gt;, starting from section 2.2.1.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;2.2.1. Zufallsgeneratoren&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Das Verfahren, das wir zur Erzeugung von Zufallszahlen benutzen
+werden, ist außerordentlich einfach. Ist JI die letzte aus einer
+Folge bereits erzeugter Zufallszahlen, so wird JI mit der Zahl 5
+multipliziert und das Ergebnis wird durch sukzessive Subtraktion
+absteigender Zweierpotenzen unter eine bestimmte Zahlenschranke
+herabgedrückt. Die so gewonnene Zahl setzt als neue Zufallszahl die
+schon früher erzeugte Folge fort. Will man z. B. sanzzahlige
+Zufallszahlen erzeugen, die kleiner als 128 sind, so kann man 127
+als erste Zufallszahl wählen — oder auch als letzte Zufallszahl
+einer kürzlich erzeugten Folge — und multipliziert nun 127
+mit 5. Dieses ergibt 635. Nun zieht man die Zweierpotenzen 512, 256
+und 128 solange schrittweise von 635 ab, bis das Ergebnis wieder
+kleiner als 128 ist. Man erhält also zunächst 635 — 512 ＝ 123, was
+aber bereits kleiner als 128 ist, so daß wir nichts weiter
+abzuziehen brauchen. Nun haben wir bereits zwei Zufallszahlen: 127
+und 123. Beim nächsten Mal erhalten wir 123 * 5 ＝ 615. Davon 512
+abgezogen, ergibt 103. Wiederum beim nächsten Mal ist 103 * 5 — 512
+＝ 3. Bis jetzt besitzen wir also die Zufallszahlen 127, 123,
+103, 3. Von 3 x 5 ＝ 15 braucht man überhaupt nichts abzuziehen,
+denn 15 ist schon kleiner als 128, also ist 15 die nächste
+Zufallszahl. Auch 15 * 5 ＝ 75 ist kleiner als 128. Die Folge von
+Zufallszahlen ist also jetzt angewachsen auf 127, 123, 103, 3, 15,
+75.&lt;/p&gt;
+&lt;p&gt;Setzt man das Verfahren fort, so ergeben sich noch einige neue
+Zufallszahlen, sehr bald jedoch wird die Folge von Zufallszahlen
+periodisch, wie wir später noch anschaulich machen werden. Die
+Periode besteht aus genau 32 Zahlen. Man bezeichnet die Algorithmen
+zur Erzeusung von Zufallszahlen als
+Zufallsgeneratoren. Zufallsseneratoren von so kurzer Periode, wie
+sie der vorgeführte Algorithmus besitzt, sind jedoch für unsere
+Untersuchungen fast immer ungeeignet. Wir benötigen
+Zufallssubstrate, die jedenfalls in dem Bereich, in dem wir sie
+benutzen, außer dem reinen Zufall selbst keine Qualitäten zu den
+ästhetischen Gebilden beisteuern, zu deren Genese sie herangezogen
+werden. Das bedeutet praktisch nichts anderes, als daß die
+Zufallsgeneratoren eine so große Periode aufweisen müssen, daß sie
+sich für uns nicht bemerkbar macht. Erfreulicherweise ist das
+Verfahren, mit dem wir vorhin experimentierten, dann durchaus
+brauchbar, wenn wir die Zweierpotenzen 128, 256, 512 durch die
+Potenzen 2 hoch 32 bis 2 hoch 34
+ersetzen.IndieProgrammierspracheALGOLübersetzt,wird der
+Zufallsgenerator durch die Zeilen 6 bis 15 des folgenden Programms
+wiedergegeben:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;2.2.1. Random generators&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The method we will use to generate random numbers is extremely
+simple. If JI is the last of a sequence of random numbers already
+generated, JI is multiplied by the number 5 and the result is reduced
+to below a certain number limit by successive subtraction of
+descending powers of two. The number obtained in this way continues
+the previously generated sequence as a new random number. If, for
+example, you want to generate integer random numbers that are less
+than 128, you can choose 127 as the first random number - or as the
+last random number in a recently generated sequence - and multiply 127
+by 5. This gives 635. Now you subtract the powers of two 512, 256 and
+128 step by step from 635 until the result is again less than 128. So
+we first get 635 - 512 ＝ 123, which is already smaller than 128, so we
+don&amp;rsquo;t need to subtract anything else. Now we already have two random
+numbers: 127 and 123. The next time we get 123 * 5 ＝ 615. Subtracting
+512 from this gives us 103. The next time again, 103 * 5 - 512
+＝ 3. So far we have the random numbers 127, 123, 103, 3. We don&amp;rsquo;t need
+to subtract anything from 3 x 5 ＝ 15, because 15 is already smaller
+than 128, so 15 is the next random number. 15 * 5 ＝ 75 is also smaller
+than 128. The sequence of random numbers has now grown to 127, 123,
+103, 3, 15, 75.&lt;/p&gt;
+&lt;p&gt;If the process is continued, a few more random numbers are produced,
+but very soon the sequence of random numbers becomes periodic, as we
+will show later. The period consists of exactly 32 numbers. The
+algorithms for generating random numbers are called random
+generators. However, random generators with such a short period as the
+algorithm presented here are almost always unsuitable for our
+investigations. We need random substrates which, at least in the area
+in which we use them, do not contribute any qualities other than pure
+randomness to the aesthetic structures for whose creation they are
+used. This means practically nothing other than that the random
+generators must have such a long period that we do not notice
+it. Fortunately, the method we experimented with earlier is quite
+useful if we replace the powers of two 128, 256, 512 with the powers 2
+to the power of 32 to 2 to the power of 34. Translated into the ALGOL
+programming language, the random generator is represented by lines 6
+to 15 of the following program:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;BEGIN&amp;#39;&amp;#39;COMMENT&amp;#39;&lt;/span&gt;ZUFALLSFOLGE1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;3&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;INTEGER&amp;#39;&lt;/span&gt;JI,JS&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;4&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;REAL&amp;#39;&lt;/span&gt;JA,JE&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;5&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;REAL&amp;#39;&amp;#39;PROCEDURE&amp;#39;&lt;/span&gt;J&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;6&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;BEGIN&amp;#39;&amp;#39;COMMENT&amp;#39;&lt;/span&gt;ZUFALLS&lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt;GENERATOR J&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;7&lt;/span&gt;      Jl&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;JI,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;8&lt;/span&gt;      &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;IF&amp;#39;&lt;/span&gt;J1&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;NOTLESS&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;8589934592&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;9&lt;/span&gt;      &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;THEN&amp;#39;&lt;/span&gt;JI&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;JI&lt;span style=&#34;&#34;&gt;—&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;8589934592.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;10&lt;/span&gt;      &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;IF&amp;#39;&lt;/span&gt;JI&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;NOTLESS&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;4294967296&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;11&lt;/span&gt;      &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;THEN&amp;#39;&lt;/span&gt;JI&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;JI&lt;span style=&#34;&#34;&gt;—&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;4294967296.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;12&lt;/span&gt;      &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;IF&amp;#39;&lt;/span&gt;JI&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;NOTLESS&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;2147483648&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;13&lt;/span&gt;      &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;THEN&amp;#39;&lt;/span&gt;JI&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;JI&lt;span style=&#34;&#34;&gt;—&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;2147483648.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;14&lt;/span&gt;      J&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;JI&lt;span style=&#34;color:#666&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;2147483648&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;(JE&lt;span style=&#34;&#34;&gt;—&lt;/span&gt;JA) &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; JA
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;15&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;END&amp;#39;&lt;/span&gt;ZUFALLSGENERATOR J&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;16&lt;/span&gt;  JS&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1306859721.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;17&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;BEGIN&amp;#39;&amp;#39;REAL&amp;#39;&lt;/span&gt;U&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;18&lt;/span&gt;  JI&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;JS&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,OPEN(&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;)&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;19&lt;/span&gt;  JA&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;0.&lt;/span&gt;,JE&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;90.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;20&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;FOR&amp;#39;&lt;/span&gt;U&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;STEP&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;UNTIL&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;258&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;DO&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;21&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;BEGIN&amp;#39;&lt;/span&gt; LEER(U&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;.5&lt;/span&gt;,&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;)&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            LINE(U&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;.5&lt;/span&gt;,J)&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;22&lt;/span&gt;          LEER(U&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1.5&lt;/span&gt;,J)&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            LINE(U&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1.5&lt;/span&gt;,&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;23&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;END&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;, CLOSE
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;24&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;END&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;25&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;END&amp;#39;&lt;/span&gt;ZUFALLSFOLGE &lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;,,
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;[&amp;hellip; discussion of the specifics of how the butterfly program uses
+random generators&amp;hellip;]&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;2.2.2. Der Falterschwarm&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Sehr ott reicht zum Zeichnen von Zufallsgraphiken ein einzelner
+Zufallsgenerator nicht aus. Der Grund dafür liegt darin, daß man
+verschiedene gestaltbestimmende Parameter einer Graphik gern durch
+verschiedene Zufallsgeneratoren regieren läßt, meistens benötigen die
+verschiedenen Parameter sogar verschiedene Streugrenzen. Außerdem
+vermindert die Verwendung von mehr als einem Zufallsgenerator die
+Gefahr des Einschleichens von Periodizitäten in die Struktur der
+Graphik. Wir führen deshalb eine Bezeichnungsweise ein, die es uns
+erlaubt, beliebig viele Zufallsgeneratoren in unseren Programmen
+aufzurufen: J1, J2, J3,&amp;hellip; bezeichnen Zufallsgeneratoren, wobei die
+Vereinbarung der Prozedur Jn sich von den Zeilen 6 bis 15 des
+Prosramms (1/2.2.1) nur dadurch unterscheidet, daß beziehungsweiıse
+Jn, JIn, JAn, JEn an die Stelle von J, JI, JA, JE tritt. Die neuen
+Zufallsgeneratoren J1, J2,&amp;hellip; betrachten wir als horizontglobale
+Größen, d. h. wir rufen sie frei in den Programmen auf, sind uns
+jedoch bewußt, daß die Vereinbarungen von J1, J2,&amp;hellip; am Anfang solcher
+ALGOL-Programme stehen müssen, wenn sie tatsächlich in einer
+Datenverarbeitungsanlage zum Laufen gebracht werden sollen.  Nun sind
+wir in der Lage, die Sprache G2 zur Formulierung von zufallsbehafteten
+Bildgeneratoren durch eine Reihe von horizontglobalen Größen
+kennzeichnen zu können: G2 ist eine Erweiterung der Programmiersprache
+ALGOL um die Prozeduren OPEN, LEER, LINE, CLOSE, J1, J2, J3,&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Vom mathematischen Standpunkt aus gesehen liefern die
+Zufallsgeneratoren J1, J2,&amp;hellip; gleichverteilte Zufallszahlen, d.h. die
+Wahrscheinlichkeit, daß ein Zufallswert in ein Teilintervall der Länge
+i von JA, JE fällt, ist immer gleich i/(JE—JA), unabhängig von der
+Lage des Teil-intervalls innerhalb von JA, JE.&lt;/p&gt;
+&lt;p&gt;Wir kommen nun zum Thema dieses Abschnitts, nämlich zum Falterschwarm
+in Bild 4. Betrachten wir die Prozedur FALTER(A,B,FAKTOR) aus
+Abschnitt 2.1.6 und darüber hinaus eine reelle Hilfsgröße P und zwei
+ganzzahlige Größen JS1 und JS2 als horizontglobal, so wird der
+Generator des Falterschwarms ein verhältnismäßig kurzes Programm:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;BEGIN&amp;#39;&amp;#39;COMMENT&amp;#39;&lt;/span&gt;FALTERSCHWARM&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;REAL&amp;#39;&lt;/span&gt;R,S&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;3&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;INTEGER&amp;#39;&lt;/span&gt;I&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;4&lt;/span&gt;  OPEN(&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;)&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;5&lt;/span&gt;  JI1&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;JS1&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,JI2&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;JS2&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;6&lt;/span&gt;  JA1&lt;span style=&#34;color:#666&#34;&gt;.=-&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;130.&lt;/span&gt;,JE1&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;130.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;7&lt;/span&gt;  JA2&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;&#34;&gt;—&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;90.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;8&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;FOR&amp;#39;&lt;/span&gt;I&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;STEP&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;UNTIL&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;100&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;DO&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;9&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;BEGIN&amp;#39;&lt;/span&gt; P&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;J1&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,R&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;J1&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;10&lt;/span&gt;         S&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;ABS(P&lt;span style=&#34;&#34;&gt;—&lt;/span&gt;R)&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           JE2&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;90&lt;/span&gt;&lt;span style=&#34;&#34;&gt;—&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;.3&lt;/span&gt;xS&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;11&lt;/span&gt;         FALTER(&lt;span style=&#34;color:#40a070&#34;&gt;.5&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;(P&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;R),J2,&lt;span style=&#34;color:#40a070&#34;&gt;.02&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;S)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;12&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;END&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;13&lt;/span&gt; CLOSE
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;14&lt;/span&gt; END FALTERSCHWARM&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;in Zeile 5 erhalten die Initialgrößen JI1 und JI2 der
+Zufallsgeneratoren J1 und J2 die Werte von JS1 und JS2
+zugewiesen. Dabei sind JS1 bis JS6 feste ganze Zahlen, die sich als
+Initialwerte für Zufallsserien eignen und die wir der Bequemlichkeit
+halber immer wieder in den Bildgeneratoren verwenden. Die Werte von
+JS1 bis JS6 sind durch die folgenden Anweisungen gegeben.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;2.2.2. The butterfly swarm&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A single random generator is often not sufficient for drawing random
+graphics. The reason for this is that different parameters that
+determine the shape of a graphic are often controlled by different
+random generators; in most cases, the different parameters even
+require different scatter limits. In addition, the use of more than
+one random generator reduces the risk of periodicities creeping into
+the structure of the graphic. We therefore introduce a notation that
+allows us to call up any number of random generators in our programs:
+J1, J2, J3,… denote random generators, whereby the declaration of the
+procedure Jn differs from lines 6 to 15 of the program (1/2.2.1) only
+in that Jn, JIn, JAn, JEn respectively take the place of J, JI, JA,
+JE. We regard the new random generators J1, J2,… as horizon-global
+quantities, i.e. i.e. we call them freely in the programs, but are
+aware that the declarations of J1, J2,… must be at the beginning of
+such ALGOL programs if they are actually to be run in a data
+processing system. We are now in a position to characterize the G2
+language for the formulation of random image generators by a series of
+horizon-global quantities: G2 is an extension of the ALGOL programming
+language by the procedures OPEN, LEER, LINE, CLOSE, J1, J2, J3,…&lt;/p&gt;
+&lt;p&gt;From a mathematical point of view, the random generators J1, J2,…
+provide uniformly distributed random numbers, i.e. the probability
+that a random value falls into a subinterval of length i of JA, JE is
+always equal to i/(JE—JA), regardless of the position of the
+subinterval within JA, JE.&lt;/p&gt;
+&lt;p&gt;We now come to the topic of this section, namely the butterfly swarm
+in Figure 4. If we consider the procedure BUTTERFLY(A,B,FACTOR) from
+Section 2.1.6 and also a real auxiliary quantity P and two integer
+quantities JS1 and JS2 as horizon-global, the generator of the
+butterfly swarm becomes a relatively short program:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;BEGIN&amp;#39;&amp;#39;COMMENT&amp;#39;&lt;/span&gt;FALTERSCHWARM&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;REAL&amp;#39;&lt;/span&gt;R,S&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;3&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;INTEGER&amp;#39;&lt;/span&gt;I&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;4&lt;/span&gt;  OPEN(&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;)&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;5&lt;/span&gt;  JI1&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;JS1&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,JI2&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;JS2&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;6&lt;/span&gt;  JA1&lt;span style=&#34;color:#666&#34;&gt;.=-&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;130.&lt;/span&gt;,JE1&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;130.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;7&lt;/span&gt;  JA2&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;&#34;&gt;—&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;90.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;8&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;FOR&amp;#39;&lt;/span&gt;I&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;STEP&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;UNTIL&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;100&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;DO&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;9&lt;/span&gt;  &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;BEGIN&amp;#39;&lt;/span&gt; P&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;J1&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,R&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;J1&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;10&lt;/span&gt;         S&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;ABS(P&lt;span style=&#34;&#34;&gt;—&lt;/span&gt;R)&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           JE2&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;90&lt;/span&gt;&lt;span style=&#34;&#34;&gt;—&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;.3&lt;/span&gt;xS&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;11&lt;/span&gt;         FALTER(&lt;span style=&#34;color:#40a070&#34;&gt;.5&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;(P&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;R),J2,&lt;span style=&#34;color:#40a070&#34;&gt;.02&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;S)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;12&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;END&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;13&lt;/span&gt; CLOSE
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;14&lt;/span&gt; END FALTERSCHWARM&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;In line 5, the initial quantities JI1 and JI2 of the random generators
+J1 and J2 are assigned the values ​​of JS1 and JS2. JS1 to JS6 are fixed
+integers that are suitable as initial values ​​for random series and
+that we use again and again in the image generators for
+convenience. The values ​​of JS1 to JS6 are given by the following
+instructions.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;JS1&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1306859721.&lt;/span&gt;,JS2&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1485627309&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;JS3&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1649173265.&lt;/span&gt;,JS4&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1805297143.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;JS5&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1973195467.&lt;/span&gt;,JS6&lt;span style=&#34;color:#666&#34;&gt;.=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;2013911545.&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;bits-and-pieces-1&#34;&gt;Bits and pieces&lt;/h2&gt;
+&lt;p&gt;Wikipedia reference for Schotter:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Georg Nees: Computerkunst, in: Katalog, Konstruktive Kunst: Elemente + Prinzipien, Biennale Nürnberg, 1969. No page numbers in the catalog&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../schotter-1&#34;&gt;Part one: Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part two: Investigation&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../schotter-3&#34;&gt;Part three: Definitive article&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Schotter - Georg Nees - Part 1</title>
       <link>http://localhost:1313/2024/06/schotter-1/</link>
       <pubDate>Mon, 17 Jun 2024 22:11:00 -0400</pubDate>
       
       <guid>http://localhost:1313/2024/06/schotter-1/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/schotter/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;small&gt;Source: Victoria and Albert &amp;mdash; &lt;a href=&#34;https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg/&#34;&gt;link&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg&#34;&gt;&lt;img src=&#34;http://localhost:1313/img/2024/schotter/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;&lt;/a&gt;
+&lt;em&gt;&lt;small&gt;Lithograph in black ink from a computer-generated graphic, &amp;lsquo;Schotter&amp;rsquo;, 1968-1970, by Georg Nees. © Victoria and Albert Museum, London&lt;/small&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;As a way of dipping my toe into generative art, I&amp;rsquo;ve been trying to
 recreate one of the most iconic images in computer-generated art:
-&lt;em&gt;Schotter&lt;/em&gt; by Georg Nees.&lt;/p&gt;
+&lt;em&gt;Schotter&lt;/em&gt; (&amp;ldquo;Gravel&amp;rdquo;, aka &amp;ldquo;Cubic Disarray&amp;rdquo;) by Georg Nees.&lt;/p&gt;
+&lt;p&gt;Created in 1968, it was drawn using a Zuse&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; Graphomat Z64
+flatbed plotter.&lt;/p&gt;
+&lt;p&gt;I found many online tutorials on recreating it, mostly using
+&lt;a href=&#34;https://processing.org/&#34;&gt;Processing&lt;/a&gt; or its successor,
+&lt;a href=&#34;https://p5js.org/&#34;&gt;p5.js&lt;/a&gt;, but they almost always either (a) used the
+same random number (scaled) for offset and rotation, or (b) eyeballed
+the original plot and came up with something that worked.&lt;/p&gt;
 &lt;h1 id=&#34;original-code&#34;&gt;Original code&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.slideshare.net/slideshow/kunst-und-computer/67510183#16&#34;&gt;source&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;With some digging, I was able to find a record of the original source,
+in a &lt;a href=&#34;https://www.slideshare.net/slideshow/kunst-und-computer/67510183#16&#34;&gt;German presentation from
+2016&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1   &amp;#39;BEGIN&amp;#39;&amp;#39;COMMENT&amp;#39;SCHOTTER.,
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2   &amp;#39;REAL&amp;#39;R,PIHALB,PI4T.,
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3   &amp;#39;INTEGER&amp;#39;I.,
@@ -324,21 +710,32 @@ Python implementation that is almost just a transliteration.&lt;/p&gt;
 &lt;br&gt;
 &lt;/center&gt;
 &lt;br&gt;
+&lt;p&gt;Finally, it just looks right!&lt;/p&gt;
+&lt;p&gt;For more details on the converstion, as well as a more idiomatic
+Python version, see the &lt;a href=&#34;https://github.com/zellyn/genart/blob/main/schotter/transliteration.ipynb&#34;&gt;Jupyter
+notebook&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To go further down the rabbit hole, continue to part 2&amp;hellip;&lt;/p&gt;
 &lt;hr&gt;
-&lt;small&gt;
-&lt;p&gt;I expect to update this article slightly with links to the python notebook that I used to create the image above.&lt;/p&gt;
-&lt;p&gt;I &lt;a href=&#34;https://hachyderm.io/@zellyn/112635691268932381&#34;&gt;posted on Mastodon&lt;/a&gt;, asking
-Jason Scott and Kay Savetz for pointers on how one would go about
-tracking down the source code for the &lt;code&gt;J1&lt;/code&gt;/&lt;code&gt;J2&lt;/code&gt; generators. I&amp;rsquo;ll post
-updates here if anything comes of that.&lt;/p&gt;
-&lt;/small&gt;
+&lt;ul&gt;
+&lt;li&gt;Part one: Introduction&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../schotter-2&#34;&gt;Part two: Investigation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../schotter-3&#34;&gt;Part three: Definitive article&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Yes, &lt;em&gt;that&lt;/em&gt; Zuse, &lt;a href=&#34;https://en.wikipedia.org/wiki/Konrad_Zuse&#34;&gt;Konrad Zuse&lt;/a&gt;.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 </description>
     </item>
     
     
     
     <item>
-      <title>ESP32-C3:  Part 1</title>
+      <title>ESP32-C3 - Part 1</title>
       <link>http://localhost:1313/2024/06/esp32c3-01/</link>
       <pubDate>Sat, 15 Jun 2024 20:20:00 -0400</pubDate>
       
