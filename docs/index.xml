@@ -6,9 +6,355 @@
     <description>Recent content on Zellyn Hunter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Jun 2024 00:01:53 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jul 2024 21:00:00 -0400</lastBuildDate>
     
 	<atom:link href="https://zellyn.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <item>
+      <title>23 ecke - Georg Nees</title>
+      <link>https://zellyn.com/2024/07/23-ecke/</link>
+      <pubDate>Mon, 08 Jul 2024 21:00:00 -0400</pubDate>
+      
+      <guid>https://zellyn.com/2024/07/23-ecke/</guid>
+      <description>&lt;p&gt;Having &lt;a href=&#34;https://zellyn.com/2024/06/schotter-2/#victory&#34;&gt;replicated&lt;/a&gt; Georg
+Nees&amp;rsquo; iconic 1968/69 work, &amp;ldquo;Schotter&amp;rdquo;, I turned my attention to his
+&amp;ldquo;23 ecke&amp;rdquo; (literally &amp;ldquo;23 corners&amp;rdquo;, usually referred to as &amp;ldquo;Polygons of
+23 vertices&amp;rdquo;), an earlier work from 1964:&lt;/p&gt;
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke-rot19.png&#34; alt=&#34;An array of small, tangled shapes, fourteen across and twenty
+high. The background is white, and each shape is drawn in pen by a
+plotter. The shapes consist of 23 line segments, 22 of them either
+vertical or horizontal, and one at some kind of
+diagonal.&#34;&gt;&lt;/p&gt;
+&lt;center&gt;&lt;small&gt;
+&lt;p&gt;&lt;em&gt;23 ecke (&amp;ldquo;Polygon of 23 Vertices&amp;rdquo;) &amp;mdash; Georg Nees, 1964&lt;br&gt;
+(Version published in&lt;/em&gt; rot 19 &lt;em&gt;in 1965)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/small&gt;&lt;/center&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;From the 5&lt;sup&gt;th&lt;/sup&gt; to the 19&lt;sup&gt;th&lt;/sup&gt; of February, 1965, the
+world&amp;rsquo;s first exhibition of digital art was staged in the
+Studiengalerie of the University of Stuttgart. Georg Nees displayed a
+dozen or so drawings on the walls, and in the accompanying nineteenth
+edition of Max Bense&amp;rsquo;s booklet series &lt;em&gt;rot (&amp;ldquo;red&amp;rdquo;)&lt;/em&gt;, Nees provided
+short descriptions in his usual clear style. &lt;em&gt;23 ecke&lt;/em&gt; was one of the
+works displayed, and described in &lt;a href=&#34;https://monoskop.org/images/b/b1/Rot_19_Computer-Grafik_1968.pdf&#34;&gt;&lt;em&gt;rot
+19&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;My description of the 1965 show is drawn from Frieder Nake&amp;rsquo;s short
+paper, &lt;em&gt;Computer Art. A Personal Recollection.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt; I recommend it: his
+account of the reactions of other artists and musings on &amp;ldquo;artificial
+art&amp;rdquo; (as Bense coined it) are fascinating.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The pure visual appearance of the drawings was not too exciting. One
+could easily ignore them, if one wanted to. The challenge really
+came from the principle that emerged. It was outrageous. It may have
+appeared as if conceptual art was left way behind but, at the same
+time, its idea gained a new kind of power. The schema, the
+structure, the class properties of entire sets of drawings were
+described and given to the machine for it to work out the
+details. The individual work became part only of a generative
+schema. Aesthetics was confronted by a new task, and the artist was
+threatened in his or her very existence. The &lt;em&gt;individual&lt;/em&gt;
+realization on the wall no longer carried the essence of art. Art
+now had become the &lt;em&gt;class&lt;/em&gt; of works which the picture belonged
+to. That class consisted most likely of endless chains of
+variations.  &amp;mdash; Frieder Nake&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Nake refers to &amp;ldquo;issue no. 19 of the now legendary &lt;em&gt;edition rot&lt;/em&gt;&amp;rdquo;, and
+indeed, the booklet series&amp;ndash;especially &lt;em&gt;rot 19&lt;/em&gt;&amp;mdash;seems to come up
+often when reading about digital art. The &lt;em&gt;center of excellence
+digital art&lt;/em&gt;&amp;mdash;comp&lt;strong&gt;art&lt;/strong&gt;&amp;mdash;&lt;a href=&#34;http://dada.compart-bremen.de/item/publication/362&#34;&gt;describes rot
+19&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This little booklet of 14 pages is one of the first publications
+ever on computer art. It appeared at the occasion of the first
+exhibition of computer-generated algorithmic art world-wide: the
+famous show of a small set of graphic works by Georg Nees. The show
+was opened on February 4, 1965, and lasted until February 19, 1965,
+on the premises of the Studiengalerie of TH Stuttgart (now
+University of Stuttgart).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For more information on the &lt;em&gt;rot&lt;/em&gt; journal, ZKM has &lt;a href=&#34;https://zkm.de/en/exhibition/2024/07/reading-rot-again&#34;&gt;an
+exhibit&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;first-attempt&#34;&gt;First attempt&lt;/h2&gt;
+&lt;p&gt;At first I thought reproducing &lt;em&gt;23 ecke&lt;/em&gt; was going to be easy, using
+the experience and resources gained reproducing &lt;em&gt;schotter&lt;/em&gt;. In
+sections
+&lt;a href=&#34;https://archive.org/details/generative_computergraphik/generative_computergraphik__georg_nees__1969_thesis/page/188/mode/2up&#34;&gt;3.2.2&lt;/a&gt;
+and
+&lt;a href=&#34;https://archive.org/details/generative_computergraphik/generative_computergraphik__georg_nees__1969_thesis/page/194/mode/2up&#34;&gt;3.2.3&lt;/a&gt;
+of his 1969 thesis, Nees lists the routine, &amp;ldquo;ELIRR&amp;rdquo; (ELementaren
+IRRweg &amp;mdash; &amp;ldquo;elementary random path&amp;rdquo;&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;):&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;1   &amp;#39;PROCEDURE&amp;#39;ELIRR.,
+2   &amp;#39;BEGIN&amp;#39;
+3   JA1.=P+JLI.,JE1.=P+JRE.,
+4   JA2.=Q+JUN.,JE2.=Q+JOB.,
+5   P1.=J1.,Q1.=J2.,
+6   LEER(P1.Q1).,
+7   &amp;#39;FOR&amp;#39;M.=1&amp;#39;STEP&amp;#39;1&amp;#39;UNTIL&amp;#39;N&amp;#39;DO&amp;#39;
+8   &amp;#39;IF&amp;#39;T&amp;#39;EQUAL&amp;#39;0&amp;#39;THEN&amp;#39;
+9   &amp;#39;BEGIN&amp;#39;
+10  LINE(J1,Y).,LINE(X,J2)
+11  &amp;#39;END&amp;#39;
+12  &amp;#39;ELSE&amp;#39;LINE(J1,J2).,
+13  &amp;#39;IF&amp;#39;T&amp;#39;EQUAL&amp;#39;0&amp;#39;THEN&amp;#39;
+14  &amp;#39;BEGIN&amp;#39;
+15  LINE(P1,Y).,LINE(X,Q1)
+16  &amp;#39;END&amp;#39;
+17  &amp;#39;ELSE&amp;#39;LINE(P1,Q1)
+18  &amp;#39;END&amp;#39;ELIRR.,
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;3.2.2.&lt;/p&gt;
+&lt;p&gt;Now that we have the multi-purpose procedure The elementary random
+walk SERIES, we standardize the figure-drawing procedure that has to
+replace the formal parameter FIGURE in SERIE. The parameterless
+procedure ELIRR draws a random walk in a frame rectangle whose
+corner point coordinates match the interval limits of the random
+generators J1 and J2. The random walk controlled by J1 and J2
+consists of diagonal or axis-parallel sections, depending on whether
+the integer and global size T agreed in line 5 of the declaration
+sequence (1/3.2.1) in ELIRR has the value 1 or 0.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We can transliterate this into ALGOL-ish Python:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;drawsvg&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;draw&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;draw_figures&lt;/span&gt;(QUER, HOCH, XMAL, YMAL, inset, N, S1, S2, diag&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;False&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                  stroke_width&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;0.3&lt;/span&gt;, svg_width&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;160&lt;/span&gt;, svg_height&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;200&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    JLI &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; inset &lt;span style=&#34;color:#666&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    JRE &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; QUER &lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt; inset &lt;span style=&#34;color:#666&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    JUN &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; inset &lt;span style=&#34;color:#666&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    JOB &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; HOCH &lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt; inset &lt;span style=&#34;color:#666&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    x &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; y &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    r1 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; Random(S1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    r2 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; Random(S2)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    d &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; draw&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;Drawing(svg_width, svg_height, origin&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;center&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                     style&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;background-color:#eae6e2&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    g &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; draw&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;Group(transform&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;rotate(180)&amp;#34;&lt;/span&gt;, stroke&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;#41403a&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                   stroke_width&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#70a0d0&#34;&gt;{&lt;/span&gt;stroke_width&lt;span style=&#34;color:#70a0d0&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;&lt;/span&gt;, fill&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#39;none&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                   stroke_linecap&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;round&amp;#34;&lt;/span&gt;, stroke_linejoin&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;round&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;serie&lt;/span&gt;(QUER, HOCH, XMAL, YMAL, FIGUR):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      P &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt;QUER &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; XMAL &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0.5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      Q &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; YANF &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt;HOCH &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; YMAL &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0.5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; COUNTX &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;range&lt;/span&gt;(&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;, XMAL&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Q &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; YANF
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; COUNTY &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;range&lt;/span&gt;(&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;, YMAL&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          p &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; draw&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;Path()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          FIGUR(P, Q, p)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          g&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;append(p)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          Q &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; Q &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; HOCH
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        P &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; P &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; QUER
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;elirr&lt;/span&gt;(P, Q, p):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        JA1 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; P &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; JLI
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        JE1 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; P &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; JRE
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        JA2 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; Q &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; JUN
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        JE2 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; Q &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; JOB
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        P1 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; r1&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;next(JA1, JE1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Q1 &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; r2&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;next(JA2, JE2)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        p&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;m(Q1,P1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        X, Y &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; P1, Q1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; M &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;range&lt;/span&gt;(&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;, N&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            X &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; r1&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;next(JA1, JE1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            p&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;L(Y, X)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Y &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; r2&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;next(JA2, JE2)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            p&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;L(Y,X)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; diag:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            p&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;L(Q1,P1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            p&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;L(Y,P1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            X &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; P1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            p&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;L(Q1,X)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    serie(QUER, HOCH, XMAL, YMAL, elirr)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    d&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;append(g)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;svg &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; draw_figures(&lt;span style=&#34;color:#40a070&#34;&gt;20&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;20&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;8&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;6&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#40a070&#34;&gt;20&lt;/span&gt;, JS2, JS5, stroke_width&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;0.3&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;svg&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;set_render_size(w&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;500&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The resulting images (reproduced using seeds &lt;a href=&#34;https://archive.org/details/generative_computergraphik/generative_computergraphik__georg_nees__1969_thesis/page/122/mode/1up&#34;&gt;JS2 and
+JS5&lt;/a&gt;
+from the thesis) look similar to those in &amp;ldquo;23 ecke&amp;rdquo;, except that the
+patterns here are a little more tangled, and lack the single diagonal
+line:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/bild-22.png&#34; alt=&#34;An array, six across and eight high, of larger shapes. Each consists
+of 40 line segments, all either horizontal or vertical, and traces out
+a tangled loop.&#34;&gt; &lt;center&gt;&lt;small&gt;&lt;/p&gt;
+&lt;p&gt;Bild 22 (Picture 22) &lt;em&gt;from Georg Nees&amp;rsquo; 1969 thesis&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/small&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;br/&gt;
+&lt;h2 id=&#34;second-attempt&#34;&gt;Second attempt&lt;/h2&gt;
+&lt;p&gt;My next step was to start trying to trace out the shapes from &lt;em&gt;23 ecke&lt;/em&gt;, in an attempt to iterate through seeds and find matching shapes:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke-nsew.png&#34; alt=&#34;Detail from an excalidraw image where I was trying to trace out
+shapes from &amp;ldquo;23 ecke&amp;rdquo;. There are some enlarged (and thus
+blurry/pixelated) shapes with little arrows adjacent to each segment,
+where I was trying to guess which order and direction they were drawn
+in. Orange arrows sweep over from the enlarged shapes to their
+position within &amp;ldquo;23 ecke&amp;rdquo;. The shapes are numbered, and have strings
+of letters like &amp;ldquo;wnesenwswneswnenws?nwnes&amp;rdquo; beside them, giving the
+cardinal directions for line segment
+directions.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This didn&amp;rsquo;t work: the shapes were too blurry, and have too much
+overlap, and despite spending a &lt;em&gt;lot&lt;/em&gt; of time on it, I never did feel
+sure that I had correctly deciphered and transcribed any of them. The
+long search far and wide for ever higher resolution images of &lt;em&gt;23
+ecke&lt;/em&gt; was useful though: I found many of the resources mentioned
+in this post.&lt;/p&gt;
+&lt;p&gt;By this time, I had also noticed that the &lt;em&gt;23 ecke&lt;/em&gt; image is sometimes
+shown with 14x19 shapes (as in &lt;em&gt;rot 19&lt;/em&gt;), and sometimes 14x20, and
+also that its orientation is unclear: from the thesis, it seems that
+Nees&amp;rsquo; plotter drew on paper in what we would consider &amp;ldquo;landscape mode&amp;rdquo;
+but the work is often shown oriented vertically, so I wasn&amp;rsquo;t even sure
+in which order the shapes were drawn.&lt;/p&gt;
+&lt;p&gt;The missing row was explained in a paper called &lt;a href=&#34;http://www.generativeart.com/GA2019_web/22_Ga%C3%ABtan%20Robillard_Alain%20Lioret_paper_168x240.pdf&#34;&gt;&amp;ldquo;A Vision without a
+Sight: From Max Bense&amp;rsquo;s Theory to the Dialectic of Programmed Images&amp;rdquo;,
+by Gaëtan Robillard and Prof. Alain
+Lioret&lt;/a&gt;,
+from the &lt;a href=&#34;https://generativeart.com/GA2019_web/Generative%20Art%202019%20index.htm&#34;&gt;website of the XXII Generative Art Conference in
+2019&lt;/a&gt;:
+it turns out that Max Bense had edited the original image Nees gave
+him when printing &lt;em&gt;rot 19&lt;/em&gt;, removing one row, and also Nees&amp;rsquo; name:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke-rot19-draft.png&#34; alt=&#34;Detail from a photograph of the marked-up printer&amp;rsquo;s draft of &amp;ldquo;23
+ecke&amp;rdquo; used in rot 19: Nees name beside the image is struck through,
+and the last row if the image is x&amp;rsquo;ed out and struck through multiple
+times.&#34;&gt;&lt;center&gt;&lt;small&gt;&lt;/p&gt;
+&lt;p&gt;Fig2. Georg Nees, 23-Edge: detailed view from editor’s draft, Rot n°
+19, 1965. From the Walther-Bense Estate archive at the Center for Art
+and Media Karlsruhe (ZKM)&lt;/p&gt;
+&lt;p&gt;&lt;/small&gt;&lt;/center&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;I recommend reading that section of the paper, since M. Robillard&amp;rsquo;s
+comments and questions about Bense&amp;rsquo;s editing of the image are
+thought-provoking.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;hellip;it is remarkable that this simple gesture of framing witnesses
+Bense&amp;rsquo;s relation to authorship and to the new category of programmed
+images. &amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I find it significant that Bense removed the human touch, and human
+attribution, of Nees&amp;rsquo; name. It seems to fit his presentation of
+&amp;ldquo;artificial art&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;I have emailed the curators of &lt;a href=&#34;https://zkm.de/en/elisabeth-walther-bense&#34;&gt;the Elisabeth Walther-Bense Archives
+at ZKM&lt;/a&gt; seeking to get a
+full image of the printer&amp;rsquo;s draft that I can post online, but haven&amp;rsquo;t
+heard back yet.&lt;/p&gt;
+&lt;p&gt;Luckily, searching at length for a higher-resolution image of &lt;em&gt;23
+ecke&lt;/em&gt;, I looked more closely at the &lt;a href=&#34;https://archive.org/details/generative_computergraphik/generative_computergraphik__georg_nees__2006_reprint/page/XII/mode/1up&#34;&gt;(20x14)
+version&lt;/a&gt;
+in Nees&amp;rsquo; preface to the 2006 reprint of his thesis, and noticed that
+the figure was captioned, &amp;ldquo;Abb. 4: Georg Nees: Variationen von Figuren
+in der statistischen Grafik. In: Grundlagenstudien aus Kybernetik und
+Geisteswissenschaft 5 (1964), H. 3/4, S. 121-125.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Happily, that 1964 publication is &lt;a href=&#34;https://archive.org/details/grkg-1960-bd.-1-h-1-h-4/1964/GRKG-1964-Bd5-H3%264/page/123/mode/2up&#34;&gt;available at
+archive.org&lt;/a&gt;,
+and even more happily, also &lt;a href=&#34;https://archive.org/details/grkg-1960-bd.-1-h-1-h-4/1964/GRKG-1964-Bd5-H3%264/page/122/mode/1up&#34;&gt;contains a description of the
+algorithm&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Note that rather than two separate random generators, one for the X
+coordinates and one for the Y, this description uses just one. Perhaps
+in 1964, Nees had not yet settled as firmly on the approach laid out
+in his thesis. I now knew that I would probably need to try a few
+different variations.&lt;/p&gt;
+&lt;p&gt;Having failed to find the seeds by attempting to correctly annotate
+movements within shapes, I decided to focus instead on the
+characteristics of the diagonal lines. By happenstance, I ran across
+&lt;a href=&#34;https://marimo.io/&#34;&gt;Marimo&lt;/a&gt;, a version of Python notebooks that
+allows easy use of interactive widgets, and was able to whip up a
+crude interface and manually classify as many of the 280 diagonals as
+possible.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke-classify.png&#34; alt=&#34;Image of a crude UI created in Marimo, showing two images of the
+same small sub-shape from 23 ecke. To the right, they are annotated
+&amp;ldquo;Comments for (17,2)&amp;rdquo; and &amp;ldquo;/ wide short up&amp;rdquo;. Above, there are sliders
+for picking horizontal and vertical sub-images. Below are buttons for
+moving to the previous or next sub-shape, and for marking the diagonal
+as &amp;ldquo;/&amp;rdquo;, &amp;ldquo;\&amp;quot;, as well as narrow, wide, short, tall, and up or
+down.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Even that wasn&amp;rsquo;t quite enough. After failing to match the images with
+any of the two billion available seeds, I started trying
+variations. Apparently, in 1964 Nees was using random numbers modulo
+2&lt;sup&gt;30&lt;/sup&gt;, rather than 2&lt;sup&gt;31&lt;/sup&gt;. Eventually, I had a hit!&lt;/p&gt;
+&lt;h2 id=&#34;success&#34;&gt;Success!&lt;/h2&gt;
+&lt;p&gt;And with that, we have the original image! The seed is 314,748,365,
+the modulo is 2&lt;sup&gt;30&lt;/sup&gt;, and one random generator is used for
+both X and Y coordinates. Otherwise the code is as described in ELIRR.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke.svg&#34; alt=&#34;SVG recreation of 23 ecke, finally!&#34;&gt;&lt;center&gt;&lt;small&gt;&lt;/p&gt;
+&lt;p&gt;Recreation of &lt;em&gt;23 ecke&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/small&gt;&lt;/center&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&#34;final-notes-a-request-and-followfriday&#34;&gt;Final notes, a request, and #followfriday&lt;/h2&gt;
+&lt;h3 id=&#34;the-real-plots-are-tiny&#34;&gt;The real plots are tiny&lt;/h3&gt;
+&lt;p&gt;One fascinating aspect of these images, especially &lt;em&gt;Schotter&lt;/em&gt;, is just
+how &lt;em&gt;small&lt;/em&gt; they are. Accustomed as I am to seeing artwork on my
+computer screen, I assumed Schotter was a foot or two wide. In fact,
+the area Georg Nees had available to him on his plotter was more like
+28-30cm (about a foot) on the long edge. These pictures are tiny!&lt;/p&gt;
+&lt;h3 id=&#34;an-unexpected-email&#34;&gt;An unexpected email&lt;/h3&gt;
+&lt;p&gt;I was delighted and surprised to receive an email from one of Georg
+Nees&amp;rsquo; sons! Apparently a colleague sent him a link to my blog posts on
+&lt;em&gt;Schotter&lt;/em&gt;. It was gratifying to hear that they were excited about the
+reconstruction of his code and images.&lt;/p&gt;
+&lt;h3 id=&#34;any-leads-on-vera-molnár-source-code&#34;&gt;Any leads on Vera Molnár source code?&lt;/h3&gt;
+&lt;p&gt;Next, I want to try reproducing early images of another computer
+artwork pioneer, &lt;a href=&#34;http://www.veramolnar.com/&#34;&gt;Vera Molnár&lt;/a&gt;. If anyone
+has leads on source code for any of her artwork, (or lives close
+enough to her estate to visit her journals) I&amp;rsquo;d love have a go at
+modernizing the code and looking for seeds.&lt;/p&gt;
+&lt;h3 id=&#34;random-artist-shoutout-murilo-polese&#34;&gt;Random artist shoutout: Murilo Polese&lt;/h3&gt;
+&lt;p&gt;While looking for information on Vera Molnár, I ran across &lt;a href=&#34;https://murilopolese.github.io/RTP_SFPC_2021/research/W01_Vera_Molnar.html&#34;&gt;the Vera
+Molnár
+page&lt;/a&gt;
+in the research section on the website for the &lt;a href=&#34;https://sfpc.study/projects/rtp2021&#34;&gt;Recreating the
+Past&lt;/a&gt; course at the intriguing
+&lt;a href=&#34;https://sfpc.study/&#34;&gt;School for Poetic Computation&lt;/a&gt; in New York City.&lt;/p&gt;
+&lt;p&gt;From there, I found the recent leader of that course, Murilo Polese,
+an astonishing dynamo of creative activity. If you&amp;rsquo;d like to get
+inspired by a current computer art practitioner as well as by the
+early artists, you could certainly lose an afternoon exploring their
+many projects:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.murilopolese.com/about.html&#34;&gt;murilopolese.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://gallery.bananabanana.me/&#34;&gt;bananabanana.me gallery&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.bananabanana.me/&#34;&gt;bananabanana.me random toys and projects&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://colorcode2.bananabanana.me/&#34;&gt;amazing color programming toy on bananabanana.me&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sunbeam.city/@murilove&#34;&gt;@murilove@sunbeam.city on Mastodon&lt;/a&gt;
+(fka &lt;a href=&#34;https://twitter.com/murilopolese&#34;&gt;@murilopolese on
+twitter&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ciao&#34;&gt;Ciao!&lt;/h2&gt;
+&lt;p&gt;That&amp;rsquo;s it for now. Please get in touch &amp;mdash;
+&lt;a href=&#34;https://hachyderm.io/@zellyn&#34;&gt;@zellyn@hachyderm.io&lt;/a&gt; &amp;mdash; with any
+comments, requests, or just to chat.&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/06/schotter-1/&#34;&gt;Part one: Schotter: Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/06/schotter-2/&#34;&gt;Part two: Schotter: Investigation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part three: 23 ecke&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;&amp;ldquo;Computer Art. A Personal Recollection, by Frieder Nake&amp;rdquo;
+&lt;a href=&#34;https://doi.org/10.1145/1056224.1056234&#34;&gt;doi:10.1145/1056224.1056234&lt;/a&gt;
+For easiest access, paste the DOI into Sci-Hub.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;The most common
+&lt;a href=&#34;https://www.collinsdictionary.com/us/dictionary/german-english/irrweg&#34;&gt;translation&lt;/a&gt;
+of &amp;ldquo;irrweg&amp;rdquo; appears to be the figurative &amp;ldquo;wrong path&amp;rdquo;&amp;mdash;as in being on
+the wrong track, or leaving the straight and narrow&amp;mdash;or a wandering
+or tortuous path. I find the idea of a computer procedure designed to
+be called repeatedly in a series, named &lt;em&gt;elementary wrong path&lt;/em&gt;,
+delightful.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     
     
@@ -18,7 +364,7 @@
       <pubDate>Sun, 23 Jun 2024 00:01:53 -0400</pubDate>
       
       <guid>https://zellyn.com/2024/06/schotter-2/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/schotter/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;
 &lt;small&gt;Source: Victoria and Albert &amp;mdash; &lt;a href=&#34;https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg/&#34;&gt;link&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 &lt;div class=&#34;toc&#34;&gt;
   &lt;nav id=&#34;TableOfContents&#34;&gt;
@@ -45,10 +391,10 @@
 &lt;/nav&gt;
 &lt;/div&gt;
 
-&lt;p&gt;In &lt;a href=&#34;../schotter-1&#34;&gt;part 1&lt;/a&gt;, we found the original ALGOL-60 code for
-&lt;em&gt;Schotter&lt;/em&gt;, and converted it to Python. Correctly matching the style
-was satisfying&amp;hellip; but wouldn&amp;rsquo;t it be nice to exactly recreate the
-entire original plot?&lt;/p&gt;
+&lt;p&gt;In &lt;a href=&#34;https://zellyn.com/2024/06/schotter-1/&#34;&gt;part 1&lt;/a&gt;, we found the original
+ALGOL-60 code for &lt;em&gt;Schotter&lt;/em&gt;, and converted it to Python. Correctly
+matching the style was satisfying&amp;hellip; but wouldn&amp;rsquo;t it be nice to
+exactly recreate the entire original plot?&lt;/p&gt;
 &lt;p&gt;Here&amp;rsquo;s the problem: we see references to random generators, but not
 their source. From Nees&amp;rsquo; quote about the work:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -121,7 +467,7 @@ tantalizing cover image, which could be found elsewhere with Google
 Image Search
 (&lt;a href=&#34;https://twitter.com/keyvass/status/1471060332617637889&#34;&gt;example&lt;/a&gt;,
 &lt;a href=&#34;https://twitter.com/REAS/status/1473041398962159617&#34;&gt;example&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/REAS/status/1473041398962159617&#34;&gt;&lt;img src=&#34;https://zellyn.com/img/2024/schotter/generative-computergraphik-cover-smaller.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34; title=&#34;=350x&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/REAS/status/1473041398962159617&#34;&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/generative-computergraphik-cover-smaller.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34; title=&#34;=350x&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;jackpot-the-thesis&#34;&gt;Jackpot: The thesis&lt;/h2&gt;
 &lt;p&gt;I forget how I eventually found it, but the publisher
 &lt;a href=&#34;https://www.diaphanes.net/page/about-3677&#34;&gt;Diaphenes&lt;/a&gt; in Zurich have
@@ -373,7 +719,7 @@ we got them right.&lt;/p&gt;
 &lt;p&gt;By looking very carefully at the famous plot, we can mark squares
 where it&amp;rsquo;s clear which direction they&amp;rsquo;ve been shifted, and which
 direction they&amp;rsquo;ve been rotated.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/schotter/annotated-plot.jpg&#34; alt=&#34;Famous Schotter plot, annotated with red and blue letters marking discernable left- and right-shifted squares, and left- and right-rotated squares&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/annotated-plot.jpg&#34; alt=&#34;Famous Schotter plot, annotated with red and blue letters marking discernable left- and right-shifted squares, and left- and right-rotated squares&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Pro-tip:&lt;/strong&gt; Don&amp;rsquo;t use &lt;u&gt;&lt;strong&gt;R&lt;/strong&gt;&lt;/u&gt;ight and &lt;u&gt;&lt;strong&gt;L&lt;/strong&gt;&lt;/u&gt;eft part of
 the time, and &lt;u&gt;&lt;strong&gt;R&lt;/strong&gt;&lt;/u&gt;ed and &lt;u&gt;&lt;strong&gt;B&lt;/strong&gt;&lt;/u&gt;lue part of the time.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Pro-tip:&lt;/strong&gt; Always check your clever techniques on the version of the
@@ -620,11 +966,10 @@ plot:&lt;/p&gt;
 down.&lt;/p&gt;
 &lt;hr&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;../schotter-1&#34;&gt;Part one: Introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Part two: Investigation&lt;/li&gt;
-&lt;li&gt;Part three: coming soon&amp;hellip;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/06/schotter-1/&#34;&gt;Part one: Schotter: Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part two: Schotter: Investigation&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/07/23-ecke/&#34;&gt;Part three: 23 ecke&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;!-- * [Part three: Definitive article](../schotter-3) --&gt;
 </description>
     </item>
     
@@ -636,7 +981,7 @@ down.&lt;/p&gt;
       <pubDate>Mon, 17 Jun 2024 22:11:00 -0400</pubDate>
       
       <guid>https://zellyn.com/2024/06/schotter-1/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg&#34;&gt;&lt;img src=&#34;https://zellyn.com/img/2024/schotter/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;&lt;/a&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg&#34;&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;&lt;/a&gt;
 &lt;em&gt;&lt;small&gt;Lithograph in black ink from a computer-generated graphic, &amp;lsquo;Schotter&amp;rsquo;, 1968-1970, by Georg Nees. © Victoria and Albert Museum, London&lt;/small&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;As a way of dipping my toe into generative art, I&amp;rsquo;ve been trying to
@@ -959,11 +1304,10 @@ notebook&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;To go further down the rabbit hole, continue to part 2&amp;hellip;&lt;/p&gt;
 &lt;hr&gt;
 &lt;ul&gt;
-&lt;li&gt;Part one: Introduction&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../schotter-2&#34;&gt;Part two: Investigation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Part three: coming soon&amp;hellip;&lt;/li&gt;
+&lt;li&gt;Part one: Schotter: Introduction&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/06/schotter-2/&#34;&gt;Part two: Schotter: Investigation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/07/23-ecke/&#34;&gt;Part three: 23 ecke&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;!-- * [Part three: Definitive article](../schotter-3) --&gt;
 &lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
 &lt;ol&gt;

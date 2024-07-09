@@ -7,7 +7,7 @@ date: 2024-06-17T22:11:00-04:00
 tags: ['genart', 'plotter']
 ---
 
-[![Schotter --- Georg Nees](/img/2024/schotter/plot-vanda.jpg)](https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg)
+[![Schotter --- Georg Nees](/img/2024/nees/plot-vanda.jpg)](https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg)
 _<small>Lithograph in black ink from a computer-generated graphic, 'Schotter', 1968-1970, by Georg Nees. © Victoria and Albert Museum, London</small>_
 
 ---
@@ -358,7 +358,6 @@ To go further down the rabbit hole, continue to part 2...
 
 ---
 
-* Part one: Introduction
-* [Part two: Investigation](../schotter-2)
-* Part three: coming soon...
-<!-- * [Part three: Definitive article](../schotter-3) -->
+* Part one: Schotter: Introduction
+* [Part two: Schotter: Investigation]({{< relref "schotter-2.md" >}})
+* [Part three: 23 ecke]({{< relref "23-ecke.md" >}})

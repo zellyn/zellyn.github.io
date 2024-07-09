@@ -6,15 +6,15 @@ date: 2024-06-23T00:01:53-04:00
 tags: ['genart', 'plotter', 'schotter']
 ---
 
-![Schotter --- Georg Nees](/img/2024/schotter/plot-vanda.jpg)
+![Schotter --- Georg Nees](/img/2024/nees/plot-vanda.jpg)
 <small>Source: Victoria and Albert --- [link](https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg/)</small>
 
 {{< toc >}}
 
-In [part 1](../schotter-1), we found the original ALGOL-60 code for
-_Schotter_, and converted it to Python. Correctly matching the style
-was satisfying... but wouldn't it be nice to exactly recreate the
-entire original plot?
+In [part 1]({{< relref "schotter-1.md" >}}), we found the original
+ALGOL-60 code for _Schotter_, and converted it to Python. Correctly
+matching the style was satisfying... but wouldn't it be nice to
+exactly recreate the entire original plot?
 
 Here's the problem: we see references to random generators, but not
 their source. From Nees' quote about the work:
@@ -105,7 +105,7 @@ Image Search
 ([example](https://twitter.com/keyvass/status/1471060332617637889),
 [example](https://twitter.com/REAS/status/1473041398962159617)).
 
-[![Schotter --- Georg Nees](/img/2024/schotter/generative-computergraphik-cover-smaller.jpg "=350x")](https://twitter.com/REAS/status/1473041398962159617)
+[![Schotter --- Georg Nees](/img/2024/nees/generative-computergraphik-cover-smaller.jpg "=350x")](https://twitter.com/REAS/status/1473041398962159617)
 
 ## Jackpot: The thesis
 
@@ -390,7 +390,7 @@ By looking very carefully at the famous plot, we can mark squares
 where it's clear which direction they've been shifted, and which
 direction they've been rotated.
 
-![Famous Schotter plot, annotated with red and blue letters marking discernable left- and right-shifted squares, and left- and right-rotated squares](/img/2024/schotter/annotated-plot.jpg)
+![Famous Schotter plot, annotated with red and blue letters marking discernable left- and right-shifted squares, and left- and right-rotated squares](/img/2024/nees/annotated-plot.jpg)
 
 **Pro-tip:** Don't use <u>**R**</u>ight and <u>**L**</u>eft part of
 the time, and <u>**R**</u>ed and <u>**B**</u>lue part of the time.
@@ -653,7 +653,6 @@ down.
 
 ---
 
-* [Part one: Introduction](../schotter-1)
-* Part two: Investigation
-* Part three: coming soon...
-<!-- * [Part three: Definitive article](../schotter-3) -->
+* [Part one: Schotter: Introduction]({{< relref "schotter-1.md" >}})
+* Part two: Schotter: Investigation
+* [Part three: 23 ecke]({{< relref "23-ecke.md" >}})
