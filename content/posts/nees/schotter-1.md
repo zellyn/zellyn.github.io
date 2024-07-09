@@ -352,7 +352,7 @@ Finally, it just looks right!
 
 For more details on the converstion, as well as a more idiomatic
 Python version, see the [Jupyter
-notebook](https://github.com/zellyn/genart/blob/main/schotter/transliteration.ipynb).
+notebook](https://github.com/zellyn/genart/blob/main/research/schotter/schotter.ipynb).
 
 To go further down the rabbit hole, continue to part 2...
 

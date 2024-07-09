@@ -1298,7 +1298,7 @@ Python implementation that is almost just a transliteration.&lt;/p&gt;
 &lt;br&gt;
 &lt;p&gt;Finally, it just looks right!&lt;/p&gt;
 &lt;p&gt;For more details on the converstion, as well as a more idiomatic
-Python version, see the &lt;a href=&#34;https://github.com/zellyn/genart/blob/main/schotter/transliteration.ipynb&#34;&gt;Jupyter
+Python version, see the &lt;a href=&#34;https://github.com/zellyn/genart/blob/main/research/schotter/schotter.ipynb&#34;&gt;Jupyter
 notebook&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;To go further down the rabbit hole, continue to part 2&amp;hellip;&lt;/p&gt;
 &lt;hr&gt;
