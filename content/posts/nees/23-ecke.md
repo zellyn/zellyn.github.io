@@ -43,7 +43,10 @@ art" (as Bense coined it) are fascinating.
 
 [^1]: "Computer Art. A Personal Recollection, by Frieder Nake"
 [doi:10.1145/1056224.1056234](https://doi.org/10.1145/1056224.1056234)
-For easiest access, paste the DOI into Sci-Hub.
+For easiest access, paste the DOI into Sci-Hub. If that interestes
+you, check out his 2019 paper ["Georg Nees & Harold Cohen: Re:tracing
+the origins of digital
+media"](https://mediarep.org/server/api/core/bitstreams/f7017d56-9284-49d2-852a-9b9aa3885a30/content).
 
 > The pure visual appearance of the drawings was not too exciting. One
 > could easily ignore them, if one wanted to. The challenge really
