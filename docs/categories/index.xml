@@ -279,7 +279,12 @@ variations. Apparently, in 1964 Nees was using random numbers modulo
 &lt;h2 id=&#34;success&#34;&gt;Success!&lt;/h2&gt;
 &lt;p&gt;And with that, we have the original image! The seed is 314,748,365,
 the modulo is 2&lt;sup&gt;30&lt;/sup&gt;, and one random generator is used for
-both X and Y coordinates. Otherwise the code is as described in ELIRR.&lt;/p&gt;
+both X and Y coordinates. Otherwise the code is as described in ELIRR.
+(My source code is available &lt;a href=&#34;https://github.com/zellyn/genart/tree/main/research/23-ecke&#34;&gt;on
+github&lt;/a&gt;,
+which will even render the &lt;a href=&#34;https://github.com/zellyn/genart/blob/main/research/23-ecke/23-ecke.ipynb&#34;&gt;jupyter
+notebook&lt;/a&gt;
+nicely.)&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke.svg&#34; alt=&#34;SVG recreation of 23 ecke, finally!&#34;&gt;&lt;center&gt;&lt;small&gt;&lt;/p&gt;
 &lt;p&gt;Recreation of &lt;em&gt;23 ecke&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;/small&gt;&lt;/center&gt;

@@ -324,6 +324,11 @@ variations. Apparently, in 1964 Nees was using random numbers modulo
 And with that, we have the original image! The seed is 314,748,365,
 the modulo is 2<sup>30</sup>, and one random generator is used for
 both X and Y coordinates. Otherwise the code is as described in ELIRR.
+(My source code is available [on
+github](https://github.com/zellyn/genart/tree/main/research/23-ecke),
+which will even render the [jupyter
+notebook](https://github.com/zellyn/genart/blob/main/research/23-ecke/23-ecke.ipynb)
+nicely.)
 
 ![SVG recreation of 23 ecke, finally!](/img/2024/nees/23-ecke.svg)<center><small>
 
