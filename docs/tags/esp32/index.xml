@@ -1,148 +1,67 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tailscale on Zellyn Hunter</title>
-    <link>https://zellyn.com/tags/tailscale/</link>
-    <description>Recent content in Tailscale on Zellyn Hunter</description>
+    <title>Esp32 on Zellyn Hunter</title>
+    <link>http://localhost:1313/tags/esp32/</link>
+    <description>Recent content in Esp32 on Zellyn Hunter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 07 Feb 2022 00:49:00 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 15 Jun 2024 20:20:00 -0400</lastBuildDate>
     
-	<atom:link href="https://zellyn.com/tags/tailscale/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/tags/esp32/index.xml" rel="self" type="application/rss+xml" />
     
     
     
     <item>
       <title>Emacs packages</title>
-      <link>https://zellyn.com/2024/08/emacs-packages/</link>
-      <pubDate>Fri, 02 Aug 2024 21:38:00 -0400</pubDate>
+      <link>http://localhost:1313/2024/07/emacs-packages/</link>
+      <pubDate>Mon, 15 Jul 2024 21:20:00 -0400</pubDate>
       
-      <guid>https://zellyn.com/2024/08/emacs-packages/</guid>
+      <guid>http://localhost:1313/2024/07/emacs-packages/</guid>
       <description>&lt;p&gt;Now that &lt;a href=&#34;https://www.masteringemacs.org/article/whats-new-in-emacs-29-1&#34;&gt;Emacs
 29&lt;/a&gt;
 moved so many useful things into Emacs proper, it&amp;rsquo;s time to declare
-config bankruptcy and start over, with a newer, cleaner &lt;code&gt;init.el&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;So, I need to understand how Emacs packages work.&lt;/p&gt;
-&lt;p&gt;Like, what does
-&lt;a href=&#34;https://www.gnu.org/software/emacs/manual/html_node/use-package/index.html&#34;&gt;use-package&lt;/a&gt;
-do? What is &lt;a href=&#34;https://github.com/progfolio/elpaca&#34;&gt;Elpaca&lt;/a&gt; for? And is
-it worth straying from the vanilla path?&lt;/p&gt;
-&lt;p&gt;Here&amp;rsquo;s what I&amp;rsquo;ve put together so far&amp;hellip;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;packages&#34;&gt;Packages&lt;/h2&gt;
-&lt;p&gt;Emacs packages serve roughly the same function as packages in other
-languages. The organized package repositories are named some variant
-of &amp;ldquo;ELPA&amp;rdquo; (&amp;ldquo;Emacs Lisp Package Archive&amp;rdquo;)&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-&lt;aside&gt;
-&lt;h3 id=&#34;aside-a-recurring-theme-startup-time&#34;&gt;Aside: A recurring theme: startup time&lt;/h3&gt;
-&lt;p&gt;Several aspects of the package system appear to have been motivated by
-wanting Emacs to start more quickly. Until Emacs 26, Elisp was
-single-threaded&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;, and until Emacs 28, it was only interpreted.&lt;/p&gt;
-&lt;p&gt;The most striking example is the way &lt;code&gt;use-package&lt;/code&gt; loads packages only
-on use, rather than on startup.&lt;/p&gt;
-&lt;/aside&gt;
-&lt;h2 id=&#34;step-one-installing-packages-manually&#34;&gt;Step one: installing packages manually&lt;/h2&gt;
-&lt;p&gt;In the beginning, packages were installed manually. Xah Lee has &lt;a href=&#34;http://xahlee.info/emacs/emacs/emacs_installing_packages.html&#34;&gt;a
-guide&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;step-two-use-a-package-manager&#34;&gt;Step two: use a package manager&lt;/h2&gt;
-&lt;p&gt;As near as I can figure, in 2007, Tom Tromey created &lt;code&gt;package.el&lt;/code&gt; and
-ELPA. &lt;a href=&#34;https://tromey.com/blog/?p=342&#34;&gt;Both&lt;/a&gt; are
-&lt;a href=&#34;https://tromey.com/blog/?p=345&#34;&gt;mentioned&lt;/a&gt; in blog posts dating to
-April of 2007.&lt;/p&gt;
-&lt;p&gt;In version 24, Emacs started shipping with &lt;code&gt;package.el&lt;/code&gt; included.
-&lt;code&gt;M-x list-packages&lt;/code&gt; will bring up the package manager, and let you
-browse and install.&lt;/p&gt;
-&lt;h3 id=&#34;package-archives&#34;&gt;Package archives&lt;/h3&gt;
-&lt;p&gt;There are several flavors of ELPA:&lt;/p&gt;
-&lt;dl&gt;
-&lt;dt&gt;GNU ELPA&lt;/dt&gt;
-&lt;dd&gt;&lt;a href=&#34;https://elpa.gnu.org&#34;&gt;elpa.gnu.org&lt;/a&gt; - requires copyright
-assignment. Essentially, packages here are considered part of Emacs,
-but not distributed by default. 443 packages.&lt;/dd&gt;
-&lt;dt&gt;NonGNU ELPA&lt;/dt&gt;
-&lt;dd&gt;&lt;a href=&#34;elpa.nongnu.org&#34;&gt;https://elpa.nongnu.org&lt;/a&gt; - requires
-GPLv3-compatible code and GNU FDL v1.4-compatible documentation. 235 packages.&lt;/dd&gt;
-&lt;dt&gt;MELPA&lt;/dt&gt;
-&lt;dd&gt;&lt;a href=&#34;https://melpa.org&#34;&gt;melpa.org&lt;/a&gt; - anything goes. Just open a
-PR to add a package. 5,796 packages.&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;p&gt;&lt;code&gt;package.el&lt;/code&gt; defaults to showing
-packages from GNU ELPA and NonGNU ELPA.&lt;/p&gt;
-&lt;h2 id=&#34;step-three-more-powerful-package-managers&#34;&gt;Step three: more powerful package managers&lt;/h2&gt;
-&lt;p&gt;From there, a variety of different package managers exist, with
-varying capabilities and aras of focus. (Get more control over package
-sources? Install from git? Help you &lt;em&gt;develop&lt;/em&gt; packages?) The
-&lt;code&gt;straight.el&lt;/code&gt; &lt;a href=&#34;https://github.com/radian-software/straight.el?tab=readme-ov-file#comparison-to-other-package-managers&#34;&gt;comparison to other package
-managers&lt;/a&gt;
-docs and following &lt;a href=&#34;https://github.com/radian-software/straight.el?tab=readme-ov-file#tldr-1&#34;&gt;TL;DR
-section&lt;/a&gt;
-give an excellent overview.&lt;/p&gt;
-&lt;h2 id=&#34;step-four-use-package&#34;&gt;Step four: &lt;code&gt;use-package&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;use-package&lt;/code&gt;, created by John Wiegley in 2012, offers concise, tidy
-syntax for using packages. It seems to have won, and was merged into
-Emacs in 2022, for Emacs 29.&lt;/p&gt;
-&lt;p&gt;A &lt;code&gt;use-package&lt;/code&gt; call lets you easily register a package, installing if
-necessary. In that same single call you can also:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Configure the package&lt;/li&gt;
-&lt;li&gt;Set up keybindings or entire keymaps&lt;/li&gt;
-&lt;li&gt;Map file types to modes&lt;/li&gt;
-&lt;li&gt;Add hooks&lt;/li&gt;
-&lt;li&gt;more&amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Modern package managers integrate with &lt;code&gt;use-package&lt;/code&gt;, replacing its
-default installation mechanism.&lt;/p&gt;
-&lt;p&gt;More information on &lt;code&gt;use-package&lt;/code&gt;:&lt;/p&gt;
+config bankruptcy and start over, with a newer, cleaner &lt;code&gt;init.el&lt;/code&gt;. So
+I need to understand how Emacs packages work.&lt;/p&gt;
+&lt;h2 id=&#34;the-question&#34;&gt;The question&lt;/h2&gt;
+&lt;p&gt;This exploration started with the question:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What exactly is &lt;a href=&#34;https://github.com/progfolio/elpaca&#34;&gt;elpaca&lt;/a&gt; for,
+and does it do enough to justify straying from the
+straight-and-vanilla path?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;the-long-answer&#34;&gt;The long answer&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s what I&amp;rsquo;ve put together so far.&lt;/p&gt;
+&lt;h3 id=&#34;packages&#34;&gt;Packages&lt;/h3&gt;
+&lt;p&gt;They serve more or less the same function as packages in other
+languages. The package repositories are named some variant of ELPA
+(&amp;ldquo;Emacs Lisp Package Archive&amp;rdquo;), so I&amp;rsquo;d guess this stuff dates from
+&lt;a href=&#34;https://www.cpan.org&#34;&gt;CPAN&lt;/a&gt; days. Or maybe
+&lt;a href=&#34;https://ctan.org/?lang=en&#34;&gt;CTAN&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;use-package&#34;&gt;&lt;code&gt;use-package&lt;/code&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.gnu.org/software/emacs/manual/html_node/use-package/index.html&#34;&gt;User Manual (info)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/jwiegley/use-package#readme&#34;&gt;github README&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool&#34;&gt;Mastering Emacs
 article&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;step-five-package-managers-so-powerful-its-getting-silly&#34;&gt;Step five: package managers so powerful, it&amp;rsquo;s getting silly&lt;/h2&gt;
-&lt;p&gt;If you search for modern advice on which package manager to use,
-you&amp;rsquo;ll see a lot of articles on using
-&lt;a href=&#34;https://github.com/radian-software/straight.el&#34;&gt;&lt;code&gt;straight.el&lt;/code&gt;&lt;/a&gt;. But,
-the current maintainer of &lt;code&gt;straight.el&lt;/code&gt; then went on to write
-&lt;a href=&#34;https://github.com/progfolio/elpaca&#34;&gt;Elpaca&lt;/a&gt;. Their &lt;a href=&#34;https://www.reddit.com/r/emacs/comments/19bs8w9/comment/kiu27mo/&#34;&gt;reddit
-comparison&lt;/a&gt;
-is useful. I believe Elpaca is the current state of the art. It can
-install packages asynchronously, in parallel!&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-&lt;h2 id=&#34;final-comments&#34;&gt;Final comments&lt;/h2&gt;
-&lt;p&gt;I&amp;rsquo;m currently using Elpaca, although since I don&amp;rsquo;t do anything fancy,
-I should probably just use &lt;code&gt;package.el&lt;/code&gt;. Elpaca&amp;rsquo;s async loading
-notifications look cool&amp;hellip;&lt;/p&gt;
-&lt;p&gt;I asked emacs stackexchange to &amp;ldquo;Explain Elpaca Like I&amp;rsquo;m 5&amp;rdquo; and the
-&lt;a href=&#34;https://emacs.stackexchange.com/questions/81730&#34;&gt;reponses&lt;/a&gt; provided
-interesting perspectives and a good starting point.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;That&amp;rsquo;s it! If you see a mistake, or think something should be added,
-clarified, or corrected, please let me know. I&amp;rsquo;d like this post to be
-the thing I wish I&amp;rsquo;d found at the
-start. &lt;a href=&#34;http://zellyn.com/about#contact&#34;&gt;zellyn.com/about#contact&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34;&gt;
-&lt;p&gt;The Comprehensive Perl Archive Network
-(&lt;a href=&#34;https://www.cpan.org&#34;&gt;CPAN&lt;/a&gt;) is probably the most well-known
-&amp;ldquo;Package Archive&amp;rdquo; package system, and was inspired by TeX&amp;rsquo;s
-&lt;a href=&#34;https://ctan.org/?lang=en&#34;&gt;CTAN&lt;/a&gt;.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:2&#34;&gt;
-&lt;p&gt;Multi-threading: it&amp;rsquo;s not clear whether you should use
-it (yet?). See Troy Hinckley&amp;rsquo;s &amp;ldquo;&lt;a href=&#34;https://coredumped.dev/2022/05/19/a-vision-of-a-multi-threaded-emacs/&#34;&gt;A vision of a multi-threaded
-Emacs&lt;/a&gt;&amp;rdquo;,
-and Tom Tromey&amp;rsquo;s &lt;a href=&#34;https://www.reddit.com/r/emacs/comments/utzxir/comment/i9diqxr/&#34;&gt;Reddit
-comment&lt;/a&gt;,
-both from May, 2022.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:3&#34;&gt;
-&lt;p&gt;Installing packages asynchronously, in parallel, is neat,
-although you don&amp;rsquo;t really &lt;em&gt;install&lt;/em&gt; packages that often&amp;hellip; 🤷‍♂️&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
+&lt;h2 id=&#34;package-managers&#34;&gt;Package managers&lt;/h2&gt;
+&lt;p&gt;The straight.el &lt;a href=&#34;https://github.com/radian-software/straight.el?tab=readme-ov-file#comparison-to-other-package-managers&#34;&gt;comparison to other package
+managers&lt;/a&gt;
+docs offer a good overview.&lt;/p&gt;
+&lt;h2 id=&#34;package-archives&#34;&gt;Package archives&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;GNU ELPA: &lt;a href=&#34;https://elpa.gnu.org&#34;&gt;elpa.gnu.org&lt;/a&gt; - requires copyright
+assignment. Essentially, packages here are considered part of Emacs,
+but not distributed by default. 443 packages.&lt;/li&gt;
+&lt;li&gt;NonGNU ELPA: &lt;a href=&#34;elpa.nongnu.org&#34;&gt;https://elpa.nongnu.org&lt;/a&gt; - requires
+GPLv3-compatible code and GNU FDL v1.4-compatible documentation. 235 packages.&lt;/li&gt;
+&lt;li&gt;MELPA: &lt;a href=&#34;https://melpa.org&#34;&gt;melpa.org&lt;/a&gt; - anything goes. Just open a
+PR to add a package. 5,796 packages.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;package-initialize-autoloads-package-enable-at-startup&#34;&gt;&lt;code&gt;package-initialize&lt;/code&gt;, autoloads, &lt;code&gt;package-enable-at-startup&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;package-initialize&lt;/code&gt; is no longer needed as of Emacs 27.2: &lt;a href=&#34;https://github.com/emacs-mirror/emacs/blob/emacs-27.2/etc/NEWS#L204-L214&#34;&gt;NEWS file&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://emacs.stackexchange.com/questions/81730/can-someone-eli5-elpaca?noredirect=1#comment137434_81730&#34;&gt;https://emacs.stackexchange.com/questions/81730/can-someone-eli5-elpaca?noredirect=1#comment137434_81730&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -150,16 +69,16 @@ although you don&amp;rsquo;t really &lt;em&gt;install&lt;/em&gt; packages that o
     
     <item>
       <title>23 ecke - Georg Nees</title>
-      <link>https://zellyn.com/2024/07/23-ecke/</link>
+      <link>http://localhost:1313/2024/07/23-ecke/</link>
       <pubDate>Mon, 08 Jul 2024 21:00:00 -0400</pubDate>
       
-      <guid>https://zellyn.com/2024/07/23-ecke/</guid>
-      <description>&lt;p&gt;Having &lt;a href=&#34;https://zellyn.com/2024/06/schotter-2/#victory&#34;&gt;replicated&lt;/a&gt; Georg
+      <guid>http://localhost:1313/2024/07/23-ecke/</guid>
+      <description>&lt;p&gt;Having &lt;a href=&#34;http://localhost:1313/2024/06/schotter-2/#victory&#34;&gt;replicated&lt;/a&gt; Georg
 Nees&amp;rsquo; iconic 1968/69 work, &amp;ldquo;Schotter&amp;rdquo;, I turned my attention to his
 &amp;ldquo;23 ecke&amp;rdquo; (literally &amp;ldquo;23 corners&amp;rdquo;, usually referred to as &amp;ldquo;Polygons of
 23 vertices&amp;rdquo;), an earlier work from 1964:&lt;/p&gt;
 &lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke-rot19.png&#34; alt=&#34;An array of small, tangled shapes, fourteen across and twenty
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/23-ecke-rot19.png&#34; alt=&#34;An array of small, tangled shapes, fourteen across and twenty
 high. The background is white, and each shape is drawn in pen by a
 plotter. The shapes consist of 23 line segments, 22 of them either
 vertical or horizontal, and one at some kind of
@@ -318,7 +237,7 @@ JS5&lt;/a&gt;
 from the thesis) look similar to those in &amp;ldquo;23 ecke&amp;rdquo;, except that the
 patterns here are a little more tangled, and lack the single diagonal
 line:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/bild-22.png&#34; alt=&#34;An array, six across and eight high, of larger shapes. Each consists
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/bild-22.png&#34; alt=&#34;An array, six across and eight high, of larger shapes. Each consists
 of 40 line segments, all either horizontal or vertical, and traces out
 a tangled loop.&#34;&gt; &lt;center&gt;&lt;small&gt;&lt;/p&gt;
 &lt;p&gt;Bild 22 (Picture 22) &lt;em&gt;from Georg Nees&amp;rsquo; 1969 thesis&lt;/em&gt;&lt;/p&gt;
@@ -326,7 +245,7 @@ a tangled loop.&#34;&gt; &lt;center&gt;&lt;small&gt;&lt;/p&gt;
 &lt;br/&gt;
 &lt;h2 id=&#34;second-attempt&#34;&gt;Second attempt&lt;/h2&gt;
 &lt;p&gt;My next step was to start trying to trace out the shapes from &lt;em&gt;23 ecke&lt;/em&gt;, in an attempt to iterate through seeds and find matching shapes:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke-nsew.png&#34; alt=&#34;Detail from an excalidraw image where I was trying to trace out
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/23-ecke-nsew.png&#34; alt=&#34;Detail from an excalidraw image where I was trying to trace out
 shapes from &amp;ldquo;23 ecke&amp;rdquo;. There are some enlarged (and thus
 blurry/pixelated) shapes with little arrows adjacent to each segment,
 where I was trying to guess which order and direction they were drawn
@@ -355,7 +274,7 @@ from the &lt;a href=&#34;https://generativeart.com/GA2019_web/Generative%20Art%2
 2019&lt;/a&gt;:
 it turns out that Max Bense had edited the original image Nees gave
 him when printing &lt;em&gt;rot 19&lt;/em&gt;, removing one row, and also Nees&amp;rsquo; name:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke-rot19-draft.png&#34; alt=&#34;Detail from a photograph of the marked-up printer&amp;rsquo;s draft of &amp;ldquo;23
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/23-ecke-rot19-draft.png&#34; alt=&#34;Detail from a photograph of the marked-up printer&amp;rsquo;s draft of &amp;ldquo;23
 ecke&amp;rdquo; used in rot 19: Nees name beside the image is struck through,
 and the last row if the image is x&amp;rsquo;ed out and struck through multiple
 times.&#34;&gt;&lt;center&gt;&lt;small&gt;&lt;/p&gt;
@@ -402,7 +321,7 @@ characteristics of the diagonal lines. By happenstance, I ran across
 allows easy use of interactive widgets, and was able to whip up a
 crude interface and manually classify as many of the 280 diagonals as
 possible.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke-classify.png&#34; alt=&#34;Image of a crude UI created in Marimo, showing two images of the
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/23-ecke-classify.png&#34; alt=&#34;Image of a crude UI created in Marimo, showing two images of the
 same small sub-shape from 23 ecke. To the right, they are annotated
 &amp;ldquo;Comments for (17,2)&amp;rdquo; and &amp;ldquo;/ wide short up&amp;rdquo;. Above, there are sliders
 for picking horizontal and vertical sub-images. Below are buttons for
@@ -422,7 +341,7 @@ github&lt;/a&gt;,
 which will even render the &lt;a href=&#34;https://github.com/zellyn/genart/blob/main/research/23-ecke/23-ecke.ipynb&#34;&gt;jupyter
 notebook&lt;/a&gt;
 nicely.)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke.svg&#34; alt=&#34;SVG recreation of 23 ecke, finally!&#34;&gt;&lt;center&gt;&lt;small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/23-ecke.svg&#34; alt=&#34;SVG recreation of 23 ecke, finally!&#34;&gt;&lt;center&gt;&lt;small&gt;&lt;/p&gt;
 &lt;p&gt;Recreation of &lt;em&gt;23 ecke&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;/small&gt;&lt;/center&gt;
 &lt;br&gt;&lt;/p&gt;
@@ -471,8 +390,8 @@ twitter&lt;/a&gt;)&lt;/li&gt;
 comments, requests, or just to chat.&lt;/p&gt;
 &lt;hr&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/06/schotter-1/&#34;&gt;Part one: Schotter: Introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/06/schotter-2/&#34;&gt;Part two: Schotter: Investigation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2024/06/schotter-1/&#34;&gt;Part one: Schotter: Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2024/06/schotter-2/&#34;&gt;Part two: Schotter: Investigation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Part three: 23 ecke&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
@@ -504,11 +423,11 @@ delightful.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#
     
     <item>
       <title>Schotter - Georg Nees - Part 2</title>
-      <link>https://zellyn.com/2024/06/schotter-2/</link>
+      <link>http://localhost:1313/2024/06/schotter-2/</link>
       <pubDate>Sun, 23 Jun 2024 00:01:53 -0400</pubDate>
       
-      <guid>https://zellyn.com/2024/06/schotter-2/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;
+      <guid>http://localhost:1313/2024/06/schotter-2/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;
 &lt;small&gt;Source: Victoria and Albert &amp;mdash; &lt;a href=&#34;https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg/&#34;&gt;link&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 &lt;div class=&#34;toc&#34;&gt;
   &lt;nav id=&#34;TableOfContents&#34;&gt;
@@ -535,7 +454,7 @@ delightful.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#
 &lt;/nav&gt;
 &lt;/div&gt;
 
-&lt;p&gt;In &lt;a href=&#34;https://zellyn.com/2024/06/schotter-1/&#34;&gt;part 1&lt;/a&gt;, we found the original
+&lt;p&gt;In &lt;a href=&#34;http://localhost:1313/2024/06/schotter-1/&#34;&gt;part 1&lt;/a&gt;, we found the original
 ALGOL-60 code for &lt;em&gt;Schotter&lt;/em&gt;, and converted it to Python. Correctly
 matching the style was satisfying&amp;hellip; but wouldn&amp;rsquo;t it be nice to
 exactly recreate the entire original plot?&lt;/p&gt;
@@ -611,7 +530,7 @@ tantalizing cover image, which could be found elsewhere with Google
 Image Search
 (&lt;a href=&#34;https://twitter.com/keyvass/status/1471060332617637889&#34;&gt;example&lt;/a&gt;,
 &lt;a href=&#34;https://twitter.com/REAS/status/1473041398962159617&#34;&gt;example&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/REAS/status/1473041398962159617&#34;&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/generative-computergraphik-cover-smaller.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34; title=&#34;=350x&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/REAS/status/1473041398962159617&#34;&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/generative-computergraphik-cover-smaller.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34; title=&#34;=350x&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;jackpot-the-thesis&#34;&gt;Jackpot: The thesis&lt;/h2&gt;
 &lt;p&gt;I forget how I eventually found it, but the publisher
 &lt;a href=&#34;https://www.diaphanes.net/page/about-3677&#34;&gt;Diaphenes&lt;/a&gt; in Zurich have
@@ -863,7 +782,7 @@ we got them right.&lt;/p&gt;
 &lt;p&gt;By looking very carefully at the famous plot, we can mark squares
 where it&amp;rsquo;s clear which direction they&amp;rsquo;ve been shifted, and which
 direction they&amp;rsquo;ve been rotated.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/annotated-plot.jpg&#34; alt=&#34;Famous Schotter plot, annotated with red and blue letters marking discernable left- and right-shifted squares, and left- and right-rotated squares&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/annotated-plot.jpg&#34; alt=&#34;Famous Schotter plot, annotated with red and blue letters marking discernable left- and right-shifted squares, and left- and right-rotated squares&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Pro-tip:&lt;/strong&gt; Don&amp;rsquo;t use &lt;u&gt;&lt;strong&gt;R&lt;/strong&gt;&lt;/u&gt;ight and &lt;u&gt;&lt;strong&gt;L&lt;/strong&gt;&lt;/u&gt;eft part of
 the time, and &lt;u&gt;&lt;strong&gt;R&lt;/strong&gt;&lt;/u&gt;ed and &lt;u&gt;&lt;strong&gt;B&lt;/strong&gt;&lt;/u&gt;lue part of the time.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Pro-tip:&lt;/strong&gt; Always check your clever techniques on the version of the
@@ -1110,9 +1029,9 @@ plot:&lt;/p&gt;
 down.&lt;/p&gt;
 &lt;hr&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/06/schotter-1/&#34;&gt;Part one: Schotter: Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2024/06/schotter-1/&#34;&gt;Part one: Schotter: Introduction&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Part two: Schotter: Investigation&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/07/23-ecke/&#34;&gt;Part three: 23 ecke&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2024/07/23-ecke/&#34;&gt;Part three: 23 ecke&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1121,11 +1040,11 @@ down.&lt;/p&gt;
     
     <item>
       <title>Schotter - Georg Nees - Part 1</title>
-      <link>https://zellyn.com/2024/06/schotter-1/</link>
+      <link>http://localhost:1313/2024/06/schotter-1/</link>
       <pubDate>Mon, 17 Jun 2024 22:11:00 -0400</pubDate>
       
-      <guid>https://zellyn.com/2024/06/schotter-1/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg&#34;&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;&lt;/a&gt;
+      <guid>http://localhost:1313/2024/06/schotter-1/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg&#34;&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;&lt;/a&gt;
 &lt;em&gt;&lt;small&gt;Lithograph in black ink from a computer-generated graphic, &amp;lsquo;Schotter&amp;rsquo;, 1968-1970, by Georg Nees. © Victoria and Albert Museum, London&lt;/small&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;As a way of dipping my toe into generative art, I&amp;rsquo;ve been trying to
@@ -1449,8 +1368,8 @@ notebook&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;Part one: Schotter: Introduction&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/06/schotter-2/&#34;&gt;Part two: Schotter: Investigation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/07/23-ecke/&#34;&gt;Part three: 23 ecke&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2024/06/schotter-2/&#34;&gt;Part two: Schotter: Investigation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2024/07/23-ecke/&#34;&gt;Part three: 23 ecke&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
@@ -1466,11 +1385,22 @@ notebook&lt;/a&gt;.&lt;/p&gt;
     
     
     <item>
+      <title>ESP32-C3 - Part 1</title>
+      <link>http://localhost:1313/2024/06/esp32c3-01/</link>
+      <pubDate>Sat, 15 Jun 2024 20:20:00 -0400</pubDate>
+      
+      <guid>http://localhost:1313/2024/06/esp32c3-01/</guid>
+      <description></description>
+    </item>
+    
+    
+    
+    <item>
       <title>Blog machinery back up</title>
-      <link>https://zellyn.com/2024/06/blog-fixed/</link>
+      <link>http://localhost:1313/2024/06/blog-fixed/</link>
       <pubDate>Sat, 15 Jun 2024 19:45:31 -0400</pubDate>
       
-      <guid>https://zellyn.com/2024/06/blog-fixed/</guid>
+      <guid>http://localhost:1313/2024/06/blog-fixed/</guid>
       <description>&lt;h1 id=&#34;blog-machinery-back-up&#34;&gt;Blog machinery back up&lt;/h1&gt;
 &lt;p&gt;The downside of running a (slightly) custom&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; version of
 &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; is that it can break when things get
@@ -1484,7 +1414,7 @@ with ESP32-C3 chips and Adafruit Neopixels.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li id=&#34;fn:1&#34;&gt;
 &lt;p&gt;modified to run pikchr in goldmark as described in
-&lt;a href=&#34;https://zellyn.com/2022/01/gopikchr-a-yakshave/&#34;&gt;gopikchr: a yakshave&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;http://localhost:1313/2022/01/gopikchr-a-yakshave/&#34;&gt;gopikchr: a yakshave&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -1494,11 +1424,26 @@ with ESP32-C3 chips and Adafruit Neopixels.&lt;/p&gt;
     
     
     <item>
+      <title>Crazy numbers for physical things</title>
+      <link>http://localhost:1313/2024/02/crazy-numbers/</link>
+      <pubDate>Tue, 27 Feb 2024 00:00:00 -0500</pubDate>
+      
+      <guid>http://localhost:1313/2024/02/crazy-numbers/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;At room temperature the average speed of a particle in air is an astonishing 1030mph
+— &lt;a href=&#34;https://ciechanow.ski/airfoil/#:~:text=of%20its%20particles.-,At%20room%20temperature,-the%20average%20speed&#34;&gt;ciechanow.ski/airfoil&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    
+    
+    <item>
       <title>CS Ramble — Set 3b - operating systems</title>
-      <link>https://zellyn.com/2022/03/cs-ramble/3b/</link>
+      <link>http://localhost:1313/2022/03/cs-ramble/3b/</link>
       <pubDate>Wed, 16 Mar 2022 20:10:00 -0400</pubDate>
       
-      <guid>https://zellyn.com/2022/03/cs-ramble/3b/</guid>
+      <guid>http://localhost:1313/2022/03/cs-ramble/3b/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../3a/&#34;&gt;set 3&lt;/a&gt; of &lt;a href=&#34;../../../02/cs-ramble/&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;We&amp;rsquo;ll get to processes, threads, and fibers soon, but first we need to
 talk about how all the things your computer is doing at any given time
@@ -1541,10 +1486,10 @@ keep using the ROM routines.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;f
     
     <item>
       <title>CS Ramble — Set 3a - questions</title>
-      <link>https://zellyn.com/2022/03/cs-ramble/3a/</link>
+      <link>http://localhost:1313/2022/03/cs-ramble/3a/</link>
       <pubDate>Wed, 16 Mar 2022 20:03:00 -0400</pubDate>
       
-      <guid>https://zellyn.com/2022/03/cs-ramble/3a/</guid>
+      <guid>http://localhost:1313/2022/03/cs-ramble/3a/</guid>
       <description>&lt;p&gt;&lt;em&gt;These are the questions for set 3 of &lt;a href=&#34;../../../02/cs-ramble/&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;questions-for-set-3&#34;&gt;Questions for set 3&lt;/h1&gt;
 &lt;p&gt;Just one question this time:&lt;/p&gt;
@@ -1559,10 +1504,10 @@ keep using the ROM routines.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;f
     
     <item>
       <title>CS Ramble — Set 2e - bit twiddling</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/2e/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/2e/</link>
       <pubDate>Sat, 26 Feb 2022 20:21:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/2e/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/2e/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In this post, we&amp;rsquo;re going to look at how to get, set, and otherwise
@@ -1894,10 +1839,10 @@ an &lt;code&gt;is_even&lt;/code&gt; or &lt;code&gt;is_odd&lt;/code&gt; function 
     
     <item>
       <title>CS Ramble — Set 2d - boolean logic</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/2d/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/2d/</link>
       <pubDate>Fri, 25 Feb 2022 20:10:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/2d/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/2d/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In this post, we&amp;rsquo;re going to become more familiar with messing around
@@ -2362,11 +2307,187 @@ wash the dishes!&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-back
     
     
     <item>
+      <title>Accurate timing on a Raspberry Pi</title>
+      <link>http://localhost:1313/2022/02/raspberry-pi-accurate-timing/</link>
+      <pubDate>Mon, 21 Feb 2022 14:30:00 -0500</pubDate>
+      
+      <guid>http://localhost:1313/2022/02/raspberry-pi-accurate-timing/</guid>
+      <description>&lt;div class=&#34;toc&#34;&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href=&#34;#the-problem&#34;&gt;The problem&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#quick-disclaimer-and-request-for-correction&#34;&gt;Quick disclaimer and request for correction&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#sources-of-information&#34;&gt;Sources of information&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#viable-approaches&#34;&gt;Viable approaches&lt;/a&gt;
+      &lt;ol&gt;
+        &lt;li&gt;&lt;a href=&#34;#dma&#34;&gt;DMA&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#pwm&#34;&gt;PWM&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#spi&#34;&gt;SPI&lt;/a&gt;&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#methods-of-using-the-approaches&#34;&gt;Methods of using the approaches&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#timing&#34;&gt;Timing&lt;/a&gt;
+      &lt;ol&gt;
+        &lt;li&gt;&lt;a href=&#34;#markopen-questionsmark&#34;&gt;&lt;mark&gt;Open questions&lt;/mark&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#summary-table&#34;&gt;Summary table&lt;/a&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;the-problem&#34;&gt;The problem&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;ve been trying to open my garage door and gate using a &lt;a href=&#34;https://www.raspberrypi.com/products/raspberry-pi-zero-w/&#34;&gt;Raspberry Pi
+Zero W&lt;/a&gt; and
+a &lt;a href=&#34;https://www.google.com/search?q=315mhz+fs1000a&#34;&gt;315MHz FS1000A&lt;/a&gt;
+transmitter. At first, I tried directly toggline the GPIO (“General
+Purpose Input-Output”) pins on and off in code.&lt;/p&gt;
+&lt;p&gt;Unfortunately, the timing in Linux just isn&amp;rsquo;t that accurate. I ended
+up using several tricks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo chrt -f -r 99&lt;/code&gt; to run the command with as much &lt;a href=&#34;https://man7.org/linux/man-pages/man1/chrt.1.html&#34;&gt;realtime
+priority&lt;/a&gt; as
+possible&lt;/li&gt;
+&lt;li&gt;Busy-waiting rather than sleeping (which was &lt;em&gt;horribly&lt;/em&gt; imprecise):
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; target.&lt;span style=&#34;color:#06287e&#34;&gt;After&lt;/span&gt;(time.&lt;span style=&#34;color:#06287e&#34;&gt;Now&lt;/span&gt;()) {}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;Setting target time based on offsets from the &lt;em&gt;original&lt;/em&gt; start time,
+rather than the current time, so that errors don&amp;rsquo;t accumulate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Even so, it&amp;rsquo;s still not accurate enough. Here&amp;rsquo;s a pretty good run,
+which still includes an obvious lag in turning off the signal at one
+point:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2022/capture-with-lag.png&#34; alt=&#34;timing image with lag pointed to by a pink arrow&#34;&gt;
+&lt;em&gt;Image captured with
+&lt;a href=&#34;https://osmocom.org/projects/rtl-sdr/wiki/Rtl-sdr#Usage&#34;&gt;&lt;code&gt;rtl_sdr&lt;/code&gt;&lt;/a&gt;
+and displayed using &lt;a href=&#34;https://github.com/miek/inspectrum&#34;&gt;&lt;code&gt;inspectrum&lt;/code&gt;&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;quick-disclaimer-and-request-for-correction&#34;&gt;Quick disclaimer and request for correction&lt;/h2&gt;
+&lt;p&gt;I am &lt;em&gt;not&lt;/em&gt; a Raspberry Pi expert. I found the information and
+understanding I needed was scattered far and wide, across different
+forum questions and responses, datasheets, web pages, software
+documentation, and even source code. The answers also changed over the
+years. This post is as much an effort to organize my own thoughts and
+provide a reference for &lt;em&gt;me&lt;/em&gt; to come back to later as anything. It&amp;rsquo;s
+also an effort to provoke correction: if you notice errors or
+omissions, please let me know, and I&amp;rsquo;ll make updates.&lt;/p&gt;
+&lt;h2 id=&#34;sources-of-information&#34;&gt;Sources of information&lt;/h2&gt;
+&lt;p&gt;The first Raspberry Pis (and the curretn Zero and Zero W) used the
+Broadcom 2835 System-On-a-Chip (SOC), and the &lt;a href=&#34;https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf&#34;&gt;BCM2835 Peripherals
+instruction
+manual&lt;/a&gt;
+is very useful for low-level understanding. (The later models seem to
+have kept compatibility with the 2835, so the information remains
+useful.)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.metachris.com/about/&#34;&gt;Chris Hager&lt;/a&gt;&amp;rsquo;s Python &lt;code&gt;RPIO.PWM&lt;/code&gt;
+module &lt;a href=&#34;https://pythonhosted.org/RPIO/pwm_py.html&#34;&gt;documentation&lt;/a&gt; and
+&lt;a href=&#34;https://github.com/metachris/RPIO/blob/master/source/c_pwm/pwm.c&#34;&gt;source
+code&lt;/a&gt;
+are useful because the C source code is clear and well-documented.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/jgarff&#34;&gt;Jeremy Garff&lt;/a&gt;&amp;rsquo;s
+&lt;a href=&#34;https://github.com/jgarff/rpi_ws281x&#34;&gt;rpi_ws281x&lt;/a&gt; project for
+controlling &lt;a href=&#34;https://learn.watterott.com/kb/ws281x/&#34;&gt;WS281X LEDs&lt;/a&gt; is a
+great resource because it can use all three of DMA, PWM, and SPI,
+because it is pushing out custom data streams of bits, because the
+main body of code in
+&lt;a href=&#34;https://github.com/jgarff/rpi_ws281x/blob/master/ws2811.c&#34;&gt;ws2811.c&lt;/a&gt;
+is clear and well-commented, and because the README discusses the
+trade-offs and limitations of the three approaches.&lt;/p&gt;
+&lt;h2 id=&#34;viable-approaches&#34;&gt;Viable approaches&lt;/h2&gt;
+&lt;p&gt;As mentioned above, there are three techniques that can be used for
+accurate timing on the Raspberry Pi, each with pros and cons:&lt;/p&gt;
+&lt;h3 id=&#34;dma&#34;&gt;DMA&lt;/h3&gt;
+&lt;p&gt;DMA, or “&lt;a href=&#34;https://en.wikipedia.org/wiki/Direct_memory_access&#34;&gt;Direct Memory
+Access&lt;/a&gt;”, is a
+technique where you set up a series of instructions in memory, then
+activate the DMA controller, and it runs more or less on its own,
+directly accessing memory to retrieve the instructions. A typical use
+of DMA is to transfer chunks of data between regions of memory, or to
+video, networking, or audio devices.&lt;/p&gt;
+&lt;p&gt;On the BCM2835, DMA instructions can also be used to turn GPIO pins on
+or off. By setting up just the right set of instructions, a custom
+sequence of data can be created on the GPIO pins.&lt;/p&gt;
+&lt;h3 id=&#34;pwm&#34;&gt;PWM&lt;/h3&gt;
+&lt;p&gt;PWM, or “&lt;a href=&#34;https://en.wikipedia.org/wiki/Pulse-width_modulation&#34;&gt;Pulse Width
+Modulation&lt;/a&gt;”, is
+typically used to refer to changing (&lt;em&gt;modulating&lt;/em&gt;) the &lt;em&gt;width&lt;/em&gt; of the
+&lt;em&gt;pulses&lt;/em&gt; in a square wave sent to some device, like an LED or speaker,
+in order to change the average brightness or volume, or timbre of the
+sound. On the BCM2835, the PWM machinery can also be used to shunt
+custom waveforms to GPIO pins.&lt;/p&gt;
+&lt;h3 id=&#34;spi&#34;&gt;SPI&lt;/h3&gt;
+&lt;p&gt;SPI “&lt;a href=&#34;https://en.wikipedia.org/wiki/Serial_Peripheral_Interface&#34;&gt;Serial Peripheral
+Interface&lt;/a&gt;”
+is a specification for short-distance communication with peripherals,
+either two- or just one-way. Although intended for marshaling and
+communication of data, the BCM2835 also allows SPI to be used to
+simply push out a custom waveform.&lt;/p&gt;
+&lt;h2 id=&#34;methods-of-using-the-approaches&#34;&gt;Methods of using the approaches&lt;/h2&gt;
+&lt;p&gt;There are also different ways of using DMA, PWM, and SPI. The most
+low-level but straight-forward approach is to read the
+datasheet/manual, get enough privileges to reference the memory-mapped
+control addresses, and directly control the hardware.&lt;/p&gt;
+&lt;p&gt;The less direct (and safer) approach is to use devices and modules
+that people have written for the Linux kernel to control the hardware,
+for which there are sometimes multiple approaches.&lt;/p&gt;
+&lt;h2 id=&#34;timing&#34;&gt;Timing&lt;/h2&gt;
+&lt;p&gt;The raw speeds of the RPi clocks are far too quick to be useful for
+the slower data rate required by these radio devices. But all three
+approaches have ways to use different clocks with different
+frequencies, and to subdivide the clock frequency.&lt;/p&gt;
+&lt;h3 id=&#34;markopen-questionsmark&#34;&gt;&lt;mark&gt;Open questions&lt;/mark&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;mark&gt;&lt;strong&gt;TODO&lt;/strong&gt;: figure out:&lt;/mark&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;mark&gt;what clocks are available&lt;/mark&gt;&lt;/li&gt;
+&lt;li&gt;&lt;mark&gt;which can be used with which approach&lt;/mark&gt;&lt;/li&gt;
+&lt;li&gt;&lt;mark&gt;what their frequencies are&lt;/mark&gt;&lt;/li&gt;
+&lt;li&gt;&lt;mark&gt;which clock frequencies are dependent on base frequency&lt;/mark&gt;&lt;/li&gt;
+&lt;li&gt;&lt;mark&gt;which clock frequencies vary with model&lt;/mark&gt;&lt;/li&gt;
+&lt;li&gt;&lt;mark&gt;which clocks vary their frequencies as the RPi moderates its frequency to remain cool enough&lt;/mark&gt;&lt;/li&gt;
+&lt;li&gt;&lt;mark&gt;what subdivision ranges and granularity are possible with each approach&lt;/mark&gt;&lt;/li&gt;
+&lt;li&gt;&lt;mark&gt;how to find out the clock frequencies&lt;/mark&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;summary-table&#34;&gt;Summary table&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Direct access&lt;/th&gt;
+&lt;th&gt;Linux method 1&lt;/th&gt;
+&lt;th&gt;Linux method 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;DMA&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;PWM&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;SPI&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    
+    
+    <item>
       <title>CS Ramble — Set 2c - binary and bits</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/2c/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/2c/</link>
       <pubDate>Thu, 17 Feb 2022 21:30:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/2c/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/2c/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In this post, we&amp;rsquo;re going to become more familiar with thinking in
@@ -2575,10 +2696,10 @@ number) equal to or less than &lt;code&gt;a&lt;/code&gt;. It&amp;rsquo;s called 
     
     <item>
       <title>CS Ramble — Set 2b - bases</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/2b/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/2b/</link>
       <pubDate>Wed, 16 Feb 2022 20:00:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/2b/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/2b/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;counting-in-tens-like-a-normal-human&#34;&gt;Counting in tens, like a normal human&lt;/h1&gt;
@@ -2979,10 +3100,10 @@ say the octothorpe is “percent encoded” as &lt;code&gt;%23&lt;/code&gt;.)&lt
     
     <item>
       <title>CS Ramble — Set 2a - questions</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/2a/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/2a/</link>
       <pubDate>Tue, 15 Feb 2022 20:15:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/2a/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/2a/</guid>
       <description>&lt;p&gt;&lt;em&gt;These are the questions for set 2 of &lt;a href=&#34;../&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;questions-for-set-2&#34;&gt;Questions for set 2&lt;/h1&gt;
 &lt;ul&gt;
@@ -3019,10 +3140,10 @@ write what we call “ten”? What would they mean when they wrote
     
     <item>
       <title>Tailscale diagram in Pikchr</title>
-      <link>https://zellyn.com/2022/02/tailscale-diagram-in-pikchr/</link>
+      <link>http://localhost:1313/2022/02/tailscale-diagram-in-pikchr/</link>
       <pubDate>Mon, 07 Feb 2022 00:49:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/tailscale-diagram-in-pikchr/</guid>
+      <guid>http://localhost:1313/2022/02/tailscale-diagram-in-pikchr/</guid>
       <description>&lt;p&gt;Just for fun, I decided to try to use &lt;a href=&#34;https://pikchr.org&#34;&gt;Pikchr&lt;/a&gt; to
 reproduce one of the diagrams in Tailscale&amp;rsquo;s &lt;a href=&#34;https://tailscale.com/blog/how-nat-traversal-works/&#34;&gt;How NAT traversal
 works&lt;/a&gt; article,
@@ -3133,10 +3254,10 @@ line up 0.15 right 0.15 down 0.15 left 0.15 down 0.15 right 0.15 up 0.15 left 0.
     
     <item>
       <title>CS Ramble — Set 1c: variables</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/1c/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/1c/</link>
       <pubDate>Thu, 03 Feb 2022 20:12:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/1c/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/1c/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../1a/&#34;&gt;set 1&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;variables&#34;&gt;Variables&lt;/h1&gt;
@@ -3679,10 +3800,10 @@ goes into lots of details.&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;foo
     
     <item>
       <title>CS Ramble — Set 1b - memory, text, numbers</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/1b/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/1b/</link>
       <pubDate>Thu, 03 Feb 2022 08:00:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/1b/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/1b/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../1a/&#34;&gt;set 1&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;computer-memory&#34;&gt;Computer memory&lt;/h1&gt;
@@ -4046,10 +4167,10 @@ is useful.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#3
     
     <item>
       <title>CS Ramble — Set 1a - questions</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/1a/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/1a/</link>
       <pubDate>Wed, 02 Feb 2022 19:58:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/1a/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/1a/</guid>
       <description>&lt;p&gt;&lt;em&gt;These are the questions for set 1 of &lt;a href=&#34;../&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;questions-for-set-1&#34;&gt;Questions for set 1&lt;/h1&gt;
 &lt;ul&gt;
@@ -4071,10 +4192,10 @@ numbers and text in the &lt;a href=&#34;../1b/&#34;&gt;next part&lt;/a&gt;.&lt;/
     
     <item>
       <title>A ramble around CS</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/</link>
       <pubDate>Tue, 01 Feb 2022 08:00:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/</guid>
       <description>&lt;h1 id=&#34;intro&#34;&gt;Intro&lt;/h1&gt;
 &lt;p&gt;It turns out we have several folks at Square who arrived at
 programming through boot-camps, or other non-CS paths, and feel a sort
@@ -4177,10 +4298,10 @@ useful to more people would be welcome.&amp;#160;&lt;a href=&#34;#fnref:3&#34; c
     
     <item>
       <title>gopikchr: a yakshave</title>
-      <link>https://zellyn.com/2022/01/gopikchr-a-yakshave/</link>
+      <link>http://localhost:1313/2022/01/gopikchr-a-yakshave/</link>
       <pubDate>Sun, 30 Jan 2022 13:11:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/01/gopikchr-a-yakshave/</guid>
+      <guid>http://localhost:1313/2022/01/gopikchr-a-yakshave/</guid>
       <description>&lt;p&gt;I just completed part of a long
 &lt;a href=&#34;https://en.wiktionary.org/wiki/yak_shaving&#34;&gt;yak-shave&lt;/a&gt; to add
 &lt;a href=&#34;https://pikchr.org&#34;&gt;Pikchr&lt;/a&gt; support to my blog, generated with
@@ -4296,13 +4417,13 @@ ellipse same at 0.3,0.4
     
     <item>
       <title>Project Todos</title>
-      <link>https://zellyn.com/2018/03/project-todos/</link>
+      <link>http://localhost:1313/2018/03/project-todos/</link>
       <pubDate>Sat, 31 Mar 2018 22:50:18 -0400</pubDate>
       
-      <guid>https://zellyn.com/2018/03/project-todos/</guid>
+      <guid>http://localhost:1313/2018/03/project-todos/</guid>
       <description>&lt;p&gt;In an effort to organize the many side-projects I would &lt;em&gt;like&lt;/em&gt; to do
 — at least in my mind — but probably never will, I created
-a &lt;a href=&#34;https://zellyn.com/page/projects/todo/&#34;&gt;Projects: TODO&lt;/a&gt; page.&lt;/p&gt;
+a &lt;a href=&#34;http://localhost:1313/page/projects/todo/&#34;&gt;Projects: TODO&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ve never collaborated much on side projects. If something strikes
 your fancy, I would &lt;em&gt;love&lt;/em&gt; to work together.&lt;/p&gt;
 </description>
@@ -4312,10 +4433,10 @@ your fancy, I would &lt;em&gt;love&lt;/em&gt; to work together.&lt;/p&gt;
     
     <item>
       <title>New new site</title>
-      <link>https://zellyn.com/2016/04/new-new-site/</link>
+      <link>http://localhost:1313/2016/04/new-new-site/</link>
       <pubDate>Sun, 03 Apr 2016 16:57:38 -0400</pubDate>
       
-      <guid>https://zellyn.com/2016/04/new-new-site/</guid>
+      <guid>http://localhost:1313/2016/04/new-new-site/</guid>
       <description>&lt;p&gt;I just migrated this site from &lt;a href=&#34;http://octopress.org/&#34;&gt;Octopress&lt;/a&gt; to
 &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. Expect problems (and hopefully more
 frequent updates).&lt;/p&gt;
@@ -4326,10 +4447,10 @@ frequent updates).&lt;/p&gt;
     
     <item>
       <title>Continued fractions</title>
-      <link>https://zellyn.com/2016/04/continued-fractions/</link>
+      <link>http://localhost:1313/2016/04/continued-fractions/</link>
       <pubDate>Sun, 03 Apr 2016 15:30:06 -0400</pubDate>
       
-      <guid>https://zellyn.com/2016/04/continued-fractions/</guid>
+      <guid>http://localhost:1313/2016/04/continued-fractions/</guid>
       <description>$$
 26 + \frac{1}{5 + \frac{1}{12 + \frac{1}{12 + \frac{1}{25 + \frac{1}{14 + \cdots}}}}}
 $$
@@ -4351,15 +4472,367 @@ with the world, that Mum and Dad are in charge, that I am safe.&lt;/p&gt;
     
     <item>
       <title>New Site</title>
-      <link>https://zellyn.com/2016/04/new-site/</link>
+      <link>http://localhost:1313/2016/04/new-site/</link>
       <pubDate>Sun, 03 Apr 2016 15:30:00 -0400</pubDate>
       
-      <guid>https://zellyn.com/2016/04/new-site/</guid>
+      <guid>http://localhost:1313/2016/04/new-site/</guid>
       <description>&lt;p&gt;Welcome to my new site. I’m just trying to get everything working:
 expect both style and substance later.&lt;/p&gt;
 &lt;p&gt;For now, my &lt;a href=&#34;http://zellyn.blogspot.com/&#34;&gt;old site&lt;/a&gt; is probably more
 interesting.&lt;/p&gt;
 </description>
+    </item>
+    
+    
+    
+    <item>
+      <title>An exploration of the ws2811 code</title>
+      <link>http://localhost:1313/2000/01/ws2811-exploration/</link>
+      <pubDate>Sat, 01 Jan 2000 01:01:01 -0500</pubDate>
+      
+      <guid>http://localhost:1313/2000/01/ws2811-exploration/</guid>
+      <description>&lt;div class=&#34;toc&#34;&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href=&#34;#general-notes&#34;&gt;General notes&lt;/a&gt;
+      &lt;ol&gt;
+        &lt;li&gt;&lt;a href=&#34;#devices-used&#34;&gt;Devices used:&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#useful-references&#34;&gt;Useful references&lt;/a&gt;&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We&amp;rsquo;re going to be looking at
+&lt;a href=&#34;https://github.com/jgarff/rpi_ws281x/blob/master/ws2811.c&#34;&gt;&lt;code&gt;ws2811.c&lt;/code&gt;&lt;/a&gt;, and
+occasionally various ancillary files, in the
+&lt;a href=&#34;https://github.com/jgarff/rpi_ws281x#readme&#34;&gt;jgarff/rpi_ws281x&lt;/a&gt; project.&lt;/p&gt;
+&lt;h2 id=&#34;general-notes&#34;&gt;General notes&lt;/h2&gt;
+&lt;h3 id=&#34;devices-used&#34;&gt;Devices used:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/dev/vcio&lt;/code&gt; - used to access VideoCore memory. Code is confined to
+&lt;a href=&#34;https://github.com/jgarff/rpi_ws281x/blob/master/mailbox.c&#34;&gt;&lt;code&gt;mailbox.c&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/dev/mem&lt;/code&gt; - used to access and allocate regular memory, including regular GPIO access&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/devbase/gpiomem&lt;/code&gt; - used to map GPIO access in &lt;code&gt;spi_init&lt;/code&gt; (???)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/dev/spidev0.0&lt;/code&gt; - used to access SPI (needs the spi_bcm2835 module
+to be loaded: use &lt;code&gt;raspi-config&lt;/code&gt; or add &lt;code&gt;dtparam=spi=on&lt;/code&gt; to
+&lt;code&gt;/boot/config.txt&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;useful-references&#34;&gt;Useful references&lt;/h3&gt;
+&lt;h4 id=&#34;clocks&#34;&gt;Clocks&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://starfishmedical.com/blog/raspberry-pi-clock-conundrum/&#34;&gt;Understanding the Raspberry Pi Clock
+Conundrum&lt;/a&gt;
+by Tristan Nixon on the StarFish Medical site dives into how varying
+clock rates affect serial communications.&lt;/p&gt;
+&lt;h4 id=&#34;spi&#34;&gt;SPI&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.takaitra.com/spi-device-raspberry-pi/&#34;&gt;Controlling an SPI device with the Raspberry
+Pi&lt;/a&gt; is an overview
+by Matthew Toso of using SPI from Python, along with a brief
+discussion of available frequencies.&lt;/p&gt;
+&lt;h4 id=&#34;general&#34;&gt;General&lt;/h4&gt;
+&lt;p&gt;The official &lt;a href=&#34;https://www.raspberrypi.com/documentation/computers/raspberry-pi.html&#34;&gt;Raspberry Pi
+Hardware&lt;/a&gt;
+and
+&lt;a href=&#34;https://www.raspberrypi.com/documentation/computers/configuration.html&#34;&gt;Configuration&lt;/a&gt;
+pages are very helpful.&lt;/p&gt;
+&lt;p&gt;The main type we&amp;rsquo;re dealing with is a &lt;code&gt;ws2811_t&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;86&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#902000&#34;&gt;ws2811_t&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;87&lt;/span&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;88&lt;/span&gt;&lt;span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;uint64_t&lt;/span&gt; render_wait_time;                   &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; time in µs before the next render can run
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;89&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; ws2811_device &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;device;                &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; Private data for driver use
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;90&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#902000&#34;&gt;rpi_hw_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;rpi_hw;                      &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; RPI Hardware Information
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;91&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;uint32_t&lt;/span&gt; freq;                               &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; Required output frequency
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;92&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt; dmanum;                                  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; DMA number _not_ already in use
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;93&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;ws2811_channel_t&lt;/span&gt; channel[RPI_PWM_CHANNELS];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;94&lt;/span&gt;&lt;span&gt;} &lt;span style=&#34;color:#902000&#34;&gt;ws2811_t&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;device&lt;/code&gt; field holds a &lt;code&gt;ws2811_device&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Looking at the memory-unmapping process used on shutdown, these are
+the devices that need to be unmapped:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dma&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pwm&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pcm&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cm_clk&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gpio&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; ws2811_device
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt; driver_mode;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;volatile&lt;/span&gt; &lt;span style=&#34;color:#902000&#34;&gt;uint8_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;pxl_raw;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;volatile&lt;/span&gt; &lt;span style=&#34;color:#902000&#34;&gt;dma_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;dma;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;volatile&lt;/span&gt; &lt;span style=&#34;color:#902000&#34;&gt;pwm_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;pwm;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;volatile&lt;/span&gt; &lt;span style=&#34;color:#902000&#34;&gt;pcm_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;pcm;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt; spi_fd;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;volatile&lt;/span&gt; &lt;span style=&#34;color:#902000&#34;&gt;dma_cb_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;dma_cb;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;uint32_t&lt;/span&gt; dma_cb_addr;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;volatile&lt;/span&gt; &lt;span style=&#34;color:#902000&#34;&gt;gpio_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;gpio;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;volatile&lt;/span&gt; &lt;span style=&#34;color:#902000&#34;&gt;cm_clk_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;cm_clk;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;videocore_mbox_t&lt;/span&gt; mbox;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt; max_count;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;} &lt;span style=&#34;color:#902000&#34;&gt;ws2811_device_t&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;rpi_hw&lt;/code&gt; field contains a struct holding information about the auto-detected
+RPi model:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .hwver &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0xD03114&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .type &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; RPI_HWVER_TYPE_PI4,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .periph_base &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; PERIPH_BASE_RPI4,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .videocore_base &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; VIDEOCORE_BASE_RPI2,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .desc &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4070a0&#34;&gt;&amp;#34;Pi 4 Model B - 8GB v1.4&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    },
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And the &lt;code&gt;channel&lt;/code&gt; array holds LED information&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#902000&#34;&gt;uint32_t&lt;/span&gt; &lt;span style=&#34;color:#902000&#34;&gt;ws2811_led_t&lt;/span&gt;;                   &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; 0xWWRRGGBB
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#902000&#34;&gt;ws2811_channel_t&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt; gpionum;                                 &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; GPIO Pin with PWM alternate function, 0 if unused
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt; invert;                                  &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; Invert output signal
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt; count;                                   &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; Number of LEDs, 0 if channel is unused
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt; strip_type;                              &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; Strip color layout -- one of WS2811_STRIP_xxx constants
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;ws2811_led_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;leds;                          &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; LED buffers, allocated by driver based on count
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;uint8_t&lt;/span&gt; brightness;                          &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; Brightness value between 0 and 255
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;uint8_t&lt;/span&gt; wshift;                              &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; White shift value
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;uint8_t&lt;/span&gt; rshift;                              &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; Red shift value
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;uint8_t&lt;/span&gt; gshift;                              &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; Green shift value
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;uint8_t&lt;/span&gt; bshift;                              &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; Blue shift value
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;uint8_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;gamma;                              &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;//&amp;lt; Gamma correction table
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;} &lt;span style=&#34;color:#902000&#34;&gt;ws2811_channel_t&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;main.c&lt;/code&gt; has this to say about which pins work with which mechanisms
+on different models:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;PWM0:&lt;/strong&gt; GPIOs 12, 18, (and 40, 52 after B+/2B/3B)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PWM1:&lt;/strong&gt; GPIOs 13, (and 19, 41, 45, 53 after B+/2B/PiZero/3B)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PCM_DOUT:&lt;/strong&gt; GPIOs 21 (and 31 after B+/2B/PiZero/3B)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SPI0-MOSI:&lt;/strong&gt; GPIOs 10 (and 38 on some models)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;	PWM0, which can be set to use GPIOs 12, 18, 40, and 52.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;	Only 12 (pin 32) and 18 (pin 12) are available on the B+/2B/3B
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;	PWM1 which can be set to use GPIOs 13, 19, 41, 45 and 53.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;	Only 13 is available on the B+/2B/PiZero/3B, on pin 33
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;	PCM_DOUT, which can be set to use GPIOs 21 and 31.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;	Only 21 is available on the B+/2B/PiZero/3B, on pin 40.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;	SPI0-MOSI is available on GPIOs 10 and 38.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;	Only GPIO 10 is available on all models.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;	The library checks if the specified gpio is available
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;	on the specific model (from model B rev 1 till 3B)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Cleanup looks like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt; * Shut down DMA, PWM, and cleanup memory.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt; *
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt; * @param    ws2811  ws2811 instance pointer.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt; *
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt; * @returns  None
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt; */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#902000&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;ws2811_fini&lt;/span&gt;(&lt;span style=&#34;color:#902000&#34;&gt;ws2811_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;ws2811)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;volatile&lt;/span&gt; &lt;span style=&#34;color:#902000&#34;&gt;pcm_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;pcm &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;pcm;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#06287e&#34;&gt;ws2811_wait&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;switch&lt;/span&gt; (ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;driver_mode) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#002070;font-weight:bold&#34;&gt;PWM&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#06287e&#34;&gt;stop_pwm&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;break&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#002070;font-weight:bold&#34;&gt;PCM&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;while&lt;/span&gt; (&lt;span style=&#34;color:#666&#34;&gt;!&lt;/span&gt;(pcm&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;cs &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt; RPI_PCM_CS_TXE)) ;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Wait till TX FIFO is empty
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#06287e&#34;&gt;stop_pcm&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;break&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#06287e&#34;&gt;unmap_registers&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#06287e&#34;&gt;ws2811_cleanup&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;ws2811_init&lt;/code&gt; function that sets everything up:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the first part is &lt;a href=&#34;focus://ws2811.c#10:15&#34;&gt;setup&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt; * Allocate and initialize memory, buffers, pages, PWM, DMA, and GPIO.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt; *
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt; * @param    ws2811  ws2811 instance pointer.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt; *
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt; * @returns  0 on success, -1 otherwise.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt; */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#902000&#34;&gt;ws2811_return_t&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;ws2811_init&lt;/span&gt;(&lt;span style=&#34;color:#902000&#34;&gt;ws2811_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;ws2811)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;ws2811_device_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;device;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#902000&#34;&gt;rpi_hw_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;rpi_hw;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt; chan;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;rpi_hw &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;rpi_hw_detect&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#666&#34;&gt;!&lt;/span&gt;ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;rpi_hw)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; WS2811_ERROR_HW_NOT_SUPPORTED;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    rpi_hw &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;rpi_hw;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;device &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;malloc&lt;/span&gt;(&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;device));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#666&#34;&gt;!&lt;/span&gt;ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;device)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; WS2811_ERROR_OUT_OF_MEMORY;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#06287e&#34;&gt;memset&lt;/span&gt;(ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;device, &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;device));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    device &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;device;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#06287e&#34;&gt;check_hwver_and_gpionum&lt;/span&gt;(ws2811) &lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; WS2811_ERROR_ILLEGAL_GPIO;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;max_count &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;max_channel_led_count&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;driver_mode &lt;span style=&#34;color:#666&#34;&gt;==&lt;/span&gt; SPI) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;spi_init&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Determine how much physical memory we need for DMA
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;switch&lt;/span&gt; (device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;driver_mode) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#002070;font-weight:bold&#34;&gt;PWM&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.size &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;PWM_BYTE_COUNT&lt;/span&gt;(device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;max_count, ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;freq) &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                            &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#902000&#34;&gt;dma_cb_t&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;break&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#002070;font-weight:bold&#34;&gt;PCM&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.size &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;PCM_BYTE_COUNT&lt;/span&gt;(device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;max_count, ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;freq) &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                            &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#902000&#34;&gt;dma_cb_t&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;break&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Round up to page size multiple
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.size &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; (device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.size &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; (PAGE_SIZE &lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;)) &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;~&lt;/span&gt;(PAGE_SIZE &lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.handle &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;mbox_open&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.handle &lt;span style=&#34;color:#666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; WS2811_ERROR_MAILBOX_DEVICE;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.mem_ref &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;mem_alloc&lt;/span&gt;(device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.handle, device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.size, PAGE_SIZE,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                     rpi_hw&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;videocore_base &lt;span style=&#34;color:#666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0x40000000&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;?&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0xC&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0x4&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.mem_ref &lt;span style=&#34;color:#666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; WS2811_ERROR_OUT_OF_MEMORY;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.bus_addr &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;mem_lock&lt;/span&gt;(device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.handle, device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.mem_ref);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.bus_addr &lt;span style=&#34;color:#666&#34;&gt;==&lt;/span&gt; (&lt;span style=&#34;color:#902000&#34;&gt;uint32_t&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;~&lt;/span&gt;&lt;span style=&#34;color:#40a070&#34;&gt;0UL&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;       &lt;span style=&#34;color:#06287e&#34;&gt;mem_free&lt;/span&gt;(device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.handle, device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.size);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;       &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; WS2811_ERROR_MEM_LOCK;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.virt_addr &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;mapmem&lt;/span&gt;(&lt;span style=&#34;color:#06287e&#34;&gt;BUS_TO_PHYS&lt;/span&gt;(device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.bus_addr), device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.size, DEV_MEM);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#666&#34;&gt;!&lt;/span&gt;device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.virt_addr)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#06287e&#34;&gt;mem_unlock&lt;/span&gt;(device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.handle, device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.mem_ref);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#06287e&#34;&gt;mem_free&lt;/span&gt;(device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.handle, device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.size);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#06287e&#34;&gt;ws2811_cleanup&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; WS2811_ERROR_MMAP;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Initialize all pointers to NULL.  Any non-NULL pointers will be freed on cleanup.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;pxl_raw &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;NULL&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;dma_cb &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;NULL&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; (chan &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;; chan &lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&lt;/span&gt; RPI_PWM_CHANNELS; chan&lt;span style=&#34;color:#666&#34;&gt;++&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;channel[chan].leds &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#007020&#34;&gt;NULL&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Allocate the LED buffers
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt; (chan &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;; chan &lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&lt;/span&gt; RPI_PWM_CHANNELS; chan&lt;span style=&#34;color:#666&#34;&gt;++&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#902000&#34;&gt;ws2811_channel_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;channel &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;ws2811&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;channel[chan];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;leds &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;malloc&lt;/span&gt;(&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#902000&#34;&gt;ws2811_led_t&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;count);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#666&#34;&gt;!&lt;/span&gt;channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;leds)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#06287e&#34;&gt;ws2811_cleanup&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; WS2811_ERROR_OUT_OF_MEMORY;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#06287e&#34;&gt;memset&lt;/span&gt;(channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;leds, &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#902000&#34;&gt;ws2811_led_t&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;count);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#666&#34;&gt;!&lt;/span&gt;channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;strip_type)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;strip_type&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;WS2811_STRIP_RGB;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Set default uncorrected gamma table
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#666&#34;&gt;!&lt;/span&gt;channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;gamma)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;gamma &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;malloc&lt;/span&gt;(&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#902000&#34;&gt;uint8_t&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#902000&#34;&gt;int&lt;/span&gt; x;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;for&lt;/span&gt;(x &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;; x &lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;256&lt;/span&gt;; x&lt;span style=&#34;color:#666&#34;&gt;++&lt;/span&gt;){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;gamma[x] &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; x;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;wshift &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; (channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;strip_type &lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;24&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0xff&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;rshift &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; (channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;strip_type &lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;16&lt;/span&gt;) &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0xff&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;gshift &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; (channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;strip_type &lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;8&lt;/span&gt;)  &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0xff&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;bshift &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; (channel&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;strip_type &lt;span style=&#34;color:#666&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;)  &lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#40a070&#34;&gt;0xff&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;dma_cb &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#902000&#34;&gt;dma_cb_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;)device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.virt_addr;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;pxl_raw &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#902000&#34;&gt;uint8_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;)device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;mbox.virt_addr &lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#902000&#34;&gt;dma_cb_t&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;switch&lt;/span&gt; (device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;driver_mode) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#002070;font-weight:bold&#34;&gt;PWM&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;       &lt;span style=&#34;color:#06287e&#34;&gt;pwm_raw_init&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;       &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;break&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#002070;font-weight:bold&#34;&gt;PCM&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;       &lt;span style=&#34;color:#06287e&#34;&gt;pcm_raw_init&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;       &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;break&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#06287e&#34;&gt;memset&lt;/span&gt;((&lt;span style=&#34;color:#902000&#34;&gt;dma_cb_t&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;)device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;dma_cb, &lt;span style=&#34;color:#40a070&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#902000&#34;&gt;dma_cb_t&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Cache the DMA control block bus address
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;dma_cb_addr &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#06287e&#34;&gt;addr_to_bus&lt;/span&gt;(device, device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;dma_cb);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Map the physical registers into userspace
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#06287e&#34;&gt;map_registers&lt;/span&gt;(ws2811))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#06287e&#34;&gt;ws2811_cleanup&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; WS2811_ERROR_MAP_REGISTERS;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Initialize the GPIO pins
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#06287e&#34;&gt;gpio_init&lt;/span&gt;(ws2811))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#06287e&#34;&gt;unmap_registers&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#06287e&#34;&gt;ws2811_cleanup&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; WS2811_ERROR_GPIO_INIT;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;switch&lt;/span&gt; (device&lt;span style=&#34;color:#666&#34;&gt;-&amp;gt;&lt;/span&gt;driver_mode) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#002070;font-weight:bold&#34;&gt;PWM&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Setup the PWM, clocks, and DMA
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#06287e&#34;&gt;setup_pwm&lt;/span&gt;(ws2811))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#06287e&#34;&gt;unmap_registers&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#06287e&#34;&gt;ws2811_cleanup&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; WS2811_ERROR_PWM_SETUP;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;break&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#002070;font-weight:bold&#34;&gt;PCM&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;// Setup the PCM, clock, and DMA
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#60a0b0;font-style:italic&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#06287e&#34;&gt;setup_pcm&lt;/span&gt;(ws2811))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#06287e&#34;&gt;unmap_registers&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#06287e&#34;&gt;ws2811_cleanup&lt;/span&gt;(ws2811);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; WS2811_ERROR_PCM_SETUP;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;break&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;return&lt;/span&gt; WS2811_SUCCESS;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     

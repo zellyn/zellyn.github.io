@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://zellyn.com/tags/emacs/</loc>
+    <lastmod>2024-08-02T21:38:00-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/2024/08/emacs-packages/</loc>
+    <lastmod>2024-08-02T21:38:00-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/posts/</loc>
+    <lastmod>2024-08-02T21:38:00-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/tags/</loc>
+    <lastmod>2024-08-02T21:38:00-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/</loc>
+    <lastmod>2024-08-02T21:38:00-04:00</lastmod>
+  </url><url>
     <loc>https://zellyn.com/2024/07/23-ecke/</loc>
     <lastmod>2024-07-08T21:00:00-04:00</lastmod>
   </url><url>
@@ -12,15 +27,6 @@
     <lastmod>2024-07-08T21:00:00-04:00</lastmod>
   </url><url>
     <loc>https://zellyn.com/tags/plotter/</loc>
-    <lastmod>2024-07-08T21:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://zellyn.com/posts/</loc>
-    <lastmod>2024-07-08T21:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://zellyn.com/tags/</loc>
-    <lastmod>2024-07-08T21:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://zellyn.com/</loc>
     <lastmod>2024-07-08T21:00:00-04:00</lastmod>
   </url><url>
     <loc>https://zellyn.com/tags/schotter/</loc>

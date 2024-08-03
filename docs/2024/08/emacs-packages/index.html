@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zellyn&#39;s Website">
+    
+    <link rel="shortcut icon" href="https://zellyn.com/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <title>Emacs packages</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+          inlineMath: [['\\(', '\\)']]                  
+        }
+      };
+    </script>
+
+    
+</head>
+<body><header id="banner">
+    <h2><a href="https://zellyn.com/">Zellyn Hunter</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/page/projects/todo" title="projects">projects</a>
+            </li><li>
+                <a href="/about/" title="about">about</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>Emacs packages</h1><p><b>How the pieces fit together</b></p>
+        
+            <div>
+                <time>August 2, 2024</time>
+                </div>
+    </header><p>Now that <a href="https://www.masteringemacs.org/article/whats-new-in-emacs-29-1">Emacs
+29</a>
+moved so many useful things into Emacs proper, it&rsquo;s time to declare
+config bankruptcy and start over, with a newer, cleaner <code>init.el</code>.</p>
+<p>So, I need to understand how Emacs packages work.</p>
+<p>Like, what does
+<a href="https://www.gnu.org/software/emacs/manual/html_node/use-package/index.html">use-package</a>
+do? What is <a href="https://github.com/progfolio/elpaca">Elpaca</a> for? And is
+it worth straying from the vanilla path?</p>
+<p>Here&rsquo;s what I&rsquo;ve put together so far&hellip;</p>
+<hr>
+<h2 id="packages">Packages</h2>
+<p>Emacs packages serve roughly the same function as packages in other
+languages. The organized package repositories are named some variant
+of &ldquo;ELPA&rdquo; (&ldquo;Emacs Lisp Package Archive&rdquo;)<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<aside>
+<h3 id="aside-a-recurring-theme-startup-time">Aside: A recurring theme: startup time</h3>
+<p>Several aspects of the package system appear to have been motivated by
+wanting Emacs to start more quickly. Until Emacs 26, Elisp was
+single-threaded<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, and until Emacs 28, it was only interpreted.</p>
+<p>The most striking example is the way <code>use-package</code> loads packages only
+on use, rather than on startup.</p>
+</aside>
+<h2 id="step-one-installing-packages-manually">Step one: installing packages manually</h2>
+<p>In the beginning, packages were installed manually. Xah Lee has <a href="http://xahlee.info/emacs/emacs/emacs_installing_packages.html">a
+guide</a>.</p>
+<h2 id="step-two-use-a-package-manager">Step two: use a package manager</h2>
+<p>As near as I can figure, in 2007, Tom Tromey created <code>package.el</code> and
+ELPA. <a href="https://tromey.com/blog/?p=342">Both</a> are
+<a href="https://tromey.com/blog/?p=345">mentioned</a> in blog posts dating to
+April of 2007.</p>
+<p>In version 24, Emacs started shipping with <code>package.el</code> included.
+<code>M-x list-packages</code> will bring up the package manager, and let you
+browse and install.</p>
+<h3 id="package-archives">Package archives</h3>
+<p>There are several flavors of ELPA:</p>
+<dl>
+<dt>GNU ELPA</dt>
+<dd><a href="https://elpa.gnu.org">elpa.gnu.org</a> - requires copyright
+assignment. Essentially, packages here are considered part of Emacs,
+but not distributed by default. 443 packages.</dd>
+<dt>NonGNU ELPA</dt>
+<dd><a href="elpa.nongnu.org">https://elpa.nongnu.org</a> - requires
+GPLv3-compatible code and GNU FDL v1.4-compatible documentation. 235 packages.</dd>
+<dt>MELPA</dt>
+<dd><a href="https://melpa.org">melpa.org</a> - anything goes. Just open a
+PR to add a package. 5,796 packages.</dd>
+</dl>
+<p><code>package.el</code> defaults to showing
+packages from GNU ELPA and NonGNU ELPA.</p>
+<h2 id="step-three-more-powerful-package-managers">Step three: more powerful package managers</h2>
+<p>From there, a variety of different package managers exist, with
+varying capabilities and aras of focus. (Get more control over package
+sources? Install from git? Help you <em>develop</em> packages?) The
+<code>straight.el</code> <a href="https://github.com/radian-software/straight.el?tab=readme-ov-file#comparison-to-other-package-managers">comparison to other package
+managers</a>
+docs and following <a href="https://github.com/radian-software/straight.el?tab=readme-ov-file#tldr-1">TL;DR
+section</a>
+give an excellent overview.</p>
+<h2 id="step-four-use-package">Step four: <code>use-package</code></h2>
+<p><code>use-package</code>, created by John Wiegley in 2012, offers concise, tidy
+syntax for using packages. It seems to have won, and was merged into
+Emacs in 2022, for Emacs 29.</p>
+<p>A <code>use-package</code> call lets you easily register a package, installing if
+necessary. In that same single call you can also:</p>
+<ul>
+<li>Configure the package</li>
+<li>Set up keybindings or entire keymaps</li>
+<li>Map file types to modes</li>
+<li>Add hooks</li>
+<li>more&hellip;</li>
+</ul>
+<p>Modern package managers integrate with <code>use-package</code>, replacing its
+default installation mechanism.</p>
+<p>More information on <code>use-package</code>:</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_node/use-package/index.html">User Manual (info)</a></li>
+<li><a href="https://github.com/jwiegley/use-package#readme">github README</a></li>
+<li><a href="https://www.masteringemacs.org/article/spotlight-use-package-a-declarative-configuration-tool">Mastering Emacs
+article</a></li>
+</ul>
+<h2 id="step-five-package-managers-so-powerful-its-getting-silly">Step five: package managers so powerful, it&rsquo;s getting silly</h2>
+<p>If you search for modern advice on which package manager to use,
+you&rsquo;ll see a lot of articles on using
+<a href="https://github.com/radian-software/straight.el"><code>straight.el</code></a>. But,
+the current maintainer of <code>straight.el</code> then went on to write
+<a href="https://github.com/progfolio/elpaca">Elpaca</a>. Their <a href="https://www.reddit.com/r/emacs/comments/19bs8w9/comment/kiu27mo/">reddit
+comparison</a>
+is useful. I believe Elpaca is the current state of the art. It can
+install packages asynchronously, in parallel!<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<h2 id="final-comments">Final comments</h2>
+<p>I&rsquo;m currently using Elpaca, although since I don&rsquo;t do anything fancy,
+I should probably just use <code>package.el</code>. Elpaca&rsquo;s async loading
+notifications look cool&hellip;</p>
+<p>I asked emacs stackexchange to &ldquo;Explain Elpaca Like I&rsquo;m 5&rdquo; and the
+<a href="https://emacs.stackexchange.com/questions/81730">reponses</a> provided
+interesting perspectives and a good starting point.</p>
+<hr>
+<p>That&rsquo;s it! If you see a mistake, or think something should be added,
+clarified, or corrected, please let me know. I&rsquo;d like this post to be
+the thing I wish I&rsquo;d found at the
+start. <a href="http://zellyn.com/about#contact">zellyn.com/about#contact</a></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The Comprehensive Perl Archive Network
+(<a href="https://www.cpan.org">CPAN</a>) is probably the most well-known
+&ldquo;Package Archive&rdquo; package system, and was inspired by TeX&rsquo;s
+<a href="https://ctan.org/?lang=en">CTAN</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Multi-threading: it&rsquo;s not clear whether you should use
+it (yet?). See Troy Hinckley&rsquo;s &ldquo;<a href="https://coredumped.dev/2022/05/19/a-vision-of-a-multi-threaded-emacs/">A vision of a multi-threaded
+Emacs</a>&rdquo;,
+and Tom Tromey&rsquo;s <a href="https://www.reddit.com/r/emacs/comments/utzxir/comment/i9diqxr/">Reddit
+comment</a>,
+both from May, 2022.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Installing packages asynchronously, in parallel, is neat,
+although you don&rsquo;t really <em>install</em> packages that often&hellip; 🤷‍♂️&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</article>
+
+        </main><footer id="footer">
+    
+</footer>
+</body>
+</html>

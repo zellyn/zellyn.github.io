@@ -47,107 +47,39 @@ CS</a>.</em></p>
 actually just a synonym for a particular piece of your computer&rsquo;s
 memory.</p>
 <p>Let&rsquo;s say your program happend to put <code>a</code> in memory location <code>1234</code>:</p>
-<div id='pikchr-0' class='pikchr' onclick="toggleHidden('pikchr-0')">
-<div class='pikchr-svg' style='max-width:292px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 292.32 85.68">
-<path d="M2,83L74,83L74,47L2,47Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="38" y="65" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M74,83L146,83L146,47L74,47Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="110" y="65" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M146,83L218,83L218,47L146,47Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="182" y="65" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M218,83L290,83L290,47L218,47Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="254" y="65" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<text x="38" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1233</text>
-<text x="110" y="14" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a</text>
-<text x="110" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1234</text>
-<text x="182" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1235</text>
-<text x="254" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1236</text>
-</svg>
-</div>
-<pre class='hidden'>
-box width 0.5 height 0.25 fill lightblue "0" bold
-box same "42" bold
-box same "0" bold
-box same "0" bold
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">box width 0.5 height 0.25 fill lightblue &#34;0&#34; bold
+box same &#34;42&#34; bold
+box same &#34;0&#34; bold
+box same &#34;0&#34; bold
 
-text at 1st box.n "1233" above
-text at 2nd box.n "a" big bold above "1234" above
-text at 3rd box.n "1235" above
-text at 4th box.n "1236" above
-</pre>
-</div>
-<p>If we don&rsquo;t care about the exact memory location (and we usually
+text at 1st box.n &#34;1233&#34; above
+text at 2nd box.n &#34;a&#34; big bold above &#34;1234&#34; above
+text at 3rd box.n &#34;1235&#34; above
+text at 4th box.n &#34;1236&#34; above
+</code></pre><p>If we don&rsquo;t care about the exact memory location (and we usually
 don&rsquo;t), we can draw that like this:</p>
-<div id='pikchr-1' class='pikchr' onclick="toggleHidden('pikchr-1')">
-<div class='pikchr-svg' style='max-width:112px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 112.118 40.32">
-<path d="M37,38L109,38L109,2L37,2Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="73" y="20" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<text x="37" y="20" text-anchor="end" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a:  </text>
-</svg>
-</div>
-<pre class='hidden'>
-box width 0.5 height 0.25 fill lightblue "42"
-text at last box.w "a:  " bold rjust big
-</pre>
-</div>
-<p>Now, when you say <code>b = a</code> (and assuming your program happens to pick
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">box width 0.5 height 0.25 fill lightblue &#34;42&#34;
+text at last box.w &#34;a:  &#34; bold rjust big
+</code></pre><p>Now, when you say <code>b = a</code> (and assuming your program happens to pick
 <code>1235</code> for <code>b</code>), we get:</p>
-<div id='pikchr-2' class='pikchr' onclick="toggleHidden('pikchr-2')">
-<div class='pikchr-svg' style='max-width:292px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 292.32 85.68">
-<path d="M2,83L74,83L74,47L2,47Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="38" y="65" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M74,83L146,83L146,47L74,47Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="110" y="65" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M146,83L218,83L218,47L146,47Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="182" y="65" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M218,83L290,83L290,47L218,47Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="254" y="65" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<text x="38" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1233</text>
-<text x="110" y="14" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a</text>
-<text x="110" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1234</text>
-<text x="182" y="14" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">b</text>
-<text x="182" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1234</text>
-<text x="254" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1236</text>
-</svg>
-</div>
-<pre class='hidden'>
-box width 0.5 height 0.25 fill lightblue "0" bold
-box same "42" bold
-box same "42" bold
-box same "0" bold
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">box width 0.5 height 0.25 fill lightblue &#34;0&#34; bold
+box same &#34;42&#34; bold
+box same &#34;42&#34; bold
+box same &#34;0&#34; bold
 
-text at 1st box.n "1233" above
-text at 2nd box.n "a" big bold above "1234" above
-text at 3rd box.n "b" big bold above "1234" above
-text at 4th box.n "1236" above
-</pre>
-</div>
-<p>or, alternatively:</p>
-<div id='pikchr-3' class='pikchr' onclick="toggleHidden('pikchr-3')">
-<div class='pikchr-svg' style='max-width:113px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 113.069 148.32">
-<path d="M38,38L110,38L110,2L38,2Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="74" y="20" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M38,146L110,146L110,110L38,110Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="74" y="128" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<text x="38" y="20" text-anchor="end" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a:  </text>
-<text x="38" y="128" text-anchor="end" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">b:  </text>
-</svg>
-</div>
-<pre class='hidden'>
-down
-box width 0.5 height 0.25 fill lightblue "42"
+text at 1st box.n &#34;1233&#34; above
+text at 2nd box.n &#34;a&#34; big bold above &#34;1234&#34; above
+text at 3rd box.n &#34;b&#34; big bold above &#34;1234&#34; above
+text at 4th box.n &#34;1236&#34; above
+</code></pre><p>or, alternatively:</p>
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">down
+box width 0.5 height 0.25 fill lightblue &#34;42&#34;
 move
-box width 0.5 height 0.25 fill lightblue "42"
+box width 0.5 height 0.25 fill lightblue &#34;42&#34;
 
-text at first box.w "a:  " bold rjust big
-text at last box.w "b:  " bold rjust big
-</pre>
-</div>
-<p>As you can see, the program has made a <em>copy</em> of the value of <code>a</code>, and
+text at first box.w &#34;a:  &#34; bold rjust big
+text at last box.w &#34;b:  &#34; bold rjust big
+</code></pre><p>As you can see, the program has made a <em>copy</em> of the value of <code>a</code>, and
 given <code>b</code> the same value.</p>
 <p>What if we have a more complicated value? Many languages have
 “structure” or “struct” types, which can combine pieces of data together. For
@@ -162,40 +94,15 @@ instance, here&rsquo;s a snippet of Go:</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// initial values:
 </span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>a <span style="color:#666">:=</span> MyThing{ x: <span style="color:#40a070">42</span>, y: <span style="color:#40a070">99</span> }
 </span></span></code></pre></div><p>Now, what we have is this:</p>
-<div id='pikchr-4' class='pikchr' onclick="toggleHidden('pikchr-4')">
-<div class='pikchr-svg' style='max-width:292px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 292.32 108">
-<path d="M2,105L74,105L74,69L2,69Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="38" y="87" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M74,105L146,105L146,69L74,69Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="110" y="87" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M146,105L218,105L218,69L146,69Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="182" y="87" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">99</text>
-<path d="M218,105L290,105L290,69L218,69Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="254" y="87" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<text x="38" y="59" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1233</text>
-<text x="110" y="59" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1234</text>
-<text x="182" y="59" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1235</text>
-<text x="254" y="59" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1236</text>
-<path d="M81,33Q74,33 74,41"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M218,41Q218,33 210,33"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M138,33Q146,33 146,26"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M146,26Q146,33 153,33"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M81,33L138,33"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M153,33L210,33"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="146" y="12" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">a</text>
-</svg>
-</div>
-<pre class='hidden'>
-box width 0.5 height 0.25 fill lightblue "0" bold
-box same "42" bold
-box same "99" bold
-box same "0" bold
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">box width 0.5 height 0.25 fill lightblue &#34;0&#34; bold
+box same &#34;42&#34; bold
+box same &#34;99&#34; bold
+box same &#34;0&#34; bold
 
-text at 1st box.n "1233" above
-text at 2nd box.n "1234" above
-text at 3rd box.n "1235" above
-text at 4th box.n "1236" above
+text at 1st box.n &#34;1233&#34; above
+text at 2nd box.n &#34;1234&#34; above
+text at 3rd box.n &#34;1235&#34; above
+text at 4th box.n &#34;1236&#34; above
 
 arc from 2nd box.nw + (0.05,0.25) to 2nd box.nw + (0,0.2) thin
 arc from 3rd box.ne + (0,0.2) to 3rd box.ne + (-0.05,0.25) thin
@@ -203,102 +110,44 @@ arc from 2nd box.ne + (-0.05,0.25) to 2nd box.ne + (0,0.3) thin
 arc from 2nd box.ne + (0,0.3) to 2nd box.ne + (0.05,0.25) thin
 line from 4th last arc.ne to 2nd last arc.sw thin
 line from last arc.se to 3rd last arc.nw thin
-text at last arc.nw + (0,0.03) "a" bold above
-</pre>
-</div>
-<p>or, alternatively:</p>
-<div id='pikchr-5' class='pikchr' onclick="toggleHidden('pikchr-5')">
-<div class='pikchr-svg' style='max-width:175px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 175.622 60.48">
-<text x="12" y="40" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a:</text>
-<path d="M29,58L101,58L101,22L29,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="65" y="40" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M101,58L173,58L173,22L101,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="137" y="40" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">99</text>
-<text x="65" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">x</text>
-<text x="137" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">y</text>
-<path d="M29,58L173,58L173,22L29,22Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-</svg>
-</div>
-<pre class='hidden'>
-text "a:" big bold
-box width 0.5 height 0.25 fill lightblue "42" thin
-box same "99"
-text at 2nd last box.n "x" above
-text at last box.n "y" above
+text at last arc.nw + (0,0.03) &#34;a&#34; bold above
+</code></pre><p>or, alternatively:</p>
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">text &#34;a:&#34; big bold
+box width 0.5 height 0.25 fill lightblue &#34;42&#34; thin
+box same &#34;99&#34;
+text at 2nd last box.n &#34;x&#34; above
+text at last box.n &#34;y&#34; above
 box same with w at 2nd last box.w width 1 thickness 0.015 fill none
-</pre>
-</div>
-<p>We can update the individual fields of <code>a</code>:</p>
+</code></pre><p>We can update the individual fields of <code>a</code>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Update the `9` field of `a` to 17:
 </span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>a.y = <span style="color:#40a070">17</span>
 </span></span></code></pre></div><p>And now we have:</p>
-<div id='pikchr-6' class='pikchr' onclick="toggleHidden('pikchr-6')">
-<div class='pikchr-svg' style='max-width:175px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 175.622 60.48">
-<text x="12" y="40" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a:</text>
-<path d="M29,58L101,58L101,22L29,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="65" y="40" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M101,58L173,58L173,22L101,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="137" y="40" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">17</text>
-<text x="65" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">x</text>
-<text x="137" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">y</text>
-<path d="M29,58L173,58L173,22L29,22Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-</svg>
-</div>
-<pre class='hidden'>
-text "a:" big bold
-box width 0.5 height 0.25 fill lightblue "42" thin
-box same "17"
-text at 2nd last box.n "x" above
-text at last box.n "y" above
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">text &#34;a:&#34; big bold
+box width 0.5 height 0.25 fill lightblue &#34;42&#34; thin
+box same &#34;17&#34;
+text at 2nd last box.n &#34;x&#34; above
+text at last box.n &#34;y&#34; above
 box same with w at 2nd last box.w width 1 thickness 0.015 fill none
-</pre>
-</div>
-<p>If we now create a variable <code>b</code> with <code>a</code>&rsquo;s value:</p>
+</code></pre><p>If we now create a variable <code>b</code> with <code>a</code>&rsquo;s value:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Create a new variable named `b`, also of type MyThing, and give it
 </span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// the same value as `a`:
 </span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>b <span style="color:#666">:=</span> a
 </span></span></code></pre></div><p>We get:</p>
-<div id='pikchr-7' class='pikchr' onclick="toggleHidden('pikchr-7')">
-<div class='pikchr-svg' style='max-width:176px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 176.573 132.48">
-<text x="12" y="40" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a:</text>
-<path d="M29,58L101,58L101,22L29,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="65" y="40" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M101,58L173,58L173,22L101,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="137" y="40" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">17</text>
-<text x="65" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">x</text>
-<text x="137" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">y</text>
-<path d="M29,58L173,58L173,22L29,22Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="13" y="112" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">b:</text>
-<path d="M30,130L102,130L102,94L30,94Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="66" y="112" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M102,130L174,130L174,94L102,94Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="138" y="112" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">17</text>
-<text x="66" y="84" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">x</text>
-<text x="138" y="84" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">y</text>
-<path d="M30,130L174,130L174,94L30,94Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-</svg>
-</div>
-<pre class='hidden'>
-text "a:" big bold
-box width 0.5 height 0.25 fill lightblue "42" thin
-box same "17"
-text at 2nd last box.n "x" above
-text at last box.n "y" above
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">text &#34;a:&#34; big bold
+box width 0.5 height 0.25 fill lightblue &#34;42&#34; thin
+box same &#34;17&#34;
+text at 2nd last box.n &#34;x&#34; above
+text at last box.n &#34;y&#34; above
 box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 
 move to 1st text.w + (0,-0.5)
-text "b:" big bold
-box width 0.5 height 0.25 fill lightblue "42" thin
-box same "17"
-text at 2nd last box.n "x" above
-text at last box.n "y" above
+text &#34;b:&#34; big bold
+box width 0.5 height 0.25 fill lightblue &#34;42&#34; thin
+box same &#34;17&#34;
+text at 2nd last box.n &#34;x&#34; above
+text at last box.n &#34;y&#34; above
 box same with w at 2nd last box.w width 1 thickness 0.015 fill none
-</pre>
-</div>
-<p>Once again, our program created a <strong>copy</strong> of the <strong>value</strong> of <code>a</code>.</p>
+</code></pre><p>Once again, our program created a <strong>copy</strong> of the <strong>value</strong> of <code>a</code>.</p>
 <p>What if we have wider types inside the struct? No problem, they work
 just as described in the <a href="../1b">last post</a>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Define a struct with two fields, one a byte, and one a 16-bit
@@ -312,45 +161,7 @@ just as described in the <a href="../1b">last post</a>:</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// initial values:
 </span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>c <span style="color:#666">:=</span> YourThing{ w: <span style="color:#40a070">42</span>, z: <span style="color:#40a070">258</span> }
 </span></span></code></pre></div><p>Which looks like:</p>
-<div id='pikchr-8' class='pikchr' onclick="toggleHidden('pikchr-8')">
-<div class='pikchr-svg' style='max-width:364px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 364.32 162.72">
-<path d="M2,91L74,91L74,55L2,55Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="38" y="73" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M74,91L146,91L146,55L74,55Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="110" y="73" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M146,91L218,91L218,55L146,55Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="182" y="73" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">2</text>
-<path d="M218,91L290,91L290,55L218,55Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="254" y="73" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
-<path d="M290,91L362,91L362,55L290,55Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="326" y="73" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M81,33Q74,33 74,41"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M290,41Q290,33 282,33"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M174,33Q182,33 182,26"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M182,26Q182,33 189,33"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M81,33L174,33"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M189,33L282,33"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="182" y="12" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">c</text>
-<path d="M138,113Q146,113 146,105"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M74,105Q74,113 81,113"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M117,113Q110,113 110,120"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M110,120Q110,113 102,113"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M138,113L117,113"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M102,113L81,113"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="110" y="130" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">w</text>
-<path d="M282,113Q290,113 290,105"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M146,105Q146,113 153,113"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M225,113Q218,113 218,120"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M218,120Q218,113 210,113"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M282,113L225,113"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M210,113L153,113"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="218" y="130" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">z</text>
-<text x="218" y="150" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">(258 = 2 + 1×256)</text>
-</svg>
-</div>
-<pre class='hidden'>
-define $brace {
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">define $brace {
   $offsety = $4 / 2
   $offsetx = $3/abs($3) * abs($offsety)
   $pointx = $1+0.5*$3
@@ -363,46 +174,28 @@ define $brace {
   line from last arc.end to 3rd last arc.end thin
 }
 
-box width 0.5 height 0.25 fill lightblue "0" bold
-box same "42" bold
-box same "2" bold
-box same "1" bold
-box same "0" bold
+box width 0.5 height 0.25 fill lightblue &#34;0&#34; bold
+box same &#34;42&#34; bold
+box same &#34;2&#34; bold
+box same &#34;1&#34; bold
+box same &#34;0&#34; bold
 
 $brace(4th last box.nw.x, 4th last box.nw.y+0.1, 1.5, 0.1)
-text at last arc.start + (0,0.03) "c" bold above
+text at last arc.start + (0,0.03) &#34;c&#34; bold above
 
 $brace(4th last box.se.x, 4th last box.se.y-0.1, -0.5, -0.1)
-text at last arc.start "w" below
+text at last arc.start &#34;w&#34; below
 
 $brace(2nd last box.se.x, 2nd last box.se.y-0.1, -1, -0.1)
-text at last arc.start "z" below "(258 = 2 + 1×256)" below
-</pre>
-</div>
-<p>Or, alternatively:</p>
-<div id='pikchr-9' class='pikchr' onclick="toggleHidden('pikchr-9')">
-<div class='pikchr-svg' style='max-width:246px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 246.672 60.48">
-<text x="12" y="40" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">c:</text>
-<path d="M28,58L100,58L100,22L28,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="64" y="40" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M100,58L244,58L244,22L100,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="172" y="40" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">258</text>
-<text x="64" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">w</text>
-<text x="172" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">z</text>
-<path d="M28,58L244,58L244,22L28,22Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-</svg>
-</div>
-<pre class='hidden'>
-text "c:" big bold
-box width 0.5 height 0.25 fill lightblue "42" thin
-box same width 1 "258"
-text at 2nd last box.n "w" above
-text at last box.n "z" above
+text at last arc.start &#34;z&#34; below &#34;(258 = 2 + 1×256)&#34; below
+</code></pre><p>Or, alternatively:</p>
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">text &#34;c:&#34; big bold
+box width 0.5 height 0.25 fill lightblue &#34;42&#34; thin
+box same width 1 &#34;258&#34;
+text at 2nd last box.n &#34;w&#34; above
+text at last box.n &#34;z&#34; above
 box same with w at 2nd last box.w width 1.5 thickness 0.015 fill none
-</pre>
-</div>
-<h2 id="pointers">Pointers</h2>
+</code></pre><h2 id="pointers">Pointers</h2>
 <p>To talk about text, we first need to introduce something called a
 “pointer”. You may have run into that term before, and it may have
 been confusing or intimidating.</p>
@@ -410,72 +203,18 @@ been confusing or intimidating.</p>
 <p>Remember when we said we&rsquo;d put <code>42</code> in <code>a</code>, and that our program
 happened to put <code>a</code> in location <code>1234</code> in memory? Here&rsquo;s the diagram
 again:</p>
-<div id='pikchr-10' class='pikchr' onclick="toggleHidden('pikchr-10')">
-<div class='pikchr-svg' style='max-width:292px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 292.32 85.68">
-<path d="M2,83L74,83L74,47L2,47Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="38" y="65" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M74,83L146,83L146,47L74,47Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="110" y="65" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M146,83L218,83L218,47L146,47Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="182" y="65" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M218,83L290,83L290,47L218,47Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="254" y="65" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<text x="38" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1233</text>
-<text x="110" y="14" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a</text>
-<text x="110" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1234</text>
-<text x="182" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1235</text>
-<text x="254" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1236</text>
-</svg>
-</div>
-<pre class='hidden'>
-box width 0.5 height 0.25 fill lightblue "0" bold
-box same "42" bold
-box same "0" bold
-box same "0" bold
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">box width 0.5 height 0.25 fill lightblue &#34;0&#34; bold
+box same &#34;42&#34; bold
+box same &#34;0&#34; bold
+box same &#34;0&#34; bold
 
-text at 1st box.n "1233" above
-text at 2nd box.n "a" big bold above "1234" above
-text at 3rd box.n "1235" above
-text at 4th box.n "1236" above
-</pre>
-</div>
-<p>Well, <code>1234</code> is called the “address” of <code>a</code>. If you put that in a
+text at 1st box.n &#34;1233&#34; above
+text at 2nd box.n &#34;a&#34; big bold above &#34;1234&#34; above
+text at 3rd box.n &#34;1235&#34; above
+text at 4th box.n &#34;1236&#34; above
+</code></pre><p>Well, <code>1234</code> is called the “address” of <code>a</code>. If you put that in a
 variable, say <code>b</code>, then we say <code>b</code> is a “pointer” to <code>a</code>:</p>
-<div id='pikchr-11' class='pikchr' onclick="toggleHidden('pikchr-11')">
-<div class='pikchr-svg' style='max-width:313px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 313.978 187.2">
-<path d="M2,110L74,110L74,74L2,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="38" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M74,110L146,110L146,74L74,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="110" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M146,110L218,110L218,74L146,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="182" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">210</text>
-<path d="M218,110L290,110L290,74L218,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="254" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">4</text>
-<text x="38" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1233</text>
-<text x="110" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1234</text>
-<text x="182" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1235</text>
-<text x="254" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1236</text>
-<path d="M81,38Q74,38 74,46"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M146,46Q146,38 138,38"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M102,38Q110,38 110,31"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M110,31Q110,38 117,38"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M81,38L102,38"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M117,38L138,38"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="110" y="14" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a</text>
-<path d="M282,132Q290,132 290,125"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M146,125Q146,132 153,132"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M225,132Q218,132 218,139"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M218,139Q218,132 210,132"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M282,132L225,132"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M210,132L153,132"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="218" y="152" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">b</text>
-<text x="218" y="174" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">(1234 = 210 + 4×256)</text>
-</svg>
-</div>
-<pre class='hidden'>
-define $brace {
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">define $brace {
   $offsety = $4 / 2
   $offsetx = $3/abs($3) * abs($offsety)
   $pointx = $1+0.5*$3
@@ -488,24 +227,22 @@ define $brace {
   line from last arc.end to 3rd last arc.end thin
 }
 
-box width 0.5 height 0.25 fill lightblue "0" bold
-box same "42" bold
-box same "210" bold
-box same "4" bold
+box width 0.5 height 0.25 fill lightblue &#34;0&#34; bold
+box same &#34;42&#34; bold
+box same &#34;210&#34; bold
+box same &#34;4&#34; bold
 
-text at 1st box.n "1233" above
-text at 2nd box.n "1234" above
-text at 3rd box.n "1235" above
-text at 4th box.n "1236" above
+text at 1st box.n &#34;1233&#34; above
+text at 2nd box.n &#34;1234&#34; above
+text at 3rd box.n &#34;1235&#34; above
+text at 4th box.n &#34;1236&#34; above
 
 $brace(2nd box.nw.x, 2nd box.nw.y+0.2, 0.5, 0.1)
-text at last arc.start + (0,0.03) "a" big bold above
+text at last arc.start + (0,0.03) &#34;a&#34; big bold above
 
 $brace(last box.se.x, 2nd last box.se.y-0.1, -1, -0.1)
-text at last arc.start "b" big bold below "(1234 = 210 + 4×256)" below
-</pre>
-</div>
-<p>In Go, you&rsquo;d do that like this:</p>
+text at last arc.start &#34;b&#34; big bold below &#34;(1234 = 210 + 4×256)&#34; below
+</code></pre><p>In Go, you&rsquo;d do that like this:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>a <span style="color:#666">:=</span> <span style="color:#40a070">42</span>
 </span></span><span style="display:flex;"><span>b <span style="color:#666">:=</span> <span style="color:#666">&amp;</span>a
 </span></span><span style="display:flex;"><span>
@@ -530,61 +267,7 @@ addresses on machines like the Apple II or Commodore 64, which had a
 are in 32- or 64-bit mode, so pointers take 32 or 64 bits (4 or 8
 bytes) to store. So the example above would more accurately look
 something like this:</p>
-<div id='pikchr-12' class='pikchr' onclick="toggleHidden('pikchr-12')">
-<div class='pikchr-svg' style='max-width:796px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 796.32 187.2">
-<path d="M2,110L74,110L74,74L2,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="38" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M74,110L146,110L146,74L74,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="110" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M146,110L218,110L218,74L146,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="182" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">210</text>
-<path d="M218,110L290,110L290,74L218,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="254" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">4</text>
-<path d="M290,110L362,110L362,74L290,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="326" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M362,110L434,110L434,74L362,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="398" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M434,110L506,110L506,74L434,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="470" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M506,110L578,110L578,74L506,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="542" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M578,110L650,110L650,74L578,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="614" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M650,110L722,110L722,74L650,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="686" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<path d="M722,110L794,110L794,74L722,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="758" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
-<text x="38" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1233</text>
-<text x="110" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1234</text>
-<text x="182" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1235</text>
-<text x="254" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1236</text>
-<text x="326" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1237</text>
-<text x="398" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1238</text>
-<text x="470" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1239</text>
-<text x="542" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1240</text>
-<text x="614" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1241</text>
-<text x="686" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1242</text>
-<text x="758" y="64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1243</text>
-<path d="M81,38Q74,38 74,46"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M146,46Q146,38 138,38"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M102,38Q110,38 110,31"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M110,31Q110,38 117,38"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M81,38L102,38"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M117,38L138,38"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="110" y="14" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a</text>
-<path d="M714,132Q722,132 722,125"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M146,125Q146,132 153,132"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M441,132Q434,132 434,139"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M434,139Q434,132 426,132"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M714,132L441,132"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<path d="M426,132L153,132"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="434" y="152" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">b</text>
-<text x="434" y="174" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">(&amp;a = 1234 = 210 + 4×256 + 0×65536 + 0×16777216 + 0× ...)</text>
-</svg>
-</div>
-<pre class='hidden'>
-define $brace {
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">define $brace {
   $offsety = $4 / 2
   $offsetx = $3/abs($3) * abs($offsety)
   $pointx = $1+0.5*$3
@@ -597,146 +280,86 @@ define $brace {
   line from last arc.end to 3rd last arc.end thin
 }
 
-box width 0.5 height 0.25 fill lightblue "0" bold
-box same "42" bold
-box same "210" bold
-box same "4" bold
-box same "0" bold
-box same "0" bold
-box same "0" bold
-box same "0" bold
-box same "0" bold
-box same "0" bold
-box same "0" bold
+box width 0.5 height 0.25 fill lightblue &#34;0&#34; bold
+box same &#34;42&#34; bold
+box same &#34;210&#34; bold
+box same &#34;4&#34; bold
+box same &#34;0&#34; bold
+box same &#34;0&#34; bold
+box same &#34;0&#34; bold
+box same &#34;0&#34; bold
+box same &#34;0&#34; bold
+box same &#34;0&#34; bold
+box same &#34;0&#34; bold
 
-text at 1st box.n "1233" above
-text at 2nd box.n "1234" above
-text at 3rd box.n "1235" above
-text at 4th box.n "1236" above
-text at 5th box.n "1237" above
-text at 6th box.n "1238" above
-text at 7th box.n "1239" above
-text at 8th box.n "1240" above
-text at 9th box.n "1241" above
-text at 10th box.n "1242" above
-text at 11th box.n "1243" above
+text at 1st box.n &#34;1233&#34; above
+text at 2nd box.n &#34;1234&#34; above
+text at 3rd box.n &#34;1235&#34; above
+text at 4th box.n &#34;1236&#34; above
+text at 5th box.n &#34;1237&#34; above
+text at 6th box.n &#34;1238&#34; above
+text at 7th box.n &#34;1239&#34; above
+text at 8th box.n &#34;1240&#34; above
+text at 9th box.n &#34;1241&#34; above
+text at 10th box.n &#34;1242&#34; above
+text at 11th box.n &#34;1243&#34; above
 
 $brace(2nd box.nw.x, 2nd box.nw.y+0.2, 0.5, 0.1)
-text at last arc.start + (0,0.03) "a" big bold above
+text at last arc.start + (0,0.03) &#34;a&#34; big bold above
 
 $brace(2nd last box.se.x, 2nd last box.se.y-0.1, -4, -0.1)
-text at last arc.start "b" big bold below "(&a = 1234 = 210 + 4×256 + 0×65536 + 0×16777216 + 0× ...)" below
-</pre>
-</div>
-<p>We don&rsquo;t usually care about exactly how big pointers are (unless we&rsquo;re
+text at last arc.start &#34;b&#34; big bold below &#34;(&amp;a = 1234 = 210 + 4×256 + 0×65536 + 0×16777216 + 0× ...)&#34; below
+</code></pre><p>We don&rsquo;t usually care about exactly how big pointers are (unless we&rsquo;re
 in a phase of caring how big everything is), and often draw that last
 picture like this:</p>
-<div id='pikchr-13' class='pikchr' onclick="toggleHidden('pikchr-13')">
-<div class='pikchr-svg' style='max-width:104px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 104.573 112.32">
-<text x="12" y="20" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a:</text>
-<path d="M29,38L101,38L101,2L29,2Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="65" y="20" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<text x="13" y="92" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">b:</text>
-<path d="M30,110L102,110L102,74L30,74Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<circle cx="66" cy="92" r="4.32" style="fill:rgb(0,0,0);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<polygon points="65,38 69,49 61,49" style="fill:rgb(0,0,0)"/>
-<path d="M66,92L65,43"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-</svg>
-</div>
-<pre class='hidden'>
-text "a:" big bold
-box width 0.5 height 0.25 fill lightblue "42"
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">text &#34;a:&#34; big bold
+box width 0.5 height 0.25 fill lightblue &#34;42&#34;
 
 move to 1st text.w + (0,-0.5)
-text "b:" big bold
+text &#34;b:&#34; big bold
 box width 0.5 height 0.25 fill lightblue
 dot at last.c radius 0.03
 arrow from last to first box.s
-</pre>
-</div>
-<p>Some ways of talking about pointers. We “dereference” <code>b</code> to get the
+</code></pre><p>Some ways of talking about pointers. We “dereference” <code>b</code> to get the
 value it points to, <code>42</code>. In Go, as mentioned above, and in fact in
 many languages that descend from C, this is written <code>*b</code>. Conversely,
 we can “get a reference to <code>a</code>” (<code>a</code>&rsquo;s address in memory) by writing
 <code>&amp;a</code>. People often talk about “following a pointer”, which means
 exactly what it sounds like: just follow the arrow!</p>
 <p>You actually now know enough to understand what a “linked list” is!</p>
-<div id='pikchr-14' class='pikchr' onclick="toggleHidden('pikchr-14')">
-<div class='pikchr-svg' style='max-width:685px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 685.382 60.48">
-<text x="12" y="40" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a:</text>
-<path d="M29,58L101,58L101,22L29,22Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<circle cx="65" cy="40" r="4.32" style="fill:rgb(0,0,0);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<polygon points="137,40 125,44 125,36" style="fill:rgb(0,0,0)"/>
-<path d="M65,40L131,40"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-<path d="M137,58L209,58L209,22L137,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="173" y="40" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M209,58L281,58L281,22L209,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<circle cx="245" cy="40" r="4.32" style="fill:rgb(0,0,0);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="173" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">data</text>
-<text x="245" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">next</text>
-<path d="M137,58L281,58L281,22L137,22Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-<polygon points="317,40 305,44 305,36" style="fill:rgb(0,0,0)"/>
-<path d="M245,40L311,40"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-<path d="M317,58L389,58L389,22L317,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="353" y="40" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">17</text>
-<path d="M389,58L461,58L461,22L389,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<circle cx="425" cy="40" r="4.32" style="fill:rgb(0,0,0);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="353" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">data</text>
-<text x="425" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">next</text>
-<path d="M317,58L461,58L461,22L317,22Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-<polygon points="497,40 485,44 485,36" style="fill:rgb(0,0,0)"/>
-<path d="M425,40L491,40"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-<path d="M497,58L569,58L569,22L497,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="533" y="40" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">23</text>
-<path d="M569,58L641,58L641,22L569,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<circle cx="605" cy="40" r="4.32" style="fill:rgb(0,0,0);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="533" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">data</text>
-<text x="605" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">next</text>
-<path d="M497,58L641,58L641,22L497,22Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-<polygon points="677,40 665,44 665,36" style="fill:rgb(0,0,0)"/>
-<path d="M605,40L671,40"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-<path d="M677,40L677,30L677,50L677,40"  style="fill:none;stroke-width:2.16;stroke-linejoin:round;stroke:rgb(0,0,0);" />
-<path d="M683,40L683,30L683,50L683,40"  style="fill:none;stroke-width:2.16;stroke-linejoin:round;stroke:rgb(0,0,0);" />
-</svg>
-</div>
-<pre class='hidden'>
-text "a:" big bold
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">text &#34;a:&#34; big bold
 box width 0.5 height 0.25 fill lightblue
 dot at last radius 0.03
 
 arrow from last dot
-box same as first box thin "42" bold
+box same as first box thin &#34;42&#34; bold
 box same
 dot at last radius 0.03
-text at 2nd last box.n "data" above
-text at last box.n "next" above
+text at 2nd last box.n &#34;data&#34; above
+text at last box.n &#34;next&#34; above
 box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 
 arrow from last dot
-box same as 2nd box "17" bold
+box same as 2nd box &#34;17&#34; bold
 box same
 dot at last radius 0.03
-text at 2nd last box.n "data" above
-text at last box.n "next" above
+text at 2nd last box.n &#34;data&#34; above
+text at last box.n &#34;next&#34; above
 box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 
 arrow from last dot
-box same as 2nd box "23" bold
+box same as 2nd box &#34;23&#34; bold
 box same
 dot at last radius 0.03
-text at 2nd last box.n "data" above
-text at last box.n "next" above
+text at 2nd last box.n &#34;data&#34; above
+text at last box.n &#34;next&#34; above
 box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 
 arrow from last dot
 line up 0.07 down 0.14 up 0.07
 move right 0.04
 line up 0.07 down 0.14 up 0.07
-</pre>
-</div>
-<p>That last pointer is a “null pointer”<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>: by convention, a pointer with
+</code></pre><p>That last pointer is a “null pointer”<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>: by convention, a pointer with
 the value <code>0</code>—also called <code>null</code>—points to nothing, and is drawn as ⟶‖</p>
 <p>Let&rsquo;s create that linked list in Go:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Each Node has some data, and a pointer to the next Node (possibly
@@ -794,45 +417,21 @@ the value <code>0</code>—also called <code>null</code>—points to nothing, an
 </span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>a <span style="color:#666">:=</span> MyThing{ x: <span style="color:#40a070">42</span>, y: <span style="color:#40a070">17</span> }
 </span></span><span style="display:flex;"><span>b <span style="color:#666">:=</span> a
 </span></span></code></pre></div><p>which copied <code>a</code>&rsquo;s <em>value</em> into <code>b</code>, giving us:</p>
-<div id='pikchr-15' class='pikchr' onclick="toggleHidden('pikchr-15')">
-<div class='pikchr-svg' style='max-width:176px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 176.573 132.48">
-<text x="12" y="40" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a:</text>
-<path d="M29,58L101,58L101,22L29,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="65" y="40" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M101,58L173,58L173,22L101,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="137" y="40" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">17</text>
-<text x="65" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">x</text>
-<text x="137" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">y</text>
-<path d="M29,58L173,58L173,22L29,22Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="13" y="112" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">b:</text>
-<path d="M30,130L102,130L102,94L30,94Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="66" y="112" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M102,130L174,130L174,94L102,94Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="138" y="112" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">17</text>
-<text x="66" y="84" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">x</text>
-<text x="138" y="84" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">y</text>
-<path d="M30,130L174,130L174,94L30,94Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-</svg>
-</div>
-<pre class='hidden'>
-text "a:" big bold
-box width 0.5 height 0.25 fill lightblue "42" thin
-box same "17"
-text at 2nd last box.n "x" above
-text at last box.n "y" above
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">text &#34;a:&#34; big bold
+box width 0.5 height 0.25 fill lightblue &#34;42&#34; thin
+box same &#34;17&#34;
+text at 2nd last box.n &#34;x&#34; above
+text at last box.n &#34;y&#34; above
 box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 
 move to 1st text.w + (0,-0.5)
-text "b:" big bold
-box width 0.5 height 0.25 fill lightblue "42" thin
-box same "17"
-text at 2nd last box.n "x" above
-text at last box.n "y" above
+text &#34;b:&#34; big bold
+box width 0.5 height 0.25 fill lightblue &#34;42&#34; thin
+box same &#34;17&#34;
+text at 2nd last box.n &#34;x&#34; above
+text at last box.n &#34;y&#34; above
 box same with w at 2nd last box.w width 1 thickness 0.015 fill none
-</pre>
-</div>
-<p>What if <code>a</code> and <code>b</code> were pointers instead?</p>
+</code></pre><p>What if <code>a</code> and <code>b</code> were pointers instead?</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Create a new variable named `a`, of type pointer-to-MyThing, and
 </span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// give it some initial values:
 </span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>a <span style="color:#666">:=</span> <span style="color:#666">&amp;</span>MyThing{ x: <span style="color:#40a070">42</span>, y: <span style="color:#40a070">17</span> }
@@ -841,48 +440,23 @@ box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 </span></span></code></pre></div><p>Now, <code>a</code>&rsquo;s value is a pointer: a 64-bit number, the address of that
 <code>MyThing</code> structure. So copying that value into <code>b</code> makes <code>b</code> point to
 the <em>same</em> structure!</p>
-<div id='pikchr-16' class='pikchr' onclick="toggleHidden('pikchr-16')">
-<div class='pikchr-svg' style='max-width:355px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 355.622 132.48">
-<text x="12" y="40" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a:</text>
-<path d="M29,58L101,58L101,22L29,22Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<circle cx="65" cy="40" r="4.32" style="fill:rgb(0,0,0);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<polygon points="209,40 197,44 197,36" style="fill:rgb(0,0,0)"/>
-<path d="M65,40L203,40"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-<path d="M209,58L281,58L281,22L209,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="245" y="40" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">42</text>
-<path d="M281,58L353,58L353,22L281,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="317" y="40" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">17</text>
-<text x="245" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">x</text>
-<text x="317" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">y</text>
-<path d="M209,58L353,58L353,22L209,22Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="13" y="112" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">b:</text>
-<path d="M30,130L102,130L102,94L30,94Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<circle cx="66" cy="112" r="4.32" style="fill:rgb(0,0,0);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<polygon points="208,50 197,54 197,46" style="fill:rgb(0,0,0)"/>
-<path d="M66,112 L 90,112 Q 113,112 137,81 Q 161,50 182,50 L 203,50"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-</svg>
-</div>
-<pre class='hidden'>
-text "a:" big bold
+<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">text &#34;a:&#34; big bold
 box width 0.5 height 0.25 fill lightblue
 dot at last radius 0.03
 
 arrow from last dot go 1 east
-box same "42" thin
-box same "17"
-text at 2nd last box.n "x" above
-text at last box.n "y" above
+box same &#34;42&#34; thin
+box same &#34;17&#34;
+text at 2nd last box.n &#34;x&#34; above
+text at last box.n &#34;y&#34; above
 box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 
 move to 1st text.w + (0,-0.5)
-text "b:" big bold
+text &#34;b:&#34; big bold
 box same as first box
 dot at last radius 0.03
 arrow from last dot go right 0.33 then right 0.33 up 0.43 then right 0.33 radius 0.3
-</pre>
-</div>
-<p>If you now change part of what <code>b</code> points to, you&rsquo;re changing the
+</code></pre><p>If you now change part of what <code>b</code> points to, you&rsquo;re changing the
 thing <code>a</code> points to too, since they point to the same value!</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// In Go, you can refer to the `y` field of `b` with `b.y`, whether
 </span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// `b` is a struct value, or a pointer to a struct value. In C, you&#39;d
@@ -900,108 +474,42 @@ length in bytes.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc
 <p>The actual characters are stored in memory as we described in the
 <a href="../1b">last post</a>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>a <span style="color:#666">:=</span> <span style="color:#4070a0">&#34;Hello, world&#34;</span>
-</span></span></code></pre></div><div id='pikchr-17' class='pikchr' onclick="toggleHidden('pikchr-17')">
-<div class='pikchr-svg' style='max-width:619px'>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 619.446 198.303">
-<text x="12" y="40" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">a:</text>
-<path d="M29,58L101,58L101,22L29,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<circle cx="65" cy="40" r="4.32" style="fill:rgb(0,0,0);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<path d="M101,58L173,58L173,22L101,22Z"  style="fill:rgb(173,216,230);stroke-width:1.4472;stroke:rgb(0,0,0);" />
-<text x="137" y="40" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">12</text>
-<text x="65" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">str</text>
-<text x="137" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">len</text>
-<path d="M29,58L173,58L173,22L29,22Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-<path d="M185,160L221,160L221,124L185,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="203" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">H</text>
-<path d="M221,160L257,160L257,124L221,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="239" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">e</text>
-<path d="M257,160L293,160L293,124L257,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="275" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">l</text>
-<path d="M293,160L329,160L329,124L293,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="311" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">l</text>
-<path d="M329,160L365,160L365,124L329,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="347" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">o</text>
-<path d="M365,160L401,160L401,124L365,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="383" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">,</text>
-<path d="M401,160L437,160L437,124L401,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="419" y="142" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">␣</text>
-<path d="M437,160L473,160L473,124L437,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="455" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">w</text>
-<path d="M473,160L509,160L509,124L473,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="491" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">o</text>
-<path d="M509,160L545,160L545,124L509,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="527" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">r</text>
-<path d="M545,160L581,160L581,124L545,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="563" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">l</text>
-<path d="M581,160L617,160L617,124L581,124Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="599" y="142" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">d</text>
-<path d="M185,196L221,196L221,160L185,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="203" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">72</text>
-<path d="M221,196L257,196L257,160L221,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="239" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">101</text>
-<path d="M257,196L293,196L293,160L257,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="275" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">108</text>
-<path d="M293,196L329,196L329,160L293,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="311" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">108</text>
-<path d="M329,196L365,196L365,160L329,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="347" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">111</text>
-<path d="M365,196L401,196L401,160L365,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="383" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">44</text>
-<path d="M401,196L437,196L437,160L401,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="419" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">32</text>
-<path d="M437,196L473,196L473,160L437,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="455" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">119</text>
-<path d="M473,196L509,196L509,160L473,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="491" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">111</text>
-<path d="M509,196L545,196L545,160L509,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="527" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">114</text>
-<path d="M545,196L581,196L581,160L545,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="563" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">108</text>
-<path d="M581,196L617,196L617,160L581,160Z"  style="fill:rgb(216,236,243);stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="599" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">100</text>
-<polygon points="185,142 174,147 173,138" style="fill:rgb(0,0,0)"/>
-<path d="M65,40Q74,151 179,142"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-</svg>
-</div>
-<pre class='hidden'>
-text "a:" big bold
+</span></span></code></pre></div><pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">text &#34;a:&#34; big bold
 box width 0.5 height 0.25 fill lightblue thin
 dot at last radius 0.03
-box same with w at last box.e "12"
-text at 2nd last box.n "str" above
-text at last box.n "len" above
+box same with w at last box.e &#34;12&#34;
+text at 2nd last box.n &#34;str&#34; above
+text at last box.n &#34;len&#34; above
 box same with w at 2nd last box.w width 1 thickness 0.015 fill none
 
-box at 1 se of first box.e width 0.5 * linewid height 0.5*linewid fill lightblue "H" bold
-box same "e" bold
-box same "l" bold
-box same "l" bold
-box same "o" bold
-box same "," bold
-box same "␣"
-box same "w" bold
-box same "o" bold
-box same "r" bold
-box same "l" bold
-box same "d" bold
+box at 1 se of first box.e width 0.5 * linewid height 0.5*linewid fill lightblue &#34;H&#34; bold
+box same &#34;e&#34; bold
+box same &#34;l&#34; bold
+box same &#34;l&#34; bold
+box same &#34;o&#34; bold
+box same &#34;,&#34; bold
+box same &#34;␣&#34;
+box same &#34;w&#34; bold
+box same &#34;o&#34; bold
+box same &#34;r&#34; bold
+box same &#34;l&#34; bold
+box same &#34;d&#34; bold
 
-box fill 0xd8ecf3 with n at H.s height H.height width H.width "72"
-box same "101"
-box same "108"
-box same "108"
-box same "111"
-box same "44"
-box same "32"
-box same "119"
-box same "111"
-box same "114"
-box same "108"
-box same "100"
+box fill 0xd8ecf3 with n at H.s height H.height width H.width &#34;72&#34;
+box same &#34;101&#34;
+box same &#34;108&#34;
+box same &#34;108&#34;
+box same &#34;111&#34;
+box same &#34;44&#34;
+box same &#34;32&#34;
+box same &#34;119&#34;
+box same &#34;111&#34;
+box same &#34;114&#34;
+box same &#34;108&#34;
+box same &#34;100&#34;
 
-arc from last dot to H.w ->
-</pre>
-</div>
-<p>How about letters and words in foreign scripts? Well, for that, you
+arc from last dot to H.w -&gt;
+</code></pre><p>How about letters and words in foreign scripts? Well, for that, you
 need a “character encoding”, a way of giving each character a number
 and a representation as bytes. The most common one used to be
 <a href="https://www.asciitable.com/">ASCII</a><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, but the modern answer the
@@ -1067,13 +575,7 @@ goes into lots of details.&#160;<a href="#fnref:4" class="footnote-backref" role
 </li>
 </ol>
 </div>
-<script>
-  function toggleHidden(id){
-    for(var c of document.getElementById(id).children){
-      c.classList.toggle('hidden');
-    }
-  }
-</script></article>
+</article>
 
         </main><footer id="footer">
     
