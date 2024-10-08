@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html><head>
+<html><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zellyn&#39;s Website">
     
-    <link rel="shortcut icon" href="https://zellyn.com/favicon.ico">
+    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
     
     <link rel="stylesheet" href="/css/style.min.css">
 
@@ -22,7 +22,7 @@
     
 </head>
 <body><header id="banner">
-    <h2><a href="https://zellyn.com/">Zellyn Hunter</a></h2>
+    <h2><a href="http://localhost:1313/">Zellyn Hunter</a></h2>
     <nav>
         <ul>
             <li>
@@ -39,17 +39,42 @@
         <h1>Projects: TODO</h1>
             <div></div>
     </header><p>This is a list of side projects I would <em>like</em> to do.</p>
-<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">box &#34;Get new idea&#34;
+<div id='pikchr-0' class='pikchr' onclick="toggleHidden('pikchr-0')">
+<div class='pikchr-svg' style='max-width:292px'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 292.81 220.32">
+<path d="M2,74L110,74L110,2L2,2Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="56" y="38" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Get new idea</text>
+<polygon points="182,38 171,42 171,33" style="fill:rgb(0,0,0)"/>
+<path d="M110,38L176,38"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M182,74L290,74L290,2L182,2Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="236" y="28" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Start new</text>
+<text x="236" y="48" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">project</text>
+<polygon points="236,146 232,134 240,134" style="fill:rgb(0,0,0)"/>
+<path d="M236,74L236,140"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M182,218L290,218L290,146L182,146Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="236" y="172" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Tell</text>
+<text x="236" y="192" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">everyone</text>
+<path d="M2,218L110,218L110,146L2,146Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="56" y="172" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Finish</text>
+<text x="56" y="192" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">project</text>
+<polygon points="56,74 60,85 52,85" style="fill:rgb(0,0,0)"/>
+<path d="M182,182L146,182L146,110L56,110L56,79"  style="fill:none;stroke-width:2.16;stroke-linejoin:round;stroke:rgb(0,0,0);" />
+</svg>
+</div>
+<pre class='hidden'>
+box "Get new idea"
 arrow
-box &#34;Start new&#34; &#34;project&#34;
+box "Start new" "project"
 down
 arrow
-box &#34;Tell&#34; &#34;everyone&#34;
+box "Tell" "everyone"
 left
 move
-box &#34;Finish&#34; &#34;project&#34;
+box "Finish" "project"
 arrow from 3rd box.w go 0.25 w then 0.5 n then left until even with 1st box then to 1st box.s
-</code></pre><center><i><a href="https://twitter.com/jmspool/status/1496552435392860161">source</a></i></center>
+</pre>
+</div>
+<center><i><a href="https://twitter.com/jmspool/status/1496552435392860161">source</a></i></center>
 <p>I&rsquo;m trying to create a structured list of next steps: hopefully
 that&rsquo;ll make it easier to pick off tasks to work on, and (less likely)
 attract interest from others.</p>
@@ -171,7 +196,13 @@ port</a>.</li>
 <li><input disabled="" type="checkbox"> Implement fake hard-disk card for .2mg disk images</li>
 <li><input disabled="" type="checkbox"> IndexedDB state storage of some kind</li>
 </ul>
-</article>
+<script>
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle('hidden');
+    }
+  }
+</script></article>
 
         </main><footer id="footer">
     

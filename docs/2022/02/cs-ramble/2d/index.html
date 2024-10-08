@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html><head>
+<html><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zellyn&#39;s Website">
     
-    <link rel="shortcut icon" href="https://zellyn.com/favicon.ico">
+    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
     
     <link rel="stylesheet" href="/css/style.min.css">
 
@@ -22,7 +22,7 @@
     
 </head>
 <body><header id="banner">
-    <h2><a href="https://zellyn.com/">Zellyn Hunter</a></h2>
+    <h2><a href="http://localhost:1313/">Zellyn Hunter</a></h2>
     <nav>
         <ul>
             <li>
@@ -269,35 +269,83 @@ the truth table:</p>
 <h3 id="an-aside-circuits-and-gates">An aside: circuits and gates</h3>
 <p>In an electrical circuit, we call the components that perform these
 operations “gates”, and use the following symbols:</p>
-<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">
+<div id='pikchr-0' class='pikchr' onclick="toggleHidden('pikchr-0')">
+<div class='pikchr-svg' style='max-width:253px'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 253.987 508.32">
+<path d="M53,74L111,74"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M111,74Q147,74 147,38"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M147,38Q147,2 111,2"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M111,2L53,2"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M53,2L53,74"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="97" y="38" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">AND</text>
+<path d="M147,38L183,38"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="183" y="38" text-anchor="start" fill="rgb(0,0,0)" dominant-baseline="central"> a and b</text>
+<path d="M53,23L17,23"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="17" y="23" text-anchor="end" fill="rgb(0,0,0)" dominant-baseline="central">a </text>
+<path d="M53,52L17,52"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="17" y="52" text-anchor="end" fill="rgb(0,0,0)" dominant-baseline="central">b </text>
+<path d="M53,146 L 82,146 Q 111,146 129,164 L 147,182"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M53,218 L 82,218 Q 111,218 129,200 L 147,182"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M53,146 L 61,156 Q 68,167 68,182 Q 68,196 61,207 L 53,218"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="99" y="182" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">OR</text>
+<path d="M147,182L183,182"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="183" y="182" text-anchor="start" fill="rgb(0,0,0)" dominant-baseline="central"> a or b</text>
+<path d="M66,167L17,167"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="17" y="167" text-anchor="end" fill="rgb(0,0,0)" dominant-baseline="central">a </text>
+<path d="M66,196L17,196"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="17" y="196" text-anchor="end" fill="rgb(0,0,0)" dominant-baseline="central">b </text>
+<path d="M58,290 L 87,290 Q 116,290 134,308 L 152,326"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M58,362 L 87,362 Q 116,362 134,344 L 152,326"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M58,290 L 66,300 Q 73,311 73,326 Q 73,340 66,351 L 58,362"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M48,290 L 56,300 Q 63,311 63,326 Q 63,340 56,351 L 48,362"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="106" y="326" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">XOR</text>
+<path d="M152,326L188,326"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="188" y="326" text-anchor="start" fill="rgb(0,0,0)" dominant-baseline="central"> a xor b</text>
+<path d="M61,311L18,311"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="18" y="311" text-anchor="end" fill="rgb(0,0,0)" dominant-baseline="central">a </text>
+<path d="M61,340L18,340"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="18" y="340" text-anchor="end" fill="rgb(0,0,0)" dominant-baseline="central">b </text>
+<path d="M57,506L57,434L129,470Z"  style="fill:none;stroke-width:2.16;stroke-linejoin:round;stroke:rgb(0,0,0);" />
+<circle cx="136" cy="470" r="7.2"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="85" y="470" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" dominant-baseline="central">NOT</text>
+<path d="M143,470L187,470"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="187" y="470" text-anchor="start" fill="rgb(0,0,0)" dominant-baseline="central"> a not b</text>
+<path d="M57,455L18,455"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="18" y="455" text-anchor="end" fill="rgb(0,0,0)" dominant-baseline="central">a </text>
+<path d="M57,484L18,484"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="18" y="484" text-anchor="end" fill="rgb(0,0,0)" dominant-baseline="central">b </text>
+</svg>
+</div>
+<pre class='hidden'>
+
 AND: [
 	right; line 0.4; arc
 	up; arc
 	left; line 0.4
 	down; line 0.5
 ] at (0,0)
-text at AND - (0.02,0) &#34;AND&#34; bold
+text at AND - (0.02,0) "AND" bold
 
 line from AND.e right 0.25
-text at last line.e &#34; a and b&#34; ljust
+text at last line.e " a and b" ljust
 line from AND.w + (0,0.1) left 0.25
-text at last line.w &#34;a &#34; rjust
+text at last line.w "a " rjust
 line from AND.w - (0,0.1) left 0.25
-text at last line.w &#34;b &#34; rjust
+text at last line.w "b " rjust
 
 OR: [
 	line from (0, 0.25) then right 0.4 then down 0.25 right 0.25 radius 0.25
 	line from (0, -0.25) then right 0.4 then up 0.25 right 0.25 radius 0.25
 	line from (0, 0.25) to (0.1,0.1) to (0.1, -0.1) to (0, -0.25) radius 0.25
 ] at (0,-1)
-text at OR - (0.01,0)  &#34;OR&#34; bold
+text at OR - (0.01,0)  "OR" bold
 
 line from OR.e right 0.25
-text at last line.e &#34; a or b&#34; ljust
+text at last line.e " a or b" ljust
 line from OR.w + (0.09,0.1) left 0.34
-text at last line.w &#34;a &#34; rjust
+text at last line.w "a " rjust
 line from OR.w + (0.09,-0.1) left 0.34
-text at last line.w &#34;b &#34; rjust
+text at last line.w "b " rjust
 
 XOR: [
 	line from (0, 0.25) then right 0.4 then down 0.25 right 0.25 radius 0.25
@@ -305,28 +353,30 @@ XOR: [
 	line from (0, 0.25) to (0.1,0.1) to (0.1, -0.1) to (0, -0.25) radius 0.25
 	line from (-0.07, 0.25) to (0.03,0.1) to (0.03, -0.1) to (-0.07, -0.25) radius 0.25
 ] at (0,-2)
-text at XOR + (0.04,0) &#34;XOR&#34; bold
+text at XOR + (0.04,0) "XOR" bold
 
 line from XOR.e right 0.25
-text at last line.e &#34; a xor b&#34; ljust
+text at last line.e " a xor b" ljust
 line from XOR.w + (0.09,0.1) left 0.3
-text at last line.w &#34;a &#34; rjust
+text at last line.w "a " rjust
 line from XOR.w + (0.09,-0.1) left 0.3
-text at last line.w &#34;b &#34; rjust
+text at last line.w "b " rjust
 
 NOT: [
 	line from (0, 0) then up 0.5 then right 0.5 down 0.25 close
 	circle radius 0.05 with w at last line.e
 ] at (0,-3)
-text at NOT - (0.105,0) &#34;NOT&#34; bold
+text at NOT - (0.105,0) "NOT" bold
 
 line from NOT.e right 0.3
-text at last line.e &#34; a not b&#34; ljust
+text at last line.e " a not b" ljust
 line from NOT.w + (0,0.1) left 0.27
-text at last line.w &#34;a &#34; rjust
+text at last line.w "a " rjust
 line from NOT.w + (0,-0.1) left 0.27
-text at last line.w &#34;b &#34; rjust
-</code></pre><p>A guick search yielded a <a href="https://youtu.be/kbXwFWMl6WA">decent YouTube
+text at last line.w "b " rjust
+</pre>
+</div>
+<p>A guick search yielded a <a href="https://youtu.be/kbXwFWMl6WA">decent YouTube
 video</a> on simple gates. To see a more
 complex example of how to combine several gates to do something
 useful, go to <a href="https://sciencedemos.org.uk/logic_gates.php">this site</a>
@@ -498,7 +548,13 @@ wash the dishes!&#160;<a href="#fnref:2" class="footnote-backref" role="doc-back
 </li>
 </ol>
 </div>
-</article>
+<script>
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle('hidden');
+    }
+  }
+</script></article>
 
         </main><footer id="footer">
     

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html><head>
+<html><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zellyn&#39;s Website">
     
-    <link rel="shortcut icon" href="https://zellyn.com/favicon.ico">
+    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
     
     <link rel="stylesheet" href="/css/style.min.css">
 
@@ -22,7 +22,7 @@
     
 </head>
 <body><header id="banner">
-    <h2><a href="https://zellyn.com/">Zellyn Hunter</a></h2>
+    <h2><a href="http://localhost:1313/">Zellyn Hunter</a></h2>
     <nav>
         <ul>
             <li>
@@ -46,7 +46,59 @@ CS</a>.</em></p>
 binary.</p>
 <h2 id="basics">Basics</h2>
 <p>Let&rsquo;s use our example byte from last time to show the anatomy of a byte: <code>0b10111001 == 0xB9 == 185</code></p>
-<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">define $brace {
+<div id='pikchr-0' class='pikchr' onclick="toggleHidden('pikchr-0')">
+<div class='pikchr-svg' style='max-width:242px'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 242.554 164.16">
+<path d="M35,85L57,85L57,55L35,55Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="46" y="70" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M57,85L79,85L79,55L57,55Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="68" y="70" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
+<path d="M79,85L101,85L101,55L79,55Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="90" y="70" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M101,85L123,85L123,55L101,55Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="112" y="70" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M123,85L145,85L145,55L123,55Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="134" y="70" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M145,85L167,85L167,55L145,55Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="156" y="70" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
+<path d="M167,85L189,85L189,55L167,55Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="178" y="70" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
+<path d="M189,85L211,85L211,55L189,55Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="200" y="70" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<text x="46" y="93" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" font-size="80%" dominant-baseline="central">128</text>
+<text x="68" y="93" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" font-size="80%" dominant-baseline="central">64</text>
+<text x="90" y="93" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" font-size="80%" dominant-baseline="central">32</text>
+<text x="112" y="93" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" font-size="80%" dominant-baseline="central">16</text>
+<text x="134" y="93" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" font-size="80%" dominant-baseline="central">8</text>
+<text x="156" y="93" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" font-size="80%" dominant-baseline="central">4</text>
+<text x="178" y="93" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" font-size="80%" dominant-baseline="central">2</text>
+<text x="200" y="93" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" font-size="80%" dominant-baseline="central">1</text>
+<text x="46" y="12" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">“high bit”</text>
+<polygon points="46,55 41,43 50,43" style="fill:rgb(0,0,0)"/>
+<path d="M46,27L46,49"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="200" y="12" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">“low bit”</text>
+<polygon points="200,55 195,43 204,43" style="fill:rgb(0,0,0)"/>
+<path d="M200,27L200,49"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<path d="M116,114Q123,114 123,107"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<path d="M35,107Q35,114 42,114"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<path d="M86,114Q79,114 79,121"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<path d="M79,121Q79,114 72,114"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<path d="M116,114L86,114"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<path d="M72,114L42,114"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<text x="79" y="131" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">B</text>
+<text x="79" y="151" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">“high nibble”    </text>
+<path d="M204,114Q211,114 211,107"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<path d="M123,107Q123,114 130,114"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<path d="M174,114Q167,114 167,121"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<path d="M167,121Q167,114 160,114"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<path d="M204,114L174,114"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<path d="M160,114L130,114"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);" />
+<text x="167" y="131" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">9</text>
+<text x="167" y="151" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">    “low nibble”</text>
+</svg>
+</div>
+<pre class='hidden'>
+define $brace {
   $offsety = $4 / 2
   $offsetx = $3/abs($3) * abs($offsety)
   $pointx = $1+0.5*$3
@@ -59,36 +111,38 @@ binary.</p>
   line from last arc.end to 3rd last arc.end thin
 }
 
-box &#34;1&#34; fit fill lightblue
-box same &#34;0&#34;
-box same &#34;1&#34;
-box same &#34;1&#34;
-box same &#34;1&#34;
-box same &#34;0&#34;
-box same &#34;0&#34;
-box same &#34;1&#34;
+box "1" fit fill lightblue
+box same "0"
+box same "1"
+box same "1"
+box same "1"
+box same "0"
+box same "0"
+box same "1"
 
-text at 1st box .s &#34;128&#34; below italic small
-text at 2nd box .s &#34;64&#34; below italic small
-text at 3rd box .s &#34;32&#34; below italic small
-text at 4th box .s &#34;16&#34; below italic small
-text at 5th box .s &#34;8&#34; below italic small
-text at 6th box .s &#34;4&#34; below italic small
-text at 7th box .s &#34;2&#34; below italic small
-text at 8th box .s &#34;1&#34; below italic small
+text at 1st box .s "128" below italic small
+text at 2nd box .s "64" below italic small
+text at 3rd box .s "32" below italic small
+text at 4th box .s "16" below italic small
+text at 5th box .s "8" below italic small
+text at 6th box .s "4" below italic small
+text at 7th box .s "2" below italic small
+text at 8th box .s "1" below italic small
 
-text at 0.3 n of 1st box.n &#34;“high bit”&#34; italic
+text at 0.3 n of 1st box.n "“high bit”" italic
 arrow from last text.s to first box.n
 
-text at 0.3 n of last box.n &#34;“low bit”&#34; italic
+text at 0.3 n of last box.n "“low bit”" italic
 arrow from last text.s to last box.n
 
 $width = 1st box.w.x - 4th box.e.x
 $brace(4th box.se.x, 4th box.se.y-0.15, $width, -0.1)
-text at last arc.start &#34;B&#34; below &#34;“high nibble”    &#34; below italic
+text at last arc.start "B" below "“high nibble”    " below italic
 $brace(last box.se.x, 4th box.se.y-0.15, $width, -0.1)
-text at last arc.start &#34;9&#34; below &#34;    “low nibble”&#34; below italic
-</code></pre><blockquote>
+text at last arc.start "9" below "    “low nibble”" below italic
+</pre>
+</div>
+<blockquote>
 <p><strong>Note:</strong> the work “nibble” is less common these days than it used
 to be, when computers had much less memory, and making maximum use
 of every little bit was more important. Don&rsquo;t be surprised if people
@@ -98,79 +152,171 @@ your nerd cred!</p>
 <h2 id="bit-shifting">Bit shifting</h2>
 <p>In base 10, if we shift digits to the left or right, we&rsquo;re multiplying
 or dividing by 10:</p>
-<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">box &#34;1&#34; fit width 0.2 fill lightblue
-box same &#34;8&#34;
-box same &#34;5&#34;
+<div id='pikchr-1' class='pikchr' onclick="toggleHidden('pikchr-1')">
+<div class='pikchr-svg' style='max-width:125px'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 125.28 365.76">
+<path d="M30,46L59,46L59,16L30,16Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="45" y="31" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M59,46L88,46L88,16L59,16Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="74" y="31" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">8</text>
+<path d="M88,46L117,46L117,16L88,16Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="102" y="31" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">5</text>
+<path d="M2,147L30,147L30,117L2,117Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="16" y="132" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M30,147L59,147L59,117L30,117Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="45" y="132" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">8</text>
+<path d="M59,147L88,147L88,117L59,117Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="74" y="132" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">5</text>
+<path d="M88,147L117,147L117,117L88,117Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="102" y="132" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
+<path d="M30,46L2,117"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<path d="M59,46L30,117"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<path d="M88,46L59,117"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<path d="M117,46L88,117"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<text x="59" y="82" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">shift ←</text>
+<path d="M26,97L92,97L92,66L26,66Z"  style="fill:rgb(255,255,255);stroke-width:2.16;stroke:rgb(255,255,255);" />
+<text x="59" y="82" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">shift ←</text>
+<path d="M30,248L59,248L59,218L30,218Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="45" y="233" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M59,248L88,248L88,218L59,218Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="74" y="233" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">8</text>
+<path d="M88,248L117,248L117,218L88,218Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="102" y="233" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">5</text>
+<path d="M59,349L88,349L88,318L59,318Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="74" y="334" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M88,349L117,349L117,318L88,318Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="102" y="334" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">8</text>
+<path d="M30,248L59,318"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<path d="M59,248L88,318"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<path d="M88,248L117,318"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<text x="74" y="283" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">shift →</text>
+<path d="M41,298L106,298L106,268L41,268Z"  style="fill:rgb(255,255,255);stroke-width:2.16;stroke:rgb(255,255,255);" />
+<text x="74" y="283" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">shift →</text>
+<path d="M120,363L123,363L123,2L120,2Z"  style="fill:rgb(238,238,238);stroke-width:2.16;stroke:rgb(238,238,238);" />
+</svg>
+</div>
+<pre class='hidden'>
+box "1" fit width 0.2 fill lightblue
+box same "8"
+box same "5"
 
-box same at 1st box + (-1st box.width, -0.7) &#34;1&#34;
-box same &#34;8&#34;
-box same &#34;5&#34;
-box same &#34;0&#34;
+box same at 1st box + (-1st box.width, -0.7) "1"
+box same "8"
+box same "5"
+box same "0"
 
 line from 1st box.sw to 4th box.nw dashed thin
 line same from 2nd box.sw to 5th box.nw
 line same from 3rd box.sw to 6th box.nw
 line same from 3rd box.se to 7th box.nw
 
-text at ((2nd box.x + 5th box.x)/2, (2nd box.s.y + 5th box.n.y)/2) &#34;shift ←&#34;
+text at ((2nd box.x + 5th box.x)/2, (2nd box.s.y + 5th box.n.y)/2) "shift ←"
 box at last text width last text.width height last text.height color white fill white
-text at last &#34;shift ←&#34; italic
+text at last "shift ←" italic
 
-RIGHT: box same as 1st box at 1.4 s of 1st box &#34;1&#34;
-box same &#34;8&#34;
-box same &#34;5&#34;
+RIGHT: box same as 1st box at 1.4 s of 1st box "1"
+box same "8"
+box same "5"
 
-box same at RIGHT + (1st box.width, -0.7) &#34;1&#34;
-box same &#34;8&#34;
+box same at RIGHT + (1st box.width, -0.7) "1"
+box same "8"
 
 line from 5th last box.sw to 2nd last box.nw dashed thin
 line same from 4th last box.sw to last box.nw
 line same from 3rd last box.sw to last box.ne
 
-text at ((4th last box.w.x + last box.w.x)/2, (4th last box.s.y + last box.n.y)/2) &#34;shift →&#34;
+text at ((4th last box.w.x + last box.w.x)/2, (4th last box.s.y + last box.n.y)/2) "shift →"
 box at last text width last text.width height last text.height color white fill white
-text at last &#34;shift →&#34; italic
+text at last "shift →" italic
 
 box with nw at 3rd box.ne + (0.02,0.1) height (1st box.n.y - 3rd last box.s.y + 0.2) \
   width 0.02 color 0xEEEEEE fill 0xEEEEEE
-</code></pre><p>In base 2, if we shift digits to the left or right, we&rsquo;re multiplying
+</pre>
+</div>
+<p>In base 2, if we shift digits to the left or right, we&rsquo;re multiplying
 or dividing by 2:</p>
-<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">box &#34;1&#34; fit width 0.2 fill lightblue
-	box same &#34;1&#34;
-box same &#34;1&#34;
+<div id='pikchr-2' class='pikchr' onclick="toggleHidden('pikchr-2')">
+<div class='pikchr-svg' style='max-width:125px'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 125.28 365.76">
+<path d="M30,46L59,46L59,16L30,16Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="45" y="31" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M59,46L88,46L88,16L59,16Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="74" y="31" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M88,46L117,46L117,16L88,16Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="102" y="31" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M2,147L30,147L30,117L2,117Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="16" y="132" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M30,147L59,147L59,117L30,117Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="45" y="132" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M59,147L88,147L88,117L59,117Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="74" y="132" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M88,147L117,147L117,117L88,117Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="102" y="132" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">0</text>
+<path d="M30,46L2,117"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<path d="M59,46L30,117"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<path d="M88,46L59,117"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<path d="M117,46L88,117"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<text x="59" y="82" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">shift ←</text>
+<path d="M26,97L92,97L92,66L26,66Z"  style="fill:rgb(255,255,255);stroke-width:2.16;stroke:rgb(255,255,255);" />
+<text x="59" y="82" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">shift ←</text>
+<path d="M30,248L59,248L59,218L30,218Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="45" y="233" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M59,248L88,248L88,218L59,218Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="74" y="233" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M88,248L117,248L117,218L88,218Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="102" y="233" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M59,349L88,349L88,318L59,318Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="74" y="334" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M88,349L117,349L117,318L88,318Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="102" y="334" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<path d="M30,248L59,318"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<path d="M59,248L88,318"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<path d="M88,248L117,318"  style="fill:none;stroke-width:1.4472;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+<text x="74" y="283" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">shift →</text>
+<path d="M41,298L106,298L106,268L41,268Z"  style="fill:rgb(255,255,255);stroke-width:2.16;stroke:rgb(255,255,255);" />
+<text x="74" y="283" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">shift →</text>
+<path d="M120,363L123,363L123,2L120,2Z"  style="fill:rgb(238,238,238);stroke-width:2.16;stroke:rgb(238,238,238);" />
+</svg>
+</div>
+<pre class='hidden'>
+box "1" fit width 0.2 fill lightblue
+	box same "1"
+box same "1"
 
-box same at 1st box + (-1st box.width, -0.7) &#34;1&#34;
-box same &#34;1&#34;
-box same &#34;1&#34;
-box same &#34;0&#34;
+box same at 1st box + (-1st box.width, -0.7) "1"
+box same "1"
+box same "1"
+box same "0"
 
 line from 1st box.sw to 4th box.nw dashed thin
 line same from 2nd box.sw to 5th box.nw
 line same from 3rd box.sw to 6th box.nw
 line same from 3rd box.se to 7th box.nw
 
-text at ((2nd box.x + 5th box.x)/2, (2nd box.s.y + 5th box.n.y)/2) &#34;shift ←&#34;
+text at ((2nd box.x + 5th box.x)/2, (2nd box.s.y + 5th box.n.y)/2) "shift ←"
 box at last text width last text.width height last text.height color white fill white
-text at last &#34;shift ←&#34; italic
+text at last "shift ←" italic
 
-RIGHT: box same as 1st box at 1.4 s of 1st box &#34;1&#34;
-box same &#34;1&#34;
-box same &#34;1&#34;
+RIGHT: box same as 1st box at 1.4 s of 1st box "1"
+box same "1"
+box same "1"
 
-box same at RIGHT + (1st box.width, -0.7) &#34;1&#34;
-box same &#34;1&#34;
+box same at RIGHT + (1st box.width, -0.7) "1"
+box same "1"
 
 line from 5th last box.sw to 2nd last box.nw dashed thin
 line same from 4th last box.sw to last box.nw
 line same from 3rd last box.sw to last box.ne
 
-text at ((4th last box.w.x + last box.w.x)/2, (4th last box.s.y + last box.n.y)/2) &#34;shift →&#34;
+text at ((4th last box.w.x + last box.w.x)/2, (4th last box.s.y + last box.n.y)/2) "shift →"
 box at last text width last text.width height last text.height color white fill white
-text at last &#34;shift →&#34; italic
+text at last "shift →" italic
 
 box with nw at 3rd box.ne + (0.02,0.1) height (1st box.n.y - 3rd last box.s.y + 0.2) \
   width 0.02 color 0xEEEEEE fill 0xEEEEEE
-</code></pre><p>In code, we use <code>&lt;&lt;</code> to shift left, and <code>&gt;&gt;</code> to shift right:</p>
+</pre>
+</div>
+<p>In code, we use <code>&lt;&lt;</code> to shift left, and <code>&gt;&gt;</code> to shift right:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># python:</span>
 </span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#007020">bin</span>(<span style="color:#40a070">0b111</span> <span style="color:#666">&lt;&lt;</span> <span style="color:#40a070">1</span>))  <span style="color:#60a0b0;font-style:italic"># 0b1110</span>
 </span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#007020">bin</span>(<span style="color:#40a070">0b111</span> <span style="color:#666">&gt;&gt;</span> <span style="color:#40a070">1</span>))  <span style="color:#60a0b0;font-style:italic"># 0b11</span>
@@ -207,27 +353,62 @@ we&rsquo;d use ⁴⁄₈, and write <code>0.4₈</code>.</p>
 <p>In binary, it&rsquo;s the ½ column already, so we&rsquo;d use ½, and write
 <code>0.1₂</code>. ¼ would be <code>0.01₂</code>, and ¾ would be <code>0.11₂</code>. Weird, huh? But it
 all makes sense:</p>
-<pre tabindex="0"><code class="language-pikchr" data-lang="pikchr">box &#34;0&#34; big fit fill lightblue
-box same &#34;0&#34; big
-box same &#34;0&#34; big
-box same &#34;0&#34; big
-box same &#34;.&#34; big big bold
-box same &#34;1&#34; big
-box same &#34;1&#34; big
-box same &#34;0&#34; big
-box same &#34;0&#34; big
+<div id='pikchr-3' class='pikchr' onclick="toggleHidden('pikchr-3')">
+<div class='pikchr-svg' style='max-width:235px'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 235.109 106.56">
+<path d="M2,37L26,37L26,2L2,2Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="14" y="19" text-anchor="middle" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">0</text>
+<path d="M26,37L51,37L51,2L26,2Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="39" y="19" text-anchor="middle" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">0</text>
+<path d="M51,37L76,37L76,2L51,2Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="63" y="19" text-anchor="middle" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">0</text>
+<path d="M76,37L100,37L100,2L76,2Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="88" y="19" text-anchor="middle" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">0</text>
+<path d="M100,37L125,37L125,2L100,2Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="112" y="19" text-anchor="middle" font-weight="bold" fill="rgb(0,0,0)" font-size="156.25%" dominant-baseline="central">.</text>
+<path d="M125,37L149,37L149,2L125,2Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="137" y="19" text-anchor="middle" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">1</text>
+<path d="M149,37L174,37L174,2L149,2Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="162" y="19" text-anchor="middle" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">1</text>
+<path d="M174,37L199,37L199,2L174,2Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="186" y="19" text-anchor="middle" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">0</text>
+<path d="M199,37L223,37L223,2L199,2Z"  style="fill:rgb(173,216,230);stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="211" y="19" text-anchor="middle" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">0</text>
+<text x="14" y="47" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">8</text>
+<text x="39" y="47" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">4</text>
+<text x="63" y="47" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">2</text>
+<text x="88" y="47" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">1</text>
+<text x="137" y="47" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">½</text>
+<text x="162" y="47" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">¼</text>
+<text x="186" y="47" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">⅛</text>
+<text x="211" y="47" text-anchor="middle" font-style="italic" fill="rgb(0,0,0)" dominant-baseline="central">1⁄16</text>
+<text x="112" y="91" text-anchor="middle" fill="rgb(0,0,0)" font-size="125%" dominant-baseline="central">¾ ＝ ½ + ¼</text>
+</svg>
+</div>
+<pre class='hidden'>
+box "0" big fit fill lightblue
+box same "0" big
+box same "0" big
+box same "0" big
+box same "." big big bold
+box same "1" big
+box same "1" big
+box same "0" big
+box same "0" big
 
-text at 1st box .s &#34;8&#34; below italic
-text at 2nd box .s &#34;4&#34; below italic
-text at 3rd box .s &#34;2&#34; below italic
-text at 4th box .s &#34;1&#34; below italic
-text at 6th box .s &#34;½&#34; below italic
-text at 7th box .s &#34;¼&#34; below italic
-text at 8th box .s &#34;⅛&#34; below italic
-text at 9th box .s &#34;1⁄16&#34; below italic
+text at 1st box .s "8" below italic
+text at 2nd box .s "4" below italic
+text at 3rd box .s "2" below italic
+text at 4th box .s "1" below italic
+text at 6th box .s "½" below italic
+text at 7th box .s "¼" below italic
+text at 8th box .s "⅛" below italic
+text at 9th box .s "1⁄16" below italic
 
-text at 0.5 s of 5th box &#34;¾ ＝ ½ + ¼&#34; big
-</code></pre><p><em>We&rsquo;ll explore how to work with the values of individual bits or
+text at 0.5 s of 5th box "¾ ＝ ½ + ¼" big
+</pre>
+</div>
+<p><em>We&rsquo;ll explore how to work with the values of individual bits or
 true/false values in the <a href="../2d/">next part</a>.</em></p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
@@ -241,7 +422,13 @@ number) equal to or less than <code>a</code>. It&rsquo;s called the “floor” 
 </li>
 </ol>
 </div>
-</article>
+<script>
+  function toggleHidden(id){
+    for(var c of document.getElementById(id).children){
+      c.classList.toggle('hidden');
+    }
+  }
+</script></article>
 
         </main><footer id="footer">
     
