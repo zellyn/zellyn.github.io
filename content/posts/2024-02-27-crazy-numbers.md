@@ -7,4 +7,9 @@ draft: true
 ---
 
 > At room temperature the average speed of a particle in air is an astonishing 1030mph
->    — [ciechanow.ski/airfoil](https://ciechanow.ski/airfoil/#:~:text=of%20its%20particles.-,At%20room%20temperature,-the%20average%20speed)
+>
+> — [ciechanow.ski/airfoil](https://ciechanow.ski/airfoil/#:~:text=of%20its%20particles.-,At%20room%20temperature,-the%20average%20speed)
+
+> Individual electrons in a wire move at around 7-8cm/hr.
+>
+> — ["Drift velocity"](https://en.wikipedia.org/wiki/Drift_velocity) on Wikipedia: 23 μm/s

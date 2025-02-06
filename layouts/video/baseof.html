@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Worm Gears</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .video-container {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      height: fit-content;
+      z-index: 1;
+      background: white;
+      margin-top: 20px;
+    }
+
+    .content {
+      margin-top: 20px;
+      padding: 0 20px;
+    }
+
+    .timestamp {
+      color: #0066cc;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .hidden {
+       position: absolute;
+       opacity: 0;
+       pointer-events: none;
+       display: none;
+    }
+
+    .timestamp {
+       background-color: #eee;
+    }
+
+    /* Desktop layout */
+    @media (min-width: 1024px) {
+      .container {
+        display: grid;
+        grid-template-columns: 640px 1fr;
+        gap: 40px;
+        align-items: start;
+      }
+
+      .content {
+        margin-top: 0;
+        padding: 0;
+      }
+    }
+
+    /* Mobile layout */
+    @media (max-width: 1023px) {
+      body {
+        padding: 0;
+      }
+
+      .container {
+        margin: 0;
+      }
+
+      .video-container {
+        margin: 0;
+        position: fixed;
+        width: 100%;
+        padding-bottom: 56.25%;
+        height: 0;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .content {
+        position: absolute;
+        top: 56.25vw;
+        left: 0;
+        right: 0;
+        background: white;
+      }
+    }
+  </style>
+
+  {{ with .Site.Params.description -}}
+  <meta name="description" content="{{ . }}">
+  {{ end }}
+  {{ printf `<link rel="shortcut icon" href="%s">` ("favicon.ico" | absURL) | safeHTML }}
+  {{ with .OutputFormats.Get "rss" -}}
+     {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ end -}}
+
+  <title>{{ .Title }}</title>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],  // block
+        inlineMath: [['\\(', '\\)']]                  // inline
+      }
+    };
+  </script>
+
+  {{ with .Params.customcss }}<link rel="stylesheet" href="{{ . }}" />{{ end }}
+
+</head>
+<body>
+  <div class="container">
+    {{ with .Params.video_id }}
+    <div class="video-container">
+      <iframe id="video-player-iframe"
+              width="640" height="360"
+              src="https://www.youtube.com/embed/{{ . }}?enablejsapi=1&rel=0&cc_load_policy=0"
+              frameborder="0"
+      ></iframe>
+    </div>
+    {{ end }}
+
+    <div class="content">
+        {{- block "main" . }}{{- end }}
+    </div>
+  </div>
+
+  <script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    var state;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('video-player-iframe', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      document.querySelectorAll('.timestamp').forEach(timestamp => {
+        timestamp.addEventListener('click', () => {
+          const when = timestamp.dataset.time;
+          const parts = when.split(':');
+          switch (parts.length) {
+            case 1:
+              const secs = parseInt(when);
+              player.seekTo(secs);
+              player.playVideo();
+              break;
+            case 2:
+              const minutes = parseInt(parts[0]);
+              const seconds = parseInt(parts[1]);
+              const timestamp = minutes * 60 + seconds;
+              player.seekTo(timestamp);
+              player.playVideo();
+              break;
+            default:
+              console.error(`weird time param:"${when}"`);
+          }
+        });
+      });
+
+      document.addEventListener('keydown', (event) => {
+        switch (event.key) {
+          case 'j':
+            console.log('j pressed');
+            player.seekTo(player.getCurrentTime() - 10);
+            break;
+          case 'j':
+            console.log('j pressed');
+            break;
+          case 'k':
+            if (state == YT.PlayerState.PLAYING) {
+              player.pauseVideo();
+            } else {
+              player.playVideo();
+            }
+
+            break;
+          case 'l':
+            console.log('l pressed');
+            player.seekTo(player.getCurrentTime() + 10);
+            break;
+        }
+      });
+    }
+
+    function onPlayerStateChange(event) {
+      // You can add state change handling here if needed
+      state = event.data;
+    }
+  </script>
+</body>
+</html>
