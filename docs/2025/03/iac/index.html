@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zellyn&#39;s Website">
+    
+    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <title>Infrastructure provisioning</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+          inlineMath: [['\\(', '\\)']]                  
+        }
+      };
+    </script>
+
+    
+</head>
+<body><header id="banner">
+    <h2><a href="http://localhost:1313/">Zellyn Hunter</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/page/projects/todo" title="projects">projects</a>
+            </li><li>
+                <a href="/about/" title="about">about</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>Infrastructure provisioning</h1><p><b>Essential and accidental complexity</b></p>
+        
+            <div>
+                <time>March 10, 2025</time>
+                </div>
+    </header><p>Sometimes, you just get sick of not knowing how things work, and you
+have to take a little &ldquo;structured procrastination&rdquo; side-quest, current
+assigned task be damned. This is an idiosyncratic view: I mostly
+focused on tools that tend to get mentioned at my company, and this is
+not my area. But I think there are nonetheless some useful ideas it
+would be worth communicating.</p>
+<h2 id="the-problem">The problem</h2>
+<p>There are currently 900 startups with indistinguishable landing pages
+that all say something like, &ldquo;Infrastructure as code for your
+Kubernetes clusters, done right.&rdquo; The whole space is a mess, and
+hasn&rsquo;t settled down yet. Not only have clear winners not emerged, but
+it doesn&rsquo;t even seem that a clear <em>model</em> has emerged. How to think
+about the space?</p>
+<h2 id="declarative-vs-imperative">Declarative vs Imperative</h2>
+<p>In the old times, a cool infrastructure tool let you run bash scripts
+on a thousand hosts at once. And when they broke on 23 machines
+you&hellip; well, either ran them again (hope every step was safe to
+re-run!), or wrote <em>another</em> script to fix things, or went and fixed
+them one by one.</p>
+<p>Things got more declarative: instead of specifying a list of steps,
+try to specify the shape you&rsquo;d like the resulting world to be in, and
+let the tool pick the steps to get there. Instead of &ldquo;upgrade Django
+to version 1.1 by running this command&rdquo;, you said, &ldquo;I want Django to
+be at version 1.1&rdquo;. Subtle difference, but important.</p>
+<p>Then came Kubernetes. In my opinion</p>
+</article>
+
+        </main><footer id="footer">
+    
+</footer>
+</body>
+</html>
