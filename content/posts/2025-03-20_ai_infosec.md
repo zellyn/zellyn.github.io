@@ -166,3 +166,9 @@ Claude for suggestions, it wanted to clickbait it up something fierce:
 Actually, “The end of Good Enough Security” is annoyingly good.
 Dammit, Claude: you can have the subtitle. _I, for one, welcome our new
 AI overlords…_
+
+---
+
+Discuss this post on:
+* [Bluesky](https://bsky.app/profile/zellyn.com/post/3lkufqybgr22p)
+* [Mastodon](https://hachyderm.io/@zellyn/114198606770793855)
