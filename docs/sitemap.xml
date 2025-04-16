@@ -26,6 +26,12 @@
     <loc>https://zellyn.com/video/</loc>
     <lastmod>2025-01-14T19:00:00-04:00</lastmod>
   </url><url>
+    <loc>https://zellyn.com/tags/gears/</loc>
+    <lastmod>2025-01-14T19:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/video/gears/worm/</loc>
+    <lastmod>2025-01-14T19:00:00-04:00</lastmod>
+  </url><url>
     <loc>https://zellyn.com/tags/emacs/</loc>
     <lastmod>2024-08-02T21:38:00-04:00</lastmod>
   </url><url>
@@ -133,12 +139,12 @@
   </url><url>
     <loc>https://zellyn.com/about/</loc>
   </url><url>
-    <loc>https://zellyn.com/page/about/</loc>
-  </url><url>
     <loc>https://zellyn.com/categories/</loc>
   </url><url>
     <loc>https://zellyn.com/page/</loc>
   </url><url>
     <loc>https://zellyn.com/page/projects/todo/</loc>
+  </url><url>
+    <loc>https://zellyn.com/resume/</loc>
   </url>
 </urlset>

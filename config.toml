@@ -51,6 +51,14 @@ enableInlineShortcodes = true
     weight = 20
     page = "about"
 
+  [[menu.main]]
+    identifier = "resume"
+    name = "resume"
+    title = "resume"
+    url = "/resume/"
+    weight = 20
+    page = "resume"
+
 [permalinks]
   posts = "/:year:/:month:/:slug/"
 
