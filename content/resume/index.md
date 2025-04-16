@@ -5,7 +5,7 @@ subtitle: "Staff Engineer"
 
 ## Summary
 
-I'm an expert at backend distributed systems, micro-services, Go, and Developer Experience, looking for a role with impact, where I can help bring clarity and success to your complex projects.
+I'm an expert at backend distributed systems, micro-services, Go, and Developer Experience. I am looking for a role with impact, where I can help bring clarity and success to your complex projects.
 
 ## Work Experience
 
@@ -108,4 +108,4 @@ _Shared Systems: IC — 2015–2016_
 
 ## Print version
 
-<a href="/download/zellyn-hunter-resume-2024-04.pdf" download>⬇</a> [zellyn-hunter-resume-2024-04.pdf](/download/zellyn-hunter-resume-2024-04.pdf)
+<a href="/download/zellyn-hunter-resume-2025-04.pdf" download>⬇</a> [zellyn-hunter-resume-2025-04.pdf](/download/zellyn-hunter-resume-2025-04.pdf)
