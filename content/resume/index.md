@@ -101,3 +101,11 @@ _Shared Systems: IC — 2015–2016_
 
 ### Georgia Institute of Technology — Aug 1994–Jun 1998
 #### BSc. in Computer Science
+
+<br>
+
+<hr>
+
+## Print version
+
+<a href="/download/zellyn-hunter-resume-2024-04.pdf" download>⬇</a> [zellyn-hunter-resume-2024-04.pdf](/download/zellyn-hunter-resume-2024-04.pdf)
