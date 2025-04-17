@@ -26,7 +26,7 @@ _Frameworks Team: Manager — 2019–2023_
 
 _Payments Platform: IC — 2016–2019_
 - Implemented backend components for Apple Pay and MasterPass integration, focusing on payment gateway communication, allowing Square merchants to support Apple Pay.
-- Documented and Diagrammed the Payment Gateway structure, creating references used for years.
+- Worked on Chargebacks, documentation, and continuing to steward Go.
 
 _Shared Systems: IC — 2015–2016_
 - Led Go infrastructure development across Square, assuming responsibility for the Go server framework.
