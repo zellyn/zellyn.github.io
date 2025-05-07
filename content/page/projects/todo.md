@@ -1,9 +1,7 @@
 ---
 layout: page
-title: 'Projects: TODO'
+title: 'Side Project TODOs'
 ---
-
-This is a list of side projects I would _like_ to do.
 
 ```pikchr
 box "Get new idea"
@@ -20,11 +18,15 @@ arrow from 3rd box.w go 0.25 w then 0.5 n then left until even with 1st box then
 
 <center><i><a href="https://twitter.com/jmspool/status/1496552435392860161">source</a></i></center>
 
+# Potential side projects
+
 I'm trying to create a structured list of next steps: hopefully
 that'll make it easier to pick off tasks to work on, and (less likely)
 attract interest from others.
 
-# 6502 Golf site
+For completed projects, see [the main Projects page](../done).
+
+## 6502 Golf site
 
 [comp.sys.apple2](https://groups.google.com/forum/#!forum/comp.sys.apple2)
 folks sometimes like to collaborate/compete on golfing 6502 code. I
@@ -34,7 +36,7 @@ Leaderboards would be fun, and being able to track the tree of ideas
 (by giving credit or explicitly starting with code and modifying it)
 would be instructive.
 
-## Tasks
+### Tasks
 
 - [ ] Get my [go6502](https://github.com/zellyn/go6502) code working
       under GopherJS.
@@ -52,95 +54,23 @@ would be instructive.
 - [ ] Add challenges/problems with descriptions, solutions,
   leaderboards, etc.
 
-# OpenEmulator Tasks
-
-## Make IIe aux card pluggable
-
-- [ ] Route an3/frctxt through card
-- [ ] Figure out how to make AppleIIeVideo not need direct access to VRAM
-
-## Veronica emulation
-
-- [ ] First, go read all the blog posts :-)
-
-## Implement Woz disk format
-
-- [ ] Make it work at 1 cycle (or is it 4?) per bit
-- [ ] Convert .woz to angular positions and back again for real spinny-ness
-
-## Implement Mockingboard support
-
-- [ ] Copy Mame code, I guess
-
-## Linux UI, Windows UI
-
-- [ ] Figure out which would get more users
-- [ ] Port the basics
-- [ ] Port audio
-- [ ] Port shaders/OpenGL stuff
-
-# Retrocomputing technical docs conversion pipeline
+## Retrocomputing technical docs conversion pipeline
 
 - [ ] Classify/divide up page areas: Header, paragraphs, diagrams,
   etc.
 - [ ] OCR on paragraphs
 - [ ] turking / collaborative editing
 
-# Native Go game controller library
+## Apple II emulator improvements/tasks
 
-I'm unlikely to ever do this. If I needed controller input, I'd
-probably use something existing. A native one that does _all_ the
-controllers would be nice, though.
-
-## Ebitengine:
-
-* Example on their page: [examples/gamepad.html](https://ebitengine.org/en/examples/gamepad.html)
-* Third-party example using ebitengine: [github.com/tinne26/gamepad-quicktest](https://github.com/tinne26/gamepad-quicktest)
-
-## Other
-
-* [github.com/0xcafed00d/joystick](https://github.com/0xcafed00d/joystick)
-
-## Original step listing
-
-- [ ] Figure out where [Chromium MacOS XBox
-  code](https://cs.chromium.org/chromium/src/device/gamepad/?q=gamepad&sq=package:chromium&dr)
-  gets called from
-- [ ] Get proof-of-concept-level cgo code working to enumerate and/or
-  find controller
-- [ ] Figure out how to register Objective-C callbacks (for connect/disconnect) that
-  have the correct lifecycle/memory management, and call back into Go safely.
-- [ ] Organize a community effort to port all the Chrome code to Go on all the OSes :-)
-
-# ~LambdaMoo Go port~
-
-Someone already did this in Rust! And far better than I ever could
-have. See [github.com/rdaum/moor](https://github.com/rdaum/moor)
-
-<strike style='color:grey'>
-
-- [ ] Write some actual tests
-- [ ] Figure out what to do for regexes: they have backrefs :-(
-- [ ] Port the code
-- [ ] Port WAIF patches
-- [ ] Port unicode patches and/or figure out if there are any
-  downsides from simply supporting utf8
-- [ ] Port the 64-bit ints
-- [ ] Figure out how to add more concurrency using goroutines
-- [ ] Use something like sqlite?
-
-</strike>
-
-# Apple II emulator improvements/tasks
-
-## Update visual 6502
+### Update visual 6502
 
 - [ ] Incorporate performance improvements from the [C
       version](https://github.com/mist64/perfect6502/commits/master)
       into [my Go
       port](https://github.com/zellyn/go6502/tree/master/visual).
 
-## Get it running Pitch Dark in a web page
+### Get it running Pitch Dark in a web page
 
 - [ ] Figure out how to compile to webassembly
 - [ ] Build a shim to hook it up to my [apple2shader

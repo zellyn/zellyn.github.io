@@ -40,7 +40,7 @@ enableInlineShortcodes = true
     identifier = "projects"
     name = "projects"
     title = "projects"
-    url = "/page/projects/todo"
+    url = "/page/projects/done"
     weight = 10
 
   [[menu.main]]

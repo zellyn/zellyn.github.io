@@ -8,7 +8,7 @@
     
     <link rel="stylesheet" href="/css/style.min.css">
 
-    <title>Projects: TODO</title>
+    <title>Side Project TODOs</title>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>
       MathJax = {
@@ -26,7 +26,7 @@
     <nav>
         <ul>
             <li>
-                <a href="/page/projects/todo" title="projects">projects</a>
+                <a href="/page/projects/done" title="projects">projects</a>
             </li><li>
                 <a href="/about/" title="about">about</a>
             </li><li>
@@ -38,10 +38,9 @@
 <main id="content">
 <article>
     <header id="post-header">
-        <h1>Projects: TODO</h1>
+        <h1>Side Project TODOs</h1>
             <div></div>
-    </header><p>This is a list of side projects I would <em>like</em> to do.</p>
-<div id='pikchr-0' class='pikchr' onclick="toggleHidden('pikchr-0')">
+    </header><div id='pikchr-0' class='pikchr' onclick="toggleHidden('pikchr-0')">
 <div class='pikchr-svg' style='max-width:292px'>
 <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 292.81 220.32">
 <path d="M2,74L110,74L110,2L2,2Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
@@ -77,17 +76,19 @@ arrow from 3rd box.w go 0.25 w then 0.5 n then left until even with 1st box then
 </pre>
 </div>
 <center><i><a href="https://twitter.com/jmspool/status/1496552435392860161">source</a></i></center>
+<h1 id="potential-side-projects">Potential side projects</h1>
 <p>I&rsquo;m trying to create a structured list of next steps: hopefully
 that&rsquo;ll make it easier to pick off tasks to work on, and (less likely)
 attract interest from others.</p>
-<h1 id="6502-golf-site">6502 Golf site</h1>
+<p>For completed projects, see <a href="../done">the main Projects page</a>.</p>
+<h2 id="6502-golf-site">6502 Golf site</h2>
 <p><a href="https://groups.google.com/forum/#!forum/comp.sys.apple2">comp.sys.apple2</a>
 folks sometimes like to collaborate/compete on golfing 6502 code. I
 thought it would be fun to create a site for 6502 golfing.</p>
 <p>Leaderboards would be fun, and being able to track the tree of ideas
 (by giving credit or explicitly starting with code and modifying it)
 would be instructive.</p>
-<h2 id="tasks">Tasks</h2>
+<h3 id="tasks">Tasks</h3>
 <ul>
 <li><input disabled="" type="checkbox"> Get my <a href="https://github.com/zellyn/go6502">go6502</a> code working
 under GopherJS.</li>
@@ -105,88 +106,22 @@ mess.</li>
 <li><input disabled="" type="checkbox"> Add challenges/problems with descriptions, solutions,
 leaderboards, etc.</li>
 </ul>
-<h1 id="openemulator-tasks">OpenEmulator Tasks</h1>
-<h2 id="make-iie-aux-card-pluggable">Make IIe aux card pluggable</h2>
-<ul>
-<li><input disabled="" type="checkbox"> Route an3/frctxt through card</li>
-<li><input disabled="" type="checkbox"> Figure out how to make AppleIIeVideo not need direct access to VRAM</li>
-</ul>
-<h2 id="veronica-emulation">Veronica emulation</h2>
-<ul>
-<li><input disabled="" type="checkbox"> First, go read all the blog posts :-)</li>
-</ul>
-<h2 id="implement-woz-disk-format">Implement Woz disk format</h2>
-<ul>
-<li><input disabled="" type="checkbox"> Make it work at 1 cycle (or is it 4?) per bit</li>
-<li><input disabled="" type="checkbox"> Convert .woz to angular positions and back again for real spinny-ness</li>
-</ul>
-<h2 id="implement-mockingboard-support">Implement Mockingboard support</h2>
-<ul>
-<li><input disabled="" type="checkbox"> Copy Mame code, I guess</li>
-</ul>
-<h2 id="linux-ui-windows-ui">Linux UI, Windows UI</h2>
-<ul>
-<li><input disabled="" type="checkbox"> Figure out which would get more users</li>
-<li><input disabled="" type="checkbox"> Port the basics</li>
-<li><input disabled="" type="checkbox"> Port audio</li>
-<li><input disabled="" type="checkbox"> Port shaders/OpenGL stuff</li>
-</ul>
-<h1 id="retrocomputing-technical-docs-conversion-pipeline">Retrocomputing technical docs conversion pipeline</h1>
+<h2 id="retrocomputing-technical-docs-conversion-pipeline">Retrocomputing technical docs conversion pipeline</h2>
 <ul>
 <li><input disabled="" type="checkbox"> Classify/divide up page areas: Header, paragraphs, diagrams,
 etc.</li>
 <li><input disabled="" type="checkbox"> OCR on paragraphs</li>
 <li><input disabled="" type="checkbox"> turking / collaborative editing</li>
 </ul>
-<h1 id="native-go-game-controller-library">Native Go game controller library</h1>
-<p>I&rsquo;m unlikely to ever do this. If I needed controller input, I&rsquo;d
-probably use something existing. A native one that does <em>all</em> the
-controllers would be nice, though.</p>
-<h2 id="ebitengine">Ebitengine:</h2>
-<ul>
-<li>Example on their page: <a href="https://ebitengine.org/en/examples/gamepad.html">examples/gamepad.html</a></li>
-<li>Third-party example using ebitengine: <a href="https://github.com/tinne26/gamepad-quicktest">github.com/tinne26/gamepad-quicktest</a></li>
-</ul>
-<h2 id="other">Other</h2>
-<ul>
-<li><a href="https://github.com/0xcafed00d/joystick">github.com/0xcafed00d/joystick</a></li>
-</ul>
-<h2 id="original-step-listing">Original step listing</h2>
-<ul>
-<li><input disabled="" type="checkbox"> Figure out where <a href="https://cs.chromium.org/chromium/src/device/gamepad/?q=gamepad&amp;sq=package:chromium&amp;dr">Chromium MacOS XBox
-code</a>
-gets called from</li>
-<li><input disabled="" type="checkbox"> Get proof-of-concept-level cgo code working to enumerate and/or
-find controller</li>
-<li><input disabled="" type="checkbox"> Figure out how to register Objective-C callbacks (for connect/disconnect) that
-have the correct lifecycle/memory management, and call back into Go safely.</li>
-<li><input disabled="" type="checkbox"> Organize a community effort to port all the Chrome code to Go on all the OSes :-)</li>
-</ul>
-<h1 id="lambdamoo-go-port"><del>LambdaMoo Go port</del></h1>
-<p>Someone already did this in Rust! And far better than I ever could
-have. See <a href="https://github.com/rdaum/moor">github.com/rdaum/moor</a></p>
-<strike style='color:grey'>
-<ul>
-<li><input disabled="" type="checkbox"> Write some actual tests</li>
-<li><input disabled="" type="checkbox"> Figure out what to do for regexes: they have backrefs :-(</li>
-<li><input disabled="" type="checkbox"> Port the code</li>
-<li><input disabled="" type="checkbox"> Port WAIF patches</li>
-<li><input disabled="" type="checkbox"> Port unicode patches and/or figure out if there are any
-downsides from simply supporting utf8</li>
-<li><input disabled="" type="checkbox"> Port the 64-bit ints</li>
-<li><input disabled="" type="checkbox"> Figure out how to add more concurrency using goroutines</li>
-<li><input disabled="" type="checkbox"> Use something like sqlite?</li>
-</ul>
-</strike>
-<h1 id="apple-ii-emulator-improvementstasks">Apple II emulator improvements/tasks</h1>
-<h2 id="update-visual-6502">Update visual 6502</h2>
+<h2 id="apple-ii-emulator-improvementstasks">Apple II emulator improvements/tasks</h2>
+<h3 id="update-visual-6502">Update visual 6502</h3>
 <ul>
 <li><input disabled="" type="checkbox"> Incorporate performance improvements from the <a href="https://github.com/mist64/perfect6502/commits/master">C
 version</a>
 into <a href="https://github.com/zellyn/go6502/tree/master/visual">my Go
 port</a>.</li>
 </ul>
-<h2 id="get-it-running-pitch-dark-in-a-web-page">Get it running Pitch Dark in a web page</h2>
+<h3 id="get-it-running-pitch-dark-in-a-web-page">Get it running Pitch Dark in a web page</h3>
 <ul>
 <li><input disabled="" type="checkbox"> Figure out how to compile to webassembly</li>
 <li><input disabled="" type="checkbox"> Build a shim to hook it up to my <a href="https://zellyn.github.io/apple2shader/">apple2shader

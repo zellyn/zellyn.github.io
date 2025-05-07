@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zellyn&#39;s Website">
+    
+    <link rel="shortcut icon" href="https://zellyn.com/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <title>Projects</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+          inlineMath: [['\\(', '\\)']]                  
+        }
+      };
+    </script>
+
+    
+</head>
+<body><header id="banner">
+    <h2><a href="https://zellyn.com/">Zellyn Hunter</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/page/projects/done" title="projects">projects</a>
+            </li><li>
+                <a href="/about/" title="about">about</a>
+            </li><li>
+                <a href="/resume/" title="resume">resume</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>Projects</h1>
+            <div></div>
+    </header><p>A list of side projects, in no particular order.</p>
+<h2 id="gopikchr">gopikchr</h2>
+<p><img src="/img/projects/pikchr.png" alt="pikchr example code and drawing"></p>
+<p><a href="https://github.com/gopikchr/gopikchr">gopikchr</a> is a direct port of
+<a href="https://pikchr.org/">pikchr</a> to Go. It&rsquo;s used to generate the
+diagrams on my blog
+(<a href="https://zellyn.com/2022/02/cs-ramble/2c/">simpler example</a>,
+<a href="https://zellyn.com/video/gears/worm/#tooth-profile">completely silly example</a>).</p>
+<p><em>I&rsquo;m working on a Javascript port with the hopes of getting pikchr
+support onto Github by way of <a href="https://mermaid.js.org">Mermaid</a>.</em></p>
+<h2 id="goapple2--go6502">goapple2 / go6502</h2>
+<p><img src="/img/projects/goapple2.png" alt="goapple2 image"></p>
+<p><a href="https://github.com/zellyn/goapple2">goapple2</a> is a simple Apple II
+emulator written in Go. The <a href="https://github.com/zellyn/go6502">6502
+emulation</a> is cycle-accurate, and
+includes a Go port of the <a href="http://www.visual6502.org">Visual 6502</a>
+transistor-level simulation.</p>
+<p>Also includes a multi-dialect assembler capable of assembling most of
+the source listings of the Apple II ROMs as well as the <a href="https://www.txbobsc.com/scsc/scdocumentor/">S-C
+Documentor</a> recreation of
+Applesoft BASIC.</p>
+<h2 id="weblight-in-progress">weblight (in-progress)</h2>
+<p><img src="/img/projects/weblight.jpg" alt="esp32 with wires and LEDs on a breadboard"></p>
+<p><a href="https://github.com/zellyn/weblight">weblight</a> is an in-process
+project to drive LEDs with an ESP32-C3, while documenting the process
+and choices enough for it to serve as an introduction to ESP32
+programming and working with LEDs.</p>
+<h2 id="bedrock-pruner-in-progress">bedrock pruner (in-progress)</h2>
+<p><img src="/img/projects/bedrockprune.jpg" alt="overhead view of editing a mincraft map"></p>
+<p><a href="https://github.com/zellyn/bedrockprune">bedrockprune</a> is an
+in-process project to view and prune Bedrock minecraft world
+databases, written in Go.</p>
+<h2 id="a2audit--diskii">a2audit &amp; diskii</h2>
+<p><img src="/img/projects/seagull-srs.png" alt="Seagull Sisters"></p>
+<p><a href="https://github.com/zellyn/a2audit">a2audit</a> is a test for Apple II
+emulator correctness, focusing (for now) on memory expansion
+cards/schemes. Most people who build an Apple II emulator end up using
+it at least a little bit.</p>
+<p><a href="https://github.com/zellyn/diskii">diskii</a> is a utility for
+manipulating Apple II disk images.</p>
+<h2 id="apple2shader">apple2shader</h2>
+<p><img src="/img/projects/apple2shader.png" alt="Apple II shader"></p>
+<p><a href="https://zellyn.com/apple2shader/">apple2shader</a> is a WebGL port of
+Marc S. Ressl&rsquo;s amazing NTSC emulation from
+<a href="https://openemulator.github.io">OpenEmulator</a>.</p>
+<h2 id="gocool">gocool</h2>
+<p><img src="/img/projects/cool.png" alt="cool homepage image"></p>
+<p><a href="https://github.com/zellyn/gocool">gocoool</a> is a Go language
+implementation of the <a href="https://theory.stanford.edu/~aiken/software/cool/cool.html">Cool programming
+language</a>
+done for the Coursera . Includes a hand-written recursive-descent
+parser in addition to a standard yacc-based one.</p>
+<hr>
+<p>For potential projects and improvements, see <a href="../todo">Project TODOs</a>.</p>
+</article>
+
+        </main><footer id="footer">
+    
+</footer>
+</body>
+</html>
