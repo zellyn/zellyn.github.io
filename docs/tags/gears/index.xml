@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gears on Zellyn Hunter</title>
-    <link>https://zellyn.com/tags/gears/</link>
+    <link>http://localhost:1313/tags/gears/</link>
     <description>Recent content in Gears on Zellyn Hunter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 14 Jan 2025 19:00:00 -0400</lastBuildDate>
     
-	<atom:link href="https://zellyn.com/tags/gears/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/tags/gears/index.xml" rel="self" type="application/rss+xml" />
     
     
     
     <item>
       <title>The coming AI personal security nightmare</title>
-      <link>https://zellyn.com/2025/03/ai_security_nightmare/</link>
+      <link>http://localhost:1313/2025/03/ai_security_nightmare/</link>
       <pubDate>Thu, 20 Mar 2025 19:55:00 -0400</pubDate>
       
-      <guid>https://zellyn.com/2025/03/ai_security_nightmare/</guid>
+      <guid>http://localhost:1313/2025/03/ai_security_nightmare/</guid>
       <description>&lt;p&gt;Are things about to get crazy, as malicious use of AI agents ramps up?&lt;/p&gt;
 &lt;h2 id=&#34;direct-attacks&#34;&gt;Direct attacks&lt;/h2&gt;
 &lt;p&gt;I remember&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; reading a post where someone gave their infosec-savvy
@@ -178,10 +178,10 @@ hackernews&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-
     
     <item>
       <title>Emacs packages</title>
-      <link>https://zellyn.com/2024/08/emacs-packages/</link>
+      <link>http://localhost:1313/2024/08/emacs-packages/</link>
       <pubDate>Fri, 02 Aug 2024 21:38:00 -0400</pubDate>
       
-      <guid>https://zellyn.com/2024/08/emacs-packages/</guid>
+      <guid>http://localhost:1313/2024/08/emacs-packages/</guid>
       <description>&lt;p&gt;Now that &lt;a href=&#34;https://www.masteringemacs.org/article/whats-new-in-emacs-29-1&#34;&gt;Emacs
 29&lt;/a&gt;
 moved so many useful things into Emacs proper, it&amp;rsquo;s time to declare
@@ -314,16 +314,16 @@ although you don&amp;rsquo;t really &lt;em&gt;install&lt;/em&gt; packages that o
     
     <item>
       <title>23 ecke - Georg Nees</title>
-      <link>https://zellyn.com/2024/07/23-ecke/</link>
+      <link>http://localhost:1313/2024/07/23-ecke/</link>
       <pubDate>Mon, 08 Jul 2024 21:00:00 -0400</pubDate>
       
-      <guid>https://zellyn.com/2024/07/23-ecke/</guid>
-      <description>&lt;p&gt;Having &lt;a href=&#34;https://zellyn.com/2024/06/schotter-2/#victory&#34;&gt;replicated&lt;/a&gt; Georg
+      <guid>http://localhost:1313/2024/07/23-ecke/</guid>
+      <description>&lt;p&gt;Having &lt;a href=&#34;http://localhost:1313/2024/06/schotter-2/#victory&#34;&gt;replicated&lt;/a&gt; Georg
 Nees&amp;rsquo; iconic 1968/69 work, &amp;ldquo;Schotter&amp;rdquo;, I turned my attention to his
 &amp;ldquo;23 ecke&amp;rdquo; (literally &amp;ldquo;23 corners&amp;rdquo;, usually referred to as &amp;ldquo;Polygons of
 23 vertices&amp;rdquo;), an earlier work from 1964:&lt;/p&gt;
 &lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke-rot19.png&#34; alt=&#34;An array of small, tangled shapes, fourteen across and twenty
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/23-ecke-rot19.png&#34; alt=&#34;An array of small, tangled shapes, fourteen across and twenty
 high. The background is white, and each shape is drawn in pen by a
 plotter. The shapes consist of 23 line segments, 22 of them either
 vertical or horizontal, and one at some kind of
@@ -482,7 +482,7 @@ JS5&lt;/a&gt;
 from the thesis) look similar to those in &amp;ldquo;23 ecke&amp;rdquo;, except that the
 patterns here are a little more tangled, and lack the single diagonal
 line:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/bild-22.png&#34; alt=&#34;An array, six across and eight high, of larger shapes. Each consists
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/bild-22.png&#34; alt=&#34;An array, six across and eight high, of larger shapes. Each consists
 of 40 line segments, all either horizontal or vertical, and traces out
 a tangled loop.&#34;&gt; &lt;center&gt;&lt;small&gt;&lt;/p&gt;
 &lt;p&gt;Bild 22 (Picture 22) &lt;em&gt;from Georg Nees&amp;rsquo; 1969 thesis&lt;/em&gt;&lt;/p&gt;
@@ -490,7 +490,7 @@ a tangled loop.&#34;&gt; &lt;center&gt;&lt;small&gt;&lt;/p&gt;
 &lt;br/&gt;
 &lt;h2 id=&#34;second-attempt&#34;&gt;Second attempt&lt;/h2&gt;
 &lt;p&gt;My next step was to start trying to trace out the shapes from &lt;em&gt;23 ecke&lt;/em&gt;, in an attempt to iterate through seeds and find matching shapes:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke-nsew.png&#34; alt=&#34;Detail from an excalidraw image where I was trying to trace out
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/23-ecke-nsew.png&#34; alt=&#34;Detail from an excalidraw image where I was trying to trace out
 shapes from &amp;ldquo;23 ecke&amp;rdquo;. There are some enlarged (and thus
 blurry/pixelated) shapes with little arrows adjacent to each segment,
 where I was trying to guess which order and direction they were drawn
@@ -519,7 +519,7 @@ from the &lt;a href=&#34;https://generativeart.com/GA2019_web/Generative%20Art%2
 2019&lt;/a&gt;:
 it turns out that Max Bense had edited the original image Nees gave
 him when printing &lt;em&gt;rot 19&lt;/em&gt;, removing one row, and also Nees&amp;rsquo; name:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke-rot19-draft.png&#34; alt=&#34;Detail from a photograph of the marked-up printer&amp;rsquo;s draft of &amp;ldquo;23
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/23-ecke-rot19-draft.png&#34; alt=&#34;Detail from a photograph of the marked-up printer&amp;rsquo;s draft of &amp;ldquo;23
 ecke&amp;rdquo; used in rot 19: Nees name beside the image is struck through,
 and the last row if the image is x&amp;rsquo;ed out and struck through multiple
 times.&#34;&gt;&lt;center&gt;&lt;small&gt;&lt;/p&gt;
@@ -566,7 +566,7 @@ characteristics of the diagonal lines. By happenstance, I ran across
 allows easy use of interactive widgets, and was able to whip up a
 crude interface and manually classify as many of the 280 diagonals as
 possible.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke-classify.png&#34; alt=&#34;Image of a crude UI created in Marimo, showing two images of the
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/23-ecke-classify.png&#34; alt=&#34;Image of a crude UI created in Marimo, showing two images of the
 same small sub-shape from 23 ecke. To the right, they are annotated
 &amp;ldquo;Comments for (17,2)&amp;rdquo; and &amp;ldquo;/ wide short up&amp;rdquo;. Above, there are sliders
 for picking horizontal and vertical sub-images. Below are buttons for
@@ -586,7 +586,7 @@ github&lt;/a&gt;,
 which will even render the &lt;a href=&#34;https://github.com/zellyn/genart/blob/main/research/23-ecke/23-ecke.ipynb&#34;&gt;jupyter
 notebook&lt;/a&gt;
 nicely.)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/23-ecke.svg&#34; alt=&#34;SVG recreation of 23 ecke, finally!&#34;&gt;&lt;center&gt;&lt;small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/23-ecke.svg&#34; alt=&#34;SVG recreation of 23 ecke, finally!&#34;&gt;&lt;center&gt;&lt;small&gt;&lt;/p&gt;
 &lt;p&gt;Recreation of &lt;em&gt;23 ecke&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;/small&gt;&lt;/center&gt;
 &lt;br&gt;&lt;/p&gt;
@@ -635,8 +635,8 @@ twitter&lt;/a&gt;)&lt;/li&gt;
 comments, requests, or just to chat.&lt;/p&gt;
 &lt;hr&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/06/schotter-1/&#34;&gt;Part one: Schotter: Introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/06/schotter-2/&#34;&gt;Part two: Schotter: Investigation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2024/06/schotter-1/&#34;&gt;Part one: Schotter: Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2024/06/schotter-2/&#34;&gt;Part two: Schotter: Investigation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Part three: 23 ecke&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
@@ -668,11 +668,11 @@ delightful.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#
     
     <item>
       <title>Schotter - Georg Nees - Part 2</title>
-      <link>https://zellyn.com/2024/06/schotter-2/</link>
+      <link>http://localhost:1313/2024/06/schotter-2/</link>
       <pubDate>Sun, 23 Jun 2024 00:01:53 -0400</pubDate>
       
-      <guid>https://zellyn.com/2024/06/schotter-2/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;
+      <guid>http://localhost:1313/2024/06/schotter-2/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;
 &lt;small&gt;Source: Victoria and Albert &amp;mdash; &lt;a href=&#34;https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg/&#34;&gt;link&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 &lt;div class=&#34;toc&#34;&gt;
   &lt;nav id=&#34;TableOfContents&#34;&gt;
@@ -699,7 +699,7 @@ delightful.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#
 &lt;/nav&gt;
 &lt;/div&gt;
 
-&lt;p&gt;In &lt;a href=&#34;https://zellyn.com/2024/06/schotter-1/&#34;&gt;part 1&lt;/a&gt;, we found the original
+&lt;p&gt;In &lt;a href=&#34;http://localhost:1313/2024/06/schotter-1/&#34;&gt;part 1&lt;/a&gt;, we found the original
 ALGOL-60 code for &lt;em&gt;Schotter&lt;/em&gt;, and converted it to Python. Correctly
 matching the style was satisfying&amp;hellip; but wouldn&amp;rsquo;t it be nice to
 exactly recreate the entire original plot?&lt;/p&gt;
@@ -775,7 +775,7 @@ tantalizing cover image, which could be found elsewhere with Google
 Image Search
 (&lt;a href=&#34;https://twitter.com/keyvass/status/1471060332617637889&#34;&gt;example&lt;/a&gt;,
 &lt;a href=&#34;https://twitter.com/REAS/status/1473041398962159617&#34;&gt;example&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/REAS/status/1473041398962159617&#34;&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/generative-computergraphik-cover-smaller.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34; title=&#34;=350x&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/REAS/status/1473041398962159617&#34;&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/generative-computergraphik-cover-smaller.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34; title=&#34;=350x&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;jackpot-the-thesis&#34;&gt;Jackpot: The thesis&lt;/h2&gt;
 &lt;p&gt;I forget how I eventually found it, but the publisher
 &lt;a href=&#34;https://www.diaphanes.net/page/about-3677&#34;&gt;Diaphenes&lt;/a&gt; in Zurich have
@@ -1027,7 +1027,7 @@ we got them right.&lt;/p&gt;
 &lt;p&gt;By looking very carefully at the famous plot, we can mark squares
 where it&amp;rsquo;s clear which direction they&amp;rsquo;ve been shifted, and which
 direction they&amp;rsquo;ve been rotated.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/annotated-plot.jpg&#34; alt=&#34;Famous Schotter plot, annotated with red and blue letters marking discernable left- and right-shifted squares, and left- and right-rotated squares&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/annotated-plot.jpg&#34; alt=&#34;Famous Schotter plot, annotated with red and blue letters marking discernable left- and right-shifted squares, and left- and right-rotated squares&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Pro-tip:&lt;/strong&gt; Don&amp;rsquo;t use &lt;u&gt;&lt;strong&gt;R&lt;/strong&gt;&lt;/u&gt;ight and &lt;u&gt;&lt;strong&gt;L&lt;/strong&gt;&lt;/u&gt;eft part of
 the time, and &lt;u&gt;&lt;strong&gt;R&lt;/strong&gt;&lt;/u&gt;ed and &lt;u&gt;&lt;strong&gt;B&lt;/strong&gt;&lt;/u&gt;lue part of the time.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Pro-tip:&lt;/strong&gt; Always check your clever techniques on the version of the
@@ -1274,9 +1274,9 @@ plot:&lt;/p&gt;
 down.&lt;/p&gt;
 &lt;hr&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/06/schotter-1/&#34;&gt;Part one: Schotter: Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2024/06/schotter-1/&#34;&gt;Part one: Schotter: Introduction&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Part two: Schotter: Investigation&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/07/23-ecke/&#34;&gt;Part three: 23 ecke&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2024/07/23-ecke/&#34;&gt;Part three: 23 ecke&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1285,11 +1285,11 @@ down.&lt;/p&gt;
     
     <item>
       <title>Schotter - Georg Nees - Part 1</title>
-      <link>https://zellyn.com/2024/06/schotter-1/</link>
+      <link>http://localhost:1313/2024/06/schotter-1/</link>
       <pubDate>Mon, 17 Jun 2024 22:11:00 -0400</pubDate>
       
-      <guid>https://zellyn.com/2024/06/schotter-1/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg&#34;&gt;&lt;img src=&#34;https://zellyn.com/img/2024/nees/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;&lt;/a&gt;
+      <guid>http://localhost:1313/2024/06/schotter-1/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg&#34;&gt;&lt;img src=&#34;http://localhost:1313/img/2024/nees/plot-vanda.jpg&#34; alt=&#34;Schotter &amp;mdash; Georg Nees&#34;&gt;&lt;/a&gt;
 &lt;em&gt;&lt;small&gt;Lithograph in black ink from a computer-generated graphic, &amp;lsquo;Schotter&amp;rsquo;, 1968-1970, by Georg Nees. © Victoria and Albert Museum, London&lt;/small&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;As a way of dipping my toe into generative art, I&amp;rsquo;ve been trying to
@@ -1613,8 +1613,8 @@ notebook&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;Part one: Schotter: Introduction&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/06/schotter-2/&#34;&gt;Part two: Schotter: Investigation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://zellyn.com/2024/07/23-ecke/&#34;&gt;Part three: 23 ecke&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2024/06/schotter-2/&#34;&gt;Part two: Schotter: Investigation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2024/07/23-ecke/&#34;&gt;Part three: 23 ecke&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
@@ -1631,10 +1631,10 @@ notebook&lt;/a&gt;.&lt;/p&gt;
     
     <item>
       <title>Blog machinery back up</title>
-      <link>https://zellyn.com/2024/06/blog-fixed/</link>
+      <link>http://localhost:1313/2024/06/blog-fixed/</link>
       <pubDate>Sat, 15 Jun 2024 19:45:31 -0400</pubDate>
       
-      <guid>https://zellyn.com/2024/06/blog-fixed/</guid>
+      <guid>http://localhost:1313/2024/06/blog-fixed/</guid>
       <description>&lt;h1 id=&#34;blog-machinery-back-up&#34;&gt;Blog machinery back up&lt;/h1&gt;
 &lt;p&gt;The downside of running a (slightly) custom&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; version of
 &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; is that it can break when things get
@@ -1648,7 +1648,7 @@ with ESP32-C3 chips and Adafruit Neopixels.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li id=&#34;fn:1&#34;&gt;
 &lt;p&gt;modified to run pikchr in goldmark as described in
-&lt;a href=&#34;https://zellyn.com/2022/01/gopikchr-a-yakshave/&#34;&gt;gopikchr: a yakshave&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;http://localhost:1313/2022/01/gopikchr-a-yakshave/&#34;&gt;gopikchr: a yakshave&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -1659,10 +1659,10 @@ with ESP32-C3 chips and Adafruit Neopixels.&lt;/p&gt;
     
     <item>
       <title>CS Ramble — Set 3b - operating systems</title>
-      <link>https://zellyn.com/2022/03/cs-ramble/3b/</link>
+      <link>http://localhost:1313/2022/03/cs-ramble/3b/</link>
       <pubDate>Wed, 16 Mar 2022 20:10:00 -0400</pubDate>
       
-      <guid>https://zellyn.com/2022/03/cs-ramble/3b/</guid>
+      <guid>http://localhost:1313/2022/03/cs-ramble/3b/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../3a/&#34;&gt;set 3&lt;/a&gt; of &lt;a href=&#34;../../../02/cs-ramble/&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;We&amp;rsquo;ll get to processes, threads, and fibers soon, but first we need to
 talk about how all the things your computer is doing at any given time
@@ -1736,10 +1736,10 @@ keep using the ROM routines.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;f
     
     <item>
       <title>CS Ramble — Set 3a - questions</title>
-      <link>https://zellyn.com/2022/03/cs-ramble/3a/</link>
+      <link>http://localhost:1313/2022/03/cs-ramble/3a/</link>
       <pubDate>Wed, 16 Mar 2022 20:03:00 -0400</pubDate>
       
-      <guid>https://zellyn.com/2022/03/cs-ramble/3a/</guid>
+      <guid>http://localhost:1313/2022/03/cs-ramble/3a/</guid>
       <description>&lt;p&gt;&lt;em&gt;These are the questions for set 3 of &lt;a href=&#34;../../../02/cs-ramble/&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;questions-for-set-3&#34;&gt;Questions for set 3&lt;/h1&gt;
 &lt;p&gt;Just one question this time:&lt;/p&gt;
@@ -1754,10 +1754,10 @@ keep using the ROM routines.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;f
     
     <item>
       <title>CS Ramble — Set 2e - bit twiddling</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/2e/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/2e/</link>
       <pubDate>Sat, 26 Feb 2022 20:21:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/2e/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/2e/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In this post, we&amp;rsquo;re going to look at how to get, set, and otherwise
@@ -2133,10 +2133,10 @@ an &lt;code&gt;is_even&lt;/code&gt; or &lt;code&gt;is_odd&lt;/code&gt; function 
     
     <item>
       <title>CS Ramble — Set 2d - boolean logic</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/2d/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/2d/</link>
       <pubDate>Fri, 25 Feb 2022 20:10:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/2d/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/2d/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In this post, we&amp;rsquo;re going to become more familiar with messing around
@@ -2658,10 +2658,10 @@ wash the dishes!&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-back
     
     <item>
       <title>CS Ramble — Set 2c - binary and bits</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/2c/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/2c/</link>
       <pubDate>Thu, 17 Feb 2022 21:30:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/2c/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/2c/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In this post, we&amp;rsquo;re going to become more familiar with thinking in
@@ -3057,10 +3057,10 @@ number) equal to or less than &lt;code&gt;a&lt;/code&gt;. It&amp;rsquo;s called 
     
     <item>
       <title>CS Ramble — Set 2b - bases</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/2b/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/2b/</link>
       <pubDate>Wed, 16 Feb 2022 20:00:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/2b/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/2b/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../2a/&#34;&gt;set 2&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;counting-in-tens-like-a-normal-human&#34;&gt;Counting in tens, like a normal human&lt;/h1&gt;
@@ -4090,10 +4090,10 @@ say the octothorpe is “percent encoded” as &lt;code&gt;%23&lt;/code&gt;.)&lt
     
     <item>
       <title>CS Ramble — Set 2a - questions</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/2a/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/2a/</link>
       <pubDate>Tue, 15 Feb 2022 20:15:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/2a/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/2a/</guid>
       <description>&lt;p&gt;&lt;em&gt;These are the questions for set 2 of &lt;a href=&#34;../&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;questions-for-set-2&#34;&gt;Questions for set 2&lt;/h1&gt;
 &lt;ul&gt;
@@ -4130,10 +4130,10 @@ write what we call “ten”? What would they mean when they wrote
     
     <item>
       <title>Tailscale diagram in Pikchr</title>
-      <link>https://zellyn.com/2022/02/tailscale-diagram-in-pikchr/</link>
+      <link>http://localhost:1313/2022/02/tailscale-diagram-in-pikchr/</link>
       <pubDate>Mon, 07 Feb 2022 00:49:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/tailscale-diagram-in-pikchr/</guid>
+      <guid>http://localhost:1313/2022/02/tailscale-diagram-in-pikchr/</guid>
       <description>&lt;p&gt;Just for fun, I decided to try to use &lt;a href=&#34;https://pikchr.org&#34;&gt;Pikchr&lt;/a&gt; to
 reproduce one of the diagrams in Tailscale&amp;rsquo;s &lt;a href=&#34;https://tailscale.com/blog/how-nat-traversal-works/&#34;&gt;How NAT traversal
 works&lt;/a&gt; article,
@@ -4310,10 +4310,10 @@ line up 0.15 right 0.15 down 0.15 left 0.15 down 0.15 right 0.15 up 0.15 left 0.
     
     <item>
       <title>CS Ramble — Set 1c: variables</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/1c/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/1c/</link>
       <pubDate>Thu, 03 Feb 2022 20:12:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/1c/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/1c/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../1a/&#34;&gt;set 1&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;variables&#34;&gt;Variables&lt;/h1&gt;
@@ -5354,10 +5354,10 @@ goes into lots of details.&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;foo
     
     <item>
       <title>CS Ramble — Set 1b - memory, text, numbers</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/1b/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/1b/</link>
       <pubDate>Thu, 03 Feb 2022 08:00:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/1b/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/1b/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is post is part of &lt;a href=&#34;../1a/&#34;&gt;set 1&lt;/a&gt; of &lt;a href=&#34;../&#34;&gt;A Ramble Around
 CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;computer-memory&#34;&gt;Computer memory&lt;/h1&gt;
@@ -6058,10 +6058,10 @@ is useful.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#3
     
     <item>
       <title>CS Ramble — Set 1a - questions</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/1a/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/1a/</link>
       <pubDate>Wed, 02 Feb 2022 19:58:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/1a/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/1a/</guid>
       <description>&lt;p&gt;&lt;em&gt;These are the questions for set 1 of &lt;a href=&#34;../&#34;&gt;A Ramble Around CS&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id=&#34;questions-for-set-1&#34;&gt;Questions for set 1&lt;/h1&gt;
 &lt;ul&gt;
@@ -6083,10 +6083,10 @@ numbers and text in the &lt;a href=&#34;../1b/&#34;&gt;next part&lt;/a&gt;.&lt;/
     
     <item>
       <title>A ramble around CS</title>
-      <link>https://zellyn.com/2022/02/cs-ramble/</link>
+      <link>http://localhost:1313/2022/02/cs-ramble/</link>
       <pubDate>Tue, 01 Feb 2022 08:00:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/02/cs-ramble/</guid>
+      <guid>http://localhost:1313/2022/02/cs-ramble/</guid>
       <description>&lt;h1 id=&#34;intro&#34;&gt;Intro&lt;/h1&gt;
 &lt;p&gt;It turns out we have several folks at Square who arrived at
 programming through boot-camps, or other non-CS paths, and feel a sort
@@ -6189,10 +6189,10 @@ useful to more people would be welcome.&amp;#160;&lt;a href=&#34;#fnref:3&#34; c
     
     <item>
       <title>gopikchr: a yakshave</title>
-      <link>https://zellyn.com/2022/01/gopikchr-a-yakshave/</link>
+      <link>http://localhost:1313/2022/01/gopikchr-a-yakshave/</link>
       <pubDate>Sun, 30 Jan 2022 13:11:00 -0500</pubDate>
       
-      <guid>https://zellyn.com/2022/01/gopikchr-a-yakshave/</guid>
+      <guid>http://localhost:1313/2022/01/gopikchr-a-yakshave/</guid>
       <description>&lt;p&gt;I just completed part of a long
 &lt;a href=&#34;https://en.wiktionary.org/wiki/yak_shaving&#34;&gt;yak-shave&lt;/a&gt; to add
 &lt;a href=&#34;https://pikchr.org&#34;&gt;Pikchr&lt;/a&gt; support to my blog, generated with
@@ -6356,13 +6356,13 @@ ellipse same at 0.3,0.4
     
     <item>
       <title>Project Todos</title>
-      <link>https://zellyn.com/2018/03/project-todos/</link>
+      <link>http://localhost:1313/2018/03/project-todos/</link>
       <pubDate>Sat, 31 Mar 2018 22:50:18 -0400</pubDate>
       
-      <guid>https://zellyn.com/2018/03/project-todos/</guid>
+      <guid>http://localhost:1313/2018/03/project-todos/</guid>
       <description>&lt;p&gt;In an effort to organize the many side-projects I would &lt;em&gt;like&lt;/em&gt; to do
 — at least in my mind — but probably never will, I created
-a &lt;a href=&#34;https://zellyn.com/page/projects/todo/&#34;&gt;Projects: TODO&lt;/a&gt; page.&lt;/p&gt;
+a &lt;a href=&#34;http://localhost:1313/page/projects/todo/&#34;&gt;Projects: TODO&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ve never collaborated much on side projects. If something strikes
 your fancy, I would &lt;em&gt;love&lt;/em&gt; to work together.&lt;/p&gt;
 </description>
@@ -6372,10 +6372,10 @@ your fancy, I would &lt;em&gt;love&lt;/em&gt; to work together.&lt;/p&gt;
     
     <item>
       <title>New new site</title>
-      <link>https://zellyn.com/2016/04/new-new-site/</link>
+      <link>http://localhost:1313/2016/04/new-new-site/</link>
       <pubDate>Sun, 03 Apr 2016 16:57:38 -0400</pubDate>
       
-      <guid>https://zellyn.com/2016/04/new-new-site/</guid>
+      <guid>http://localhost:1313/2016/04/new-new-site/</guid>
       <description>&lt;p&gt;I just migrated this site from &lt;a href=&#34;http://octopress.org/&#34;&gt;Octopress&lt;/a&gt; to
 &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. Expect problems (and hopefully more
 frequent updates).&lt;/p&gt;
@@ -6386,10 +6386,10 @@ frequent updates).&lt;/p&gt;
     
     <item>
       <title>Continued fractions</title>
-      <link>https://zellyn.com/2016/04/continued-fractions/</link>
+      <link>http://localhost:1313/2016/04/continued-fractions/</link>
       <pubDate>Sun, 03 Apr 2016 15:30:06 -0400</pubDate>
       
-      <guid>https://zellyn.com/2016/04/continued-fractions/</guid>
+      <guid>http://localhost:1313/2016/04/continued-fractions/</guid>
       <description>$$
 26 + \frac{1}{5 + \frac{1}{12 + \frac{1}{12 + \frac{1}{25 + \frac{1}{14 + \cdots}}}}}
 $$&lt;p&gt;Last night I lay thinking of
@@ -6410,10 +6410,10 @@ with the world, that Mum and Dad are in charge, that I am safe.&lt;/p&gt;
     
     <item>
       <title>New Site</title>
-      <link>https://zellyn.com/2016/04/new-site/</link>
+      <link>http://localhost:1313/2016/04/new-site/</link>
       <pubDate>Sun, 03 Apr 2016 15:30:00 -0400</pubDate>
       
-      <guid>https://zellyn.com/2016/04/new-site/</guid>
+      <guid>http://localhost:1313/2016/04/new-site/</guid>
       <description>&lt;p&gt;Welcome to my new site. I’m just trying to get everything working:
 expect both style and substance later.&lt;/p&gt;
 &lt;p&gt;For now, my &lt;a href=&#34;http://zellyn.blogspot.com/&#34;&gt;old site&lt;/a&gt; is probably more
