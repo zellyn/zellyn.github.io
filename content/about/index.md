@@ -36,7 +36,7 @@ Chronology
 ### Contact
 
 - Mastodon --- [@zellyn@hachyderm.io](https://hachyderm.io/@zellyn)
-  &nbsp; <small style='color:grey'>_← this is the one I use_</small>
-- BlueSky --- [@zellyn.com](https://bsky.app/profile/zellyn.com)
+  &nbsp; <small style='color:grey'>
+- BlueSky --- [@zellyn.com](https://bsky.app/profile/zellyn.com)_← this is the one I use_</small>
 - ~Twitter --- [@zellyn](https://twitter.com/zellyn)~
 - Github, GMail, Lobste.rs, Reddit, YouTube, ... --- zellyn@

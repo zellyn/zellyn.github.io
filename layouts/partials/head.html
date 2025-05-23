@@ -41,4 +41,10 @@
     </script>
 
     {{ with .Params.customcss }}<link rel="stylesheet" href="{{ . }}" />{{ end }}
+
+    {{ if .Params.extra_css }}
+    <style>
+      {{ .Params.extra_css | safeCSS }}
+    </style>
+    {{ end }}
 </head>
