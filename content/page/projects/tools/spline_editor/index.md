@@ -75,6 +75,8 @@ extra_css: |
   }
 ---
 
+[< tools](../)
+
   <div class="container">
     <div class="controls">
       <div class="drawing-controls">

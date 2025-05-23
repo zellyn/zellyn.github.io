@@ -44,6 +44,13 @@ enableInlineShortcodes = true
     weight = 10
 
   [[menu.main]]
+    identifier = "tools"
+    name = "tools"
+    title = "tools"
+    url = "/page/projects/tools/"
+    weight = 10
+
+  [[menu.main]]
     identifier = "about"
     name = "about"
     title = "about"
