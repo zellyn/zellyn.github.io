@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://zellyn.com/page/</loc>
+    <lastmod>2025-05-23T11:27:00-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/page/projects/spline_editor/</loc>
+    <lastmod>2025-05-23T11:27:00-04:00</lastmod>
+  </url><url>
+    <loc>https://zellyn.com/</loc>
+    <lastmod>2025-05-23T11:27:00-04:00</lastmod>
+  </url><url>
     <loc>https://zellyn.com/tags/ai/</loc>
     <lastmod>2025-03-20T19:55:00-04:00</lastmod>
   </url><url>
@@ -18,9 +27,6 @@
     <lastmod>2025-03-20T19:55:00-04:00</lastmod>
   </url><url>
     <loc>https://zellyn.com/2025/03/ai_security_nightmare/</loc>
-    <lastmod>2025-03-20T19:55:00-04:00</lastmod>
-  </url><url>
-    <loc>https://zellyn.com/</loc>
     <lastmod>2025-03-20T19:55:00-04:00</lastmod>
   </url><url>
     <loc>https://zellyn.com/video/</loc>
@@ -140,8 +146,6 @@
     <loc>https://zellyn.com/about/</loc>
   </url><url>
     <loc>https://zellyn.com/categories/</loc>
-  </url><url>
-    <loc>https://zellyn.com/page/</loc>
   </url><url>
     <loc>https://zellyn.com/page/projects/done/</loc>
   </url><url>

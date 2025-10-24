@@ -1,6 +1,7 @@
 ---
 layout: page
 title: 'Spline editor'
+date: 2025-05-23T11:27:00-04:00
 extra_css: |
   .container {
     display: flex;
